@@ -44,3 +44,14 @@ __pycache__/
 /src/com/techgenius/tvoslauncher/I18nPl.java
 /src/com/techgenius/tvoslauncher/ModPl*.java
 
+# Lokalne propozycje, raporty i materiały przygotowawcze.
+/README_FORK.md
+/NOTICE_FORK
+/PRZED_PUBLIKACJA.md
+/PUBLIKACJA.md
+/FORUM_POST.*
+/zrzuty-github/oprawa/
+/zrzuty-github/gotowe/setup-scenes.webp
+/zrzuty-github/gotowe/screensaver-2.webp
+/zrzuty-github/gotowe/screensaver-settings.webp
+/zrzuty-github/gotowe/showcase-immersive.webp
