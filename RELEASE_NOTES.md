@@ -31,22 +31,6 @@ Załącznik do **GitHub Releases**, poza repozytorium źródłowym:
 
 Przenieś APK na telewizor pendrive'em lub przez Send files to TV, otwórz w menedżerze plików i przejdź polski kreator. Jeśli system poprosi, zezwól temu menedżerowi na instalowanie nieznanych aplikacji. Aktualizuj na poprzednią wersję moda z tym samym podpisem, aby zachować ustawienia.
 
-## Budowanie
+## Kod i licencja
 
-W Git Bash, ze skonfigurowanym JDK, Pythonem 3 i Android SDK (platforma 34, Build Tools 34.0.0 i 35.0.0):
-
-```bash
-# Do testów: z dziennikiem moda
-bash zbuduj-pl.sh
-
-# Do wydania: bez dziennika moda
-DZIENNIK=0 bash zbuduj-pl.sh
-```
-
-Wynik: `build/tvos-launcher-pl.apk`. Klucz i hasło powstają przy pierwszym budowaniu w `mod-pl.keystore` oraz `mod-pl.keystore.haslo` i nie trafiają do repozytorium. Skrypt odtwarza `src/` oraz manifest z Gita; buduj w osobnej kopii roboczej, jeśli masz niezapisane zmiany w tych plikach.
-
-## Zdjęcia scen i źródła
-
-APK zawiera zdjęcia scen „Czerwone Lamborghini” i „Audi RS7 nocą”. Zdjęcia i warstwy Audi są wyłączone z repozytorium źródłowego i nie są objęte licencją Apache-2.0 kodu. Nie potwierdzono autora ani licencji konkretnego zdjęcia Lamborghini z Wallhaven. Właściciel moda zdecydował o pozostawieniu obu scen w APK.
-
-Kod źródłowy: [premiumsmart/tvOS-Launcher-PL](https://github.com/premiumsmart/tvOS-Launcher-PL). Autor oryginału: [techgenius1](https://github.com/techgenius1/tvOS-Launcher). Informacje o autorstwie i dołączonych bibliotekach: [NOTICE](NOTICE).
+Kod źródłowy: [premiumsmart/tvOS-Launcher-PL](https://github.com/premiumsmart/tvOS-Launcher-PL). Autor oryginału: [techgenius1](https://github.com/techgenius1/tvOS-Launcher). Kod jest na licencji Apache-2.0; informacje o autorstwie i bibliotekach zawiera [NOTICE](https://github.com/premiumsmart/tvOS-Launcher-PL/blob/main/NOTICE).

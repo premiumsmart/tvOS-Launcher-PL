@@ -33,24 +33,6 @@ Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgeniu
 
 „Oglądaj dalej”: włącz debugowanie USB w opcjach programisty telewizora, następnie **Ustawienia launchera → Szybkie ustawienia → Uprawnienie „Oglądaj dalej” → Włącz** i potwierdź pytanie telewizora. Po nadaniu uprawnienia możesz wyłączyć debugowanie USB. Aktualizacja istniejącej instalacji wymaga tego samego klucza podpisu.
 
-### Budowanie
-
-Windows + Git Bash, Python 3, JDK z kompilatorem (np. z Android Studio) oraz Android SDK: platforma 34 i Build Tools 34.0.0 oraz 35.0.0; SDK spoza domyślnej ścieżki wskaż przez `ANDROID_HOME`.
-
-```bash
-# Wersja testowa z dziennikiem moda w logcat
-bash zbuduj-pl.sh
-
-# Wersja do wydania, bez dziennika moda
-DZIENNIK=0 bash zbuduj-pl.sh
-```
-
-Wynik: `build/tvos-launcher-pl.apk`. Klucz `mod-pl.keystore` i plik hasła `mod-pl.keystore.haslo` powstają przy pierwszym budowaniu i nie trafiają do repozytorium.
-
-Skrypt odtwarza `src/` i `AndroidManifest.xml` z Gita, nakłada opisane zmiany przez `pl/naloz.py` oraz dodaje klasy z `pl/java/`; buduj w osobnej kopii roboczej, jeśli masz ręczne zmiany w źródłach.
-
-Przy samodzielnym budowaniu ze źródeł sceny „Czerwone Lamborghini” i „Audi RS7 nocą” wymagają własnych zdjęć pod nazwami `pl/zasoby/ulubiona-lamborghini.jpg` i `pl/zasoby/ulubiona-audi-rs7.jpg` oraz własnych warstw `pl/zasoby/scena-audi-rs7-glass.jpg` i `pl/zasoby/scena-audi-rs7-fg.webp`.
-
 ### Dane i licencja
 
 Mecze: [LiveScore](https://www.livescore.com/), pomocniczo [TheSportsDB](https://www.thesportsdb.com/); popularne tytuły: [JustWatch Polska](https://www.justwatch.com/pl); pogoda: [Open-Meteo](https://open-meteo.com/); tapety: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) i [Bing](https://www.bing.com/).
@@ -89,24 +71,6 @@ A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius
 4. Select tvOS Launcher if Android asks for a default home app; otherwise launch it from the app list.
 
 Continue Watching: enable USB debugging in the TV’s developer options, then go to **Launcher settings → Quick settings → “Continue Watching” permission → Enable** and confirm the TV prompt. You may disable USB debugging afterwards. Updating an existing installation requires the same signing key.
-
-### Building
-
-Windows + Git Bash, Python 3, a JDK with a compiler (such as Android Studio’s JDK), and Android SDK platform 34 with Build Tools 34.0.0 and 35.0.0; set `ANDROID_HOME` for a non-default SDK location.
-
-```bash
-# Test build with the mod's logcat logging
-bash zbuduj-pl.sh
-
-# Release build without the mod's logging
-DZIENNIK=0 bash zbuduj-pl.sh
-```
-
-Output: `build/tvos-launcher-pl.apk`. The signing key `mod-pl.keystore` and password file `mod-pl.keystore.haslo` are created on the first build and are excluded from the repository.
-
-The script restores `src/` and `AndroidManifest.xml` from Git, applies the documented changes through `pl/naloz.py`, and adds classes from `pl/java/`; use a separate working copy if you have manual source edits.
-
-When building from source, the “Red Lamborghini” and “Audi RS7 at night” scenes require your own images named `pl/zasoby/ulubiona-lamborghini.jpg` and `pl/zasoby/ulubiona-audi-rs7.jpg`, plus your own layers named `pl/zasoby/scena-audi-rs7-glass.jpg` and `pl/zasoby/scena-audi-rs7-fg.webp`.
 
 ### Data and license
 
