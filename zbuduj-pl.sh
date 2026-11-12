@@ -20,7 +20,7 @@ if [ -z "${JAVA_HOME:-}" ] || [ ! -x "$JAVA_HOME/bin/javac" ] && [ ! -x "$JAVA_H
 fi
 export JAVA_HOME
 export PATH="$JAVA_HOME/bin:$PATH"
-SDK="${ANDROID_HOME:-/c/Users/Oskar/AppData/Local/Android/Sdk}"
+SDK="${ANDROID_HOME:-$HOME/AppData/Local/Android/Sdk}"
 BT="$SDK/build-tools/34.0.0"
 BT_D8="$SDK/build-tools/35.0.0"
 JAR="$SDK/platforms/android-34/android.jar"

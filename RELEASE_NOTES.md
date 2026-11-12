@@ -15,17 +15,11 @@ Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgeniu
 - Zalecany tryb kreatora zachowuje debugowanie USB.
 - Wersja wydaniowa ma wyłączony dziennik moda.
 
-## Plik wydania
+## Pobieranie
 
-Załącznik do **GitHub Releases**, poza repozytorium źródłowym:
+[Pobierz tvOS-Launcher-PL-2.1.5-pl30.apk](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/download/2.1.5-pl30/tvOS-Launcher-PL-2.1.5-pl30.apk)
 
-`tvOS Launcher PL 2.1.5-pl30.apk`
-
-- Wersja w APK: `2.1.5-pl30`, kod wersji `44`.
-- Android 7.0 lub nowszy (API 24); docelowe API 34.
-- Rozmiar: 14 148 060 bajtów (13,49 MiB).
-- SHA-256: `25610c0532133f73827d12043695cbafd735b8692bc92730fa24e9a03b1dd667`.
-- Sprawdzono podpis za pomocą `apksigner verify` i kod DEX: metody dziennika `ModPlDziennik` nie wywołują `android.util.Log`. Dotyczy to dziennika moda, nie wszystkich komunikatów Androida i oryginalnego launchera.
+Android TV / Google TV z Androidem 7.0 lub nowszym. Rozmiar APK: 13,49 MiB. Suma SHA-256 jest dostępna w załączonym pliku `SHA256SUMS.txt`.
 
 ## Instalacja i aktualizacja
 
