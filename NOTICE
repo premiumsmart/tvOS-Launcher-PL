@@ -14,3 +14,43 @@ This product includes third-party components under their own licences:
   (assets/fonts/Inter-LICENSE.txt)
 - QR Code generator library (Java) — Copyright (c) Project Nayuki — MIT License
   (src/io/nayuki/qrcodegen)
+
+Polish modification (tvOS Launcher PL)
+------------------------------------
+This is a modified version of tvOS Launcher by techgenius / techgenius1:
+https://github.com/techgenius1/tvOS-Launcher
+
+The PL modification adds Polish translations (including setup and weather),
+redesigned Liquid Glass home tiles and detail windows, LiveScore integration,
+goal overlays, local ADB permission setup, nighttime internet wallpapers,
+wallpaper favorites, a matching screensaver, and adaptive glass clock placement
+with on-device vehicle detection. The recommended setup mode keeps USB debugging
+enabled. Changes are applied by pl/naloz.py and the classes in pl/java/.
+
+Additional bundled components:
+
+- TensorFlow Lite 2.14.0 — Copyright the TensorFlow Authors — Apache-2.0.
+  Java libraries and native runtime: pl/biblioteki/
+  Source: https://github.com/tensorflow/tensorflow/tree/v2.14.0/tensorflow/lite
+  License: https://github.com/tensorflow/tensorflow/blob/v2.14.0/LICENSE
+  Included license and upstream notices: third-party-licenses/tensorflow-2.14.0.txt
+
+- SSD MobileNet v1 COCO (quantized) — Google / TensorFlow Authors — Apache-2.0.
+  Model: pl/zasoby/wykrywacz.tflite
+  Original archive (detect.tflite, byte-identical to the bundled model):
+  https://storage.googleapis.com/download.tensorflow.org/models/tflite/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip
+  Model SHA-256:
+  e4b118e5e4531945de2e659742c7c590f7536f8d0ed26d135abcfe83b4779d13
+  Project license: https://github.com/tensorflow/models/blob/master/LICENSE
+  Included license: third-party-licenses/ssd-mobilenet-v1-coco.txt
+
+The Apache-2.0 license text is provided in LICENSE. The upstream credits above
+are retained; these additional notices do not replace them.
+
+This project is not affiliated with, sponsored by, or endorsed by Apple,
+LiveScore, JustWatch, Open-Meteo, Wallhaven, Wikimedia, or Microsoft (Bing).
+Product names, logos, photographs, artwork and service data remain the property
+of their respective owners. The application fetches internet images and data
+from the corresponding services. Optional user-supplied scene images retain
+their own rights. The source-code license does not grant rights to third-party
+images or data, including material visible in screenshots.

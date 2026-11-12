@@ -1,0 +1,366 @@
+# Teksty stałe spoza en.txt (składane w kodzie z kilku kawałków). Format: para linii E| oraz P|.
+
+E|1. Open TV Settings → System → About and click Build 7 times to unlock Developer Options.\n2. Open Settings → System → Developer Options and enable USB Debugging / Network Debugging.\n3. Return here and select Grant Permissions Now (ADB port 5555 will be closed automatically right after setup).
+P|1. Otwórz Ustawienia TV → System → Informacje i kliknij 7 razy w „Kompilacja”, aby odblokować Opcje programisty.\n2. Otwórz Ustawienia → System → Opcje programisty i włącz debugowanie USB / sieciowe.\n3. Wróć tutaj i wybierz „Nadaj uprawnienia teraz” (port ADB 5555 zostanie zamknięty automatycznie zaraz po konfiguracji).
+E|1. Open TV Settings → System → About and click Build 7 times to unlock Developer Options.\n2. Open Settings → System → Developer Options and enable USB Debugging / Network Debugging.\n3. Return here and select Grant Permissions Now (ADB will remain enabled for CleanYourTV).
+P|1. Otwórz Ustawienia TV → System → Informacje i kliknij 7 razy w „Kompilacja”, aby odblokować Opcje programisty.\n2. Otwórz Ustawienia → System → Opcje programisty i włącz debugowanie USB / sieciowe.\n3. Wróć tutaj i wybierz „Nadaj uprawnienia teraz” (ADB pozostanie włączone dla CleanYourTV).
+
+# --- mod PL: nowe ustawienie doku ---
+E|Names under icons
+P|Nazwy pod ikonami
+
+# --- gatunki (Najczęściej oglądane, polecane) ---
+E|Action
+P|Akcja
+E|Animation
+P|Animacja
+E|Comedy
+P|Komedia
+E|Crime
+P|Kryminał
+E|Documentary
+P|Dokumentalny
+E|Drama
+P|Dramat
+E|Family
+P|Familijny
+E|History
+P|Historyczny
+E|Music
+P|Muzyczny
+E|Romance
+P|Romans
+E|War
+P|Wojenny
+E|Reality
+P|Reality show
+
+# --- nazwy wbudowanych tapet ---
+E|Grose Valley
+P|Dolina Grose
+E|Albury Storm
+P|Burza w Albury
+E|Aresquiers Beach
+P|Plaża Aresquiers
+E|Vang Vieng Sunset
+P|Zachód słońca w Vang Vieng
+E|Aurora
+P|Zorza
+E|Midnight
+P|Północ
+E|Sunset
+P|Zachód słońca
+E|Graphite
+P|Grafit
+
+# --- komunikaty wpisane w kodzie na sztywno (mod przepuszcza je przez tłumaczenia) ---
+E|Removed 
+P|Usunięto: 
+E|Refreshing
+P|Odświeżam
+E|Not available on this TV
+P|Niedostępne na tym telewizorze
+E|Use arrows to move · OK when done
+P|Strzałki przesuwają · OK — gotowe
+
+# --- poprawki po testach na boxie ---
+E|TV Series
+P|Serial
+E|Internal Storage
+P|Pamięć wewnętrzna
+
+# --- widżet meczów ---
+E|League: 
+P|Liga: 
+E|All Top Leagues
+P|Najlepsze ligi
+
+# --- nowe okna: Najczęściej oglądane i Mecze (pl/java/ModPlOkna.java) ---
+E|Trailer
+P|Zwiastun
+E|trailer
+P|zwiastun
+E|Open in 
+P|Otwórz w 
+E|Available on 
+P|Dostępne w 
+E|▲ ▼ titles  ·  ▶ buttons
+P|▲ ▼ tytuły  ·  ▶ przyciski
+E|Couldn't open the trailer
+P|Nie udało się otworzyć zwiastuna
+E|Half time
+P|Przerwa
+E|Live
+P|Na żywo
+E|After penalties
+P|Po karnych
+E|After extra time
+P|Po dogrywce
+E|Full time
+P|Koniec
+E|Following 
+P|Obserwujesz 
+E|Follow 
+P|Obserwuj 
+E|▲ ▼ matches  ·  ▶ follow
+P|▲ ▼ mecze  ·  ▶ obserwuj
+
+# --- Ekstraklasa ---
+E|Postponed
+P|Przełożony
+
+# --- LiveScore: grupy, ligi, okna wyboru ---
+E|Live now
+P|Na żywo
+E|Today's matches
+P|Dziś
+E|Followed teams
+P|Obserwowane
+E|Followed: results
+P|Wyniki obserwowanych
+E|Upcoming matches
+P|Nadchodzące
+E|Latest results
+P|Wyniki
+E|Champions League
+P|Liga Mistrzów
+E|Europa League
+P|Liga Europy
+E|Conference League
+P|Liga Konferencji
+E|UEFA Champions League
+P|Liga Mistrzów
+E|UEFA Europa League
+P|Liga Europy
+E|UEFA Conference League
+P|Liga Konferencji
+E|Trendyol Süper Lig
+P|Süper Lig (Turcja)
+E|Choose a league
+P|Wybierz ligę
+E|Followed teams' matches are always on top.
+P|Mecze obserwowanych drużyn są zawsze na górze.
+E|OK adds or removes a team. Any team can be followed from its match.
+P|OK dodaje albo usuwa drużynę. Inną wpiszesz przez „Dodaj inną drużynę…” albo dodasz przyciskiem „Obserwuj” przy jej meczu.
+E|Popular teams
+P|Popularne drużyny
+E|Cancelled
+P|Odwołany
+E|Abandoned
+P|Przerwany
+E|The launcher can turn this on by itself through USB debugging.\n\nIn a moment the TV will ask "Allow USB debugging?". Choose Allow.\n\nOnly access to playback notifications is granted. Nothing else on the TV is changed.
+P|Launcher może włączyć to sam przez debugowanie USB.\n\nZa chwilę telewizor zapyta „Zezwalać na debugowanie USB?”. Wybierz „Zezwalaj” (albo „Zezwól” czy „OK”).\n\nNadawany jest tylko dostęp do powiadomień o odtwarzaniu. Nic innego w telewizorze się nie zmienia.
+E|Turn on
+P|Włącz
+E|Waiting for your consent on the TV screen…
+P|Czekam na Twoją zgodę na ekranie telewizora…
+E|Done. Continue watching is on.\n\nFor safety you can now turn USB debugging off in Developer options.
+P|Gotowe. „Oglądaj dalej” jest włączone.\n\nDla bezpieczeństwa możesz teraz wyłączyć debugowanie USB w Opcjach programisty.
+E|It didn't work. The consent on the TV screen was probably not given in time.\n\nTry again and choose Allow when the TV asks about USB debugging. If a computer is connected to the TV over ADB, disconnect it for that moment.
+P|Nie udało się. Zgoda na ekranie telewizora prawdopodobnie nie została wydana na czas.\n\nSpróbuj ponownie i wybierz „Zezwalaj”, gdy telewizor zapyta o debugowanie USB. Jeśli z telewizorem jest połączony komputer przez ADB, rozłącz go na ten czas.
+E|Try again
+P|Spróbuj ponownie
+E|This TV has no switch for this permission, so the launcher will turn it on itself through USB debugging:\n\n1. TV Settings → System → About: press OK 7 times on "Android TV OS build".\n2. Go back to System → Developer options and turn on "USB debugging".\n3. Come back here and choose Continue watching again.\n\nAfterwards USB debugging can be turned off.
+P|Ten telewizor nie ma przełącznika tego uprawnienia, więc launcher włączy je sam przez debugowanie USB:\n\n1. Ustawienia telewizora → System → Informacje: naciśnij OK 7 razy na pozycji „Kompilacja” (na dole listy).\n2. Wróć do System → Opcje programisty i włącz „Debugowanie USB”.\n3. Wróć do launchera i wybierz „Oglądaj dalej” jeszcze raz.\n\nPotem debugowanie USB można wyłączyć.
+E|Developer options
+P|Opcje programisty
+E|Add another team…
+P|Dodaj inną drużynę…
+E|e.g. Arsenal, Legia, Poland
+P|np. Arsenal, Wisła Kraków, Polska
+E|OK – choose a league and favourite teams
+P|OK – wybierz ligę i ulubione drużyny
+E|Then
+P|Potem
+E|Earlier
+P|Wcześniej
+E|Also live
+P|Też na żywo
+E|No.
+P|Nr
+E|UEFA Nations League
+P|Liga Narodów UEFA
+E|Goals only
+P|Tylko gole
+E|Goals, kick-off and full time
+P|Gole, początek i koniec meczu
+E|Everything, with half time
+P|Wszystko, także przerwa
+E|Top right
+P|Prawy górny róg
+E|Top left
+P|Lewy górny róg
+E|Bottom right
+P|Prawy dolny róg
+E|Bottom left
+P|Lewy dolny róg
+E|Match alerts
+P|Powiadomienia o meczach
+E|Watching the match of a followed team
+P|Pilnuję meczu obserwowanej drużyny
+E|Kick-off
+P|Start
+E|Goal!
+P|Gol!
+E|Score update
+P|Korekta
+E|Match alerts over other apps
+P|Powiadomienia o meczach nad innymi aplikacjami
+E|Alert position
+P|Miejsce powiadomienia
+E|Show a sample alert
+P|Pokaż przykładowe powiadomienie
+E|To show the score over other apps the launcher needs one more permission. It can grant it to itself through USB debugging.\n\nIn a moment the TV will ask "Allow USB debugging?". Choose Allow.
+P|Żeby pokazywać wynik nad innymi aplikacjami, launcher potrzebuje jeszcze jednego uprawnienia. Może nadać je sobie sam przez debugowanie USB.\n\nZa chwilę telewizor zapyta „Zezwalać na debugowanie USB?”. Wybierz „Zezwalaj” (albo „Zezwól” czy „OK”).
+E|Done. Alerts will show in the corner of the screen, like the sample one now.\n\nFor safety you can now turn USB debugging off in Developer options.
+P|Gotowe. Powiadomienia będą się pokazywać w rogu ekranu, tak jak to przykładowe teraz.\n\nDla bezpieczeństwa możesz teraz wyłączyć debugowanie USB w Opcjach programisty.
+E|Alerts are on. Without one more permission they appear as a small system message at the bottom of the screen. To get the badge in the corner:\n\n1. TV Settings → System → About: press OK 7 times on "Android TV OS build".\n2. Go back to System → Developer options and turn on "USB debugging".\n3. Come back here and choose "Show a sample alert".
+P|Powiadomienia są włączone. Bez jeszcze jednego uprawnienia pokazują się jako mały systemowy dymek na dole ekranu. Żeby mieć plakietkę w rogu:\n\n1. Ustawienia telewizora → System → Informacje: naciśnij OK 7 razy na pozycji „Kompilacja” (na dole listy).\n2. Wróć do System → Opcje programisty i włącz „Debugowanie USB”.\n3. Wróć tutaj i wybierz „Pokaż przykładowe powiadomienie”.
+E|Screen saver
+P|Wygaszacz ekranu
+E|SCREEN SAVER
+P|WYGASZACZ EKRANU
+E|Screen saver settings
+P|Ustawienia wygaszacza ekranu
+E|Use as the TV screen saver
+P|Używaj jako wygaszacza telewizora
+E|New photo every
+P|Nowe zdjęcie co
+E|1 minute
+P|1 minutę
+E|2 minutes
+P|2 minuty
+E|5 minutes
+P|5 minut
+E|10 minutes
+P|10 minut
+E|15 minutes
+P|15 minut
+E|30 minutes
+P|30 minut
+E|Temperature next to the date
+P|Temperatura obok daty
+E|Skip photos the clock cannot hide behind
+P|Pomijaj zdjęcia, za którymi zegar się nie schowa
+E|Preview the screen saver now
+P|Pokaż wygaszacz teraz
+E|Random photos from the internet with a big glass clock that hides behind mountains, trees and buildings. Without internet it shows photos saved earlier and the launcher scenes.
+P|Losowe zdjęcia z internetu i duży szklany zegar, który chowa się za górami, drzewami i budynkami. Bez internetu pokazują się zdjęcia zapisane wcześniej i sceny launchera.
+E|Turn the screen saver on first.
+P|Najpierw włącz wygaszacz.
+E|The preview is not available on this TV. The screen saver starts by itself when the TV is idle.
+P|Podgląd nie działa na tym telewizorze. Wygaszacz włączy się sam, gdy telewizor będzie bezczynny.
+E|The launcher can set its screen saver as the TV screen saver through USB debugging.\n\nIn a moment the TV will ask "Allow USB debugging?". Choose Allow.
+P|Launcher może ustawić swój wygaszacz jako wygaszacz telewizora przez debugowanie USB.\n\nZa chwilę telewizor zapyta „Zezwalać na debugowanie USB?”. Wybierz „Zezwalaj”.
+E|Choose tvOS Launcher on the list of screen savers.
+P|Wybierz „tvOS Launcher” na liście wygaszaczy.
+E|The launcher screen saver is on. It starts by itself when the TV is idle.
+P|Wygaszacz launchera jest włączony. Uruchamia się sam, gdy telewizor jest bezczynny.
+E|Restore the previous one
+P|Przywróć poprzedni
+E|Done. The screen saver starts by itself when the TV is idle.\n\nFor safety you can now turn USB debugging off in Developer options.
+P|Gotowe. Wygaszacz włączy się sam, gdy telewizor będzie bezczynny.\n\nDla bezpieczeństwa możesz teraz wyłączyć debugowanie USB w Opcjach programisty.
+E|Done. The previous screen saver is back.
+P|Gotowe. Wrócił poprzedni wygaszacz.
+E|This TV has no list of screen savers in its settings, so the launcher will set it itself through USB debugging:\n\n1. TV Settings → System → About: press OK 7 times on "Android TV OS build".\n2. Go back to System → Developer options and turn on "USB debugging".\n3. Come back here and choose "Use as the TV screen saver" again.
+P|Ten telewizor nie ma w ustawieniach listy wygaszaczy, więc launcher ustawi go sam przez debugowanie USB:\n\n1. Ustawienia telewizora → System → Informacje: naciśnij OK 7 razy na pozycji „Kompilacja” (na dole listy).\n2. Wróć do System → Opcje programisty i włącz „Debugowanie USB”.\n3. Wróć tutaj i jeszcze raz wybierz „Używaj jako wygaszacza telewizora”.
+E|PHOTO THEMES
+P|TEMATY ZDJĘĆ
+E|Landscapes
+P|Krajobrazy
+E|Cities
+P|Miasta
+E|Cars
+P|Sportowe auta
+E|Photo caption for a few seconds
+P|Podpis zdjęcia przez kilka sekund
+E|Done. The screen saver starts by itself when the TV is idle.
+P|Gotowe. Wygaszacz włączy się sam, gdy telewizor będzie bezczynny.
+E|Cyberpunk cities
+P|Miasta cyberpunk
+E|Mode: Secure Auto Setup (Recommended)
+P|Tryb: bezpieczna konfiguracja automatyczna (zalecany)
+E|Grants WRITE_SECURE_SETTINGS once to self-repair Accessibility; USB debugging stays on
+P|Jednorazowo nadaje WRITE_SECURE_SETTINGS do samonaprawy ułatwień dostępu; debugowanie USB zostaje włączone
+E|1. Open TV Settings → System → About and click Build 7 times to unlock Developer Options.\n2. Open Settings → System → Developer Options and enable USB Debugging / Network Debugging.\n3. Return here and select Grant Permissions Now (USB debugging stays on).
+P|1. Otwórz Ustawienia TV → System → Informacje i kliknij 7 razy w „Kompilacja”, aby odblokować Opcje programisty.\n2. Otwórz Ustawienia → System → Opcje programisty i włącz debugowanie USB / sieciowe.\n3. Wróć tutaj i wybierz „Nadaj uprawnienia teraz” (debugowanie USB zostaje włączone).
+E|Grants WRITE_SECURE_SETTINGS; USB debugging stays on
+P|Nadaje WRITE_SECURE_SETTINGS; debugowanie USB zostaje włączone
+E|Secure Mode — WRITE_SECURE_SETTINGS, ADB stays on (Recommended)
+P|Tryb bezpieczny — WRITE_SECURE_SETTINGS, ADB zostaje włączone (zalecany)
+E|Secure Mode — Grant WRITE_SECURE_SETTINGS, ADB stays on (Recommended)
+P|Tryb bezpieczny — nadaj WRITE_SECURE_SETTINGS, ADB zostaje włączone (zalecany)
+E|Secure Mode selected — ADB grants WRITE_SECURE_SETTINGS once; USB debugging stays on.
+P|Wybrano tryb bezpieczny — ADB jednorazowo nada WRITE_SECURE_SETTINGS; debugowanie USB zostaje włączone.
+E|Wallpapers from the internet
+P|Tapety z internetu
+E|Auto-changing wallpapers: sports cars, cyberpunk cities, landscapes or cities
+P|Same się zmieniają: sportowe auta, miasta cyberpunk, krajobrazy albo miasta
+E|WALLPAPER OPTIONS
+P|OPCJE TAPET
+E|Fetching the next wallpaper…
+P|Pobieram następną tapetę…
+E|Wallpaper updated.
+P|Tapeta zmieniona.
+E|Skip to the next wallpaper
+P|Pokaż kolejną tapetę z internetu
+E|Loading the next wallpaper…
+P|Ładuję następną tapetę…
+E|Sports cars
+P|Sportowe auta
+E|On: sports cars and cyberpunk cities, the clock hides behind them
+P|Włączone: sportowe auta i miasta cyberpunk
+E|Off: the scenes below are used
+P|Wyłączone: używane są sceny poniżej
+E|minute
+P|minuta
+E|minutes
+P|minut
+E|hour
+P|godzina
+E|hours
+P|godziny
+E|FAVOURITE WALLPAPERS
+P|ULUBIONE TAPETY
+E|Add this wallpaper to favourites
+P|Dodaj tę tapetę do ulubionych
+E|Remove this wallpaper from favourites
+P|Usuń tę tapetę z ulubionych
+E|It will come back more often
+P|Będzie wracać częściej
+E|It will no longer come back
+P|Nie będzie już wracać
+E|Saved favourites
+P|Zapisane ulubione
+E|How often favourites return
+P|Jak często wracają ulubione
+E|Favourites only
+P|Tylko ulubione
+E|Every 2nd wallpaper
+P|Co druga tapeta
+E|Every 3rd wallpaper
+P|Co trzecia tapeta
+E|Every 5th wallpaper
+P|Co piąta tapeta
+E|Remove all favourites
+P|Usuń wszystkie ulubione
+E|All favourites removed
+P|Usunięto wszystkie ulubione
+E|Added to favourites
+P|Dodano do ulubionych
+E|Removed from favourites
+P|Usunięto z ulubionych
+E|Could not save this wallpaper
+P|Nie udało się zapisać tej tapety
+E|Never
+P|Nigdy
+E|Remove
+P|Usuń
+E|Fit wallpaper to the clock
+P|Powiększaj tapetę pod zegar
+E|Red Lamborghini
+P|Czerwone Lamborghini
+E|No wallpaper fitting the clock was found, the current one stays
+P|Nie znalazłem tapety pasującej pod zegar, zostaje obecna
+E|Audi RS7 at night
+P|Audi RS7 nocą

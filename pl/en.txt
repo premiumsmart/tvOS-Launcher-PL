@@ -1,0 +1,1078 @@
+0001| [Already disabled]
+0002| [Critical System Service — Protected]
+0003| [Disabled — Tap to Enable]
+0004| [Disabled]
+0005| [Enabled — Tap to Disable]
+0006| [Enabled]
+0007| [Optional]
+0008| and enter:
+0009| free
+0010| min
+0011| min left
+0012| minutes
+0013| paired
+0014| seconds
+0015|% used  \u00b7  Clean
+0016|% used · Recent Apps
+0017|+ Add New Button to Remap…
+0018|+ Add a person
+0019|+ Add new button to remap
+0020|1. Set tvOS Launcher as Default via Local ADB
+0021|12 hour
+0022|2. Disable System Launchers (Google TV / Android TV / OEM)
+0023|24 hour
+0024|3. Fix Home Button via Accessibility (Button Mapper)
+0025|4. Open Android System Home Settings
+0026|5-DAY FORECAST
+0027|A big glass clock, scenes taking turns
+0028|A small weather display on Home, with a 5-day forecast.
+0029|ACCESSIBILITY SERVICE
+0030|ACTIONS
+0031|ACTIVITIES IN 
+0032|ADB & PERMISSIONS
+0033|ADB & SECURITY MODE
+0034|ADB Connection Required
+0035|ADB Debugging Needed
+0036|ADB Enabled · Not Paired
+0037|ADB Mode Required
+0038|ADB Operating Mode
+0039|ADB connection status
+0040|ADB debugging enabled.
+0041|ADB debugging is currently turned off. Persistent ADB Mode requires ADB to be enabled.\n\nWould you like to enable ADB and switch to Persistent ADB Mode?
+0042|ADB enabled and switched to Persistent ADB Mode.
+0043|ADB install failed, opening package installer…
+0044|ADB is active — selecting Install will download and install the update automatically.
+0045|ADB is turned off (Secure Mode) — selecting Install will download the update and open the system package installer.
+0046|ADB operating mode
+0047|ADB paired and all permissions granted!
+0048|AMBIENT THEMES
+0049|APPLICATION
+0050|APPLICATIONS
+0051|About
+0052|Accessibility
+0053|Accessibility Service
+0054|Accessories
+0055|Account
+0056|Active
+0057|Active (works in all apps)
+0058|Active in Accessibility
+0059|Active — Set as default home launcher
+0060|Ad-blocking Private DNS (AdGuard)
+0061|Add
+0062|Add Favorite Football Team
+0063|Add Subreddit
+0064|Add User
+0065|Add a person
+0066|Add a person…
+0067|Add as many custom wallpapers as you want without any limit
+0068|Add custom subreddit…
+0069|Add favorite football team…
+0070|Add new button to remap
+0071|Add new wallpaper…
+0072|Adds a Presentation card to Home
+0073|Advanced
+0074|Advanced ›
+0075|All (341)
+0076|All 341 Models
+0077|All 341 TV Models
+0078|All button mappings cleared.
+0079|All permissions granted automatically!
+0080|Allowed
+0081|Allow…
+0082|Ambient Mode
+0083|Ambient Mode / StandBy
+0084|Ambient colour themes
+0085|Ambient colour themes…
+0086|Android Accessibility Suite / TalkBack (optional)
+0087|Android TV Remote Service (optional — keep if you use Google TV phone remote)
+0088|App Icon Editor
+0089|App Info
+0090|App Switch / Recents (187)
+0091|App icon reset to default
+0092|App icon updated
+0093|App info
+0094|App layout reset to default.
+0095|App name or package name…
+0096|Appearance
+0097|Appearance and scenes
+0098|Apply
+0099|Apps
+0100|Apps & Settings
+0101|Ask who is watching on wake
+0102|Assign Single Tap (1x), Double Tap (2x) & Triple Tap (3x) actions
+0103|Assign Single Tap (1x), Double Tap (2x) and Triple Tap (3x) actions for each remote button — such as opening the Control Panel overlay, the Recent Apps Switcher overlay, or any installed app.
+0104|Audio
+0105|Audio Track (222)
+0106|Auto
+0107|Auto-change interval
+0108|Auto-changing 1080p/4K wallpapers from your selected subreddits
+0109|Auto-launch Lock Screen when idle
+0110|Automatic
+0111|Automatic (Sync with UI language)
+0112|Automatic (from internet)
+0113|Automatic Setup
+0114|Automatic launch on boot disabled.
+0115|Automatic updates
+0116|Automatic updates disabled.
+0117|Automatic updates enabled.
+0118|Avatar Color
+0119|Avatar color…
+0120|BACKGROUND MODE
+0121|BACKUP & RESTORE
+0122|BUILT-IN ACTIONS
+0123|BUTTON REMAPPING
+0124|Back
+0125|Back (4)
+0126|Back to Apps
+0127|Back to Usage Mode Selection
+0128|Back to folders
+0129|Back to parent folder
+0130|Back to return   \u00b7   Hold OK for options
+0131|Background color
+0132|Backup Failed
+0133|Backup settings to Download
+0134|Big Clock (Night Scene style)
+0135|Black
+0136|Bloatware / background service
+0137|Blue
+0138|Blue Button
+0139|Bluetooth
+0140|Bookmark / Favorite
+0141|Button Mapper
+0142|Button Mapper & Control Panel
+0143|Button Mapper & Control Panel (Accessibility)
+0144|Button Mapper accessibility service
+0145|Button Mapper service
+0146|Button mapper
+0147|By default, Most Watched automatically syncs with your selected UI language. Selecting any country above switches to custom multi-country mode.
+0148|CLASSIC BACKGROUND
+0149|CLASSIC CLOCK & WEATHER
+0150|CLASSIC WALLPAPERS
+0151|CLEANYOURTV (BETA)
+0152|CONTROL PANEL ITEMS (SHOW / HIDE)
+0153|COUNTRIES (SELECT ONE OR MULTIPLE)
+0154|CUSTOM & FOLDER SHUFFLE
+0155|CUSTOM WALLPAPER
+0156|CUSTOM WALLPAPER MODE
+0157|CUSTOM WALLPAPERS (UNLIMITED)
+0158|Caffeine disabled.
+0159|Caffeine enabled — TV will stay awake and block automatic Ambient / sleep mode.
+0160|Can\u2019t reach the internet
+0161|Cancel
+0162|Center
+0163|Change Colour
+0164|Change Emoji
+0165|Change Model…
+0166|Change any of this later in Settings, from the gear in Control Center.
+0167|Change app icon
+0168|Change what this button opens…
+0169|Changes the words on the home screen, date, weather and settings.
+0170|Channel Down
+0171|Channel Up
+0172|Channels
+0173|Check Permissions
+0174|Check for updates
+0175|Check now ›
+0176|Check permissions
+0177|Checked items are currently DISABLED. Disabling the stock system launcher (e.g. Google TV Home / LauncherX + setupwraith, Android TV Home, or TCL/Philips OEM Home) forces Android to use tvOS Launcher when pressing the Home key.
+0178|Checking GitHub releases for the latest version…
+0179|Checking for Updates
+0180|Checking…
+0181|Checks GitHub Releases (techgenius1/tvOS-Launcher) for the latest APK and installs updates directly on your TV.
+0182|Choose Action
+0183|Choose Activity
+0184|Choose City
+0185|Choose Folder to Restore Settings
+0186|Choose Lock Screen folder to shuffle
+0187|Choose Lock Screen image
+0188|Choose TV Model…
+0189|Choose TV model
+0190|Choose TV model…
+0191|Choose Your Scenes
+0192|Choose a Background
+0193|Choose a City\u2026
+0194|Choose a City…
+0195|Choose a look
+0196|Choose a photo or ambient colour theme behind your apps.
+0197|Choose background folder to shuffle
+0198|Choose custom background image
+0199|Choose custom scene image
+0200|Choose folder ›
+0201|Choose folder…
+0202|Choose how to grant permissions
+0203|Choose how you want your Home Screen to look.
+0204|Choose icon for 
+0205|Choose image ›
+0206|Choose image…
+0207|Choose new icon file…
+0208|Choose new image…
+0209|Choose tvOS Launcher when asked
+0210|Choose wallpaper folder to shuffle
+0211|Choose which scenes take turns behind the glass clock.
+0212|Chromecast built-in / Google Cast receiver (optional — keep if you Cast from phone)
+0213|City name, e.g. Istanbul
+0214|Classic
+0215|Classic Custom Wallpaper
+0216|Classic Top Shelf
+0217|Classic Top Shelf content
+0218|Classic background
+0219|Classic look
+0220|Classic photo
+0221|Clean
+0222|CleanYourTV (Beta) runs the CleanYourTV debloat profiles directly on your TV over Local ADB without needing a PC. Choose your TV model (or scan by installed system app packages), disable stock launchers or bloatware, and restore them anytime with one tap.
+0223|CleanYourTV (Beta) runs the CleanYourTV debloat profiles directly on your TV over Local ADB without needing a PC. Choose your TV model (or scan by installed system app packages), pick which bloatware and telemetry apps to disable, and restore them anytime with one tap.
+0224|Cleaned · 
+0225|Clear
+0226|Clear Continue Watching history
+0227|Clear all button mappings
+0228|Clear all remapped buttons
+0229|Clear filter
+0230|Clear filter (Show all)
+0231|Clock
+0232|Clock alignment
+0233|Clock font
+0234|Clock position
+0235|Clock style
+0236|Close
+0237|Close ADB (Disable Port 5555)
+0238|Close ADB Now
+0239|Close All
+0240|Closing ADB…
+0241|Cloudy
+0242|Colour
+0243|Connected
+0244|Connected & Paired (Port 5555 Open)
+0245|Connecting to local ADB on port 5555 and granting permissions…\n\nIf an \u201cAllow USB debugging?\u201d prompt appears, check \u201cAlways allow\u201d and press Allow.
+0246|Continue
+0247|Continue Watching
+0248|Continue Watching & DND (Notification Access)
+0249|Continue Watching & DND permission
+0250|Continue Watching & Do Not Disturb
+0251|Continue Watching cleared.
+0252|Continue Watching on dock
+0253|Continue watching
+0254|Control Center
+0255|Control Panel
+0256|Control Panel (Overlay)
+0257|Control Panel actions and items reset to default.
+0258|Could not check for updates.
+0259|Could not connect to ADB — enable USB/Network Debugging or use Step 3 / Step 4.
+0260|Could not connect to local ADB on port 5555.
+0261|Could not connect to local ADB on port 5555.\nPlease enable USB / Network Debugging in Developer Options and tap Pair / Repair ADB first.
+0262|Could not connect to local ADB on port 5555.\nPlease make sure USB / Network Debugging is enabled in Developer Options and tap Pair / Repair ADB first.
+0263|Could not connect to local ADB on port 5555.\n\n1. Open Settings \u2192 System \u2192 About and click Build 7 times.\n2. Open Developer Options and turn on USB Debugging / Network Debugging.\n3. Return here and tap Pair / Repair again.
+0264|Could not connect to local ADB on port 5555.\n\nPlease make sure USB Debugging / Network Debugging is turned ON in Developer Options, then try again — or choose Manual Setup.
+0265|Could not decode image file
+0266|Could not decode image file.
+0267|Could not load selected image.
+0268|Could not reach GitHub Releases. Please check your internet connection.
+0269|Could not start installer.
+0270|Couldn't search. Check the internet connection.
+0271|Create Your Profile
+0272|Current place
+0273|Current version
+0274|Current version: v
+0275|Currently synced to: 
+0276|Custom
+0277|Custom 2
+0278|Custom 3
+0279|Custom 4
+0280|Custom 5
+0281|Custom Key Code (Enter Number…)
+0282|Custom Lock Screen image updated.
+0283|Custom Wallpaper #
+0284|Custom background updated.
+0285|Custom image
+0286|Custom scene wallpaper updated.
+0287|Custom wallpaper clock alignment
+0288|Custom wallpaper mode
+0289|Custom wallpaper settings…
+0290|DASHBOARD WIDGETS (4 HORIZONTAL TILES)
+0291|DEFAULT LAUNCHER SETUP (TCL / PHILIPS / GOOGLE TV)
+0292|DOCK
+0293|DOCK SCALE (-50% TO +50%)
+0294|Dark
+0295|Date & Time
+0296|Debloat Complete
+0297|Debloat TV — 
+0298|Debloat TV…
+0299|Debloat status
+0300|Debloating TV…
+0301|Default
+0302|Default (Ambient Mode)
+0303|Default (Automatic)
+0304|Default App Launch (Main Activity)
+0305|Default Home Screen
+0306|Default home launcher set via ADB!
+0307|Default home screen
+0308|Default icon restored
+0309|Default wallpaper clock alignment
+0310|Delete
+0311|Delete profile
+0312|Detected automatically
+0313|Developer
+0314|Developer Options…
+0315|Didn\u2019t catch that \u2014 press the mic to try again
+0316|Disable All Stock Launchers
+0317|Disable All Stock Launchers & Set tvOS Launcher as Home
+0318|Disable Anyway
+0319|Disable Selected
+0320|Disable Stock TV Launchers (TCL / Philips / Google TV)
+0321|Disable System Launchers
+0322|Disable all ›
+0323|Disable system launchers
+0324|Disable system launchers…
+0325|Disabled
+0326|Disabled Apps Record
+0327|Disabled apps backup
+0328|Disabling Package…
+0329|Disconnected (ADB Off)
+0330|Display
+0331|Displayed when no app is focused, when focus is on Settings / non-app elements, or when the focused app has no Continue Watching items.
+0332|Do Not Disturb
+0333|Dock size
+0334|Don't Show Weather
+0335|Done
+0336|Double Tap (2x)
+0337|Down
+0338|Download & Install
+0339|Downloading latest APK from GitHub…
+0340|Drizzle
+0341|Dynamic
+0342|Each TV brand uses different package and activity names for Wi-Fi, Bluetooth, Sound, Inputs, and Ambient Mode. You can also choose Lock Screen for Ambient Mode (for TVs without built-in Ambient Mode) and toggle individual Control Panel items on or off.
+0343|Each TV brand uses different package and activity names for Wi-Fi, Bluetooth, Sound, and Inputs. Choose an app and then pick the exact activity to launch from the Control Panel (and from the Inputs app on the dock).
+0344|Each person gets their own pinned apps and Continue Watching list.
+0345|Each person keeps their own Keep Watching row and app order.
+0346|Each scene stays
+0347|Each wallpaper stays
+0348|Easy Setup (Automatic via ADB)
+0349|Enable ADB & Switch
+0350|Enable ADB Debugging
+0351|Enable ADB Now
+0352|Enable ADB for Persistent Mode?
+0353|Enable Button Mapper in Accessibility…
+0354|Enable Home Button Fix (Accessibility Remap)
+0355|Enable Home Dashboard
+0356|Enable Keep Alive
+0357|Enable Keep Alive?
+0358|Enable USB / Network Debugging in Developer Options
+0359|Enable all ›
+0360|Enable in Accessibility so remapped buttons work in all apps
+0361|Enable in Accessibility…
+0362|Enable tvOS Launcher in Android TV Accessibility Settings so remapped remote buttons and the Control Panel overlay work over any app.
+0363|Enable via ADB
+0364|Enabled in shuffle
+0365|Enabling ADB debugging and switching to Persistent ADB Mode…
+0366|Enabling ADB debugging…
+0367|Enabling ADB…
+0368|Enabling Package…
+0369|Enter Android Key Code
+0370|Exact model code match
+0371|Exact model match
+0372|FORECAST PROVIDER
+0373|Fast Forward
+0374|Fetching next Reddit wallpaper…
+0375|Fewer apps
+0376|Filter
+0377|Filter System Apps
+0378|Filter TV Models
+0379|Filter ›
+0380|Finish Setting Up
+0381|Fix Home button (Launch tvOS Launcher)
+0382|Fog
+0383|Foggy
+0384|Folder shuffle
+0385|Found from your internet connection
+0386|Free forecast service, no account needed
+0387|GOOGLE TV WI-FI NOTICE
+0388|Generic Android TV / Google TV profile
+0389|Get Started
+0390|Getting the weather\u2026
+0391|GitHub release latest version
+0392|Glass
+0393|Go to Home Screen
+0394|Golden hour
+0395|Good afternoon
+0396|Good evening
+0397|Good morning
+0398|Good night
+0399|Google Assistant / Voice Search (optional)
+0400|Google Play Games (optional)
+0401|Google TV Wi-Fi Warning
+0402|Google TV setup wizard & launcher watchdog
+0403|Google TV store / Movies & TV
+0404|Google telemetry & diagnostics
+0405|Grant All Files Access…
+0406|Grant All Permissions via Local ADB
+0407|Grant All via ADB
+0408|Grant All ›
+0409|Grant Permissions & Close ADB Now
+0410|Grant Permissions Now
+0411|Grant Permissions Now (Keep ADB Open)
+0412|Grant Storage Access…
+0413|Grant permissions one by one manually
+0414|Grant permissions one by one manually through Android TV Settings
+0415|Grant storage permission
+0416|Grant ›
+0417|Granting permissions via local ADB\u2026\n\nIf an \u201cAllow USB debugging?\u201d prompt appears on screen, check \u201cAlways allow\u201d and press Allow.
+0418|Grants WRITE_SECURE_SETTINGS & closes port 5555 when done
+0419|Grants WRITE_SECURE_SETTINGS once to self-repair Accessibility, then closes port 5555
+0420|Grants all required permissions automatically at once
+0421|Gray
+0422|Green
+0423|Green Button
+0424|Guide Button
+0425|H:
+0426|HOME & PERMISSIONS
+0427|HOME DASHBOARD
+0428|HOME SCREEN WIDGETS
+0429|HOURLY FORECAST
+0430|HOW TO WATCH
+0431|Headlines from your city and the world
+0432|Heavy Rain
+0433|Heavy Snow
+0434|Hidden apps
+0435|Hidden from dock · press OK to show
+0436|Hide
+0437|Hide from All Apps
+0438|Home & System
+0439|Home (3)
+0440|Home Button Fix & Accessibility enabled!
+0441|Home Button Fix enabled!
+0442|Home Dashboard
+0443|Home Dashboard widgets…
+0444|Home Settings
+0445|Home button fix disabled.
+0446|Home button fix enabled — please also enable Accessibility service above so Home key can be intercepted.
+0447|Home button fix enabled — pressing Home will launch tvOS Launcher.
+0448|Home button fix enabled.
+0449|Home screen
+0450|Home screen weather shortcut
+0451|Home screen widget settings
+0452|Home settings
+0453|Humidity 
+0454|I Understand — Open Manual Debloat
+0455|INPUTS APP ON DOCK
+0456|INSTALLED APPS
+0457|Images, videos and webpages sent from any phone or computer on the same Wi-Fi. For everyone on this TV.
+0458|In Control Center (needs location access)
+0459|Included in rotation
+0460|Indigo
+0461|Info Button
+0462|Inputs
+0463|Inputs (Control Panel & Dock)
+0464|Install
+0465|Installing update…
+0466|Its layout and Continue Watching list will be removed.
+0467|Just your background for now
+0468|KEEP ALIVE
+0469|Keep Alive (Auto-repair Accessibility)
+0470|Keep Alive (Auto-repair permissions)
+0471|Keep Alive disabled.
+0472|Keep Alive enabled.
+0473|Keep Screen Awake
+0474|Keep typing to search movies and shows
+0475|Keep watching
+0476|Keeps network ADB enabled for CleanYourTV debloating (Note: leaves port 5555 open on LAN)
+0477|Key: 
+0478|L:
+0479|LOCATION
+0480|LOCK SCREEN OPTIONS
+0481|LOOK
+0482|Language
+0483|Language, weather, scenes, apps and people
+0484|Larger dock — extra apps automatically move to Other apps if needed
+0485|Last Channel
+0486|Latest GitHub version: v
+0487|Launch automatically on system boot
+0488|Left
+0489|Let\u2019s set up tvOS Launcher.
+0490|Let’s set up tvOS Launcher.
+0491|Listen for a remote key press
+0492|Listening\u2026
+0493|Loading next Reddit wallpaper…
+0494|Loading titles…
+0495|Location
+0496|Lock Now
+0497|Lock Screen
+0498|Lock screen settings
+0499|Lock screen settings…
+0500|Long-press volume button fix
+0501|Long-press volume fix disabled (using native TV volume).
+0502|Long-press volume fix enabled (for TVs where holding volume stops repeating).
+0503|Look and scenes
+0504|Looks like 
+0505|MATCHING MODELS FOR 
+0506|Make Home Screen
+0507|Make tvOS Launcher Default Home
+0508|Make tvOS Launcher the Home Screen
+0509|Make tvOS Launcher your home screen?
+0510|Manage system apps in TV settings…
+0511|Manual Permissions
+0512|Manual Setup
+0513|Manual debloat (All system apps)
+0514|Manual debloat (All system apps)…
+0515|Map any button on your remote with Single Tap (1x), Double Tap (2x) and Triple Tap (3x) actions — open the Control Panel, Recent Apps Switcher, or any app.
+0516|Matching places
+0517|Memory
+0518|Menu Button
+0519|Mode 1 (Standard · Default)
+0520|Mode 1 — Standard (Default, for most Android TVs & IR remotes)
+0521|Mode 2 (HY320 / Projector)
+0522|Mode 2 — HY320 / Projector (AudioService & IR pulse-burst mode)
+0523|Mode 3 — Onn TV Box (Fast release stop, 0 extra steps on release, ADB & Secure mode)
+0524|Mode: Manual Setup (Without ADB)
+0525|Mode: Persistent ADB Setup (Keep ADB Open)
+0526|Mode: Secure Auto Setup & Close ADB (Recommended)
+0527|Models by System App Similarity
+0528|Modern
+0529|More Apps
+0530|More apps
+0531|Most Watched
+0532|Most Watched countries
+0533|Mostly Clear
+0534|Mostly Sunny
+0535|Move
+0536|Move icon
+0537|Move left in dock
+0538|Move right in dock
+0539|Move to Other Apps
+0540|Movie
+0541|Movies & TV
+0542|Mute / Unmute (164)
+0543|My Location
+0544|NIGHT SCENES
+0545|NIGHT SCENES CLOCK
+0546|Name
+0547|Navigation click sounds
+0548|New Profile
+0549|News
+0550|Next
+0551|Next Page
+0552|Next Track
+0553|Next wallpaper
+0554|Night
+0555|Night Scenes Custom Wallpaper
+0556|Night scenes
+0557|No Matching Apps Found
+0558|No apps to close
+0559|No changelog text provided for this release.
+0560|No disabled packages have been recorded by CleanYourTV yet.
+0561|No hidden apps. Hold OK on any app on the home screen dock and choose Hide.
+0562|No images in this folder (open a subfolder below)
+0563|No movies or shows found
+0564|No recent apps
+0565|No recent apps yet
+0566|No results
+0567|No saved disabled-app backup was found, and no TV model is selected yet. Choose a TV model first if you want to restore by model profile.
+0568|No screensaver or sleep while presenting
+0569|No settings backup (.json) found in this folder
+0570|No stock Android TV / Google TV / OEM launcher packages were detected on this TV.
+0571|No stock Android TV / Google TV launcher packages were detected on this TV.
+0572|No system file picker available on this TV.
+0573|None
+0574|None (Clear action)
+0575|None (No action)
+0576|None found
+0577|None saved
+0578|Not Connected
+0579|Not Now
+0580|Not allowed
+0581|Not connected
+0582|Not done
+0583|Not done (Select TV model first)
+0584|Not installed
+0585|Not on this TV
+0586|Not paired (ADB off)
+0587|Not selected
+0588|Not set
+0589|Not signed in
+0590|Not streaming right now.
+0591|Nothing to continue yet
+0592|Notifications (83)
+0593|Now
+0594|OK
+0595|OK to change, Back to go back
+0596|OK to change, hold OK to move, Back to go back
+0597|OK to open  ·  Hold OK to restore
+0598|OK to open  ·  Hold OK to restore  ·  Back to go back
+0599|OK to switch or edit
+0600|ONE-TAP ACTIONS
+0601|OPTIONS
+0602|Off
+0603|Off — Tap to enable Home button remap
+0604|On
+0605|On 
+0606|On (Default)
+0607|On Google TV, if you disable setupwraith, make sure your Wi-Fi network was re-added in Wi-Fi Settings.
+0608|On TCL and Philips Android 11/12 TVs, the OEM firmware often hides the Android Default Home UI and forces the stock launcher when pressing Home. Disabling the stock launcher (Option 2) or enabling the Home Button Fix (Option 3) guarantees pressing Home always opens tvOS Launcher.
+0609|On TCL, Philips, and Google TVs, OEM firmware often forces the stock launcher when pressing Home. Follow the steps below so pressing Home always opens tvOS Launcher, then click Continue.
+0610|On the Lock Screen, only Clock, Date, and Greeting are shown above your selected backgrounds. Pressing any remote button returns to where you were before.
+0611|On this TV
+0612|On — Pressing Home launches tvOS Launcher
+0613|One photo and a grid of app banners
+0614|One scene has to stay on.
+0615|One wallpaper has to stay on.
+0616|Open
+0617|Open Android Default Home Settings
+0618|Open Android TV Settings…
+0619|Open Developer Options / TV Settings\u2026
+0620|Open Developer Options and turn on USB Debugging / Network Debugging to complete switching to Persistent ADB Mode.
+0621|Open Developer Options and turn on USB Debugging / Network Debugging.
+0622|Open Developer Options…
+0623|Open System File Picker…
+0624|Open TV Ambient Mode / Screensaver (or built-in fallback)
+0625|Open on a phone or computer on the same Wi-Fi:\n\n
+0626|Open system selector (if supported by TV) ›
+0627|Or open 
+0628|Orange
+0629|Other Apps
+0630|Other apps
+0631|Output
+0632|PAGE NAVIGATION
+0633|PEOPLE
+0634|PERMISSION STATUS
+0635|PRESENTATION & SYSTEM
+0636|PRESENTATION &CLASSIC SHELF
+0637|PROFILES
+0638|Pair / Repair ADB
+0639|Pair / Repair ADB connection
+0640|Pair now
+0641|Paired & Ready
+0642|Paired · ADB Enabled
+0643|Pairing code\n
+0644|Partly Cloudy
+0645|Pause
+0646|People
+0647|Permissions Granted & ADB Closed
+0648|Persistent ADB Mode (Keep port 5555 open)
+0649|Persistent ADB Mode selected — Port 5555 stays open for CleanYourTV & ADB tools.
+0650|Persistent ADB Mode — Keep Network ADB Open (Optional)
+0651|Persistent ADB Setup
+0652|Pin to Home
+0653|Pink
+0654|Play
+0655|Play / Pause
+0656|Play as soon as the TV turns on (signage)
+0657|Please allow 'Install unknown apps' for tvOS Launcher.
+0658|Please enable USB Debugging / Network Debugging in Developer Options, then return here to run this step.
+0659|Popular movies and series on your streaming services
+0660|Port 5555 Open · Ready to Pair
+0661|Port 5555 open (Tap to pair)
+0662|Power Off
+0663|Power Off & Sleep Timer permission
+0664|Power Off (Screen Off)
+0665|Prayer Calculation Method
+0666|Prayer calculation method
+0667|Preparing CleanYourTV…
+0668|Preparing QR code…
+0669|Presentation
+0670|Presentation address & QR code
+0671|Presentation mode
+0672|Press OK on an app to show or hide it from the home screen dock.
+0673|Press OK to include releases from this country
+0674|Press the button on your remote that you want to remap…\n\n(D-pad navigation, OK and Back are kept for normal navigation.)
+0675|Press ▲ on an app to close it
+0676|Preview
+0677|Preview Lock Screen now
+0678|Previous Page
+0679|Previous Track
+0680|Proceed to the next setup step when you are done here
+0681|Profile 
+0682|Profiles
+0683|Protected Core Package
+0684|Pull full app list from ADB and match models by OEM/system packages
+0685|Pull full app list from ADB and match models by system/OEM package names
+0686|Pulling full package list from ADB and comparing system/OEM package names across 341 TV models…
+0687|Purple
+0688|QUICK BRAND FILTERS
+0689|Quick buttons
+0690|Quick settings
+0691|REDDIT WALLPAPER OPTIONS
+0692|REGION MODE
+0693|REMAPPED BUTTONS
+0694|REMAPPED BUTTONS (1X / 2X / 3X TAP)
+0695|REMOTE FIXES
+0696|REMOVE
+0697|RESET
+0698|RESTORE OPTIONS
+0699|Rain
+0700|Rainforest dawn
+0701|Re-enable All Stock Launchers
+0702|Re-enable all packages disabled by CleanYourTV over ADB
+0703|Recent Apps
+0704|Recent Apps Switcher
+0705|Recent Apps Switcher (Overlay)
+0706|Recent Searches
+0707|Recommendations
+0708|Recommendations & News
+0709|Record Button
+0710|Red
+0711|Red Button
+0712|Reddit Wallpapers
+0713|Reddit wallpaper updated.
+0714|Refresh
+0715|Refresh Carousel
+0716|Refresh weather now
+0717|Remember what you play in each app
+0718|Remove / Revoke All Permissions
+0719|Remove / revoke all permissions
+0720|Remove Wallpaper #
+0721|Remove button remap
+0722|Remove from Keep Watching
+0723|Remove from dock
+0724|Remove person
+0725|Remove this wallpaper
+0726|Rename
+0727|Rename App
+0728|Rename Profile
+0729|Rename person
+0730|Rename…
+0731|Repair
+0732|Replace Wallpaper #
+0733|Required so mapped buttons work over every app
+0734|Reset
+0735|Reset Control Panel actions to default
+0736|Reset Layout
+0737|Reset app order & unhide all
+0738|Reset settings to defaults
+0739|Reset settings?
+0740|Reset to default icon
+0741|Restore All
+0742|Restore Complete
+0743|Restore Debloated Apps
+0744|Restore Failed
+0745|Restore all ›
+0746|Restore by Selected TV Model
+0747|Restore debloated apps
+0748|Restore debloated apps…
+0749|Restore settings from folder…
+0750|Restore ›
+0751|Restoring Apps…
+0752|Resume
+0753|Resume playback
+0754|Revoke All Permissions
+0755|Revoke ›
+0756|Revoking Permissions…
+0757|Revoking all permissions…
+0758|Rewind
+0759|Right
+0760|Rotating nature scenes with a glass clock and bottom dock
+0761|Rounded
+0762|Run ROLE_HOME & set-home-activity over Local ADB ›
+0763|Run ROLE_HOME & set-home-activity ›
+0764|Run first-time setup again…
+0765|Run via ADB ›
+0766|Running settings put global adb_enabled 0 and verifying port 5555…
+0767|SAVED DISABLED PACKAGES (TAP TO RE-ENABLE)
+0768|SCENES
+0769|SHUFFLE FOLDER
+0770|STARTUP & KEEP ALIVE
+0771|SUBREDDITS (SELECT SINGLE OR MULTIPLE)
+0772|Save
+0773|Say a movie, show or app
+0774|Scan Apps (ADB)
+0775|Scan Installed Apps
+0776|Scan with your phone and approve.
+0777|Scanning TV System Apps…
+0778|Scanning installed system packages over ADB and comparing across 341 TV models…
+0779|Screen Off
+0780|Screen Saver
+0781|Screensaver
+0782|Search
+0783|Search Button
+0784|Search TV Model or Brand
+0785|Search apps, movies and shows
+0786|Search by name
+0787|Search for a city or town…
+0788|Searching\u2026
+0789|Searching…
+0790|Secure Mode (Needs One-Time Pair to Grant Permissions)
+0791|Secure Mode Active (ADB Not Used · Self-Repair Ready)
+0792|Secure Mode selected — ADB will grant WRITE_SECURE_SETTINGS and close port 5555 when paired.
+0793|Secure Mode — Grant WRITE_SECURE_SETTINGS & Close ADB (Recommended)
+0794|Secure Mode — WRITE_SECURE_SETTINGS & Close ADB (Recommended)
+0795|Secure Setup (ADB)
+0796|Security Note: Keep Alive is enabled by default. In Secure Mode, tvOS Launcher uses WRITE_SECURE_SETTINGS to restore Accessibility directly in-process without touching ADB (even if ADB is enabled on the TV). In Persistent ADB Mode, Keep Alive can also use Local ADB on port 5555.
+0797|Select All / None
+0798|Select All / Select None
+0799|Select Home App
+0800|Select TV Model First
+0801|Select Wallpaper Folder
+0802|Select Wallpaper Image
+0803|Select a folder and enable or disable individual wallpapers inside it
+0804|Select a usage mode for permissions (Button Mapper Accessibility, Continue Watching, and Wi-Fi). Pick ONE usage mode below:
+0805|Select at least one package first.
+0806|Select wallpaper folder…
+0807|Select your language to begin
+0808|Selected
+0809|Selected — press OK to toggle
+0810|Send Key Code
+0811|Send Key Code (Remote / Media / System)…
+0812|Send Key Code…
+0813|Send any Android KeyEvent keycode without 3rd-party apps
+0814|Send to this TV
+0815|Series
+0816|Serif
+0817|Set Default Home Launcher
+0818|Set Default via Local ADB (Recommended)
+0819|Set as default…
+0820|Set manually
+0821|Setting Default Launcher…
+0822|Setting ROLE_HOME and default home activity over Local ADB…
+0823|Settings
+0824|Settings Backed Up
+0825|Settings Button
+0826|Settings Restored
+0827|Settings kept
+0828|Settings reset to defaults.
+0829|Settings ›
+0830|Setup Complete
+0831|Show Changelog
+0832|Show Clock, Date & Greeting over your chosen wallpaper (press any key to return)
+0833|Show Continue Watching on Home
+0834|Show Inputs app on Dock
+0835|Show app names
+0836|Show in dock · press OK to hide
+0837|Show on Home Screen
+0838|Show the Wi-Fi Name
+0839|Show widgets when selected app has no Continue Watching
+0840|Showers
+0841|Shuffle Folder
+0842|Sign out
+0843|Signed in · Sign out
+0844|Similar model name
+0845|Single / Multi Wallpapers
+0846|Single Tap (1x)
+0847|Skip Setup
+0848|Skip This Step
+0849|Skip now ›
+0850|Skip to the next Reddit wallpaper
+0851|Sleep
+0852|Sleep / Standby (223)
+0853|Sleep Timer
+0854|Sleep timer
+0855|Sleet
+0856|Smaller, more compact dock
+0857|Snow
+0858|Some TVs disable Accessibility or other permissions automatically in the background. When Keep Alive is on, tvOS Launcher lightly checks permission status in the background without extra RAM or CPU load and automatically restores any disabled permissions via ADB.
+0859|Sound
+0860|Standard Apple tvOS dock size
+0861|Start with the TV
+0862|Start ›
+0863|Stencil
+0864|Step 1 complete: Default home launcher set via ADB!
+0865|Step 1: Set tvOS Launcher as Default via Local ADB
+0866|Step 2: Disable System Launchers (Google TV / Android TV / OEM)
+0867|Step 3: Fix Home Button via Accessibility (Button Mapper)
+0868|Step 4: Open Android System Home Settings
+0869|Stock Android TV Home & sponsored rows
+0870|Stock Google TV Home & banner ads
+0871|Stop
+0872|Storage
+0873|Storage folders
+0874|Subtitles / CC
+0875|Sunny
+0876|Switch
+0877|Switch Profile
+0878|Switch TV / HDMI inputs on screen even if Google TV Launcher is disabled
+0879|Switch between Secure Auto Setup, Persistent ADB, or Manual Setup
+0880|Switch to Manual Setup
+0881|System Launchers
+0882|System file picker…
+0883|System home launcher detected on this TV
+0884|TAP ACTIONS
+0885|TARGET ACTION / APPLICATION
+0886|TMDB connected
+0887|TOP SHELF CONTENT
+0888|TV Input / Source
+0889|TV Model Matched
+0890|TV Settings
+0891|TV Speakers
+0892|TV settings
+0893|Tall Glass
+0894|Tap Check for updates
+0895|Tap to detect / select…
+0896|Tap to include
+0897|Tap to set as active wallpaper
+0898|Tap to toggle in scene rotation · Long-press or use actions below
+0899|Teal
+0900|Temperature
+0901|The Home button on the remote will open tvOS Launcher.
+0902|The Home button opens tvOS Launcher
+0903|This TV does not have a built-in Accessibility Settings screen. You can enable the Button Mapper & Control Panel service automatically via Local ADB.
+0904|This TV's settings have no switch for this permission. Whoever set up the TV can turn it on once from a computer on the same network:\n\n
+0905|This resets look, scenes, clock and language settings back to defaults.
+0906|This will disable Keep Alive and remove Accessibility Service, Notification Access, Default Home Role, and launcher permissions (both locally and via ADB).
+0907|Thunderstorms
+0908|Tip: Blur can't be shown while a video is playing. Android can't blur live video (and DRM video can't be captured), so the video keeps playing behind the panel with a soft shade instead.
+0909|Tip: Hold OK on any app on the home screen dock to move or hide it.
+0910|Today
+0911|Top shelf, 6-column app grid and custom wallpapers
+0912|Top-right weather shortcut
+0913|Trending
+0914|Triple Tap (3x)
+0915|Turn On / Off ADB
+0916|Turn On ADB Debugging
+0917|Turn off Custom image
+0918|Turn off Custom scene
+0919|Turn off Folder shuffle
+0920|Turn on Custom image
+0921|Turn on Custom scene
+0922|Turn on Folder shuffle
+0923|Turn on Presentation mode first
+0924|Turn on first
+0925|Turn the TV off after
+0926|Turning On ADB…
+0927|Turning on ADB debugging for this troubleshooting step…
+0928|Type to search your apps, settings, movies and shows
+0929|UNIVERSAL SHORTCUT ACTIONS
+0930|UPDATES
+0931|Uninstall
+0932|Unpin from Home
+0933|Up
+0934|Up and down to browse, OK to change, Back to close
+0935|Up and down to move, OK when done
+0936|Up next
+0937|Up to Date
+0938|Update Available
+0939|Update Check Failed
+0940|Update Failed
+0941|Update download failed.
+0942|Update every
+0943|Update installed!
+0944|Updated
+0945|Updated 
+0946|Updates
+0947|Updating tvOS Launcher
+0948|Updating…
+0949|Use My Location
+0950|Use Presentation
+0951|Use automatic location
+0952|Use built-in Android TV shortcut
+0953|Use custom background
+0954|Use folder shuffle background
+0955|Used for the weather on the home screen and local headlines.
+0956|Uses local ADB to grant permissions and keeps ADB open
+0957|VERSION INFO
+0958|Version
+0959|View or filter the complete list of supported TV models
+0960|Voice input isn't available on this TV
+0961|Voice needs the internet
+0962|Volume Button Fix Mode
+0963|Volume Down (25)
+0964|Volume Fix Mode 1 (Standard) selected.
+0965|Volume Fix Mode 2 (HY320 / Projector) selected.
+0966|Volume Fix Mode 3 (Onn TV Box) selected.
+0967|Volume Up (24)
+0968|Volume button fix mode
+0969|WALLPAPER
+0970|WALLPAPERS IN FOLDER (TAP TO ENABLE / DISABLE)
+0971|WEATHER
+0972|WIDGET SETTINGS
+0973|Waiting for approval…
+0974|Watching now · OK to switch or rename
+0975|Waterline
+0976|Weather
+0977|Weather Forecast
+0978|Weather and location
+0979|Weather from
+0980|Weather on the home screen
+0981|Weather source
+0982|Welcome
+0983|What appears at the top of Home, behind your apps. Choose any, all or none.
+0984|What you were watching, mixed into the carousel
+0985|White
+0986|Who\u2019s Watching?
+0987|Wi-Fi
+0988|Wi-Fi Name (Location)
+0989|Wi-Fi, picture, sound and the rest of the TV
+0990|Wind 
+0991|Yellow
+0992|Yellow Button
+0993|You are running the latest version.
+0994|You can also configure buttons later in Settings
+0995|You need the ADB mode enabled for this troubleshooting step. You can always change the ADB mode from Settings later.\n\nWould you like to enable ADB now or skip this step?
+0996|You're All Set
+0997|YouTube Music (optional)
+0998|Your Home Screen
+0999|Your name
+1000|Your name and an avatar. Each profile keeps its own apps, background and Home Screen. Up to three people can have one.
+1001|Zoom
+1002|Zoom in
+1003|Zoom out
+1004|active
+1005|align_center
+1006|align_dynamic
+1007|align_left
+1008|align_right
+1009|apps
+1010|bm_inputs_overlay
+1011|caffeine_desc
+1012|caffeine_title
+1013|clear
+1014|cp_bg_blurry
+1015|cp_bg_mode
+1016|cp_bg_transparent
+1017|dash_football
+1018|dash_latest_releases
+1019|dash_prayer_times
+1020|e.g. 85 (Play/Pause), 164 (Mute), 178 (TV Input)
+1021|e.g. tcl, philips, sony, hisense, xiaomi…
+1022|e.g. tcl, sony, hisense, xiaomi, philips, skyworth…
+1023|football_fav_teams
+1024|football_loading
+1025|football_no_matches
+1026|home_settings
+1027|iPhone Duo
+1028|iPhone Rounded
+1029|images
+1030|keep_watching
+1031|m
+1032|min
+1033|next_wallpaper
+1034|now
+1035|packages
+1036|prayer_asr
+1037|prayer_dhuhr
+1038|prayer_fajr
+1039|prayer_isha
+1040|prayer_maghrib
+1041|prayer_method_label
+1042|prayer_remaining
+1043|prayer_sunrise
+1044|releases_country_auto
+1045|releases_country_setting
+1046|releases_loading
+1047|settings
+1048|sleep_timer
+1049|space
+1050|tomorrow
+1051|tomorrow_short
+1052|tvOS Launcher will launch immediately on system boot.
+1053|tvOS Launcher works best as the home screen. Allow these once; anything this TV doesn't support is skipped.
+1054|tv_settings
+1055|weather
+1056|weather_updating
+1057|ℹ️ Google TV Notice (setupwraith Wi-Fi check):\n\n
+1058|↻ Refresh system app list
+1059|⚠️ Core System Package
+1060|⚠️ Core system package — disabling may affect system stability
+1061|⚠️ Detected: Your current Wi-Fi network IS owned by setupwraith (cname=com.google.android.tungsten.setupwraith).\n\n
+1062|⚠️ Manual Debloat Warning
+1063|⚠️ Your Wi-Fi network is currently owned by setupwraith. Before disabling setupwraith, open Wi-Fi Settings, Forget your Wi-Fi network, and re-connect so Wi-Fi stays saved.
+1064|✅ Re-added Wi-Fi (Continue)
+1065|⬅  .. (Parent folder)
+1066|⬅  Back to storage folders
+1067|📋 Browse / Search All 341 TV Models
+1068|📋 Browse All 341 TV Models
+1069|📶 Open Wi-Fi Settings…
+1070|📶 Wi-Fi Settings…
+1071|🔍 Filter system apps…
+1072|🔍 Scan Installed System Apps to Find Matching Model
+1073|🔍 Scan Installed System Apps via ADB
+1074|🔍 Search / Filter by brand or model…
+1075|🔍 Search…
+1076|🛑 Critical System Service
+1077|🛑 Critical system service — protected (cannot be disabled)
+1078|🛡️ Skip setupwraith

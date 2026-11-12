@@ -14,3 +14,33 @@ reddit.md
 release_notes_*.md
 tvOS-Launcher-*.apk
 
+# Mod PL: lokalny klucz podpisu i ewentualne pliki z hasłami.
+*.keystore
+*.keystore.*
+*.jks.*
+keystore-password.*
+signing-password.*
+
+# Mod PL: dane użytkownika i lokalne materiały robocze.
+/kopia-ustawien/
+/kanwa-kafelki/obrazy/
+/kanwa-kafelki/archiwum/
+/kanwa-kafelki/
+/kanwa-archiwum/
+/zrzuty-github/surowe/
+.playwright-mcp/
+__pycache__/
+*.pyc
+
+# Mod PL: zdjęcia dostarczane we własnym zakresie, poza repozytorium.
+/pl/zasoby/ulubiona-lamborghini.jpg
+/pl/zasoby/ulubiona-audi-rs7.jpg
+/pl/zasoby/scena-audi-rs7-*
+
+# Mod PL: kopie zasobów generowane przez zbuduj-pl.sh.
+/assets/mod_pl/
+
+# Klasy generowane z pl/ podczas budowania; źródłem zmian pozostają łatki.
+/src/com/techgenius/tvoslauncher/I18nPl.java
+/src/com/techgenius/tvoslauncher/ModPl*.java
+

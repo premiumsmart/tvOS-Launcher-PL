@@ -1,0 +1,3 @@
+# Spacje na końcu kluczy tłumaczeń są częścią tekstu interfejsu.
+pl/en.txt whitespace=-blank-at-eol
+pl/pl_dodatkowe.txt whitespace=-blank-at-eol

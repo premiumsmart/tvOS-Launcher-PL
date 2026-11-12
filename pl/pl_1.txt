@@ -1,0 +1,270 @@
+0001| [Już wyłączone]
+0002| [Krytyczna usługa systemowa — chroniona]
+0003| [Wyłączone — naciśnij, aby włączyć]
+0004| [Wyłączone]
+0005| [Włączone — naciśnij, aby wyłączyć]
+0006| [Włączone]
+0007| [Opcjonalne]
+0008| i wpisz:
+0009| wolne
+0010| min
+0011| min zostało
+0012| minut
+0013| sparowano
+0014| sekund
+0015|% zajęte  ·  Wyczyść
+0016|% zajęte · Ostatnie aplikacje
+0017|+ Dodaj przycisk do mapowania…
+0018|+ Dodaj osobę
+0019|+ Dodaj przycisk do mapowania
+0020|1. Ustaw tvOS Launcher jako domyślny przez lokalne ADB
+0021|12-godzinny
+0022|2. Wyłącz systemowe launchery (Google TV / Android TV / producenta)
+0023|24-godzinny
+0024|3. Napraw przycisk Home przez ułatwienia dostępu (mapowanie przycisków)
+0025|4. Otwórz systemowe ustawienia ekranu głównego Androida
+0026|PROGNOZA NA 5 DNI
+0027|Duży szklany zegar i zmieniające się sceny
+0028|Mały podgląd pogody na ekranie głównym, z prognozą na 5 dni.
+0029|USŁUGA UŁATWIEŃ DOSTĘPU
+0030|AKCJE
+0031|AKTYWNOŚCI W
+0032|ADB I UPRAWNIENIA
+0033|ADB I TRYB BEZPIECZEŃSTWA
+0034|Wymagane połączenie ADB
+0035|Wymagane debugowanie ADB
+0036|ADB włączone · nie sparowano
+0037|Wymagany tryb ADB
+0038|Tryb pracy ADB
+0039|Stan połączenia ADB
+0040|Debugowanie ADB włączone.
+0041|Debugowanie ADB jest teraz wyłączone. Tryb stałego ADB wymaga włączonego ADB.\n\nCzy chcesz włączyć ADB i przejść na tryb stałego ADB?
+0042|Włączono ADB i przełączono na tryb stałego ADB.
+0043|Instalacja przez ADB nie powiodła się, otwieram instalator pakietów…
+0044|ADB jest aktywne — wybranie „Zainstaluj” pobierze i zainstaluje aktualizację automatycznie.
+0045|ADB jest wyłączone (tryb bezpieczny) — wybranie „Zainstaluj” pobierze aktualizację i otworzy systemowy instalator pakietów.
+0046|Tryb pracy ADB
+0047|ADB sparowane i wszystkie uprawnienia nadane!
+0048|MOTYWY AMBIENT
+0049|APLIKACJA
+0050|APLIKACJE
+0051|Informacje
+0052|Ułatwienia dostępu
+0053|Usługa ułatwień dostępu
+0054|Akcesoria
+0055|Konto
+0056|Aktywne
+0057|Aktywne (działa we wszystkich aplikacjach)
+0058|Aktywne w ułatwieniach dostępu
+0059|Aktywny — ustawiony jako domyślny ekran główny
+0060|Prywatny DNS blokujący reklamy (AdGuard)
+0061|Dodaj
+0062|Dodaj ulubioną drużynę piłkarską
+0063|Dodaj subreddit
+0064|Dodaj użytkownika
+0065|Dodaj osobę
+0066|Dodaj osobę…
+0067|Dodawaj dowolną liczbę własnych tapet, bez limitu
+0068|Dodaj własny subreddit…
+0069|Dodaj ulubioną drużynę piłkarską…
+0070|Dodaj przycisk do mapowania
+0071|Dodaj nową tapetę…
+0072|Dodaje kartę Prezentacji na ekranie głównym
+0073|Zaawansowane
+0074|Zaawansowane ›
+0075|Wszystkie (341)
+0076|Wszystkie 341 modeli
+0077|Wszystkie 341 modeli TV
+0078|Wyczyszczono wszystkie mapowania przycisków.
+0079|Wszystkie uprawnienia nadane automatycznie!
+0080|Dozwolone
+0081|Zezwól…
+0082|Tryb Ambient
+0083|Tryb Ambient / StandBy
+0084|Kolorowe motywy Ambient
+0085|Kolorowe motywy Ambient…
+0086|Android Accessibility Suite / TalkBack (opcjonalne)
+0087|Usługa pilota Android TV (opcjonalne — zostaw, jeśli używasz pilota Google TV w telefonie)
+0088|Edytor ikon aplikacji
+0089|Informacje o aplikacji
+0090|Przełączanie aplikacji / Ostatnie (187)
+0091|Przywrócono domyślną ikonę aplikacji
+0092|Zmieniono ikonę aplikacji
+0093|Informacje o aplikacji
+0094|Przywrócono domyślny układ aplikacji.
+0095|Nazwa aplikacji lub pakietu…
+0096|Wygląd
+0097|Wygląd i sceny
+0098|Zastosuj
+0099|Aplikacje
+0100|Aplikacje i ustawienia
+0101|Pytaj, kto ogląda, po wybudzeniu
+0102|Przypisz akcje do 1, 2 i 3 naciśnięć
+0103|Przypisz akcje do pojedynczego (1x), podwójnego (2x) i potrójnego (3x) naciśnięcia każdego przycisku pilota — np. otwarcie Panelu sterowania, przełącznika ostatnich aplikacji albo dowolnej zainstalowanej aplikacji.
+0104|Dźwięk
+0105|Ścieżka dźwiękowa (222)
+0106|Auto
+0107|Częstotliwość automatycznej zmiany
+0108|Automatycznie zmieniane tapety 1080p/4K z wybranych subredditów
+0109|Automatycznie włączaj ekran blokady przy bezczynności
+0110|Automatycznie
+0111|Automatycznie (zgodnie z językiem interfejsu)
+0112|Automatycznie (z internetu)
+0113|Konfiguracja automatyczna
+0114|Automatyczne uruchamianie po starcie wyłączone.
+0115|Automatyczne aktualizacje
+0116|Automatyczne aktualizacje wyłączone.
+0117|Automatyczne aktualizacje włączone.
+0118|Kolor awatara
+0119|Kolor awatara…
+0120|TRYB TŁA
+0121|KOPIA ZAPASOWA I PRZYWRACANIE
+0122|WBUDOWANE AKCJE
+0123|MAPOWANIE PRZYCISKÓW
+0124|Wstecz
+0125|Wstecz (4)
+0126|Wróć do aplikacji
+0127|Wróć do wyboru trybu
+0128|Wróć do folderów
+0129|Wróć do folderu nadrzędnego
+0130|Wstecz, aby wrócić   ·   Przytrzymaj OK, aby zobaczyć opcje
+0131|Kolor tła
+0132|Kopia zapasowa nie powiodła się
+0133|Zapisz kopię ustawień
+0134|Duży zegar (w stylu nocnych scen)
+0135|Czarny
+0136|Zbędna aplikacja / usługa w tle
+0137|Niebieski
+0138|Niebieski przycisk
+0139|Bluetooth
+0140|Zakładka / Ulubione
+0141|Mapowanie przycisków
+0142|Mapowanie przycisków i Panel sterowania
+0143|Mapowanie przycisków i Panel sterowania (ułatwienia dostępu)
+0144|Usługa ułatwień dostępu mapowania przycisków
+0145|Usługa mapowania przycisków
+0146|Mapowanie przycisków
+0147|Domyślnie „Najczęściej oglądane” dopasowuje się do wybranego języka interfejsu. Wybranie dowolnego kraju powyżej przełącza na własny tryb wielu krajów.
+0148|TŁO KLASYCZNE
+0149|KLASYCZNY ZEGAR I POGODA
+0150|TAPETY KLASYCZNE
+0151|CLEANYOURTV (BETA)
+0152|ELEMENTY PANELU STEROWANIA (POKAŻ / UKRYJ)
+0153|KRAJE (WYBIERZ JEDEN LUB KILKA)
+0154|WŁASNE I LOSOWANIE Z FOLDERU
+0155|WŁASNA TAPETA
+0156|TRYB WŁASNEJ TAPETY
+0157|WŁASNE TAPETY (BEZ LIMITU)
+0158|Kofeina wyłączona.
+0159|Kofeina włączona — telewizor nie będzie zasypiał ani przechodził w tryb Ambient.
+0160|Brak połączenia z internetem
+0161|Anuluj
+0162|Środek
+0163|Zmień kolor
+0164|Zmień emoji
+0165|Zmień model…
+0166|Wszystko to zmienisz później w Ustawieniach, pod ikoną koła zębatego w Centrum sterowania.
+0167|Zmień ikonę aplikacji
+0168|Zmień, co otwiera ten przycisk…
+0169|Zmienia teksty na ekranie głównym, datę, pogodę i ustawienia.
+0170|Kanał w dół
+0171|Kanał w górę
+0172|Kanały
+0173|Sprawdź uprawnienia
+0174|Sprawdź aktualizacje
+0175|Sprawdź teraz ›
+0176|Sprawdź uprawnienia
+0177|Zaznaczone pozycje są teraz WYŁĄCZONE. Wyłączenie systemowego launchera (np. Google TV Home / LauncherX + setupwraith, Android TV Home albo launchera TCL/Philips) zmusza Androida do używania tvOS Launchera po naciśnięciu przycisku Home.
+0178|Sprawdzam najnowszą wersję w wydaniach na GitHubie…
+0179|Sprawdzanie aktualizacji
+0180|Sprawdzam…
+0181|Sprawdza wydania na GitHubie (techgenius1/tvOS-Launcher) i instaluje aktualizacje bezpośrednio na telewizorze.
+0182|Wybierz akcję
+0183|Wybierz aktywność
+0184|Wybierz miasto
+0185|Wybierz folder, z którego przywrócić ustawienia
+0186|Wybierz folder z obrazami ekranu blokady
+0187|Wybierz obraz ekranu blokady
+0188|Wybierz model TV…
+0189|Wybierz model TV
+0190|Wybierz model TV…
+0191|Wybierz swoje sceny
+0192|Wybierz tło
+0193|Wybierz miasto…
+0194|Wybierz miasto…
+0195|Wybierz wygląd
+0196|Wybierz zdjęcie albo kolorowy motyw Ambient jako tło pod aplikacjami.
+0197|Wybierz folder z tłami do losowania
+0198|Wybierz własny obraz tła
+0199|Wybierz własny obraz sceny
+0200|Wybierz folder ›
+0201|Wybierz folder…
+0202|Wybierz sposób nadania uprawnień
+0203|Wybierz, jak ma wyglądać ekran główny.
+0204|Wybierz ikonę dla
+0205|Wybierz obraz ›
+0206|Wybierz obraz…
+0207|Wybierz nowy plik ikony…
+0208|Wybierz nowy obraz…
+0209|Wybierz tvOS Launcher, gdy pojawi się pytanie
+0210|Wybierz folder z tapetami do losowania
+0211|Wybierz sceny, które będą się zmieniać za szklanym zegarem.
+0212|Chromecast built-in / odbiornik Google Cast (opcjonalne — zostaw, jeśli przesyłasz obraz z telefonu)
+0213|Nazwa miasta, np. Warszawa
+0214|Klasyczny
+0215|Własna tapeta klasyczna
+0216|Klasyczna górna półka
+0217|Zawartość klasycznej górnej półki
+0218|Tło klasyczne
+0219|Wygląd klasyczny
+0220|Zdjęcie klasyczne
+0221|Wyczyść
+0222|CleanYourTV (Beta) uruchamia profile odchudzania CleanYourTV bezpośrednio na telewizorze przez lokalne ADB, bez komputera. Wybierz model telewizora (albo przeskanuj zainstalowane pakiety systemowe), wyłącz fabryczne launchery lub zbędne aplikacje i przywróć je w każdej chwili jednym naciśnięciem.
+0223|CleanYourTV (Beta) uruchamia profile odchudzania CleanYourTV bezpośrednio na telewizorze przez lokalne ADB, bez komputera. Wybierz model telewizora (albo przeskanuj zainstalowane pakiety systemowe), wskaż zbędne aplikacje i telemetrię do wyłączenia i przywróć je w każdej chwili jednym naciśnięciem.
+0224|Wyczyszczono ·
+0225|Wyczyść
+0226|Wyczyść historię „Oglądaj dalej”
+0227|Wyczyść wszystkie mapowania przycisków
+0228|Wyczyść wszystkie zmapowane przyciski
+0229|Wyczyść filtr
+0230|Wyczyść filtr (pokaż wszystko)
+0231|Zegar
+0232|Wyrównanie zegara
+0233|Czcionka zegara
+0234|Położenie zegara
+0235|Styl zegara
+0236|Zamknij
+0237|Zamknij ADB (wyłącz port 5555)
+0238|Zamknij ADB teraz
+0239|Zamknij wszystkie
+0240|Zamykam ADB…
+0241|Pochmurno
+0242|Kolor
+0243|Połączono
+0244|Połączono i sparowano (port 5555 otwarty)
+0245|Łączę z lokalnym ADB na porcie 5555 i nadaję uprawnienia…\n\nJeśli pojawi się pytanie „Zezwolić na debugowanie USB?”, zaznacz „Zawsze zezwalaj” i wybierz Zezwól.
+0246|Dalej
+0247|Oglądaj dalej
+0248|Oglądaj dalej i Nie przeszkadzać (dostęp do powiadomień)
+0249|Uprawnienie „Oglądaj dalej” i Nie przeszkadzać
+0250|Oglądaj dalej i Nie przeszkadzać
+0251|Wyczyszczono „Oglądaj dalej”.
+0252|„Oglądaj dalej” w doku
+0253|Oglądaj dalej
+0254|Centrum sterowania
+0255|Panel sterowania
+0256|Panel sterowania (nakładka)
+0257|Przywrócono domyślne akcje i elementy Panelu sterowania.
+0258|Nie udało się sprawdzić aktualizacji.
+0259|Nie udało się połączyć z ADB — włącz debugowanie USB/sieciowe albo użyj kroku 3 / 4.
+0260|Nie udało się połączyć z lokalnym ADB na porcie 5555.
+0261|Nie udało się połączyć z lokalnym ADB na porcie 5555.\nWłącz debugowanie USB / sieciowe w Opcjach programisty i najpierw wybierz „Sparuj / napraw ADB”.
+0262|Nie udało się połączyć z lokalnym ADB na porcie 5555.\nUpewnij się, że debugowanie USB / sieciowe jest włączone w Opcjach programisty, i najpierw wybierz „Sparuj / napraw ADB”.
+0263|Nie udało się połączyć z lokalnym ADB na porcie 5555.\n\n1. Otwórz Ustawienia → System → Informacje i kliknij 7 razy w „Kompilacja”.\n2. Otwórz Opcje programisty i włącz debugowanie USB / sieciowe.\n3. Wróć tutaj i ponownie wybierz „Sparuj / napraw”.
+0264|Nie udało się połączyć z lokalnym ADB na porcie 5555.\n\nUpewnij się, że debugowanie USB / sieciowe jest WŁĄCZONE w Opcjach programisty, i spróbuj ponownie — albo wybierz konfigurację ręczną.
+0265|Nie udało się odczytać pliku obrazu
+0266|Nie udało się odczytać pliku obrazu.
+0267|Nie udało się wczytać wybranego obrazu.
+0268|Nie udało się połączyć z wydaniami na GitHubie. Sprawdź połączenie z internetem.
+0269|Nie udało się uruchomić instalatora.
+0270|Nie udało się wyszukać. Sprawdź połączenie z internetem.

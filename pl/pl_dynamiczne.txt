@@ -1,0 +1,221 @@
+# Polskie tłumaczenia napisów sklejanych w locie (z nazwą aplikacji, liczbą itp.).
+# Format: para linii  E|angielski szablon  oraz  P|polski szablon.
+# {1}..{9} to zmienne fragmenty; \n to nowa linia. Kolejność ma znaczenie: pierwszy pasujący wygrywa.
+
+# --- aktualizacje ---
+E|You are up to date (v{1})
+P|Masz najnowszą wersję (v{1})
+E|A new version of tvOS Launcher is available on GitHub.\nCurrent version: v{1} → New version: v{2}\n\n{3}
+P|Na GitHubie jest nowa wersja tvOS Launchera.\nBieżąca wersja: v{1} → nowa wersja: v{2}\n\n{3}
+E|Changelog — v{1}
+P|Lista zmian — v{1}
+E|Downloading update v{1}…
+P|Pobieram aktualizację v{1}…
+E|Installing update v{1} automatically via ADB…
+P|Instaluję aktualizację v{1} automatycznie przez ADB…
+
+# --- mapowanie przycisków ---
+E|Removed remap for {1}.
+P|Usunięto mapowanie przycisku {1}.
+
+# --- dok, aplikacje, profile ---
+E|Move {1}  ·  Left/Right, OK when done
+P|Przenoszenie: {1}  ·  Lewo/Prawo, OK — gotowe
+E|Move {1} · Left/Right, OK when done
+P|Przenoszenie: {1} · Lewo/Prawo, OK — gotowe
+E|Can't open {1}
+P|Nie można otworzyć: {1}
+E|Can't switch to {1}
+P|Nie można przełączyć na: {1}
+E|Switch to {1}
+P|Przełącz na: {1}
+E|Delete “{1}”?
+P|Usunąć „{1}”?
+E|Off in {1} min
+P|Wyłączenie za {1} min
+E|Dock size set to {1}%.
+P|Rozmiar doku ustawiony na {1}%.
+E|Closed {1} apps · freed {2} MB
+P|Zamknięto aplikacji: {1} · zwolniono {2} MB
+E|Closed {1} app · freed {2} MB
+P|Zamknięto aplikacji: {1} · zwolniono {2} MB
+E|Closed {1} apps
+P|Zamknięto aplikacji: {1}
+E|Closed {1} app
+P|Zamknięto aplikacji: {1}
+E|RAM {1} used of {2}
+P|RAM: zajęte {1} z {2}
+
+# --- wyszukiwanie i serwisy ---
+E|▶ Open in {1}
+P|▶ Otwórz w {1}
+E|Get {1}
+P|Pobierz {1}
+E|To sign in, focus the {1} tile on the Home screen and scan the QR code.
+P|Aby się zalogować, zaznacz kafelek {1} na ekranie głównym i zeskanuj kod QR.
+E|Sign out of {1}?
+P|Wylogować z {1}?
+E|Continue watching on the dock will stop showing your {1} titles. The {2} app itself stays signed in.
+P|„Oglądaj dalej” w doku przestanie pokazywać tytuły z {1}. Sama aplikacja {2} pozostanie zalogowana.
+E|Signed out of {1}.
+P|Wylogowano z {1}.
+E|Sign in to {1}
+P|Zaloguj się do {1}
+E|Couldn't reach {1}. Focus the tile again to retry.
+P|Nie udało się połączyć z {1}. Zaznacz kafelek ponownie, aby spróbować jeszcze raz.
+E|Couldn't reach {1}
+P|Nie udało się połączyć z {1}
+
+# --- widżety, tapety, pogoda ---
+E|Added favorite team: {1}
+P|Dodano ulubioną drużynę: {1}
+E|Added custom wallpaper #{1}.
+P|Dodano własną tapetę nr {1}.
+E|Custom {1}
+P|Własna {1}
+E|Folder shuffle enabled: {1}
+P|Włączono losowanie z folderu: {1}
+E|Lock Screen folder shuffle enabled: {1}
+P|Włączono losowanie z folderu dla ekranu blokady: {1}
+E|No image files ({1}) in this folder
+P|Brak plików obrazów ({1}) w tym folderze
+E|Select this folder & shuffle ({1} images)
+P|Wybierz ten folder i losuj (obrazów: {1})
+E|No place found for “{1}”.
+P|Nie znaleziono miejsca „{1}”.
+E|Location set to {1}.
+P|Ustawiono lokalizację: {1}.
+
+# --- kopia ustawień ---
+E|Your current tvOS Launcher settings have been saved to:\n\n{1}
+P|Bieżące ustawienia tvOS Launchera zapisano w:\n\n{1}
+E|Could not write to Download/{1}\n\nPlease allow storage access and try again.
+P|Nie udało się zapisać w Download/{1}\n\nZezwól na dostęp do pamięci i spróbuj ponownie.
+E|Restore from Download/{1}
+P|Przywróć z Download/{1}
+E|Restore from this folder ({1})
+P|Przywróć z tego folderu ({1})
+E|Settings were successfully restored from:\n{1}
+P|Ustawienia przywrócono z:\n{1}
+E|Could not restore settings from:\n{1}
+P|Nie udało się przywrócić ustawień z:\n{1}
+
+# --- ostrzeżenia i dłuższe komunikaty (ADB, podtrzymywanie) ---
+E|This runs 'settings put global adb_enabled 0' over Local ADB{1}
+P|Wykonuje „settings put global adb_enabled 0” przez lokalne ADB i sprawdza, czy port 5555 jest zamknięty w sieci domowej.\n\nJeśli WRITE_SECURE_SETTINGS jest już nadane, tvOS Launcher będzie dalej naprawiał ułatwienia dostępu samodzielnie, bez ADB!\n\nWskazówka: dla maksymalnego bezpieczeństwa możesz też otworzyć Opcje programisty i wybrać „Unieważnij autoryzacje debugowania USB”.
+E|Keep Alive monitors the Accessibility Service and automatically restores it if your TV turns it off.{1}
+P|Podtrzymywanie pilnuje usługi ułatwień dostępu i automatycznie ją przywraca, gdy telewizor ją wyłączy.\n\n✓ Ponieważ na tym telewizorze nadano WRITE_SECURE_SETTINGS, podtrzymywanie naprawia ułatwienia dostępu samodzielnie i nie wymaga otwartego sieciowego ADB (port 5555).
+E|⚠️ Security Warning:{1}
+P|⚠️ Ostrzeżenie dot. bezpieczeństwa:\n\nPodtrzymywanie pilnuje uprawnień i przywraca je, gdy telewizor wyłączy je w tle.\n\nBez WRITE_SECURE_SETTINGS podtrzymywanie wymaga włączonego debugowania sieciowego (ADB na porcie 5555) w sieci domowej. Dla większego bezpieczeństwa najpierw wykonaj „Sparuj / napraw ADB” w trybie bezpiecznym — wtedy WRITE_SECURE_SETTINGS zostanie nadane, a port 5555 będzie można zamknąć.\n\nWłączyć podtrzymywanie mimo to?
+E|WARNING: Manual Debloat lists ALL system apps installed on your TV.{1}
+P|UWAGA: ręczne odchudzanie pokazuje WSZYSTKIE aplikacje systemowe zainstalowane na telewizorze.\n\n• Wyłączaj pakiety tylko wtedy, gdy dokładnie wiesz, co robisz.\n• Wyłączenie podstawowych usług Androida, usług wejść/tunera TV albo pakietów Ustawień może zepsuć wejścia HDMI, Wi-Fi, pilota albo spowodować pętlę uruchamiania.\n\nKontynuować na własne ryzyko?
+E|WRITE_SECURE_SETTINGS and all launcher permissions are now active, and ADB (port 5555) has been closed for your security.{1}
+P|WRITE_SECURE_SETTINGS i wszystkie uprawnienia launchera są już aktywne, a ADB (port 5555) zostało zamknięte dla Twojego bezpieczeństwa.\n\nWskazówka: dla maksymalnego bezpieczeństwa możesz też wybrać „Unieważnij autoryzacje debugowania USB” w Opcjach programisty.
+
+# --- CleanYourTV (odchudzanie) ---
+E|Done ({1} apps disabled)
+P|Wykonano (wyłączono aplikacji: {1})
+E|Not done ({1} disabled)
+P|Nie wykonano (wyłączono {1})
+E|Model: {1}
+P|Model: {1}
+E|Product: {1}
+P|Produkt: {1}
+E|Board/Device: {1}
+P|Płyta/urządzenie: {1}
+E|Brand/OEM: {1}
+P|Marka/producent: {1}
+E|OEM family: {1}
+P|Rodzina producenta: {1}
+E|Exact TV model found and selected automatically:\n\n• {1}
+P|Znaleziono dokładny model TV i wybrano go automatycznie:\n\n• {1}
+E|Choose Closest TV Model — {1}
+P|Wybierz najbliższy model TV — {1}
+E|Models with Similar System Apps ({1} apps scanned)
+P|Modele z podobnymi aplikacjami systemowymi (przeskanowano aplikacji: {1})
+E|All TV Models ({1})
+P|Wszystkie modele TV ({1})
+E|Search: "{1}" ({2})
+P|Szukaj: „{1}” ({2})
+E|All disabled ({1})
+P|Wszystkie wyłączone ({1})
+E|Checking installed packages and Wi-Fi status over ADB for {1}…
+P|Sprawdzam przez ADB zainstalowane pakiety i stan Wi-Fi dla {1}…
+E|On Google TV sets, Wi-Fi networks saved during initial setup belong to com.google.android.tungsten.setupwraith.{1}
+P|W telewizorach z Google TV sieci Wi-Fi zapisane przy pierwszej konfiguracji należą do com.google.android.tungsten.setupwraith. Wyłączenie setupwraith (żeby fabryczny launcher Google TV nie wracał) usunie sieć Wi-Fi należącą do setupwraith.\n\nZanim wyłączysz setupwraith:\n1. Otwórz ustawienia Wi-Fi → wybierz swoją sieć → Zapomnij sieć.\n2. Połącz się ponownie ze swoją siecią Wi-Fi (będzie teraz należeć do com.android.tv.settings).\n3. Wróć tutaj i wybierz „Sieć Wi-Fi dodana ponownie (dalej)”.
+E|None of the packages listed in {1} ({2}) are installed on this TV.{3}
+P|Żaden z pakietów z listy {1} ({2}) nie jest zainstalowany na tym telewizorze.\n\nCzy chcesz przeskanować przez ADB zainstalowane aplikacje, aby znaleźć najbliższy pasujący model TV?
+E|None of the packages listed in {1} are installed on this TV.
+P|Żaden z pakietów z listy {1} nie jest zainstalowany na tym telewizorze.
+E|Select Apps to Disable — {1} ({2} found)
+P|Wybierz aplikacje do wyłączenia — {1} (znaleziono: {2})
+E|Starting ADB debloat for {1} packages…
+P|Zaczynam odchudzanie przez ADB, pakietów: {1}…
+E|Disabling ({1}):\n{2}
+P|Wyłączam ({1}):\n{2}
+E|Successfully disabled {1} packages for {2}.\n\n• Saved disabled app list ({3} apps) for one-tap Restore.{4}
+P|Wyłączono pakietów: {1} dla {2}.\n\n• Zapisano listę wyłączonych aplikacji ({3}) do przywrócenia jednym naciśnięciem.\n• Zapisano stan pakietów na dysku (sync).
+E|No disabled app list has been saved by CleanYourTV yet.{1}
+P|CleanYourTV nie zapisał jeszcze listy wyłączonych aplikacji.\n\nGdy uruchomisz odchudzanie, każdy wyłączony pakiet zostanie tu zapisany, żeby dało się go sprawdzić, włączyć ponownie pojedynczo albo przywrócić wszystkie naraz.
+E|Disabled Apps ({1} — Tap an app to re-enable)
+P|Wyłączone aplikacje ({1} — naciśnij aplikację, aby włączyć ponownie)
+E|Found saved disabled-app data ({1} packages).\n\nRe-enable all {2} saved packages over ADB?
+P|Znaleziono zapisaną listę wyłączonych aplikacji (pakietów: {1}).\n\nWłączyć ponownie przez ADB wszystkie zapisane pakiety ({2})?
+E|Restore Saved ({1})
+P|Przywróć zapisane ({1})
+E|Restore Model List ({1})
+P|Przywróć listę modelu ({1})
+E|No saved disabled-app backup was found, and no TV model is selected.{1}
+P|Nie znaleziono zapisanej kopii wyłączonych aplikacji i nie wybrano modelu TV.\n\nNajpierw wybierz model TV, aby przywracanie wiedziało, które pakiety włączyć ponownie.
+E|No saved disabled-app list was found.\n\nRestore will use your selected TV model ({1}) and re-enable its {2} packages over ADB.
+P|Nie znaleziono zapisanej listy wyłączonych aplikacji.\n\nPrzywracanie użyje wybranego modelu TV ({1}) i włączy ponownie przez ADB jego pakiety ({2}).
+E|Restore ({1} pkgs)
+P|Przywróć (pakietów: {1})
+E|Re-enabling {1} packages over ADB…
+P|Włączam ponownie przez ADB pakietów: {1}…
+E|Enabling ({1}):\n{2}
+P|Włączam ({1}):\n{2}
+E|Re-enabled {1} packages on this TV and flushed state to disk (sync).
+P|Włączono ponownie pakietów: {1} i zapisano stan na dysku (sync).
+E|No direct model name match for {1}. Use Scan Installed System Apps via ADB above to find the closest TV profile.
+P|Brak bezpośredniego dopasowania nazwy modelu dla {1}. Użyj powyżej opcji skanowania aplikacji systemowych przez ADB, aby znaleźć najbliższy profil TV.
+E|Selected model: {1}
+P|Wybrany model: {1}
+E|CLOSEST MATCHES ({1} APPS SCANNED)
+P|NAJBLIŻSZE DOPASOWANIA (PRZESKANOWANO APLIKACJI: {1})
+E|PAGE {1} OF {2} ({3} OF {4})
+P|STRONA {1} Z {2} ({3} Z {4})
+E|MODELS ({1})
+P|MODELE ({1})
+E|Page {1} of {2}
+P|Strona {1} z {2}
+E|Checking installed packages over ADB for {1}…
+P|Sprawdzam przez ADB zainstalowane pakiety dla {1}…
+E|✅ Disable Selected Packages ({1})
+P|✅ Wyłącz zaznaczone pakiety ({1})
+E|PACKAGES ON THIS TV ({1})
+P|PAKIETY NA TYM TELEWIZORZE ({1})
+E|INSTALLED SYSTEM LAUNCHERS ON THIS TV ({1})
+P|ZAINSTALOWANE LAUNCHERY SYSTEMOWE NA TYM TELEWIZORZE ({1})
+E|All ({1})
+P|Wszystkie ({1})
+E|ALL SYSTEM APPS ({1} — TAP TO DISABLE / ENABLE)
+P|WSZYSTKIE APLIKACJE SYSTEMOWE ({1} — NACIŚNIJ, ABY WYŁĄCZYĆ / WŁĄCZYĆ)
+E|Restore All Saved Packages ({1})
+P|Przywróć wszystkie zapisane pakiety ({1})
+E|Restore Saved Disabled Apps ({1} packages)
+P|Przywróć zapisane wyłączone aplikacje (pakietów: {1})
+E|Restore Selected Model Profile ({1} — {2} packages)
+P|Przywróć profil wybranego modelu ({1} — pakietów: {2})
+E|Re-enable all packages in {1}
+P|Włącz ponownie wszystkie pakiety z {1}
+
+# --- wzorce obsługiwane dotąd w kodzie tylko dla innych języków ---
+E|{1}% used · Recent Apps
+P|{1}% zajęte · Ostatnie aplikacje
+E|{1}% used · Clean
+P|{1}% zajęte · Wyczyść
+E|{1}% used  ·  Clean
+P|{1}% zajęte  ·  Wyczyść
+E|{1} min left
+P|{1} min zostało

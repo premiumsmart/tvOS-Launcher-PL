@@ -1,234 +1,117 @@
-# tvOS Launcher (`v2.1.5`)
+# tvOS Launcher PL · 2.1.5-pl30
 
-> 🇹🇷 **Türkçe dokümantasyon ve kurulum rehberi için:** **[README_TR.md (Türkçe)](README_TR.md)**  
-> 📦 **Download Latest APK (`v2.1.5`):** **[GitHub Releases](https://github.com/techgenius1/tvOS-Launcher/releases/latest)**
+![tvOS Launcher PL: pełny ekran z dokiem i oknami moda na fioletowej scenie](zrzuty-github/gotowe/showcase.webp)
 
-![tvOS Launcher Header](screenshots_en/Header_EN.jpg)
+[Galeria sześciu widoków / Six-screen gallery](zrzuty-github/gotowe/preview.webp) · [Drugi wariant planszy / Alternative cover](zrzuty-github/gotowe/showcase-immersive.webp)
 
-A fast, lightweight, tvOS 26 & macOS–inspired home screen for Android TV & Google TV — built in pure Java with zero third-party runtime dependencies (**~30 MB private RAM / ~38 MB total PSS, `0.0%` background CPU**). Designed to stay buttery-smooth even on 1 GB RAM TV boxes while bringing a **resizable Liquid Glass Dock (`50%–150%`)**, rotating **Night Scenes**, **Default Home Dashboard widgets**, **Custom Wallpapers (`Single/Multi, Folder Shuffle & Reddit Wallpapers`)**, a **Built-In Lock Screen / Idle Screensaver**, an **App Icon Changer & Interactive Icon Editor**, **Automatic GitHub App Updates**, a **built-in PC-free CleanYourTV Debloater (341 TV models + Manual System App Debloater + Stock Launcher Disabler)**, a **Customizable Glass Control Panel (`Quick Settings`) overlay with Extended Weather**, a **Recent Apps Switcher**, **multi-tap (`1x / 2x / 3x`) Remote Button Remapping + Send Key Code + Home Button Fix**, a **Universal 3-Mode Volume Button Hold Fix (Standard, HY320 Projector, Onn TV Box)**, **Caffeine Mode**, and **Dual-Mode Secure Local ADB Setup (Self-Repair & Volume Hold Fix without keeping port 5555 open)** to any Android TV.
+## Polski
 
----
+Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgenius1/tvOS-Launcher). Opis samego launchera i jego pozostałych funkcji znajdziesz w oryginalnym repozytorium; tutaj pokazujemy zmiany moda PL.
 
-## ✨ Highlights & Features
+### Co zmieniono
 
-- **Default Home Dashboard (4 Customizable Widgets)**
-  - When no app is focused, or when hovering over apps or non-app elements without Continue Watching items, displays a customizable row of 4 horizontal Liquid Glass widget tiles:
-    - 🕌 **Prayer Times**: Daily schedule (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha), live countdown to the next prayer, and 10 calculation methods (Diyanet, MWL, ISNA, Egypt, Makkah, Karachi, Tehran, Jafari, Gulf, France).
-    - ⚽ **Football Matches**: Today's and upcoming fixtures, live match scores, favorite team tracking, and league schedules.
-    - 🎬 **Most Watched (Çok İzlenenler)**: Popular and trending movies and TV series across top streaming platforms powered by JustWatch, synced with your UI language by default with custom multi-country selection.
-    - ⛅ **Weather**: Current temperature, condition, location name, and today's forecast.
-  - Fully available and configurable on both **Night Scenes** and **Classic Appearance**.
-  - Toggle each widget individually and configure whether to show widgets whenever the currently selected app has no Continue Watching content.
+| Zmiana | Zrzut — kliknij, aby powiększyć |
+| --- | --- |
+| **Pełne spolszczenie.** Interfejs, kreator pierwszego uruchomienia i opisy pogody są po polsku. | [<img src="zrzuty-github/gotowe/setup-scenes.webp" width="300" alt="Kreator wyboru scen po polsku">](zrzuty-github/gotowe/setup-scenes.webp) |
+| **Kafelki i okna Liquid Glass: mecze.** Kafelek pokazuje najbliższy mecz, a podczas spotkania wynik na żywo z LiveScore; osobne okno pozwala przeglądać mecze i obserwować drużyny. | [<img src="zrzuty-github/gotowe/matches-tile.webp" width="300" alt="Kafelek meczów z herbami i godziną">](zrzuty-github/gotowe/matches-tile.webp)<br>[<img src="zrzuty-github/gotowe/matches.webp" width="300" alt="Lista meczów i duży podgląd wybranego meczu">](zrzuty-github/gotowe/matches.webp) |
+| **„Najczęściej oglądane”.** Szklany kafelek i okno z popularnymi filmami i serialami z JustWatch dla Polski, opisami oraz przejściem do dostępnych serwisów. | [<img src="zrzuty-github/gotowe/most-watched.webp" width="300" alt="Polskie okno Najczęściej oglądane">](zrzuty-github/gotowe/most-watched.webp) |
+| **Pogoda.** Kafelek Liquid Glass otwiera polską prognozę godzinową i na kolejne dni. | [<img src="zrzuty-github/gotowe/weather.webp" width="300" alt="Pełny ekran z oknem pogody i ukrytą nazwą miejscowości">](zrzuty-github/gotowe/weather.webp) |
+| **Powiadomienia o golach.** Plakietki z herbami i wynikiem ulubionych drużyn mogą pojawiać się także nad innymi aplikacjami, po nadaniu zgody. Zrzut pokazuje powiadomienie przykładowe. | [<img src="zrzuty-github/gotowe/goal-badge.webp" width="300" alt="Przykładowa plakietka gola">](zrzuty-github/gotowe/goal-badge.webp) |
+| **„Oglądaj dalej” przez lokalne ADB.** Uprawnienie do informacji o odtwarzaniu można włączyć z launchera, potwierdzając zgodę na telewizorze. Obok: ekran wyboru sposobu nadawania uprawnień. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Wybór sposobu nadawania uprawnień, nie rząd Oglądaj dalej">](zrzuty-github/gotowe/setup-mode.webp) |
+| **Nocne tapety z internetu.** Supercary i auta po tuningu — m.in. Audi RS, Mercedes-AMG i Lamborghini — w nocy i neonach oraz futurystyczne miasta nocą; zdjęcia za dnia launcher pomija. | [<img src="zrzuty-github/gotowe/home.webp" width="300" alt="Ekran główny z nocną tapetą i trzema kafelkami">](zrzuty-github/gotowe/home.webp) |
+| **Zegar dopasowany do zdjęcia.** Dół szklanych cyfr chowa się za dachem auta lub budynkami, a wykrywacz aut TensorFlow Lite działający w telewizorze pomaga unikać ustawiania zegara na aucie. Cyfry zachowują szklany wygląd scen oryginału. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Szklany zegar na tle nocnego miasta">](zrzuty-github/gotowe/screensaver-1.webp) |
+| **Ulubione tapety.** Zapisane zdjęcia wracają domyślnie co piątą zmianę tapety; częstotliwość można zmienić. | [<img src="zrzuty-github/gotowe/wallpaper-settings.webp" width="300" alt="Ustawienie ulubionych co piątą tapetę">](zrzuty-github/gotowe/wallpaper-settings.webp) |
+| **Wygaszacz ekranu.** Korzysta z tych samych zdjęć i tego samego szklanego zegara co ekran główny. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Wygaszacz z futurystycznym miastem nocą">](zrzuty-github/gotowe/screensaver-1.webp) |
+| **Kreator zachowuje debugowanie USB.** Zalecany tryb konfiguracji nie wyłącza debugowania USB. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Zalecany tryb w polskim kreatorze">](zrzuty-github/gotowe/setup-mode.webp) |
 
-- **Dual Appearance Modes (`Night Scenes` & `Classic`)**
-  - **Night Scenes**: Layered foreground/background depth scenes (*Night*, *Golden Hour*, *Waterline*, *Fog*, *Rainforest Dawn*) or custom wallpapers with a giant glass clock (*iPhone Duo*, *iPhone Rounded*, *Tall Glass*), personalized greeting, date, live weather, and a macOS-inspired dynamically resizing **Liquid Glass Dock (`50%` to `150%`)** with floating app name callouts.
-  - **Classic Appearance**: Clean app grid with an Apple tvOS–styled centered glass dock, squircle app cards, symmetrical edge spacing, and built-in photography or ambient backdrops.
-  - **Big Clock for Classic Appearance**: Brings the authentic iOS/tvOS-style big glass clock, greeting, date, and top-right weather shortcut to Classic mode by default (disabling the top mini-clock), with configurable **Clock Alignment (`Left / Center / Right`)**.
-  - **Dynamic & Custom Wallpaper Clock Alignment**: Dynamic alignment for default night scenes that adapts per wallpaper, plus independent Left / Center / Right alignment for custom wallpapers. Digits feature authentic Liquid Glass shading matching the dock with adaptive background luminance sampling.
+### Instalacja
 
-- **Expanded Custom Wallpaper Engine**
-  - **Single & Multi-Wallpaper**: Unlimited wallpaper selection from internal storage or USB drives (no 5-wallpaper limit).
-  - **Folder Shuffle**: Automatically cycles through all wallpapers in any chosen folder.
-  - **Reddit Wallpapers**: Pull high-resolution wallpapers directly from selected subreddits (e.g. `wallpapers`, `EarthPorn`) with customizable auto-change intervals and an instant "Next Wallpaper" skip action.
+1. Pobierz APK z sekcji [Releases tego forka](https://github.com/premiumsmart/tvOS-Launcher-PL/releases) i przenieś na Android TV / Google TV pendrive'em lub przez Send files to TV.
+2. Otwórz plik w menedżerze plików; jeśli trzeba, zezwól temu menedżerowi na instalację z nieznanych źródeł.
+3. Przejdź polski kreator: profil, sceny i miasto do pogody. Wybierz konfigurację ręczną, jeśli chcesz samodzielnie nadawać uprawnienia; wyłączanie systemowych launcherów i CleanYourTV są opcjonalne.
+4. Jeśli system zapyta o domyślny ekran główny, wybierz tvOS Launcher; w przeciwnym razie uruchamiaj go z listy aplikacji.
 
-- **Universal Continue Watching for All Media Apps**
-  - Supports all installed media apps (YouTube, SmartTube, Netflix, Prime Video, Disney+, Apple TV+, Tivimate, HBO Max, Stremio, Nuvio, etc.) using Android TV `TvContract` EPG / Watch Next content provider, `MediaSessionManager` active session tracking, and notification listeners.
-  - **Dock-Linked Focused App Filtering**: The shelf only displays content for the media app currently focused on the dock.
-  - **Integrated Stremio & Nuvio Dock Popups**: Popups directly above dock tiles with local caching, QR code sign-in, and multi-profile switching.
-  - **Instant App Switching (No Re-Animation)**: Switching between two apps that both have Continue Watching content swaps the row instantly without re-animating.
-  - **Direct Deep Links**: Clicking any Continue Watching card launches directly into the exact video/episode.
+„Oglądaj dalej”: włącz debugowanie USB w opcjach programisty telewizora, następnie **Ustawienia launchera → Szybkie ustawienia → Uprawnienie „Oglądaj dalej” → Włącz** i potwierdź pytanie telewizora. Po nadaniu uprawnienia możesz wyłączyć debugowanie USB. Aktualizacja istniejącej instalacji wymaga tego samego klucza podpisu.
 
-- **Standalone TV Inputs Overlay Panel**
-  - Instant input switching overlay with glass UI styling, assignable via Button Mapper (e.g. single/double tap TV Input key) or accessible from the Control Panel and Home Dock.
-  - Allows switching HDMI inputs seamlessly even after disabling Google TV / Android TV stock launchers.
+### Budowanie
 
-- **Caffeine Mode (`Settings → Advanced`)**
-  - Denies Android's idle mode and prevents Android TV's automatic Ambient Mode / screensaver from turning on, keeping your TV awake and preventing it from going to sleep during long sessions or presentations.
+Windows + Git Bash, Python 3, JDK z kompilatorem (np. z Android Studio) oraz Android SDK: platforma 34 i Build Tools 34.0.0 oraz 35.0.0; SDK spoza domyślnej ścieżki wskaż przez `ANDROID_HOME`.
 
-- **Universal Glass Control Panel (`Quick Settings`) Overlay**
-  - Accessible from the home screen or over **any running app** via Button Mapper with selectable background modes:
-    - **Blurry**: Real-time content blur behind the panel.
-    - **Transparent**: Keeps live video cleanly playing behind the panel with an edge scrim.
-  - **Extended Weather Panel**: Bottom weather tile spanning 4 columns showing current and tomorrow's forecast (clicking opens the full 5-day weather view).
-  - Includes tiles for **Wi-Fi**, **Bluetooth**, **RAM / Recent Apps**, **Do Not Disturb**, **Audio / Sound**, **Sleep Timer**, **Ambient Mode**, **Power / Screen Off**, **Inputs**, **Button Mapper**, **Settings**, and **Search**.
+```bash
+# Wersja testowa z dziennikiem moda w logcat
+bash zbuduj-pl.sh
 
-- **Recent Apps Switcher Overlay & RAM Cleaner**
-  - Open from any app via a mapped remote button or by tapping the **RAM** tile in the Control Panel.
-  - Displays live memory usage (`RAM used / total`), horizontal app cards, **DPAD UP** to force-stop/dismiss individual apps, and a **Close All** button.
-
-- **Multi-Tap Remote Button Mapper & 3-Mode Volume Button Hold Fix**
-  - Crash-safe Accessibility Service that intercepts any remote button with independent actions for **Single Tap (1x)**, **Double Tap (2x)**, and **Triple Tap (3x)**, plus **Send Key Code** for any standard media/system key.
-  - **Fix Home Button**: Optional Accessibility-powered Home key interception for TVs (such as TCL and Philips) where firmware ignores the standard default launcher.
-  - **Universal Volume Button Hold Fix**:
-    - **Mode 1 (Standard — Default)**: Smooth volume repeat (`320ms` delay, `85ms` repeat) and instant stopping (`<= 45ms`) on Android 9–14 TVs.
-    - **Mode 2 (HY320 / Projector)**: Binder dump watcher with IR pulse-burst handling tailored for Magcubic HY320 and Android 9–12 projectors.
-    - **Mode 3 (Onn TV Box)**: Optimized repeat speed and instant release handling specifically tuned for Onn Google TV streaming boxes.
-    - Works across both **Secure Mode (ADB Off)** and **Persistent ADB Mode**.
-
-- **CleanYourTV (Beta) — Built-In PC-Free Android TV Debloater (`Settings → Advanced`)**
-  - Runs **[CleanYourTV](https://github.com/Gathin23/cleanyourtv)** debloat profiles directly on your TV over Local ADB — **no PC required**.
-  - **341 Bundled TV & Box Profiles**: Covers *TCL, Sony, Xiaomi, Hisense, Philips, Skyworth, OnePlus, Realme, Nvidia Shield, Motorola, Toshiba, Sharp, Onn, Chromecast with Google TV*, and more.
-  - **Smart OEM Model Detection & ADB Package Similarity Scanner**: Automatically identifies exact or similar models from hardware properties or scans installed vendor packages with weighted scoring.
-  - **One-Tap Stock Launcher Disabler & Manual Debloater**: Disable stock launchers (*Google TV Home / LauncherX, Android TV Home / Leanback, TCL, Philips, Xiaomi, Sony*) with safety confirmations and one-tap restore.
-  - **MiBluetooth Protection**: Protects Bluetooth remote services from accidental debloating.
-  - **Ad-blocking Private DNS (`dns.adguard-dns.com`)** toggle.
-
-- **Settings Backup & Restore (`Settings → System / About / Quick & Home`)**
-  - Full backup of launcher preferences, dock order, custom app names, custom icons, button remapping, and scene settings to `Download/tvos-launcher-settings.json`.
-  - Built-in directory picker to restore settings from internal storage or external USB drives with one click.
-
-- **App Icon Changer & Interactive Icon Editor (`JPG / PNG / ICO`)**
-  - Hold **OK** on any app to pick any `.jpg`, `.jpeg`, `.png`, or Windows `.ico` file from internal storage or USB drives.
-  - Built-in **App Icon Editor** with rounded-square preview, 14 background colors, zoom, and positioning.
-  - Custom App Renaming, **Other Apps (`...`)** multi-row folder, and **Hidden Apps** vault.
-
-- **Fast 60 FPS Dimming App Launch Animation**
-  - Ultra-smooth dim-to-black transition maintaining rock-solid 60 FPS performance without stutter even on entry-level chipsets.
-
-- **Automatic & Manual GitHub Updates (`Settings → Updates`)**
-  - Checks GitHub Releases for new versions with in-app changelog view and automatic installation.
-  - Crash-safe Local ADB installer in Persistent Mode and Android Package Installer in Secure Mode.
-
-- **Dual-Mode Secure Local ADB Setup**
-  - **Secure Mode (Default & Recommended)**: Grants permissions once and immediately closes network ADB (`adb_enabled = 0`) so port `5555` is never left open on your LAN. Self-repair and Volume Hold Fix run 100% in-process.
-  - **Persistent ADB Mode**: Keeps network ADB open for runtime debloating with a one-tap toggle in Settings.
-
-- **15 Supported Languages**
-  - Fully localized across **English, Turkish, Azerbaijani (Azərbaycan dili), Swedish, Hindi, Spanish, French, German, Italian, Russian, Portuguese, Arabic, Japanese, Chinese, and Korean (한국어)**.
-
-- **Multi-User Profiles & Live Weather**
-  - Up to 3 profiles, each with its own app order, hidden apps, and Continue Watching list.
-  - Free 5-day weather forecast via Open-Meteo, MET Norway, or wttr.in (no API key required).
-
-- **Ultra-Lightweight & Fast (Android 7.0 – Android 14+)**
-  - Pure Android SDK Java with zero third-party runtime dependencies. ~30 MB private RAM, 0.0% background CPU, and hardware-accelerated animations across all Android TV & Google TV versions.
-
----
-
-- **Dual Appearance Modes (`Night Scenes` & `Classic`) + Custom Wallpapers**
-  - **Night Scenes**: Layered foreground/background depth scenes (*Night*, *Golden Hour*, *Waterline*, *Fog*, *Rainforest Dawn*, plus up to **5 Custom Wallpapers** with configurable **Clock Position: Left / Center / Right**) with a giant glass clock (*iPhone Duo*, *iPhone Rounded*, *Tall Glass*), personalized greeting, date, live weather, and a macOS-inspired dynamically resizing **Liquid Glass Dock (`50%` to `150%`)** with floating app name callouts.
-  - **App Icon Changer & Interactive Icon Editor (`JPG / PNG / ICO`)**:
-    - Hold **OK** on any app in the dock or grid and choose **Change app icon** to pick any `.jpg`, `.jpeg`, `.png`, or Windows `.ico` file from internal storage or USB drives.
-    - Includes a built-in **App Icon Editor** with a live rounded-square preview, **14 background color options** (including auto edge-color sampling), **Zoom In / Out**, and **Left / Right / Up / Down** positioning.
-  - **Custom App Renaming, Other Apps & Hidden Apps Vault**:
-    - Hold **OK** on any app in the dock to **Rename**, **Change app icon**, **Move**, **Move to Other Apps**, **Hide**, view **App Info**, **Uninstall**, or **Reset Layout**.
-    - **Move to Other Apps**: Removes the app from the first dock row while keeping it one click away inside the **Other apps (`...`)** button in the dock (auto-hidden when empty, with multi-row Up/Down navigation when expanded).
-    - **Hidden Apps (`Settings → Apps → Hidden apps`)**: Completely hides the app from both the main dock and Other Apps. Inside **Settings → Apps → Hidden apps**, press **OK** on a hidden app to launch it directly, or **Hold OK** to restore it back to the Home Screen.
-  - **Classic**: Clean 6-column app banner grid with an Apple tvOS–styled centered glass dock, larger squircle app cards, symmetrical edge spacing, smooth row animations, built-in photography, ambient color backdrops, or your own **Custom Wallpaper**, and an optional Top Shelf.
-
-- **Multi-User Profiles & Live Weather**
-  - Up to 3 profiles, each with its own app order, hidden apps, and Continue Watching list.
-  - Free 5-day weather forecast via Open-Meteo, MET Norway, or wttr.in (no API key required).
-
-- **Ultra-Lightweight, Fast & Legacy Android TV Ready (Android 7.0 – Android 14+)**
-  - Pure Android SDK Java — no Gradle, no Kotlin runtime, no AndroidX bloat. Instant zoom-in app launches, hardware-accelerated focus animations, and full compatibility from Android 7.0 / 8.0 up to Android 14 TV firmwares.
-
----
-
-## 📸 Screenshots
-
-### Home Screen, Control Panel & Recent Apps Switcher
-
-| Night Scenes Home & macOS Glass Dock | Glass Control Panel Overlay |
-| :---: | :---: |
-| ![Home Screen](screenshots_en/Home.png) | ![Control Panel](screenshots_en/controlpanel.png) |
-
-| Recent Apps Switcher & RAM Cleaner |
-| :---: |
-| ![Recent Apps Switcher](screenshots_en/Recent%20apps.png) |
-
----
-
-### First-Time Setup Assistant
-
-| 1. Welcome & Language Selection | 2. Profile & Avatar Setup |
-| :---: | :---: |
-| ![Welcome](screenshots_en/Welcome.png) | ![Profile Setup](screenshots_en/User.png) |
-
-| 3. Appearance Mode (`Night Scenes` / `Classic`) | 4. Weather & Location |
-| :---: | :---: |
-| ![Appearance Setup](screenshots_en/Apperance.png) | ![Weather Setup](screenshots_en/Weather.png) |
-
-| 5. Easy Setup (Auto ADB) vs. Manual Permissions | 6. Remote Button Mapper Setup (`1x / 2x / 3x`) |
-| :---: | :---: |
-| ![Complete Setup](screenshots_en/Setup.png) | ![Button Mapper Setup](screenshots_en/buttonmapper.png) |
-
----
-
-### Home Settings
-
-| Appearance & Scenes (`Dock Size 50%–150%`) | Control Panel (`Quick Settings`) |
-| :---: | :---: |
-| ![Settings - Appearance and Scenes](screenshots_en/Setting1.png) | ![Settings - Control Panel](screenshots_en/Setting2.png) |
-
-| Button Mapper (`1x / 2x / 3x Tap` & Home Button Fix) | Advanced, ADB Status & Permission Check (`5 / 5`) |
-| :---: | :---: |
-| ![Settings - Button Mapper](screenshots_en/Setting3.png) | ![Settings - Advanced & ADB](screenshots_en/Setting4.png) |
-
-| CleanYourTV — Disable System Launchers | Automatic & Manual GitHub Updates |
-| :---: | :---: |
-| ![Settings - Disable System Launchers](screenshots_en/Setting5.png) | ![Settings - Updates](screenshots_en/Setting6.png) |
-
----
-
-## 🚀 Quick Start (Build & Install)
-
-### Prerequisites
-- **JDK 17+** (`javac`, `jar`)
-- **Android SDK** with `build-tools;34.0.0` and `platforms;android-34`
-
-### Build on Windows (PowerShell)
-```powershell
-powershell -ExecutionPolicy Bypass -File .\build.ps1
-# Output APK -> build\tvos-home.apk
+# Wersja do wydania, bez dziennika moda
+DZIENNIK=0 bash zbuduj-pl.sh
 ```
 
-### Build on macOS / Linux
-```sh
-./build.sh
-# Output APK -> build/tvos-home.apk
+Wynik: `build/tvos-launcher-pl.apk`. Klucz `mod-pl.keystore` i plik hasła `mod-pl.keystore.haslo` powstają przy pierwszym budowaniu i nie trafiają do repozytorium.
+
+Skrypt odtwarza `src/` i `AndroidManifest.xml` z Gita, nakłada opisane zmiany przez `pl/naloz.py` oraz dodaje klasy z `pl/java/`; buduj w osobnej kopii roboczej, jeśli masz ręczne zmiany w źródłach.
+
+Sceny „Czerwone Lamborghini” i „Audi RS7 nocą” wymagają własnych zdjęć pod nazwami `pl/zasoby/ulubiona-lamborghini.jpg` i `pl/zasoby/ulubiona-audi-rs7.jpg` oraz własnych warstw `pl/zasoby/scena-audi-rs7-glass.jpg` i `pl/zasoby/scena-audi-rs7-fg.webp`.
+
+### Dane i licencja
+
+Mecze: [LiveScore](https://www.livescore.com/), pomocniczo [TheSportsDB](https://www.thesportsdb.com/); popularne tytuły: [JustWatch Polska](https://www.justwatch.com/pl); pogoda: [Open-Meteo](https://open-meteo.com/); tapety: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) i [Bing](https://www.bing.com/).
+
+Kod: [Apache-2.0](LICENSE); informacje o autorstwie i bibliotekach: [NOTICE](NOTICE). Dołączono TensorFlow Lite 2.14.0 i model SSD MobileNet v1 COCO od Google, na licencji Apache-2.0.
+
+Projekt nie jest powiązany z Apple, LiveScore, JustWatch, Open-Meteo, Wallhaven, Wikimedia ani Microsoft (Bing). Zdjęcia i dane należą do ich właścicieli, a aplikacja pobiera je z odpowiednich serwisów; licencja kodu nie obejmuje tych materiałów.
+
+---
+
+## English
+
+A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius1/tvOS-Launcher). See the original repository for the launcher itself and its other features; this page covers the PL mod changes.
+
+### Changes
+
+| Change | Screenshot — click to enlarge |
+| --- | --- |
+| **Full Polish translation.** The interface, first-run wizard and weather descriptions are in Polish. | [<img src="zrzuty-github/gotowe/setup-scenes.webp" width="300" alt="Scene selection wizard in Polish">](zrzuty-github/gotowe/setup-scenes.webp) |
+| **Liquid Glass tiles and windows: football.** The tile shows the next fixture and LiveScore scores during a match; a dedicated window lets you browse fixtures and follow teams. | [<img src="zrzuty-github/gotowe/matches-tile.webp" width="300" alt="Football tile with team crests and kickoff time">](zrzuty-github/gotowe/matches-tile.webp)<br>[<img src="zrzuty-github/gotowe/matches.webp" width="300" alt="Fixture list and large selected match preview">](zrzuty-github/gotowe/matches.webp) |
+| **“Most Watched”.** A glass tile and window show popular films and series from JustWatch for Poland, with descriptions and links to available services. | [<img src="zrzuty-github/gotowe/most-watched.webp" width="300" alt="Polish Most Watched window">](zrzuty-github/gotowe/most-watched.webp) |
+| **Weather.** The Liquid Glass tile opens an hourly and multi-day forecast in Polish. | [<img src="zrzuty-github/gotowe/weather.webp" width="300" alt="Full screen with the weather window and location blurred">](zrzuty-github/gotowe/weather.webp) |
+| **Goal notifications.** Badges with favorite teams’ crests and scores can appear over other apps after permission is granted. The screenshot shows a sample notification. | [<img src="zrzuty-github/gotowe/goal-badge.webp" width="300" alt="Sample goal notification badge">](zrzuty-github/gotowe/goal-badge.webp) |
+| **Continue Watching through local ADB.** Playback-information access can be enabled from the launcher by confirming a prompt on the TV. Shown here: the permission setup mode screen. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Permission setup modes, not the Continue Watching shelf">](zrzuty-github/gotowe/setup-mode.webp) |
+| **Nighttime internet wallpapers.** Supercars and tuned cars — including Audi RS, Mercedes-AMG and Lamborghini — at night and in neon light, plus futuristic cities at night; the launcher skips daytime images. | [<img src="zrzuty-github/gotowe/home.webp" width="300" alt="Home screen with a nighttime wallpaper and three tiles">](zrzuty-github/gotowe/home.webp) |
+| **A clock that fits the image.** The bottom of the glass digits hides behind car roofs or buildings, while an on-device TensorFlow Lite car detector helps keep the clock off the car itself. The digits retain the original scenes’ glass appearance. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Glass clock with a nighttime city">](zrzuty-github/gotowe/screensaver-1.webp) |
+| **Favorite wallpapers.** Saved images return every fifth wallpaper change by default; the frequency is configurable. | [<img src="zrzuty-github/gotowe/wallpaper-settings.webp" width="300" alt="Favorites set to return every fifth wallpaper">](zrzuty-github/gotowe/wallpaper-settings.webp) |
+| **Screensaver.** It uses the same images and glass clock as the home screen. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Screensaver with a futuristic city at night">](zrzuty-github/gotowe/screensaver-1.webp) |
+| **The wizard keeps USB debugging enabled.** The recommended setup mode no longer disables USB debugging. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Recommended mode in the Polish setup wizard">](zrzuty-github/gotowe/setup-mode.webp) |
+
+### Installation
+
+1. Download the APK from [this fork’s Releases](https://github.com/premiumsmart/tvOS-Launcher-PL/releases) and transfer it to Android TV / Google TV using a USB drive or Send files to TV.
+2. Open it in a file manager; allow that file manager to install unknown apps if prompted.
+3. Complete the Polish wizard: profile, scenes and weather location. Choose manual setup if you prefer to grant permissions yourself; disabling system launchers and using CleanYourTV are optional.
+4. Select tvOS Launcher if Android asks for a default home app; otherwise launch it from the app list.
+
+Continue Watching: enable USB debugging in the TV’s developer options, then go to **Launcher settings → Quick settings → “Continue Watching” permission → Enable** and confirm the TV prompt. You may disable USB debugging afterwards. Updating an existing installation requires the same signing key.
+
+### Building
+
+Windows + Git Bash, Python 3, a JDK with a compiler (such as Android Studio’s JDK), and Android SDK platform 34 with Build Tools 34.0.0 and 35.0.0; set `ANDROID_HOME` for a non-default SDK location.
+
+```bash
+# Test build with the mod's logcat logging
+bash zbuduj-pl.sh
+
+# Release build without the mod's logging
+DZIENNIK=0 bash zbuduj-pl.sh
 ```
 
-### Install via ADB
-```sh
-adb connect <tv-ip>:5555
-adb install -r build/tvos-home.apk
-adb shell am start -n com.techgenius.tvoslauncher/.MainActivity
-```
+Output: `build/tvos-launcher-pl.apk`. The signing key `mod-pl.keystore` and password file `mod-pl.keystore.haslo` are created on the first build and are excluded from the repository.
 
----
+The script restores `src/` and `AndroidManifest.xml` from Git, applies the documented changes through `pl/naloz.py`, and adds classes from `pl/java/`; use a separate working copy if you have manual source edits.
 
-## 📚 Documentation
+The “Red Lamborghini” and “Audi RS7 at night” scenes require your own images named `pl/zasoby/ulubiona-lamborghini.jpg` and `pl/zasoby/ulubiona-audi-rs7.jpg`, plus your own layers named `pl/zasoby/scena-audi-rs7-glass.jpg` and `pl/zasoby/scena-audi-rs7-fg.webp`.
 
-| Document | Description |
-|---|---|
-| **[Getting started](docs/getting-started.md)** | Install SDK tools, build from source, run on an Android TV or emulator |
-| **[Features](docs/features.md)** | Detailed breakdown of launcher features |
-| **[Install and set up](docs/install.md)** | Setting as default home screen, ADB permissions, and troubleshooting |
-| **[Presentation mode](docs/presentation.md)** | Sending images, videos, and web pages from a browser |
-| **[Architecture](docs/architecture.md)** | Code map, zero-dependency build pipeline, and performance design |
-| **[Contributing](CONTRIBUTING.md)** | Workflow, code style, design and performance guidelines |
+### Data and license
 
----
+Football: [LiveScore](https://www.livescore.com/) with supplementary [TheSportsDB](https://www.thesportsdb.com/) data; popular titles: [JustWatch Poland](https://www.justwatch.com/pl); weather: [Open-Meteo](https://open-meteo.com/); wallpapers: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) and [Bing](https://www.bing.com/).
 
-## 📋 Requirements
+Code: [Apache-2.0](LICENSE); credits and dependencies: [NOTICE](NOTICE). Includes TensorFlow Lite 2.14.0 and Google’s SSD MobileNet v1 COCO model under Apache-2.0.
 
-- **Android TV / Google TV 7.0+ (API 24+)**
-
----
-
-## 🙌 Credits & Acknowledgements
-
-Special thanks to the open-source projects that inspired and contributed to **tvOS Launcher**:
-
-- **[Hume Launcher](https://github.com/petrobot-admin/hume-launcher)** by [@petrobot-admin](https://github.com/petrobot-admin) — Foundation for the zero-dependency Android TV Java architecture, Classic home layout, and system integrations.
-- **[Couch TV](https://github.com/Seagey/couch-tv)** by [@Seagey](https://github.com/Seagey) — Design and inspiration for the Night Scenes depth wallpapers, giant glass clock, and glassmorphic Home Settings UI.
-- **[CleanYourTV](https://github.com/Gathin23/cleanyourtv)** by [@Gathin23](https://github.com/Gathin23) — Community-curated Android TV / Google TV debloat profiles (`examples/`) and safety guidelines powering the built-in CleanYourTV (Beta) debloater.
-- **Inter Typeface** (SIL Open Font License 1.1) & **Project Nayuki QR Code Generator** (MIT License).
-- Weather data powered by **Open-Meteo**, **MET Norway**, and **wttr.in**.
-
----
-
-## 📄 License
-
-Licensed under the **Apache License 2.0** — see [LICENSE](LICENSE) and [NOTICE](NOTICE) for details.
+This project is not affiliated with Apple, LiveScore, JustWatch, Open-Meteo, Wallhaven, Wikimedia or Microsoft (Bing). Images and data belong to their respective owners and are fetched from their services; the code license does not cover those materials.

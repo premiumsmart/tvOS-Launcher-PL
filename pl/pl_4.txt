@@ -1,0 +1,268 @@
+0811|Wyślij kod klawisza (pilot / multimedia / system)…
+0812|Wyślij kod klawisza…
+0813|Wyślij dowolny kod klawisza Androida (KeyEvent) bez dodatkowych aplikacji
+0814|Wyślij na ten telewizor
+0815|Serial
+0816|Szeryfowy
+0817|Ustaw domyślny ekran główny
+0818|Ustaw jako domyślny przez lokalne ADB (zalecane)
+0819|Ustaw jako domyślny…
+0820|Ustaw ręcznie
+0821|Ustawiam domyślny launcher…
+0822|Ustawiam ROLE_HOME i domyślną aktywność ekranu głównego przez lokalne ADB…
+0823|Ustawienia
+0824|Zapisano kopię ustawień
+0825|Przycisk ustawień
+0826|Przywrócono ustawienia
+0827|Ustawienia zachowane
+0828|Przywrócono ustawienia domyślne.
+0829|Ustawienia ›
+0830|Konfiguracja zakończona
+0831|Pokaż listę zmian
+0832|Pokaż zegar, datę i powitanie na wybranej tapecie (dowolny przycisk wraca)
+0833|Pokazuj „Oglądaj dalej” na ekranie głównym
+0834|Pokaż aplikację Wejścia w doku
+0835|Dymek z nazwą nad zaznaczoną aplikacją
+0836|Widoczna w doku · naciśnij OK, aby ukryć
+0837|Pokaż na ekranie głównym
+0838|Pokaż nazwę sieci Wi-Fi
+0839|Pokazuj widżety, gdy zaznaczona aplikacja nie ma „Oglądaj dalej”
+0840|Przelotne opady
+0841|Losuj z folderu
+0842|Wyloguj
+0843|Zalogowano · Wyloguj
+0844|Podobna nazwa modelu
+0845|Jedna / wiele tapet
+0846|Pojedyncze naciśnięcie (1x)
+0847|Pomiń konfigurację
+0848|Pomiń ten krok
+0849|Pomiń teraz ›
+0850|Przejdź do następnej tapety z Reddita
+0851|Uśpij
+0852|Uśpienie / czuwanie (223)
+0853|Wyłącznik czasowy
+0854|Wyłącznik czasowy
+0855|Deszcz ze śniegiem
+0856|Mniejszy, bardziej zwarty dok
+0857|Śnieg
+0858|Niektóre telewizory same wyłączają w tle ułatwienia dostępu lub inne uprawnienia. Gdy podtrzymywanie jest włączone, tvOS Launcher lekko sprawdza stan uprawnień w tle, bez dodatkowego obciążenia pamięci i procesora, i automatycznie przywraca wyłączone uprawnienia przez ADB.
+0859|Dźwięk
+0860|Standardowy rozmiar doku z Apple tvOS
+0861|Uruchamiaj razem z telewizorem
+0862|Start ›
+0863|Szablonowy
+0864|Krok 1 zakończony: ustawiono domyślny ekran główny przez ADB!
+0865|Krok 1: Ustaw tvOS Launcher jako domyślny przez lokalne ADB
+0866|Krok 2: Wyłącz systemowe launchery (Google TV / Android TV / producenta)
+0867|Krok 3: Napraw przycisk Home przez ułatwienia dostępu (mapowanie przycisków)
+0868|Krok 4: Otwórz systemowe ustawienia ekranu głównego Androida
+0869|Fabryczny ekran główny Android TV i sponsorowane rzędy
+0870|Fabryczny ekran główny Google TV i banery reklamowe
+0871|Zatrzymaj
+0872|Pamięć
+0873|Foldery pamięci
+0874|Napisy / CC
+0875|Słonecznie
+0876|Przełącz
+0877|Przełącz profil
+0878|Przełączaj wejścia TV / HDMI na ekranie, nawet gdy launcher Google TV jest wyłączony
+0879|Przełączaj między bezpieczną konfiguracją automatyczną, stałym ADB i konfiguracją ręczną
+0880|Przełącz na konfigurację ręczną
+0881|Launchery systemowe
+0882|Systemowy wybór plików…
+0883|Na tym telewizorze wykryto systemowy launcher
+0884|AKCJE NACIŚNIĘĆ
+0885|DOCELOWA AKCJA / APLIKACJA
+0886|Połączono z TMDB
+0887|ZAWARTOŚĆ GÓRNEJ PÓŁKI
+0888|Wejście TV / źródło
+0889|Dopasowano model TV
+0890|Ustawienia TV
+0891|Głośniki TV
+0892|Ustawienia TV
+0893|Wysokie szkło
+0894|Wybierz „Sprawdź aktualizacje”
+0895|Naciśnij, aby wykryć / wybrać…
+0896|Naciśnij, aby dodać
+0897|Naciśnij, aby ustawić jako aktywną tapetę
+0898|Naciśnij, aby włączyć lub wyłączyć w rotacji scen · przytrzymaj albo użyj akcji poniżej
+0899|Morski
+0900|Temperatura
+0901|Przycisk Home na pilocie będzie otwierał tvOS Launcher.
+0902|Przycisk Home otwiera tvOS Launcher
+0903|Ten telewizor nie ma wbudowanego ekranu ustawień ułatwień dostępu. Usługę mapowania przycisków i Panelu sterowania możesz włączyć automatycznie przez lokalne ADB.
+0904|Ustawienia tego telewizora nie mają przełącznika dla tego uprawnienia. Osoba, która konfigurowała telewizor, może włączyć je raz z komputera w tej samej sieci:\n\n
+0905|Przywraca domyślne ustawienia wyglądu, scen, zegara i języka.
+0906|Wyłączy to podtrzymywanie oraz usunie usługę ułatwień dostępu, dostęp do powiadomień, rolę domyślnego ekranu głównego i uprawnienia launchera (lokalnie i przez ADB).
+0907|Burze
+0908|Wskazówka: rozmycia nie da się pokazać podczas odtwarzania wideo. Android nie potrafi rozmyć obrazu na żywo (a wideo z DRM nie da się przechwycić), więc film gra dalej za panelem, lekko przyciemniony.
+0909|Wskazówka: przytrzymaj OK na dowolnej aplikacji w doku, aby ją przenieść lub ukryć.
+0910|Dziś
+0911|Górna półka, siatka aplikacji w 6 kolumnach i własne tapety
+0912|Skrót pogody w prawym górnym rogu
+0913|Na czasie
+0914|Potrójne naciśnięcie (3x)
+0915|Włącz / wyłącz ADB
+0916|Włącz debugowanie ADB
+0917|Wyłącz własny obraz
+0918|Wyłącz własną scenę
+0919|Wyłącz losowanie z folderu
+0920|Włącz własny obraz
+0921|Włącz własną scenę
+0922|Włącz losowanie z folderu
+0923|Najpierw włącz tryb prezentacji
+0924|Najpierw włącz
+0925|Wyłącz telewizor po
+0926|Włączam ADB…
+0927|Włączam debugowanie ADB na potrzeby tego kroku…
+0928|Pisz, aby szukać aplikacji, ustawień, filmów i seriali
+0929|UNIWERSALNE AKCJE SKRÓTÓW
+0930|AKTUALIZACJE
+0931|Odinstaluj
+0932|Odepnij z ekranu głównego
+0933|W górę
+0934|Góra i dół — przeglądaj, OK — zmień, Wstecz — zamknij
+0935|Góra i dół — przesuń, OK — gotowe
+0936|Następne
+0937|Aktualna wersja
+0938|Dostępna aktualizacja
+0939|Sprawdzenie aktualizacji nie powiodło się
+0940|Aktualizacja nie powiodła się
+0941|Pobieranie aktualizacji nie powiodło się.
+0942|Aktualizuj co
+0943|Zainstalowano aktualizację!
+0944|Zaktualizowano
+0945|Aktualizacja:
+0946|Aktualizacje
+0947|Aktualizuję tvOS Launcher
+0948|Aktualizuję…
+0949|Użyj mojej lokalizacji
+0950|Użyj prezentacji
+0951|Użyj lokalizacji automatycznej
+0952|Użyj wbudowanego skrótu Androida TV
+0953|Użyj własnego tła
+0954|Użyj tła losowanego z folderu
+0955|Używana do pogody na ekranie głównym i lokalnych wiadomości.
+0956|Używa lokalnego ADB do nadania uprawnień i zostawia ADB otwarte
+0957|INFORMACJE O WERSJI
+0958|Wersja
+0959|Przeglądaj lub filtruj pełną listę obsługiwanych modeli TV
+0960|Sterowanie głosem nie jest dostępne na tym telewizorze
+0961|Sterowanie głosem wymaga internetu
+0962|Tryb naprawy przycisku głośności
+0963|Ciszej (25)
+0964|Wybrano tryb 1 naprawy głośności (standardowy).
+0965|Wybrano tryb 2 naprawy głośności (HY320 / projektor).
+0966|Wybrano tryb 3 naprawy głośności (Onn TV Box).
+0967|Głośniej (24)
+0968|Tryb naprawy przycisku głośności
+0969|TAPETA
+0970|TAPETY W FOLDERZE (NACIŚNIJ, ABY WŁĄCZYĆ / WYŁĄCZYĆ)
+0971|POGODA
+0972|USTAWIENIA WIDŻETÓW
+0973|Czekam na zatwierdzenie…
+0974|Teraz ogląda · OK — przełącz lub zmień nazwę
+0975|Linia wody
+0976|Pogoda
+0977|Prognoza pogody
+0978|Pogoda i lokalizacja
+0979|Źródło pogody
+0980|Pogoda na ekranie głównym
+0981|Źródło pogody
+0982|Witaj
+0983|Co pojawia się na górze ekranu głównego, za aplikacjami. Wybierz dowolne, wszystkie albo żadne.
+0984|To, co oglądałeś, wmieszane w karuzelę
+0985|Biały
+0986|Kto ogląda?
+0987|Wi-Fi
+0988|Nazwa Wi-Fi (lokalizacja)
+0989|Wi-Fi, obraz, dźwięk i pozostałe ustawienia telewizora
+0990|Wiatr
+0991|Żółty
+0992|Żółty przycisk
+0993|Masz najnowszą wersję.
+0994|Przyciski możesz też skonfigurować później w Ustawieniach
+0995|Ten krok wymaga włączonego trybu ADB. Tryb ADB zawsze możesz zmienić później w Ustawieniach.\n\nCzy chcesz włączyć ADB teraz, czy pominąć ten krok?
+0996|Wszystko gotowe
+0997|YouTube Music (opcjonalne)
+0998|Twój ekran główny
+0999|Twoje imię
+1000|Twoje imię i awatar. Każdy profil ma własne aplikacje, tło i ekran główny. Profile mogą mieć maksymalnie trzy osoby.
+1001|Powiększenie
+1002|Powiększ
+1003|Pomniejsz
+1004|aktywne
+1005|Środek
+1006|Dynamiczne
+1007|Lewo
+1008|Prawo
+1009|aplikacji
+1010|Panel wejść TV (nakładka)
+1011|Kofeina blokuje tryb bezczynności Androida i automatyczne włączanie trybu Ambient, dzięki czemu telewizor nie zasypia.
+1012|Kofeina (blokada usypiania i trybu Ambient)
+1013|wyczyść
+1014|Rozmyte (rozmycie bieżącej treści)
+1015|Tło Panelu sterowania
+1016|Przezroczyste
+1017|Mecze piłkarskie
+1018|Najczęściej oglądane
+1019|Godziny modlitw
+1020|np. 85 (Odtwórz/Pauza), 164 (Wycisz), 178 (Wejście TV)
+1021|np. tcl, philips, sony, hisense, xiaomi…
+1022|np. tcl, sony, hisense, xiaomi, philips, skyworth…
+1023|Ulubione drużyny
+1024|Wczytuję mecze…
+1025|Brak zaplanowanych meczów
+1026|Ustawienia ekranu głównego
+1027|iPhone Duo
+1028|iPhone zaokrąglony
+1029|obrazów
+1030|Oglądaj dalej
+1031| min
+1032|min
+1033|Następna tapeta
+1034|Teraz
+1035|pakietów
+1036|Asr
+1037|Zuhr
+1038|Fadżr
+1039|Isza
+1040|Maghrib
+1041|Metoda obliczania
+1042|pozostało
+1043|Wschód słońca
+1044|Automatycznie (zgodnie z językiem interfejsu)
+1045|Kraje dla „Najczęściej oglądane”
+1046|Wczytuję tytuły…
+1047|Ustawienia
+1048|Wyłącznik czasowy
+1049|spacja
+1050|Jutro
+1051|Jutro
+1052|tvOS Launcher uruchomi się od razu po starcie systemu.
+1053|tvOS Launcher najlepiej działa jako ekran główny. Zezwól na te rzeczy raz; to, czego telewizor nie obsługuje, zostanie pominięte.
+1054|Ustawienia TV
+1055|Pogoda
+1056|Aktualizuję…
+1057|ℹ️ Uwaga dot. Google TV (sprawdzanie Wi-Fi przez setupwraith):\n\n
+1058|↻ Odśwież listę aplikacji systemowych
+1059|⚠️ Podstawowy pakiet systemowy
+1060|⚠️ Podstawowy pakiet systemowy — wyłączenie może wpłynąć na stabilność systemu
+1061|⚠️ Wykryto: Twoja bieżąca sieć Wi-Fi NALEŻY do setupwraith (cname=com.google.android.tungsten.setupwraith).\n\n
+1062|⚠️ Ostrzeżenie o ręcznym odchudzaniu
+1063|⚠️ Twoja sieć Wi-Fi należy teraz do setupwraith. Zanim wyłączysz setupwraith, otwórz ustawienia Wi-Fi, zapomnij sieć i połącz się ponownie, aby Wi-Fi zostało zapisane.
+1064|✅ Sieć Wi-Fi dodana ponownie (dalej)
+1065|⬅  .. (folder nadrzędny)
+1066|⬅  Wróć do folderów pamięci
+1067|📋 Przeglądaj / szukaj wśród 341 modeli TV
+1068|📋 Przeglądaj wszystkie 341 modeli TV
+1069|📶 Otwórz ustawienia Wi-Fi…
+1070|📶 Ustawienia Wi-Fi…
+1071|🔍 Filtruj aplikacje systemowe…
+1072|🔍 Skanuj zainstalowane aplikacje systemowe, aby znaleźć pasujący model
+1073|🔍 Skanuj zainstalowane aplikacje systemowe przez ADB
+1074|🔍 Szukaj / filtruj po marce lub modelu…
+1075|🔍 Szukaj…
+1076|🛑 Krytyczna usługa systemowa
+1077|🛑 Krytyczna usługa systemowa — chroniona (nie można wyłączyć)
+1078|🛡️ Pomiń setupwraith

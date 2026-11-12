@@ -1,0 +1,270 @@
+0541|Filmy i TV
+0542|Wycisz / Włącz dźwięk (164)
+0543|Moja lokalizacja
+0544|NOCNE SCENY
+0545|ZEGAR NOCNYCH SCEN
+0546|Nazwa
+0547|Dźwięki nawigacji
+0548|Nowy profil
+0549|Wiadomości
+0550|Dalej
+0551|Następna strona
+0552|Następny utwór
+0553|Następna tapeta
+0554|Noc
+0555|Własna tapeta nocnych scen
+0556|Nocne sceny
+0557|Nie znaleziono pasujących aplikacji
+0558|Brak aplikacji do zamknięcia
+0559|To wydanie nie ma opisu zmian.
+0560|CleanYourTV nie zapisał jeszcze żadnych wyłączonych pakietów.
+0561|Brak ukrytych aplikacji. Przytrzymaj OK na dowolnej aplikacji w doku i wybierz „Ukryj”.
+0562|Brak obrazów w tym folderze (otwórz podfolder poniżej)
+0563|Nie znaleziono filmów ani seriali
+0564|Brak ostatnich aplikacji
+0565|Brak ostatnich aplikacji
+0566|Brak wyników
+0567|Nie znaleziono zapisanej kopii wyłączonych aplikacji i nie wybrano jeszcze modelu TV. Jeśli chcesz przywracać według profilu modelu, najpierw wybierz model TV.
+0568|Bez wygaszacza i usypiania podczas prezentacji
+0569|W tym folderze nie ma kopii ustawień (.json)
+0570|Na tym telewizorze nie wykryto pakietów fabrycznego launchera Android TV / Google TV / producenta.
+0571|Na tym telewizorze nie wykryto pakietów fabrycznego launchera Android TV / Google TV.
+0572|Ten telewizor nie ma systemowego wyboru plików.
+0573|Brak
+0574|Brak (wyczyść akcję)
+0575|Brak (bez akcji)
+0576|Nie znaleziono
+0577|Brak zapisanych
+0578|Nie połączono
+0579|Nie teraz
+0580|Niedozwolone
+0581|Nie połączono
+0582|Nie wykonano
+0583|Nie wykonano (najpierw wybierz model TV)
+0584|Nie zainstalowano
+0585|Brak na tym telewizorze
+0586|Nie sparowano (ADB wyłączone)
+0587|Nie wybrano
+0588|Nie ustawiono
+0589|Nie zalogowano
+0590|Teraz niedostępne w streamingu.
+0591|Nie ma jeszcze nic do dokończenia
+0592|Powiadomienia (83)
+0593|Teraz
+0594|OK
+0595|OK — zmień, Wstecz — wróć
+0596|OK — zmień, przytrzymaj OK — przenieś, Wstecz — wróć
+0597|OK — otwórz  ·  Przytrzymaj OK — przywróć
+0598|OK — otwórz  ·  Przytrzymaj OK — przywróć  ·  Wstecz — wróć
+0599|OK — przełącz lub edytuj
+0600|AKCJE JEDNYM NACIŚNIĘCIEM
+0601|OPCJE
+0602|Wyłączone
+0603|Wyłączone — naciśnij, aby włączyć przechwytywanie przycisku Home
+0604|Włączone
+0605|Włączone
+0606|Włączone (domyślnie)
+0607|Jeśli w Google TV wyłączysz setupwraith, upewnij się, że sieć Wi-Fi została ponownie dodana w ustawieniach Wi-Fi.
+0608|Na telewizorach TCL i Philips z Androidem 11/12 oprogramowanie producenta często ukrywa systemowy wybór ekranu głównego i wymusza fabryczny launcher po naciśnięciu Home. Wyłączenie fabrycznego launchera (opcja 2) albo włączenie naprawy przycisku Home (opcja 3) gwarantuje, że Home zawsze otworzy tvOS Launcher.
+0609|Na telewizorach TCL, Philips i Google TV oprogramowanie producenta często wymusza fabryczny launcher po naciśnięciu Home. Wykonaj poniższe kroki, aby Home zawsze otwierał tvOS Launcher, a potem wybierz Dalej.
+0610|Na ekranie blokady nad wybranymi tłami widać tylko zegar, datę i powitanie. Naciśnięcie dowolnego przycisku pilota wraca tam, gdzie byłeś.
+0611|Na tym telewizorze
+0612|Włączone — naciśnięcie Home uruchamia tvOS Launcher
+0613|Jedno zdjęcie i siatka banerów aplikacji
+0614|Jedna scena musi pozostać włączona.
+0615|Jedna tapeta musi pozostać włączona.
+0616|Otwórz
+0617|Otwórz systemowe ustawienia domyślnego ekranu głównego
+0618|Otwórz ustawienia Androida TV…
+0619|Otwórz Opcje programisty / ustawienia TV…
+0620|Otwórz Opcje programisty i włącz debugowanie USB / sieciowe, aby dokończyć przełączanie na tryb stałego ADB.
+0621|Otwórz Opcje programisty i włącz debugowanie USB / sieciowe.
+0622|Otwórz Opcje programisty…
+0623|Otwórz systemowy wybór plików…
+0624|Otwórz tryb Ambient / wygaszacz telewizora (albo wbudowany zamiennik)
+0625|Otwórz na telefonie lub komputerze w tej samej sieci Wi-Fi:\n\n
+0626|Otwórz systemowy wybór (jeśli telewizor go obsługuje) ›
+0627|Albo otwórz
+0628|Pomarańczowy
+0629|Inne aplikacje
+0630|Inne aplikacje
+0631|Wyjście
+0632|NAWIGACJA PO STRONACH
+0633|OSOBY
+0634|STAN UPRAWNIEŃ
+0635|PREZENTACJA I SYSTEM
+0636|PREZENTACJA I KLASYCZNA PÓŁKA
+0637|PROFILE
+0638|Sparuj / napraw ADB
+0639|Sparuj / napraw połączenie ADB
+0640|Sparuj teraz
+0641|Sparowano i gotowe
+0642|Sparowano · ADB włączone
+0643|Kod parowania\n
+0644|Częściowe zachmurzenie
+0645|Pauza
+0646|Osoby
+0647|Uprawnienia nadane, ADB zamknięte
+0648|Tryb stałego ADB (port 5555 zostaje otwarty)
+0649|Wybrano tryb stałego ADB — port 5555 zostaje otwarty dla CleanYourTV i narzędzi ADB.
+0650|Tryb stałego ADB — sieciowe ADB zostaje otwarte (opcjonalnie)
+0651|Konfiguracja stałego ADB
+0652|Przypnij do ekranu głównego
+0653|Różowy
+0654|Odtwórz
+0655|Odtwórz / Pauza
+0656|Odtwarzaj od razu po włączeniu telewizora (tryb ekspozycyjny)
+0657|Zezwól tvOS Launcherowi na „Instalowanie nieznanych aplikacji”.
+0658|Włącz debugowanie USB / sieciowe w Opcjach programisty, a potem wróć tutaj i wykonaj ten krok.
+0659|Popularne filmy i seriale w Twoich serwisach streamingowych
+0660|Port 5555 otwarty · gotowy do parowania
+0661|Port 5555 otwarty (naciśnij, aby sparować)
+0662|Wyłącz
+0663|Uprawnienie do wyłączania i wyłącznika czasowego
+0664|Wyłącz (wygaś ekran)
+0665|Metoda obliczania godzin modlitw
+0666|Metoda obliczania godzin modlitw
+0667|Przygotowuję CleanYourTV…
+0668|Przygotowuję kod QR…
+0669|Prezentacja
+0670|Adres prezentacji i kod QR
+0671|Tryb prezentacji
+0672|Naciśnij OK na aplikacji, aby pokazać ją lub ukryć w doku ekranu głównego.
+0673|Naciśnij OK, aby uwzględnić tytuły z tego kraju
+0674|Naciśnij na pilocie przycisk, który chcesz zmapować…\n\n(Strzałki, OK i Wstecz pozostają do zwykłej nawigacji.)
+0675|Naciśnij ▲ na aplikacji, aby ją zamknąć
+0676|Podgląd
+0677|Pokaż podgląd ekranu blokady
+0678|Poprzednia strona
+0679|Poprzedni utwór
+0680|Gdy skończysz tutaj, przejdź do następnego kroku konfiguracji
+0681|Profil
+0682|Profile
+0683|Chroniony pakiet systemowy
+0684|Pobierz pełną listę aplikacji przez ADB i dopasuj modele po pakietach producenta/systemowych
+0685|Pobierz pełną listę aplikacji przez ADB i dopasuj modele po nazwach pakietów systemowych/producenta
+0686|Pobieram pełną listę pakietów przez ADB i porównuję nazwy pakietów systemowych/producenta z 341 modelami TV…
+0687|Fioletowy
+0688|SZYBKIE FILTRY MAREK
+0689|Szybkie przyciski
+0690|Szybkie ustawienia
+0691|OPCJE TAPET Z REDDITA
+0692|TRYB REGIONU
+0693|ZMAPOWANE PRZYCISKI
+0694|ZMAPOWANE PRZYCISKI (1X / 2X / 3X)
+0695|POPRAWKI PILOTA
+0696|USUŃ
+0697|RESET
+0698|OPCJE PRZYWRACANIA
+0699|Deszcz
+0700|Świt w lesie deszczowym
+0701|Włącz ponownie wszystkie fabryczne launchery
+0702|Włącz przez ADB wszystkie pakiety wyłączone przez CleanYourTV
+0703|Ostatnie aplikacje
+0704|Przełącznik ostatnich aplikacji
+0705|Przełącznik ostatnich aplikacji (nakładka)
+0706|Ostatnie wyszukiwania
+0707|Rekomendacje
+0708|Rekomendacje i wiadomości
+0709|Przycisk nagrywania
+0710|Czerwony
+0711|Czerwony przycisk
+0712|Tapety z Reddita
+0713|Zmieniono tapetę z Reddita.
+0714|Odśwież
+0715|Odśwież karuzelę
+0716|Odśwież pogodę teraz
+0717|Zapamiętuj, co oglądasz w każdej aplikacji
+0718|Usuń / cofnij wszystkie uprawnienia
+0719|Usuń / cofnij wszystkie uprawnienia
+0720|Usuń tapetę nr
+0721|Usuń mapowanie przycisku
+0722|Usuń z „Oglądaj dalej”
+0723|Usuń z doku
+0724|Usuń osobę
+0725|Usuń tę tapetę
+0726|Zmień nazwę
+0727|Zmień nazwę aplikacji
+0728|Zmień nazwę profilu
+0729|Zmień nazwę osoby
+0730|Zmień nazwę…
+0731|Napraw
+0732|Zamień tapetę nr
+0733|Wymagane, aby mapowane przyciski działały w każdej aplikacji
+0734|Resetuj
+0735|Przywróć domyślne akcje Panelu sterowania
+0736|Resetuj układ
+0737|Resetuj kolejność aplikacji i pokaż wszystkie ukryte
+0738|Przywróć ustawienia domyślne
+0739|Zresetować ustawienia?
+0740|Przywróć domyślną ikonę
+0741|Przywróć wszystkie
+0742|Przywracanie zakończone
+0743|Przywróć wyłączone aplikacje
+0744|Przywracanie nie powiodło się
+0745|Przywróć wszystkie ›
+0746|Przywróć według wybranego modelu TV
+0747|Przywróć wyłączone aplikacje
+0748|Przywróć wyłączone aplikacje…
+0749|Przywróć ustawienia z folderu…
+0750|Przywróć ›
+0751|Przywracam aplikacje…
+0752|Wznów
+0753|Wznów odtwarzanie
+0754|Cofnij wszystkie uprawnienia
+0755|Cofnij ›
+0756|Cofam uprawnienia…
+0757|Cofam wszystkie uprawnienia…
+0758|Przewijanie do tyłu
+0759|Prawo
+0760|Zmieniające się sceny natury ze szklanym zegarem i dokiem na dole
+0761|Zaokrąglony
+0762|Uruchom ROLE_HOME i set-home-activity przez lokalne ADB ›
+0763|Uruchom ROLE_HOME i set-home-activity ›
+0764|Uruchom ponownie kreator pierwszej konfiguracji…
+0765|Uruchom przez ADB ›
+0766|Wykonuję settings put global adb_enabled 0 i sprawdzam port 5555…
+0767|ZAPISANE WYŁĄCZONE PAKIETY (NACIŚNIJ, ABY WŁĄCZYĆ PONOWNIE)
+0768|SCENY
+0769|LOSOWANIE Z FOLDERU
+0770|URUCHAMIANIE I PODTRZYMYWANIE
+0771|SUBREDDITY (WYBIERZ JEDEN LUB KILKA)
+0772|Zapisz
+0773|Powiedz tytuł filmu, serialu albo nazwę aplikacji
+0774|Skanuj aplikacje (ADB)
+0775|Skanuj zainstalowane aplikacje
+0776|Zeskanuj telefonem i zatwierdź.
+0777|Skanuję aplikacje systemowe telewizora…
+0778|Skanuję zainstalowane pakiety systemowe przez ADB i porównuję z 341 modelami TV…
+0779|Wygaś ekran
+0780|Wygaszacz ekranu
+0781|Wygaszacz ekranu
+0782|Szukaj
+0783|Przycisk wyszukiwania
+0784|Szukaj modelu lub marki TV
+0785|Szukaj aplikacji, filmów i seriali
+0786|Szukaj po nazwie
+0787|Szukaj miasta lub miejscowości…
+0788|Szukam…
+0789|Szukam…
+0790|Tryb bezpieczny (wymaga jednorazowego parowania, by nadać uprawnienia)
+0791|Tryb bezpieczny aktywny (ADB nieużywane · samonaprawa gotowa)
+0792|Wybrano tryb bezpieczny — po sparowaniu ADB nada WRITE_SECURE_SETTINGS i zamknie port 5555.
+0793|Tryb bezpieczny — nadaj WRITE_SECURE_SETTINGS i zamknij ADB (zalecany)
+0794|Tryb bezpieczny — WRITE_SECURE_SETTINGS i zamknięcie ADB (zalecany)
+0795|Bezpieczna konfiguracja (ADB)
+0796|Uwaga dot. bezpieczeństwa: podtrzymywanie jest domyślnie włączone. W trybie bezpiecznym tvOS Launcher używa WRITE_SECURE_SETTINGS do przywracania ułatwień dostępu bezpośrednio, bez korzystania z ADB (nawet gdy ADB jest włączone w telewizorze). W trybie stałego ADB podtrzymywanie może też używać lokalnego ADB na porcie 5555.
+0797|Zaznacz wszystko / nic
+0798|Zaznacz wszystko / odznacz wszystko
+0799|Wybierz aplikację ekranu głównego
+0800|Najpierw wybierz model TV
+0801|Wybierz folder z tapetami
+0802|Wybierz obraz tapety
+0803|Wybierz folder i włączaj lub wyłączaj poszczególne tapety w środku
+0804|Wybierz tryb nadawania uprawnień (ułatwienia dostępu dla mapowania przycisków, „Oglądaj dalej” i Wi-Fi). Wybierz JEDEN tryb poniżej:
+0805|Najpierw zaznacz co najmniej jeden pakiet.
+0806|Wybierz folder z tapetami…
+0807|Wybierz język, aby zacząć
+0808|Wybrano
+0809|Wybrano — naciśnij OK, aby przełączyć
+0810|Wyślij kod klawisza

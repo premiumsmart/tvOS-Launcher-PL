@@ -1,0 +1,270 @@
+0271|Utwórz swój profil
+0272|Bieżące miejsce
+0273|Bieżąca wersja
+0274|Bieżąca wersja: v
+0275|Obecnie zsynchronizowano z:
+0276|Własna
+0277|Własna 2
+0278|Własna 3
+0279|Własna 4
+0280|Własna 5
+0281|Własny kod klawisza (wpisz numer…)
+0282|Zmieniono własny obraz ekranu blokady.
+0283|Własna tapeta nr
+0284|Zmieniono własne tło.
+0285|Własny obraz
+0286|Zmieniono własną tapetę sceny.
+0287|Wyrównanie zegara na własnej tapecie
+0288|Tryb własnej tapety
+0289|Ustawienia własnej tapety…
+0290|WIDŻETY PULPITU
+0291|USTAWIENIE DOMYŚLNEGO LAUNCHERA (TCL / PHILIPS / GOOGLE TV)
+0292|DOK
+0293|SKALA DOKU (OD -50% DO +50%)
+0294|Ciemny
+0295|Data i godzina
+0296|Odchudzanie zakończone
+0297|Odchudzanie TV —
+0298|Odchudź TV…
+0299|Stan odchudzania
+0300|Odchudzam TV…
+0301|Domyślny
+0302|Domyślnie (tryb Ambient)
+0303|Domyślnie (automatycznie)
+0304|Domyślne uruchomienie aplikacji (główna aktywność)
+0305|Domyślny ekran główny
+0306|Ustawiono domyślny ekran główny przez ADB!
+0307|Domyślny ekran główny
+0308|Przywrócono domyślną ikonę
+0309|Wyrównanie zegara na domyślnej tapecie
+0310|Usuń
+0311|Usuń profil
+0312|Wykryto automatycznie
+0313|Programista
+0314|Opcje programisty…
+0315|Nie zrozumiałem — naciśnij mikrofon i spróbuj ponownie
+0316|Wyłącz wszystkie fabryczne launchery
+0317|Wyłącz wszystkie fabryczne launchery i ustaw tvOS Launcher jako ekran główny
+0318|Wyłącz mimo to
+0319|Wyłącz zaznaczone
+0320|Wyłącz fabryczne launchery TV (TCL / Philips / Google TV)
+0321|Wyłącz systemowe launchery
+0322|Wyłącz wszystkie ›
+0323|Wyłącz systemowe launchery
+0324|Wyłącz systemowe launchery…
+0325|Wyłączone
+0326|Rejestr wyłączonych aplikacji
+0327|Kopia listy wyłączonych aplikacji
+0328|Wyłączam pakiet…
+0329|Rozłączono (ADB wyłączone)
+0330|Ekran
+0331|Wyświetlane, gdy żadna aplikacja nie jest zaznaczona, gdy zaznaczone są Ustawienia lub inne elementy albo gdy zaznaczona aplikacja nie ma pozycji „Oglądaj dalej”.
+0332|Nie przeszkadzać
+0333|Rozmiar doku
+0334|Nie pokazuj pogody
+0335|Gotowe
+0336|Podwójne naciśnięcie (2x)
+0337|W dół
+0338|Pobierz i zainstaluj
+0339|Pobieram najnowszy plik APK z GitHuba…
+0340|Mżawka
+0341|Dynamiczne
+0342|Każda marka telewizorów używa innych nazw pakietów i aktywności dla Wi-Fi, Bluetooth, dźwięku, wejść i trybu Ambient. Możesz też wybrać ekran blokady jako tryb Ambient (dla telewizorów bez wbudowanego trybu Ambient) oraz włączać i wyłączać poszczególne elementy Panelu sterowania.
+0343|Każda marka telewizorów używa innych nazw pakietów i aktywności dla Wi-Fi, Bluetooth, dźwięku i wejść. Wybierz aplikację, a potem dokładną aktywność uruchamianą z Panelu sterowania (i z aplikacji Wejścia w doku).
+0344|Każda osoba ma własne przypięte aplikacje i listę „Oglądaj dalej”.
+0345|Każda osoba ma własny rząd „Oglądaj dalej” i własną kolejność aplikacji.
+0346|Czas jednej sceny
+0347|Czas jednej tapety
+0348|Łatwa konfiguracja (automatycznie przez ADB)
+0349|Włącz ADB i przełącz
+0350|Włącz debugowanie ADB
+0351|Włącz ADB teraz
+0352|Włączyć ADB dla trybu stałego?
+0353|Włącz mapowanie przycisków w ułatwieniach dostępu…
+0354|Włącz naprawę przycisku Home (przez ułatwienia dostępu)
+0355|Włącz pulpit ekranu głównego
+0356|Włącz podtrzymywanie
+0357|Włączyć podtrzymywanie?
+0358|Włącz debugowanie USB / sieciowe w Opcjach programisty
+0359|Włącz wszystkie ›
+0360|Włącz w ułatwieniach dostępu, aby mapowane przyciski działały we wszystkich aplikacjach
+0361|Włącz w ułatwieniach dostępu…
+0362|Włącz tvOS Launcher w ustawieniach ułatwień dostępu Androida TV, aby mapowane przyciski pilota i nakładka Panelu sterowania działały w każdej aplikacji.
+0363|Włącz przez ADB
+0364|Włączone w losowaniu
+0365|Włączam debugowanie ADB i przełączam na tryb stałego ADB…
+0366|Włączam debugowanie ADB…
+0367|Włączam ADB…
+0368|Włączam pakiet…
+0369|Wpisz kod klawisza Androida
+0370|Dokładne dopasowanie kodu modelu
+0371|Dokładne dopasowanie modelu
+0372|DOSTAWCA PROGNOZY
+0373|Przewijanie do przodu
+0374|Pobieram następną tapetę z Reddita…
+0375|Mniej aplikacji
+0376|Filtr
+0377|Filtruj aplikacje systemowe
+0378|Filtruj modele TV
+0379|Filtr ›
+0380|Dokończ konfigurację
+0381|Napraw przycisk Home (uruchamiaj tvOS Launcher)
+0382|Mgła
+0383|Mgliście
+0384|Losowanie z folderu
+0385|Ustalono na podstawie połączenia internetowego
+0386|Darmowa prognoza, bez zakładania konta
+0387|UWAGA DOT. WI-FI W GOOGLE TV
+0388|Ogólny profil Android TV / Google TV
+0389|Zaczynamy
+0390|Pobieram pogodę…
+0391|Najnowsza wersja na GitHubie
+0392|Szkło
+0393|Przejdź do ekranu głównego
+0394|Złota godzina
+0395|Dzień dobry
+0396|Dobry wieczór
+0397|Dzień dobry
+0398|Dobry wieczór
+0399|Asystent Google / wyszukiwanie głosowe (opcjonalne)
+0400|Gry Google Play (opcjonalne)
+0401|Ostrzeżenie dot. Wi-Fi w Google TV
+0402|Kreator konfiguracji Google TV i strażnik launchera
+0403|Sklep Google TV / Filmy i TV
+0404|Telemetria i diagnostyka Google
+0405|Nadaj dostęp do wszystkich plików…
+0406|Nadaj wszystkie uprawnienia przez lokalne ADB
+0407|Nadaj wszystkie przez ADB
+0408|Nadaj wszystkie ›
+0409|Nadaj uprawnienia i zamknij ADB teraz
+0410|Nadaj uprawnienia teraz
+0411|Nadaj uprawnienia teraz (ADB zostaje otwarte)
+0412|Nadaj dostęp do pamięci…
+0413|Nadawaj uprawnienia ręcznie, po kolei
+0414|Nadawaj uprawnienia ręcznie, po kolei, w ustawieniach Androida TV
+0415|Nadaj uprawnienie do pamięci
+0416|Nadaj ›
+0417|Nadaję uprawnienia przez lokalne ADB…\n\nJeśli na ekranie pojawi się pytanie „Zezwolić na debugowanie USB?”, zaznacz „Zawsze zezwalaj” i wybierz Zezwól.
+0418|Nadaje WRITE_SECURE_SETTINGS i po zakończeniu zamyka port 5555
+0419|Jednorazowo nadaje WRITE_SECURE_SETTINGS do samonaprawy ułatwień dostępu, potem zamyka port 5555
+0420|Nadaje wszystkie wymagane uprawnienia automatycznie, za jednym razem
+0421|Szary
+0422|Zielony
+0423|Zielony przycisk
+0424|Przycisk Przewodnik
+0425|↑
+0426|EKRAN GŁÓWNY I UPRAWNIENIA
+0427|PULPIT EKRANU GŁÓWNEGO
+0428|WIDŻETY EKRANU GŁÓWNEGO
+0429|PROGNOZA GODZINOWA
+0430|GDZIE OBEJRZEĆ
+0431|Wiadomości z Twojego miasta i ze świata
+0432|Ulewny deszcz
+0433|Intensywny śnieg
+0434|Ukryte aplikacje
+0435|Ukryta w doku · naciśnij OK, aby pokazać
+0436|Ukryj
+0437|Ukryj we wszystkich aplikacjach
+0438|Ekran główny i system
+0439|Home (3)
+0440|Włączono naprawę przycisku Home i ułatwienia dostępu!
+0441|Włączono naprawę przycisku Home!
+0442|Pulpit ekranu głównego
+0443|Widżety pulpitu…
+0444|Ustawienia ekranu głównego
+0445|Naprawa przycisku Home wyłączona.
+0446|Naprawa przycisku Home włączona — włącz też powyżej usługę ułatwień dostępu, aby dało się przechwycić przycisk Home.
+0447|Naprawa przycisku Home włączona — naciśnięcie Home uruchomi tvOS Launcher.
+0448|Naprawa przycisku Home włączona.
+0449|Ekran główny
+0450|Skrót pogody na ekranie głównym
+0451|Ustawienia widżetów ekranu głównego
+0452|Ustawienia ekranu głównego
+0453|Wilgotność
+0454|Rozumiem — otwórz ręczne odchudzanie
+0455|APLIKACJA WEJŚCIA W DOKU
+0456|ZAINSTALOWANE APLIKACJE
+0457|Zdjęcia, filmy i strony WWW wysyłane z dowolnego telefonu lub komputera w tej samej sieci Wi-Fi. Dla wszystkich korzystających z tego telewizora.
+0458|W Centrum sterowania (wymaga dostępu do lokalizacji)
+0459|Uwzględniona w rotacji
+0460|Indygo
+0461|Przycisk Info
+0462|Wejścia
+0463|Wejścia (Panel sterowania i dok)
+0464|Zainstaluj
+0465|Instaluję aktualizację…
+0466|Jego układ i lista „Oglądaj dalej” zostaną usunięte.
+0467|Na razie tylko Twoje tło
+0468|PODTRZYMYWANIE
+0469|Podtrzymywanie (automatyczna naprawa ułatwień dostępu)
+0470|Podtrzymywanie (automatyczna naprawa uprawnień)
+0471|Podtrzymywanie wyłączone.
+0472|Podtrzymywanie włączone.
+0473|Nie wygaszaj ekranu
+0474|Pisz dalej, aby szukać filmów i seriali
+0475|Oglądaj dalej
+0476|Zostawia włączone sieciowe ADB na potrzeby odchudzania CleanYourTV (uwaga: port 5555 pozostaje otwarty w sieci lokalnej)
+0477|Klawisz:
+0478|↓
+0479|LOKALIZACJA
+0480|OPCJE EKRANU BLOKADY
+0481|WYGLĄD
+0482|Język
+0483|Język, pogoda, sceny, aplikacje i osoby
+0484|Większy dok — nadmiarowe aplikacje w razie potrzeby same przejdą do „Inne aplikacje”
+0485|Poprzedni kanał
+0486|Najnowsza wersja na GitHubie: v
+0487|Uruchamiaj automatycznie po starcie systemu
+0488|Lewo
+0489|Skonfigurujmy tvOS Launcher.
+0490|Skonfigurujmy tvOS Launcher.
+0491|Nasłuchuj naciśnięcia przycisku pilota
+0492|Słucham…
+0493|Wczytuję następną tapetę z Reddita…
+0494|Wczytuję tytuły…
+0495|Lokalizacja
+0496|Zablokuj teraz
+0497|Ekran blokady
+0498|Ustawienia ekranu blokady
+0499|Ustawienia ekranu blokady…
+0500|Naprawa przytrzymania przycisku głośności
+0501|Naprawa przytrzymania głośności wyłączona (używana jest systemowa regulacja głośności).
+0502|Naprawa przytrzymania głośności włączona (dla telewizorów, na których przytrzymanie przycisku przestaje działać).
+0503|Wygląd i sceny
+0504|Wygląda na
+0505|PASUJĄCE MODELE DLA
+0506|Ustaw jako ekran główny
+0507|Ustaw tvOS Launcher jako domyślny ekran główny
+0508|Ustaw tvOS Launcher jako ekran główny
+0509|Ustawić tvOS Launcher jako ekran główny?
+0510|Zarządzaj aplikacjami systemowymi w ustawieniach TV…
+0511|Uprawnienia ręczne
+0512|Konfiguracja ręczna
+0513|Ręczne odchudzanie (wszystkie aplikacje systemowe)
+0514|Ręczne odchudzanie (wszystkie aplikacje systemowe)…
+0515|Przypisz do dowolnego przycisku pilota akcje dla pojedynczego (1x), podwójnego (2x) i potrójnego (3x) naciśnięcia — otwarcie Panelu sterowania, przełącznika ostatnich aplikacji albo dowolnej aplikacji.
+0516|Pasujące miejsca
+0517|Pamięć
+0518|Przycisk Menu
+0519|Tryb 1 (standardowy · domyślny)
+0520|Tryb 1 — standardowy (domyślny, dla większości telewizorów z Androidem i pilotów na podczerwień)
+0521|Tryb 2 (HY320 / projektor)
+0522|Tryb 2 — HY320 / projektor (AudioService i tryb serii impulsów podczerwieni)
+0523|Tryb 3 — Onn TV Box (szybkie zatrzymanie po puszczeniu, 0 dodatkowych kroków, tryb ADB i bezpieczny)
+0524|Tryb: konfiguracja ręczna (bez ADB)
+0525|Tryb: stałe ADB (ADB zostaje otwarte)
+0526|Tryb: bezpieczna konfiguracja automatyczna i zamknięcie ADB (zalecany)
+0527|Modele według podobieństwa aplikacji systemowych
+0528|Nowoczesny
+0529|Więcej aplikacji
+0530|Więcej aplikacji
+0531|Najczęściej oglądane
+0532|Kraje dla „Najczęściej oglądane”
+0533|Przeważnie bezchmurnie
+0534|Przeważnie słonecznie
+0535|Przenieś
+0536|Przenieś ikonę
+0537|Przesuń w lewo w doku
+0538|Przesuń w prawo w doku
+0539|Przenieś do „Inne aplikacje”
+0540|Film
