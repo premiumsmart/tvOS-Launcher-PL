@@ -1,6 +1,6 @@
 # Zrzuty do dokumentacji forka
 
-W `gotowe/` znajduje się 11 pełnych zrzutów 16:9 z Android TV, dwa wycinki szczegółów, kolaż 3 × 2 i dwa warianty planszy — razem 16 plików. Każdy plik jest w WebP, ma szerokość 1600 px i zajmuje mniej niż 400 000 bajtów. Pełne zrzuty mają rozmiar 1600 × 900 px; układ launchera i dok pozostają w całości w kadrze.
+W `gotowe/` znajduje się 10 pełnych zrzutów 16:9 z Android TV, dwa wycinki szczegółów, kolaż 3 × 2 i dwa warianty planszy — razem 15 plików. Każdy plik jest w WebP, ma szerokość 1600 px i zajmuje mniej niż 400 000 bajtów. Pełne zrzuty mają rozmiar 1600 × 900 px; układ launchera i dok pozostają w całości w kadrze.
 
 | Plik | Zawartość |
 | --- | --- |
@@ -14,7 +14,6 @@ W `gotowe/` znajduje się 11 pełnych zrzutów 16:9 z Android TV, dwa wycinki sz
 | `widget-settings.webp` | Ustawienia kafelków |
 | `goal-notification.webp` | Pełny ekran z przykładową plakietką gola i dokiem |
 | `goal-badge.webp` | Wycinek przykładowej plakietki gola |
-| `setup-scenes.webp` | Kreator: wybór scen |
 | `setup-mode.webp` | Kreator: tryb nadawania uprawnień |
 | `screensaver-1.webp` | Wygaszacz: futurystyczne miasto nocą |
 | `preview.webp` | Fioletowa galeria 3 × 2: ekran główny, mecze, JustWatch, pogoda, gol i wygaszacz |

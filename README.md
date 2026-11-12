@@ -12,7 +12,7 @@ Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgeniu
 
 | Zmiana | Zrzut — kliknij, aby powiększyć |
 | --- | --- |
-| **Pełne spolszczenie.** Interfejs, kreator pierwszego uruchomienia i opisy pogody są po polsku. | [<img src="zrzuty-github/gotowe/setup-scenes.webp" width="300" alt="Kreator wyboru scen po polsku">](zrzuty-github/gotowe/setup-scenes.webp) |
+| **Pełne spolszczenie.** Interfejs, kreator pierwszego uruchomienia i opisy pogody są po polsku. | [<img src="zrzuty-github/gotowe/widget-settings.webp" width="300" alt="Ustawienia kafelków po polsku">](zrzuty-github/gotowe/widget-settings.webp) |
 | **Kafelki i okna Liquid Glass: mecze.** Kafelek pokazuje najbliższy mecz, a podczas spotkania wynik na żywo z LiveScore; osobne okno pozwala przeglądać mecze i obserwować drużyny. | [<img src="zrzuty-github/gotowe/matches-tile.webp" width="300" alt="Kafelek meczów z herbami i godziną">](zrzuty-github/gotowe/matches-tile.webp)<br>[<img src="zrzuty-github/gotowe/matches.webp" width="300" alt="Lista meczów i duży podgląd wybranego meczu">](zrzuty-github/gotowe/matches.webp) |
 | **„Najczęściej oglądane”.** Szklany kafelek i okno z popularnymi filmami i serialami z JustWatch dla Polski, opisami oraz przejściem do dostępnych serwisów. | [<img src="zrzuty-github/gotowe/most-watched.webp" width="300" alt="Polskie okno Najczęściej oglądane">](zrzuty-github/gotowe/most-watched.webp) |
 | **Pogoda.** Kafelek Liquid Glass otwiera polską prognozę godzinową i na kolejne dni. | [<img src="zrzuty-github/gotowe/weather.webp" width="300" alt="Pełny ekran z oknem pogody i ukrytą nazwą miejscowości">](zrzuty-github/gotowe/weather.webp) |
@@ -49,7 +49,7 @@ Wynik: `build/tvos-launcher-pl.apk`. Klucz `mod-pl.keystore` i plik hasła `mod-
 
 Skrypt odtwarza `src/` i `AndroidManifest.xml` z Gita, nakłada opisane zmiany przez `pl/naloz.py` oraz dodaje klasy z `pl/java/`; buduj w osobnej kopii roboczej, jeśli masz ręczne zmiany w źródłach.
 
-Sceny „Czerwone Lamborghini” i „Audi RS7 nocą” wymagają własnych zdjęć pod nazwami `pl/zasoby/ulubiona-lamborghini.jpg` i `pl/zasoby/ulubiona-audi-rs7.jpg` oraz własnych warstw `pl/zasoby/scena-audi-rs7-glass.jpg` i `pl/zasoby/scena-audi-rs7-fg.webp`.
+Przy samodzielnym budowaniu ze źródeł sceny „Czerwone Lamborghini” i „Audi RS7 nocą” wymagają własnych zdjęć pod nazwami `pl/zasoby/ulubiona-lamborghini.jpg` i `pl/zasoby/ulubiona-audi-rs7.jpg` oraz własnych warstw `pl/zasoby/scena-audi-rs7-glass.jpg` i `pl/zasoby/scena-audi-rs7-fg.webp`.
 
 ### Dane i licencja
 
@@ -69,7 +69,7 @@ A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius
 
 | Change | Screenshot — click to enlarge |
 | --- | --- |
-| **Full Polish translation.** The interface, first-run wizard and weather descriptions are in Polish. | [<img src="zrzuty-github/gotowe/setup-scenes.webp" width="300" alt="Scene selection wizard in Polish">](zrzuty-github/gotowe/setup-scenes.webp) |
+| **Full Polish translation.** The interface, first-run wizard and weather descriptions are in Polish. | [<img src="zrzuty-github/gotowe/widget-settings.webp" width="300" alt="Widget settings in Polish">](zrzuty-github/gotowe/widget-settings.webp) |
 | **Liquid Glass tiles and windows: football.** The tile shows the next fixture and LiveScore scores during a match; a dedicated window lets you browse fixtures and follow teams. | [<img src="zrzuty-github/gotowe/matches-tile.webp" width="300" alt="Football tile with team crests and kickoff time">](zrzuty-github/gotowe/matches-tile.webp)<br>[<img src="zrzuty-github/gotowe/matches.webp" width="300" alt="Fixture list and large selected match preview">](zrzuty-github/gotowe/matches.webp) |
 | **“Most Watched”.** A glass tile and window show popular films and series from JustWatch for Poland, with descriptions and links to available services. | [<img src="zrzuty-github/gotowe/most-watched.webp" width="300" alt="Polish Most Watched window">](zrzuty-github/gotowe/most-watched.webp) |
 | **Weather.** The Liquid Glass tile opens an hourly and multi-day forecast in Polish. | [<img src="zrzuty-github/gotowe/weather.webp" width="300" alt="Full screen with the weather window and location blurred">](zrzuty-github/gotowe/weather.webp) |
@@ -106,7 +106,7 @@ Output: `build/tvos-launcher-pl.apk`. The signing key `mod-pl.keystore` and pass
 
 The script restores `src/` and `AndroidManifest.xml` from Git, applies the documented changes through `pl/naloz.py`, and adds classes from `pl/java/`; use a separate working copy if you have manual source edits.
 
-The “Red Lamborghini” and “Audi RS7 at night” scenes require your own images named `pl/zasoby/ulubiona-lamborghini.jpg` and `pl/zasoby/ulubiona-audi-rs7.jpg`, plus your own layers named `pl/zasoby/scena-audi-rs7-glass.jpg` and `pl/zasoby/scena-audi-rs7-fg.webp`.
+When building from source, the “Red Lamborghini” and “Audi RS7 at night” scenes require your own images named `pl/zasoby/ulubiona-lamborghini.jpg` and `pl/zasoby/ulubiona-audi-rs7.jpg`, plus your own layers named `pl/zasoby/scena-audi-rs7-glass.jpg` and `pl/zasoby/scena-audi-rs7-fg.webp`.
 
 ### Data and license
 
