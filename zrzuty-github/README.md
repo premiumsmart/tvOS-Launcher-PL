@@ -1,6 +1,6 @@
 # Galeria tvOS Launcher PL
 
-13 obrazów WebP o szerokości 1600 px, każdy poniżej 400 KB. Pełne zrzuty zachowują proporcje 16:9 i widoczny dok aplikacji.
+15 obrazów WebP o szerokości 1600 px, każdy poniżej 400 KB. Pełne zrzuty ekranu głównego zachowują proporcje 16:9 i widoczny dok aplikacji.
 
 | Plik | Zawartość |
 | --- | --- |
@@ -15,6 +15,8 @@
 | `goal-badge.webp` | Wycinek przykładowej plakietki gola |
 | `setup-mode.webp` | Kreator: tryb nadawania uprawnień |
 | `screensaver-1.webp` | Wygaszacz: futurystyczne miasto nocą |
+| `update-settings.webp` | Ustawienia → Aktualizacje (wersja testowa na emulatorze, 2.2.0-pl na GitHubie) |
+| `update-dialog.webp` | Okno „Dostępna aktualizacja” nad ustawieniami (ta sama wersja testowa) |
 | `preview.webp` | Fioletowa galeria 3 × 2: ekran główny, mecze, JustWatch, pogoda, gol i wygaszacz |
 | `showcase.webp` | Główna plansza z czterema widokami: duży ekran główny z pełnym dokiem, okna meczów, filmów i pogody oraz plakietka gola; cienkie świetlne krawędzie 2–3 px, miękkie cienie i fioletowa oprawa |
 

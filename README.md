@@ -35,6 +35,7 @@ Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgeniu
 | **Ulubione tapety.** Zapisane zdjęcia wracają domyślnie co piątą zmianę tapety; częstotliwość można zmienić. | [<img src="zrzuty-github/gotowe/wallpaper-settings.webp" width="300" alt="Ustawienie ulubionych co piątą tapetę">](zrzuty-github/gotowe/wallpaper-settings.webp) |
 | **Wygaszacz ekranu.** Korzysta z tych samych zdjęć i tego samego szklanego zegara co ekran główny; styl cyfr zegara można wybrać. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Wygaszacz z futurystycznym miastem nocą">](zrzuty-github/gotowe/screensaver-1.webp) |
 | **Kreator zachowuje debugowanie USB.** Zalecany tryb konfiguracji nie wyłącza debugowania USB. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Zalecany tryb w polskim kreatorze">](zrzuty-github/gotowe/setup-mode.webp) |
+| **Aktualizacje z ustawień (od 2.2.0-pl).** Launcher sam sprawdza wydania tego repozytorium (**Ustawienia → Aktualizacje**, automatyczne sprawdzanie domyślnie włączone) i pokazuje okno z listą zmian i przyciskiem „Zainstaluj”; ustawienia zostają. Na zrzutach wersja testowa. | [<img src="zrzuty-github/gotowe/update-settings.webp" width="300" alt="Strona Ustawienia → Aktualizacje">](zrzuty-github/gotowe/update-settings.webp)<br>[<img src="zrzuty-github/gotowe/update-dialog.webp" width="300" alt="Okno dostępnej aktualizacji z przyciskiem Zainstaluj">](zrzuty-github/gotowe/update-dialog.webp) |
 
 ### Instalacja i aktualizacje
 
@@ -88,6 +89,7 @@ A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius
 | **Favorite wallpapers.** Saved images return every fifth wallpaper change by default; the frequency is configurable. | [<img src="zrzuty-github/gotowe/wallpaper-settings.webp" width="300" alt="Favorites set to return every fifth wallpaper">](zrzuty-github/gotowe/wallpaper-settings.webp) |
 | **Screensaver.** It uses the same images and glass clock as the home screen; the clock digit style is selectable. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Screensaver with a futuristic city at night">](zrzuty-github/gotowe/screensaver-1.webp) |
 | **The wizard keeps USB debugging enabled.** The recommended setup mode no longer disables USB debugging. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Recommended mode in the Polish setup wizard">](zrzuty-github/gotowe/setup-mode.webp) |
+| **Updates from settings (since 2.2.0-pl).** The launcher checks this repository’s releases (**Settings → Updates**, automatic checks on by default) and shows a window with the changelog and an “Install” button; your settings are kept. The screenshots show a test build. | [<img src="zrzuty-github/gotowe/update-settings.webp" width="300" alt="Settings → Updates page">](zrzuty-github/gotowe/update-settings.webp)<br>[<img src="zrzuty-github/gotowe/update-dialog.webp" width="300" alt="Update available window with the Install button">](zrzuty-github/gotowe/update-dialog.webp) |
 
 ### Installation and updates
 
