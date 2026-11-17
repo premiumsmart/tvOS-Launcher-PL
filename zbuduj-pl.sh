@@ -1,7 +1,9 @@
 #!/bin/bash
 # Buduje spolszczoną wersję tvOS Launcher (mod PL) na Windowsie w Git Bash, bez Gradle.
-# Użycie:  bash zbuduj-pl.sh               (na box użytkownika: z dziennikiem moda w logcat)
-#          DZIENNIK=0 bash zbuduj-pl.sh    (instalka dla innych: bez dziennika moda, zob. pl/java/ModPlDziennik.java)
+# Użycie:  bash zbuduj-pl.sh               (do testów: z dziennikiem moda w logcat)
+#          DZIENNIK=0 bash zbuduj-pl.sh    (wydanie na GitHub i instalka: bez dziennika moda, zob. pl/java/ModPlDziennik.java)
+# Zdjęć własnych scen (pl/zasoby/ulubiona-*, scena-audi-rs7-*) nie ma w APK ani w repozytorium: launcher czyta je
+# z pamięci aplikacji na telewizorze (Android/data/<pakiet>/files/mod_pl/), jeśli ktoś je tam wgra.
 # Wynik:   build/tvos-launcher-pl.apk  (podpisany lokalnym kluczem moda: mod-pl.keystore,
 #          hasło w pliku mod-pl.keystore.haslo; oba pliki są poza repozytorium)
 #
@@ -24,8 +26,8 @@ SDK="${ANDROID_HOME:-$HOME/AppData/Local/Android/Sdk}"
 BT="$SDK/build-tools/34.0.0"
 BT_D8="$SDK/build-tools/35.0.0"
 JAR="$SDK/platforms/android-34/android.jar"
-WERSJA_KOD="${VERSION_CODE:-44}"
-WERSJA_NAZWA="${VERSION_NAME:-2.1.5-pl30}"
+WERSJA_KOD="${VERSION_CODE:-46}"
+WERSJA_NAZWA="${VERSION_NAME:-2.2.0-pl}"
 
 for f in "$BT/aapt2.exe" "$BT/zipalign.exe" "$BT_D8/lib/d8.jar" "$JAR"; do
     [ -e "$f" ] || { echo "Brak: $f" >&2; exit 1; }
@@ -38,9 +40,15 @@ echo "== Tłumaczenia i zmiany moda PL (od czystych źródeł z gita - ręczne z
 git checkout -- src AndroidManifest.xml
 python -I pl/naloz.py
 python -I pl/generuj.py
-# zasoby moda (np. dołączona ulubiona tapeta) trafiają do assets/mod_pl
-mkdir -p assets/mod_pl
-cp pl/zasoby/* assets/mod_pl/
+# zasoby moda (np. model wykrywacza aut) trafiają do assets/mod_pl; folder czyścimy przy każdym buildzie, a zdjęcia
+# własnych scen zostają poza APK
+rm -rf assets/mod_pl && mkdir -p assets/mod_pl
+for f in pl/zasoby/*; do
+    case "$(basename "$f")" in
+        ulubiona-*|scena-audi-rs7-*) ;;
+        *) cp "$f" assets/mod_pl/ ;;
+    esac
+done
 
 "$BT/aapt2.exe" compile --dir res -o build/res.zip
 "$BT/aapt2.exe" link -o build/unsigned.apk -I "$JAR" --manifest AndroidManifest.xml \

@@ -52,7 +52,8 @@ public final class TestPl {
 
         out.println("--- napisy sklejane w locie ---");
         dyn("You are up to date (v2.1.5-pl1)");
-        dyn("A new version of tvOS Launcher is available on GitHub.\nCurrent version: v2.1.5 → New version: v2.1.6\n\nUwaga testowa");
+        // od 2.2.0 oryginał pisze podwójne spacje wokół strzałki (AppUpdater)
+        dyn("A new version of tvOS Launcher is available on GitHub.\nCurrent version: v2.2.0-pl  →  New version: v2.2.0-pl2\n\nUwaga testowa");
         dyn("Changelog — v2.1.6");
         dyn("Downloading update v2.1.6…");
         dyn("Installing update v2.1.6 automatically via ADB…");

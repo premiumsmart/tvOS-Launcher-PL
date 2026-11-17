@@ -625,7 +625,7 @@ final class ModPlTapety {
         if (plik == null || !plik.startsWith("w-ulubiona-") || !plik.endsWith(".jpg")) return null;
         String nazwa = plik.substring("w-ulubiona-".length(), plik.length() - 4);
         try {
-            java.io.InputStream we = c.getAssets().open("mod_pl/scena-" + nazwa + "-fg.webp");
+            java.io.InputStream we = otworz(c, "mod_pl/scena-" + nazwa + "-fg.webp");
             Bitmap przod;
             try {
                 przod = android.graphics.BitmapFactory.decodeStream(we);
@@ -658,10 +658,85 @@ final class ModPlTapety {
         return false;
     }
 
-    /** Lista scen do kreatora: najpierw auta moda, potem pozostałe w dotychczasowej kolejności. */
-    static Scenes.Spec[] najpierwAuta(Scenes.Spec[] wszystkie) {
+    /*
+     * Zdjęcia aut moda (Lambo z Wallhaven, Audi RS7 użytkownika) nie są w APK, żeby nie trafiały do innych
+     * (decyzja użytkownika 17.11.2026). Na jego telewizorze leżą w pamięci aplikacji:
+     * Android/data/com.techgenius.tvoslauncher/files/mod_pl/ (wgrywa je pl/zdjecia-na-box.sh), więc zostają po każdej
+     * aktualizacji z GitHuba. Plik szukamy najpierw w APK (assets/mod_pl), potem tam.
+     */
+
+    /** Plik moda poza APK ("mod_pl/..." w pamięci aplikacji) albo null, gdy go nie ma. */
+    static File plikPozaApk(Context c, String sciezka) {
+        if (c == null || sciezka == null || !sciezka.startsWith("mod_pl/")) return null;
+        try {
+            File baza = c.getExternalFilesDir(null);
+            if (baza == null) return null;
+            File f = new File(baza, sciezka);
+            return f.isFile() && f.length() > 0 ? f : null;
+        } catch (Throwable e) {
+            return null;
+        }
+    }
+
+    /** Strumień pliku moda: z APK, a gdy go tam nie ma, z pamięci aplikacji. */
+    static java.io.InputStream otworz(Context c, String sciezka) throws java.io.IOException {
+        try {
+            return c.getAssets().open(sciezka);
+        } catch (java.io.IOException wApk) {
+            File f = plikPozaApk(c, sciezka);
+            if (f == null) throw wApk;
+            return new FileInputStream(f);
+        }
+    }
+
+    private static boolean jestZasob(Context c, String sciezka) {
+        if (sciezka == null || sciezka.isEmpty()) return false;
+        try {
+            c.getAssets().open(sciezka).close();
+            return true;
+        } catch (java.io.IOException e) {
+            return plikPozaApk(c, sciezka) != null;
+        }
+    }
+
+    private static final Map<String, Boolean> DOSTEPNE = new HashMap<String, Boolean>();
+
+    /** Scena jest do wyboru: zwykłe zawsze, auta moda tylko wtedy, gdy na tym telewizorze są ich zdjęcia. */
+    static boolean scenaDostepna(Context c, String id) {
+        if (!autoModa(id) || c == null) return true;
+        synchronized (DOSTEPNE) {
+            Boolean jest = DOSTEPNE.get(id);
+            if (jest == null) {
+                Scenes.Spec s = Scenes.byId(id);
+                jest = s != null && id.equals(s.id) && jestZasob(c, s.bgAsset);
+                DOSTEPNE.put(id, jest);
+            }
+            return jest;
+        }
+    }
+
+    /** Nazwy plików moda z APK i z pamięci aplikacji (bez powtórzeń). */
+    static String[] listaZasobow(Context c) {
+        java.util.LinkedHashSet<String> nazwy = new java.util.LinkedHashSet<String>();
+        try {
+            String[] wApk = c.getAssets().list("mod_pl");
+            if (wApk != null) nazwy.addAll(Arrays.asList(wApk));
+        } catch (Throwable ignored) {
+        }
+        try {
+            File baza = c.getExternalFilesDir(null);
+            String[] poza = baza == null ? null : new File(baza, "mod_pl").list();
+            if (poza != null) nazwy.addAll(Arrays.asList(poza));
+        } catch (Throwable ignored) {
+        }
+        return nazwy.toArray(new String[0]);
+    }
+
+    /** Lista scen do kreatora: najpierw auta moda (tylko te, których zdjęcia są), potem pozostałe w dotychczasowej kolejności. */
+    static Scenes.Spec[] najpierwAuta(Context c, Scenes.Spec[] wszystkie) {
         java.util.List<Scenes.Spec> wynik = new java.util.ArrayList<Scenes.Spec>();
         for (String a : AUTA_MODA) {
+            if (!scenaDostepna(c, a)) continue;
             for (Scenes.Spec s : wszystkie) if (a.equals(s.id)) wynik.add(s);
         }
         for (Scenes.Spec s : wszystkie) if (!autoModa(s.id)) wynik.add(s);
@@ -1057,14 +1132,14 @@ final class ModPlTapety {
         final int wersja = 3;
         boolean odswiez = p.getInt("tap_wbudowane_wersja", 1) < wersja;
         try {
-            String[] nazwy = c.getAssets().list("mod_pl");
-            if (nazwy == null) return;
+            String[] nazwy = listaZasobow(c);   // z APK i z pamięci aplikacji (zdjęcia aut moda są poza APK)
+            if (nazwy.length == 0) return;
             File[] zapisane = ulubione(c);
             for (String nazwa : nazwy) {
                 if (!nazwa.startsWith("ulubiona-") || !nazwa.endsWith(".jpg")) continue;
                 boolean juzBylo = dodane.contains("|" + nazwa + "|");
                 if (juzBylo && !odswiez) continue;
-                java.io.InputStream we = c.getAssets().open("mod_pl/" + nazwa);
+                java.io.InputStream we = otworz(c, "mod_pl/" + nazwa);
                 java.io.ByteArrayOutputStream calosc = new java.io.ByteArrayOutputStream();
                 try {
                     byte[] bufor = new byte[65536];

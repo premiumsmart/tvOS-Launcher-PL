@@ -178,7 +178,7 @@
 0178|Sprawdzam najnowszą wersję w wydaniach na GitHubie…
 0179|Sprawdzanie aktualizacji
 0180|Sprawdzam…
-0181|Sprawdza wydania na GitHubie (techgenius1/tvOS-Launcher) i instaluje aktualizacje bezpośrednio na telewizorze.
+0181|Sprawdza wydania polskiej wersji na GitHubie (premiumsmart/tvOS-Launcher-PL) i instaluje aktualizacje prosto na telewizorze.
 0182|Wybierz akcję
 0183|Wybierz aktywność
 0184|Wybierz miasto

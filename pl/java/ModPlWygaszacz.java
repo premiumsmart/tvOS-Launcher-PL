@@ -237,6 +237,97 @@ public class ModPlWygaszacz extends DreamService {
         return I18n.t(c, m + (m == 1 ? " minute" : " minutes"));
     }
 
+    // --- styl cyfr zegara (prośba użytkownika 17.11.2026: „na wygaszaczu jest do wyboru czcionka zegara jak na ekranie?”)
+
+    private static final String K_STYL = "wyg_styl_zegara";
+    /** Kolejność przełączania: jak na ekranie głównym, potem trzy style ekranu głównego. */
+    private static final String[] STYLE = {"", Scenes.CLOCK_STYLE_DUO, Scenes.CLOCK_STYLE_ROUNDED, Scenes.CLOCK_STYLE_TALL};
+
+    /**
+     * Wybór zapisany w ustawieniach wygaszacza ("" = jak na ekranie głównym). Zapis innego typu (np. liczba po
+     * wersji testowej z 17.11.2026, która wywracała launcher przy OK na „Styl zegara”) usuwamy i wracamy do domyślnego.
+     */
+    private static String wybranyStyl(Context c) {
+        String s;
+        try {
+            s = prefs(c).getString(K_STYL, "");
+        } catch (ClassCastException e) {
+            ModPlDziennik.w("ModPlWygaszacz", "styl zegara zapisany innym typem, wracam do domyślnego", e);
+            prefs(c).edit().remove(K_STYL).apply();
+            s = "";
+        }
+        if (s == null) return "";
+        for (String x : STYLE) if (x.equals(s)) return s;
+        return "";
+    }
+
+    /** Styl, którym rysujemy cyfry: wybrany w wygaszaczu albo ten z ekranu głównego. */
+    static String stylZegara(Context c) {
+        String s = wybranyStyl(c);
+        return s.isEmpty() ? Scenes.getClockStyle(c) : s;
+    }
+
+    static void nastepnyStylZegara(Context c) {
+        String s = wybranyStyl(c);
+        int i = 0;
+        for (int k = 0; k < STYLE.length; k++) if (STYLE[k].equals(s)) i = k;
+        prefs(c).edit().putString(K_STYL, STYLE[(i + 1) % STYLE.length]).apply();
+    }
+
+    private static String nazwaStylu(Context c, String st) {
+        if (Scenes.CLOCK_STYLE_ROUNDED.equals(st)) return I18n.s(c, "iPhone Rounded", "iPhone Yuvarlak");
+        if (Scenes.CLOCK_STYLE_TALL.equals(st)) return I18n.s(c, "Tall Glass", "Uzun Cam");
+        return I18n.s(c, "iPhone Duo", "iPhone Duo");
+    }
+
+    static String opisStyluZegara(Context c) {
+        String s = wybranyStyl(c);
+        if (s.isEmpty()) return I18n.t(c, "Same as Home screen") + " (" + nazwaStylu(c, Scenes.getClockStyle(c)) + ")";
+        return nazwaStylu(c, s);
+    }
+
+    /** Ostatnio policzone rozmiary, żeby nie mierzyć czcionek w każdej klatce. */
+    private static String stylPoliczony = null;
+    private static float bazaPoliczona = -1f, rozmiarPoliczony, skalaPoliczona;
+
+    /**
+     * Czcionka i proporcje cyfr jak w stylach ekranu głównego (Scenes.drawStylizedClock): Duo to ściśnięty Bahnschrift
+     * (wght 345, wdth 75, wąski i wysoki), wysokie szkło to zwykła czcionka zegara, zaokrąglony to Varela Round.
+     * Wysokość cyfr każdego stylu wyrównujemy do zaokrąglonego w tym samym rozmiarze, więc zegar zostaje w tym samym
+     * miejscu i analiza chowania za obiektami (Uklad) działa tak samo.
+     */
+    static void ustawCyfry(Context c, Paint p, float rozmiarBazowy) {
+        String st = stylZegara(c);
+        boolean duo = Scenes.CLOCK_STYLE_DUO.equals(st), wysokie = Scenes.CLOCK_STYLE_TALL.equals(st);
+        p.setTypeface(Ui.font(c, duo ? "clock_duo" : wysokie ? "clock" : "clock_rounded"));
+        if (Build.VERSION.SDK_INT >= 26) p.setFontVariationSettings(duo ? "'wght' 345, 'wdth' 75" : null);
+        p.setLetterSpacing(duo ? 0f : -0.012f);
+        if (!duo && !wysokie) {
+            p.setTextScaleX(1f);
+            p.setTextSize(rozmiarBazowy);
+            return;
+        }
+        if (!st.equals(stylPoliczony) || Math.abs(rozmiarBazowy - bazaPoliczona) > 0.5f) {
+            Rect b = new Rect();
+            Paint wzor = new Paint(Paint.ANTI_ALIAS_FLAG);
+            wzor.setTypeface(Ui.font(c, "clock_rounded"));
+            wzor.setTextSize(rozmiarBazowy);
+            wzor.getTextBounds("0", 0, 1, b);
+            float wysZaokraglonego = Math.max(1, b.height());
+            p.setTextScaleX(1f);
+            p.setTextSize(rozmiarBazowy);
+            p.getTextBounds("0", 0, 1, b);
+            float wys = Math.max(1, b.height());
+            rozmiarPoliczony = rozmiarBazowy * wysZaokraglonego / wys;
+            // Duo na ekranie głównym: szerokość ×0,86 i wysokość ×1,24 względem czcionki, czyli węższy o 0,86/1,24
+            skalaPoliczona = duo ? 0.86f / 1.24f : 1f;
+            stylPoliczony = st;
+            bazaPoliczona = rozmiarBazowy;
+        }
+        p.setTextScaleX(skalaPoliczona);
+        p.setTextSize(rozmiarPoliczony);
+    }
+
     static boolean temperatura(Context c) {
         return prefs(c).getBoolean(K_TEMP, true);
     }
@@ -955,9 +1046,7 @@ public class ModPlWygaszacz extends DreamService {
             this.h = h;
             rozmiar = h * 330f / 1080f;
             Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
-            p.setTypeface(Ui.font(c, "clock_rounded"));
-            p.setTextSize(rozmiar);
-            p.setLetterSpacing(-0.012f);
+            ustawCyfry(c, p, rozmiar);   // czcionka według stylu zegara wygaszacza
             Rect b = new Rect();
             p.getTextBounds("0", 0, 1, b);
             wysCyfr = b.height();
@@ -1623,8 +1712,6 @@ public class ModPlWygaszacz extends DreamService {
 
         Widok(Context c) {
             super(c);
-            cyfry.setTypeface(Ui.font(c, "clock_rounded"));
-            cyfry.setLetterSpacing(-0.012f);
             napis.setTypeface(Ui.font(c, "semibold"));
             maly.setTypeface(Ui.font(c, "semibold"));          // Inter, jak data nad zegarem
         }
@@ -1720,7 +1807,7 @@ public class ModPlWygaszacz extends DreamService {
             String czas = new SimpleDateFormat(Scenes.isClock24h(ctx) ? "HH:mm" : "h:mm", Locale.US).format(new Date());
             int dw = czas.indexOf(':');
             String godz = dw > 0 ? czas.substring(0, dw) : czas, min = dw > 0 ? czas.substring(dw + 1) : "";
-            cyfry.setTextSize(uklad.rozmiar * (h / uklad.h));
+            ustawCyfry(ctx, cyfry, uklad.rozmiar * (h / uklad.h));
             float sg = cyfry.measureText(godz), sd = cyfry.measureText(":"), sm = cyfry.measureText(min);
             float x = (w - (sg + sd + sm)) / 2f;
             float gora = s.gora * h, podstawa = gora + uklad.wysCyfr * (h / uklad.h), pod = uklad.podniesienie * (h / uklad.h);

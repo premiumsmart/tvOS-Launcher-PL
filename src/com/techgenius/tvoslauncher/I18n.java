@@ -15,7 +15,7 @@ import java.util.Set;
  * Multi-language localization support for tvOS Launcher:
  * English (en), Turkish (tr), Swedish (sv), Hindi/Indian (hi), Spanish (es), French (fr),
  * German (de), Italian (it), Russian (ru), Portuguese (pt), Arabic (ar),
- * Japanese (ja), and Chinese (zh).
+ * Japanese (ja), Chinese (zh), Korean (ko) and Hebrew (he).
  */
 public final class I18n {
     public static final String LANG_EN = "en";
@@ -33,6 +33,7 @@ public final class I18n {
     public static final String LANG_JA = "ja";
     public static final String LANG_ZH = "zh";
     public static final String LANG_KO = "ko";
+    public static final String LANG_HE = "he";
 
     public static final String[][] LANGUAGES = {
         {LANG_EN, "English", "Use tvOS Launcher in English"},
@@ -49,12 +50,13 @@ public final class I18n {
         {LANG_AR, "العربية", "استخدم tvOS Launcher باللغة العربية"},
         {LANG_JA, "日本語", "tvOS Launcher を日本語で使用する"},
         {LANG_ZH, "中文", "使用中文版 tvOS Launcher"},
-        {LANG_KO, "한국어", "tvOS Launcher를 한국어로 사용"}
+        {LANG_KO, "\ud55c\uad6d\uc5b4", "tvOS Launcher\ub97c \ud55c\uad6d\uc5b4\ub85c \uc0ac\uc6a9"},
+        {LANG_HE, "\u05e2\u05d1\u05e8\u05d9\u05ea", "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-tvOS Launcher \u05d1\u05e2\u05d1\u05e8\u05d9\u05ea"}
     };
 
     private static final Set<String> SUPPORTED = new HashSet<>(Arrays.asList(
             LANG_EN, LANG_TR, LANG_AZ, LANG_SV, LANG_HI, LANG_ES, LANG_FR, LANG_DE,
-            LANG_IT, LANG_RU, LANG_PT, LANG_AR, LANG_JA, LANG_ZH, LANG_KO
+            LANG_IT, LANG_RU, LANG_PT, LANG_AR, LANG_JA, LANG_ZH, LANG_KO, LANG_HE
     ));
 
     private static String cachedLang;
@@ -134,6 +136,9 @@ public final class I18n {
         EN_MAP.put("dash_prayer_times", "Prayer Times");
         EN_MAP.put("dash_football", "Football Matches");
         EN_MAP.put("dash_latest_releases", "Most Watched");
+        EN_MAP.put("dash_cricket", "Live Cricket Scores");
+        EN_MAP.put("dash_news", "Live News");
+        EN_MAP.put("dash_top_media", "Top Movies & Series");
         EN_MAP.put("weather", "Weather");
         EN_MAP.put("prayer_fajr", "Fajr");
         EN_MAP.put("prayer_sunrise", "Sunrise");
@@ -173,6 +178,9 @@ public final class I18n {
         TR_MAP.put("dash_prayer_times", "Namaz Vakitleri");
         TR_MAP.put("dash_football", "Futbol Maçları");
         TR_MAP.put("dash_latest_releases", "Çok İzlenenler");
+        TR_MAP.put("dash_cricket", "Canlı Kriket Skorları");
+        TR_MAP.put("dash_news", "Canlı Haberler");
+        TR_MAP.put("dash_top_media", "En İyi Film ve Diziler");
         TR_MAP.put("weather", "Hava Durumu");
         TR_MAP.put("prayer_fajr", "İmsak");
         TR_MAP.put("prayer_sunrise", "Güneş");
@@ -209,7 +217,7 @@ public final class I18n {
         TR_MAP.put("releases_country_setting", "Çok İzlenenler ülkeleri");
         TR_MAP.put("releases_country_auto", "Otomatik (Arayüz diliyle eşitle)");
 
-        String[] langs = {LANG_AZ, LANG_SV, LANG_HI, LANG_ES, LANG_FR, LANG_DE, LANG_IT, LANG_RU, LANG_PT, LANG_AR, LANG_JA, LANG_ZH, LANG_KO};
+        String[] langs = {LANG_AZ, LANG_SV, LANG_HI, LANG_ES, LANG_FR, LANG_DE, LANG_IT, LANG_RU, LANG_PT, LANG_AR, LANG_JA, LANG_ZH, LANG_KO, LANG_HE};
         for (String l : langs) {
             LANG_MAPS.put(l, new HashMap<String, String>());
         }
@@ -218,6 +226,30 @@ public final class I18n {
         initSwedish();
         initKorean();
         initAzerbaijani();
+        I18nHe.init(LANG_MAPS.get(LANG_HE));
+        LANG_MAPS.get(LANG_HE).put("dash_cricket", "תוצאות קריקט בשידור חי");
+        LANG_MAPS.get(LANG_HE).put("dash_news", "חדשות בשידור חי");
+        LANG_MAPS.get(LANG_HE).put("dash_top_media", "סרטים וסדרות מובילים");
+        LANG_MAPS.get(LANG_HE).put("Live Cricket Scores", "תוצאות קריקט בשידור חי");
+        LANG_MAPS.get(LANG_HE).put("Live News", "חדשות בשידור חי");
+        LANG_MAPS.get(LANG_HE).put("Top Movies & Series", "סרטים וסדרות מובילים");
+        LANG_MAPS.get(LANG_HE).put("Dock rows", "שורות בדוק");
+        LANG_MAPS.get(LANG_HE).put("Small clock", "שעון קטן");
+        LANG_MAPS.get(LANG_HE).put("Applications", "יישומים");
+        LANG_MAPS.get(LANG_HE).put("Show on Home Screen", "הצג במסך הבית");
+        LANG_MAPS.get(LANG_HE).put("UNINSTALL", "הסרת התקנה");
+        LANG_MAPS.get(LANG_HE).put("Uninstall tvOS Launcher", "הסר התקנת tvOS Launcher");
+        LANG_MAPS.get(LANG_HE).put("Hide input", "הסתר כניסה");
+        LANG_MAPS.get(LANG_HE).put("Custom label", "שם מותאם אישית");
+        LANG_MAPS.get(LANG_HE).put("Change name of input", "שנה שם כניסה");
+        LANG_MAPS.get(LANG_HE).put("Reset to default", "אפס לברירת מחדל");
+        LANG_MAPS.get(LANG_HE).put("Disable", "השבת");
+        LANG_MAPS.get(LANG_HE).put("Download CleanYourTV", "הורד CleanYourTV");
+        LANG_MAPS.get(LANG_HE).put("Re-download CleanYourTV", "הורד מחדש CleanYourTV");
+        LANG_MAPS.get(LANG_HE).put("minute", "דקה");
+        LANG_MAPS.get(LANG_HE).put("minutes", "דקות");
+        LANG_MAPS.get(LANG_HE).put(" minute", " דקה");
+        LANG_MAPS.get(LANG_HE).put(" minutes", " דקות");
     }
 
     private static void add(String en, String hi, String es, String fr, String de, String it, String ru, String pt, String ar, String ja, String zh) {
@@ -234,7 +266,13 @@ public final class I18n {
     }
 
     private static void initTranslations() {
-        // Greetings
+        // Greetings & Widgets
+        add("dash_cricket", "लाइव क्रिकेट स्कोर", "Resultados de Críquet en Vivo", "Scores de Cricket en Direct", "Live-Cricket-Ergebnisse", "Risultati Cricket in Diretta", "Крикет (онлайн-счёт)", "Resultados de Críquete ao Vivo", "نتائج الكريكيت المباشرة", "ライブクリケットスコア", "板球实时比分");
+        add("dash_news", "लाइव समाचार", "Noticias en Vivo", "Actualités en Direct", "Live-Nachrichten", "Notizie in Diretta", "Новости в прямом эфире", "Notícias em Direto", "الأخبار المباشرة", "ライブニュース", "实时新闻");
+        add("dash_top_media", "शीर्ष फ़िल्में और सीरीज़", "Mejores Películas y Series", "Meilleurs Films et Séries", "Top-Filme & Serien", "Migliori Film e Serie", "Лучшие фильмы и сериалы", "Melhores Filmes e Séries", "أفضل الأفلام والمسلسلات", "トップ映画＆シリーズ", "高分电影与剧集");
+        add("Live Cricket Scores", "लाइव क्रिकेट स्कोर", "Resultados de Críquet en Vivo", "Scores de Cricket en Direct", "Live-Cricket-Ergebnisse", "Risultati Cricket in Diretta", "Крикет (онлайн-счёт)", "Resultados de Críquete ao Vivo", "نتائج الكريكيت المباشرة", "ライブクリケットスコア", "板球实时比分");
+        add("Live News", "लाइव समाचार", "Noticias en Vivo", "Actualités en Direct", "Live-Nachrichten", "Notizie in Diretta", "Новости в прямом эфире", "Notícias em Direto", "الأخبار المباشرة", "ライブニュース", "实时新闻");
+        add("Top Movies & Series", "शीर्ष फ़िल्में और सीरीज़", "Mejores Películas y Series", "Meilleurs Films et Séries", "Top-Filme & Serien", "Migliori Film e Serie", "Лучшие фильмы и сериалы", "Melhores Filmes e Séries", "أفضل الأفلام والمسلسلات", "トップ映画＆シリーズ", "高分电影与剧集");
         add("Most Watched", "सबसे ज़्यादा देखे गए", "Más vistos", "Les plus regardés", "Meistgesehen", "Più visti", "Самое популярное", "Mais vistos", "الأكثر مشاهدة", "人気コンテンツ", "热门观看");
         add("Loading titles…", "शीर्षक लोड हो रहे हैं…", "Cargando títulos…", "Chargement des titres…", "Titel werden geladen…", "Caricamento titoli…", "Загрузка контента…", "A carregar títulos…", "جارٍ تحميل العناوين…", "タイトルを読み込み中…", "正在加载内容…");
         add("Most Watched countries", "सबसे ज़्यादा देखे गए देश", "Países de Más vistos", "Pays des plus regardés", "Meistgesehen-Länder", "Paesi Più visti", "Страны популярного", "Países de Mais vistos", "بلدان الأكثر مشاهدة", "人気コンテンツの国", "热门观看国家/地区");
@@ -603,6 +641,40 @@ public final class I18n {
         add("Update Available", "अपडेट उपलब्ध है", "Actualización disponible", "Mise à jour disponible", "Update verfügbar", "Aggiornamento disponibile", "Доступно обновление", "Atualização disponível", "يتوفر تحديث", "アップデートがあります", "发现新版本");
         add("Download & Install", "डाउनलोड और इंस्टॉल करें", "Descargar e instalar", "Télécharger et installer", "Herunterladen & installieren", "Scarica e installa", "Скачать и установить", "Transferir e instalar", "تنزيل وتثبيت", "ダウンロードしてインストール", "下载并安装");
         add("Up to Date", "अप टू डेट", "Actualizado", "À jour", "Auf dem neuesten Stand", "Aggiornato", "Установлена последняя версия", "Atualizado", "محدّث لأحدث إصدار", "最新の状態です", "已是最新版本");
+        add("Scroll for more ›", "और देखने के लिए स्क्रॉल करें ›", "Desplaza para ver más ›", "Faites défiler pour plus ›", "Für mehr scrollen ›", "Scorri per altro ›", "Прокрутите, чтобы увидеть больше ›", "Deslize para ver mais ›", "مرّر للمزيد ›", "スクロールしてもっと見る ›", "滚动查看更多 ›");
+        add("Apps using Nuvio", "Nuvio इस्तेमाल करने वाले ऐप्स", "Apps que usan Nuvio", "Applis utilisant Nuvio", "Apps, die Nuvio nutzen", "App che usano Nuvio", "Приложения с Nuvio", "Apps que usam o Nuvio", "التطبيقات التي تستخدم Nuvio", "Nuvio を使うアプリ", "使用 Nuvio 的应用");
+        add("Official app", "आधिकारिक ऐप", "App oficial", "Appli officielle", "Offizielle App", "App ufficiale", "Официальное приложение", "App oficial", "التطبيق الرسمي", "公式アプリ", "官方应用");
+        add("Always on", "हमेशा चालू", "Siempre activado", "Toujours activé", "Immer an", "Sempre attivo", "Всегда включено", "Sempre ligado", "مفعّل دائمًا", "常にオン", "始终开启");
+        add("Not installed", "इंस्टॉल नहीं है", "No instalada", "Non installée", "Nicht installiert", "Non installata", "Не установлено", "Não instalada", "غير مثبّت", "未インストール", "未安装");
+        add("Suggested", "सुझाया गया", "Sugerida", "Suggérée", "Vorgeschlagen", "Suggerita", "Рекомендуется", "Sugerida", "مقترح", "おすすめ", "推荐");
+        add("Link Nuvio forks (like Nuvio Native Legacy) that sign in to the same Nuvio account. Their dock tile then shows Nuvio's Continue Watching, and Search opens titles in them.",
+                "उसी Nuvio खाते से साइन इन करने वाले Nuvio फ़ोर्क (जैसे Nuvio Native Legacy) जोड़ें। फिर उनकी डॉक टाइल पर Nuvio का Continue Watching दिखेगा और Search उनमें टाइटल खोलेगा।",
+                "Vincula versiones de Nuvio (como Nuvio Native Legacy) que inician sesión con la misma cuenta de Nuvio. Su icono del dock mostrará Seguir viendo de Nuvio y la Búsqueda abrirá los títulos en ellas.",
+                "Associez les versions de Nuvio (comme Nuvio Native Legacy) connectées au même compte Nuvio. Leur tuile du dock affichera Reprendre de Nuvio, et la Recherche y ouvrira les titres.",
+                "Verknüpfe Nuvio-Forks (z. B. Nuvio Native Legacy), die mit demselben Nuvio-Konto angemeldet sind. Ihre Dock-Kachel zeigt dann Nuvios „Weiterschauen“, und die Suche öffnet Titel darin.",
+                "Collega le versioni di Nuvio (come Nuvio Native Legacy) che accedono con lo stesso account Nuvio. Il loro riquadro nel dock mostrerà Continua a guardare di Nuvio e la Ricerca aprirà i titoli lì.",
+                "Привяжите форки Nuvio (например, Nuvio Native Legacy), вошедшие в тот же аккаунт Nuvio. Их плитка в доке покажет «Продолжить просмотр» Nuvio, а Поиск будет открывать в них фильмы и сериалы.",
+                "Associe versões do Nuvio (como o Nuvio Native Legacy) que entram com a mesma conta Nuvio. O ícone delas na dock mostrará o Continuar a ver do Nuvio, e a Pesquisa abrirá os títulos nelas.",
+                "اربط إصدارات Nuvio المعدّلة (مثل Nuvio Native Legacy) التي تسجّل الدخول بحساب Nuvio نفسه. ستعرض أيقونتها في الشريط قائمة متابعة المشاهدة من Nuvio، وسيفتح البحث العناوين فيها.",
+                "同じ Nuvio アカウントでサインインする Nuvio のフォーク（Nuvio Native Legacy など）をリンクします。ドックのタイルに Nuvio の「視聴を続ける」が表示され、検索からタイトルを開けます。",
+                "关联使用同一 Nuvio 账号登录的 Nuvio 分支版本（如 Nuvio Native Legacy）。其程序坞图标将显示 Nuvio 的继续观看，搜索也会在其中打开影片。");
+        add("Dock rows", "डॉक पंक्तियाँ", "Filas del dock", "Lignes du dock", "Dock-Zeilen", "Righe del dock", "Ряды дока", "Linhas do dock", "صفوف الشريط", "ドックの行数", "程序坞行数");
+        add("Small clock", "छोटी घड़ी", "Reloj pequeño", "Petite horloge", "Kleine Uhr", "Orologio piccolo", "Маленькие часы", "Relógio pequeno", "ساعة صغيرة", "小さい時計", "小尺寸时钟");
+        add("Applications", "ऐप्स", "Aplicaciones", "Applications", "Anwendungen", "Applicazioni", "Приложения", "Aplicações", "التطبيقات", "アプリケーション", "应用程序");
+        add("Show on Home Screen", "होम स्क्रीन पर दिखाएं", "Mostrar en pantalla de inicio", "Afficher sur l'écran d'accueil", "Auf dem Startbildschirm anzeigen", "Mostra nella schermata Home", "Показывать на главном экране", "Mostrar no ecrã inicial", "إظهار على الشاشة الرئيسية", "ホーム画面に表示", "在主屏幕上显示");
+        add("UNINSTALL", "अनइंस्टॉल", "DESINSTALAR", "DÉSINSTALLER", "DEINSTALLIEREN", "DISINSTALLA", "УДАЛЕНИЕ", "DESINSTALAR", "إلغاء التثبيت", "アンインストール", "卸载");
+        add("Uninstall tvOS Launcher", "tvOS Launcher अनइंस्टॉल करें", "Desinstalar tvOS Launcher", "Désinstaller tvOS Launcher", "tvOS Launcher deinstallieren", "Disinstalla tvOS Launcher", "Удалить tvOS Launcher", "Desinstalar tvOS Launcher", "إلغاء تثبيت tvOS Launcher", "tvOS Launcher をアンインストール", "卸载 tvOS Launcher");
+        add("Hide input", "इनपुट छुपाएं", "Ocultar entrada", "Masquer l'entrée", "Eingang ausblenden", "Nascondi ingresso", "Скрыть вход", "Ocultar entrada", "إخفاء المدخل", "入力を非表示", "隐藏输入源");
+        add("Custom label", "कस्टम नाम", "Etiqueta personalizada", "Nom personnalisé", "Eigene Bezeichnung", "Etichetta personalizzata", "Своё название", "Etiqueta personalizada", "اسم مخصص", "カスタムラベル", "自定义名称");
+        add("Change name of input", "इनपुट का नाम बदलें", "Cambiar nombre de entrada", "Renommer l'entrée", "Eingangsname ändern", "Cambia nome ingresso", "Изменить название входа", "Alterar nome da entrada", "تغيير اسم المدخل", "入力の名前を変更", "更改输入源名称");
+        add("Reset to default", "डिफ़ॉल्ट पर रीसेट करें", "Restablecer predeterminado", "Réinitialiser par défaut", "Auf Standard zurücksetzen", "Ripristina predefinito", "Сбросить по умолчанию", "Repor predefinição", "إعادة ضبط للافتراضي", "デフォルトに戻す", "恢复默认");
+        add("Disable", "अक्षम करें", "Desactivar", "Désactiver", "Deaktivieren", "Disattiva", "Отключить", "Desativar", "تعطيل", "無効にする", "禁用");
+        add("Download CleanYourTV", "CleanYourTV डाउनलोड करें", "Descargar CleanYourTV", "Télécharger CleanYourTV", "CleanYourTV herunterladen", "Scarica CleanYourTV", "Скачать CleanYourTV", "Transferir CleanYourTV", "تنزيل CleanYourTV", "CleanYourTV をダウンロード", "下载 CleanYourTV");
+        add("Re-download CleanYourTV", "CleanYourTV पुनः डाउनलोड करें", "Volver a descargar CleanYourTV", "Retélécharger CleanYourTV", "CleanYourTV erneut herunterladen", "Riscarica CleanYourTV", "Перекачать CleanYourTV", "Voltar a transferir CleanYourTV", "إعادة تنزيل CleanYourTV", "CleanYourTV を再ダウンロード", "重新下载 CleanYourTV");
+        add("minute", "मिनट", "minuto", "minute", "Minute", "minuto", "минута", "minuto", "دقيقة", "分", "分钟");
+        add("minutes", "मिनट", "minutos", "minutes", "Minuten", "minuti", "минут", "minutos", "دقائق", "分", "分钟");
+        add(" minute", " मिनट", " minuto", " minute", " Minute", " minuto", " минута", " minuto", " دقيقة", " 分", " 分钟");
+        add(" minutes", " मिनट", " minutos", " minutes", " Minuten", " minuti", " минут", " minutos", " دقائق", " 分", " 分钟");
     }
 
     private static void sv(String en, String svVal) {
@@ -955,10 +1027,41 @@ public final class I18n {
         sv("Backup settings to Download", "Säkerhetskopiera inställningar till Download");
         sv("Restore settings from folder…", "Återställ inställningar från mapp…");
         sv("Choose folder ›", "Välj mapp ›");
+        sv("Scroll for more ›", "Skrolla för mer ›");
+        sv("Apps using Nuvio", "Appar som använder Nuvio");
+        sv("Official app", "Officiell app");
+        sv("Always on", "Alltid på");
+        sv("Not installed", "Inte installerad");
+        sv("Suggested", "Föreslagen");
+        sv("Link Nuvio forks (like Nuvio Native Legacy) that sign in to the same Nuvio account. Their dock tile then shows Nuvio's Continue Watching, and Search opens titles in them.",
+                "Länka Nuvio-forkar (som Nuvio Native Legacy) som loggar in med samma Nuvio-konto. Deras ruta i dockan visar då Nuvios Fortsätt titta, och Sök öppnar titlar i dem.");
         sv("Most Watched", "Mest sedda");
+        sv("dash_cricket", "Live-cricketresultat");
+        sv("dash_news", "Livenyheter");
+        sv("dash_top_media", "Toppfilmer och serier");
+        sv("Live Cricket Scores", "Live-cricketresultat");
+        sv("Live News", "Livenyheter");
+        sv("Top Movies & Series", "Toppfilmer och serier");
         sv("Loading titles…", "Laddar titlar…");
         sv("Most Watched countries", "Mest sedda länder");
         sv("Automatic (Sync with UI language)", "Automatisk (synka med gränssnittsspråk)");
+        sv("Dock rows", "Dockrader");
+        sv("Small clock", "Liten klocka");
+        sv("Applications", "Applikationer");
+        sv("Show on Home Screen", "Visa på hemskärmen");
+        sv("UNINSTALL", "AVINSTALLERA");
+        sv("Uninstall tvOS Launcher", "Avinstallera tvOS Launcher");
+        sv("Hide input", "Dölj ingång");
+        sv("Custom label", "Anpassad etikett");
+        sv("Change name of input", "Ändra namn på ingång");
+        sv("Reset to default", "Återställ till standard");
+        sv("Disable", "Inaktivera");
+        sv("Download CleanYourTV", "Ladda ner CleanYourTV");
+        sv("Re-download CleanYourTV", "Ladda ner CleanYourTV igen");
+        sv("minute", "minut");
+        sv("minutes", "minuter");
+        sv(" minute", " minut");
+        sv(" minutes", " minuter");
     }
 
     private static void ko(String en, String koVal) {
@@ -1314,10 +1417,41 @@ public final class I18n {
         ko("Not done", "미완료");
         ko("apps", "개 앱");
         ko("packages", "개 패키지");
+        ko("Scroll for more ›", "더 보려면 스크롤 ›");
+        ko("Apps using Nuvio", "Nuvio 사용 앱");
+        ko("Official app", "공식 앱");
+        ko("Always on", "항상 켜짐");
+        ko("Not installed", "설치되지 않음");
+        ko("Suggested", "추천");
+        ko("Link Nuvio forks (like Nuvio Native Legacy) that sign in to the same Nuvio account. Their dock tile then shows Nuvio's Continue Watching, and Search opens titles in them.",
+                "같은 Nuvio 계정으로 로그인하는 Nuvio 포크(예: Nuvio Native Legacy)를 연결하세요. 해당 앱의 독 타일에 Nuvio의 이어서 보기가 표시되고, 검색에서 작품이 그 앱으로 열립니다.");
         ko("Most Watched", "인기 콘텐츠");
+        ko("dash_cricket", "실시간 크리켓 스코어");
+        ko("dash_news", "실시간 뉴스");
+        ko("dash_top_media", "인기 영화 및 시리즈");
+        ko("Live Cricket Scores", "실시간 크리켓 스코어");
+        ko("Live News", "실시간 뉴스");
+        ko("Top Movies & Series", "인기 영화 및 시리즈");
         ko("Loading titles…", "콘텐츠 불러오는 중…");
         ko("Most Watched countries", "인기 콘텐츠 국가");
         ko("Automatic (Sync with UI language)", "자동 (UI 언어와 동기화)");
+        ko("Dock rows", "독 줄 수");
+        ko("Small clock", "작은 시계");
+        ko("Applications", "애플리케이션");
+        ko("Show on Home Screen", "홈 화면에 표시");
+        ko("UNINSTALL", "설치 삭제");
+        ko("Uninstall tvOS Launcher", "tvOS Launcher 설치 삭제");
+        ko("Hide input", "입력 숨기기");
+        ko("Custom label", "사용자 지정 이름");
+        ko("Change name of input", "입력 이름 변경");
+        ko("Reset to default", "기본값으로 재설정");
+        ko("Disable", "사용 안 함");
+        ko("Download CleanYourTV", "CleanYourTV 다운로드");
+        ko("Re-download CleanYourTV", "CleanYourTV 다시 다운로드");
+        ko("minute", "분");
+        ko("minutes", "분");
+        ko(" minute", "분");
+        ko(" minutes", "분");
     }
 
     private static void az(String en, String azVal) {
@@ -1329,6 +1463,12 @@ public final class I18n {
         az("dash_prayer_times", "Namaz Vaxtları");
         az("dash_football", "Futbol Oyunları");
         az("dash_latest_releases", "Çox İzlənənlər");
+        az("dash_cricket", "Canlı Kriket Xalları");
+        az("dash_news", "Canlı Xəbərlər");
+        az("dash_top_media", "Ən Yaxşı Film və Seriallar");
+        az("Live Cricket Scores", "Canlı Kriket Xalları");
+        az("Live News", "Canlı Xəbərlər");
+        az("Top Movies & Series", "Ən Yaxşı Film və Seriallar");
         az("weather", "Hava Proqnozu");
         az("prayer_fajr", "Sübh");
         az("prayer_sunrise", "Günəş");
@@ -1499,6 +1639,32 @@ public final class I18n {
         az("Check for updates", "Yeniləmələri yoxla");
         az("Current version", "Cari versiya");
         az("GitHub release latest version", "GitHub son versiyası");
+        az("Scroll for more ›", "Daha çox üçün sürüşdürün ›");
+        az("Other apps", "Digər tətbiqlər");
+        az("Apps using Nuvio", "Nuvio istifadə edən tətbiqlər");
+        az("Official app", "Rəsmi tətbiq");
+        az("Always on", "Həmişə aktiv");
+        az("Not installed", "Quraşdırılmayıb");
+        az("Suggested", "Tövsiyə olunur");
+        az("Link Nuvio forks (like Nuvio Native Legacy) that sign in to the same Nuvio account. Their dock tile then shows Nuvio's Continue Watching, and Search opens titles in them.",
+                "Eyni Nuvio hesabı ilə daxil olan Nuvio versiyalarını (Nuvio Native Legacy kimi) əlaqələndirin. Onda onların dock plitəsi Nuvio-nun İzləməyə davam et siyahısını göstərəcək, Axtarış isə başlıqları onlarda açacaq.");
+        az("Dock rows", "Dock sətirləri");
+        az("Small clock", "Kiçik saat");
+        az("Applications", "Tətbiqlər");
+        az("Show on Home Screen", "Ana ekranda göstər");
+        az("UNINSTALL", "SİL");
+        az("Uninstall tvOS Launcher", "tvOS Launcher-i sil");
+        az("Hide input", "Girişi gizlət");
+        az("Custom label", "Xüsusi ad");
+        az("Change name of input", "Girişin adını dəyiş");
+        az("Reset to default", "Varsayılana sıfırla");
+        az("Disable", "Deaktiv et");
+        az("Download CleanYourTV", "CleanYourTV yüklə");
+        az("Re-download CleanYourTV", "CleanYourTV yenidən yüklə");
+        az("minute", "dəqiqə");
+        az("minutes", "dəqiqə");
+        az(" minute", " dəqiqə");
+        az(" minutes", " dəqiqə");
     }
 
     private I18n() { }
@@ -1525,6 +1691,8 @@ public final class I18n {
         if (sep > 0) {
             code = code.substring(0, sep);
         }
+        // Older Android/Java versions report Hebrew with the legacy code "iw".
+        if ("iw".equals(code)) code = LANG_HE;
         return SUPPORTED.contains(code) ? code : LANG_EN;
     }
 
@@ -1587,6 +1755,7 @@ public final class I18n {
             case LANG_JA: return Locale.forLanguageTag("ja-JP");
             case LANG_ZH: return Locale.forLanguageTag("zh-CN");
             case LANG_KO: return Locale.forLanguageTag("ko-KR");
+            case LANG_HE: return Locale.forLanguageTag("he-IL");
             default: return Locale.US;
         }
     }
@@ -1623,11 +1792,22 @@ public final class I18n {
         return enKey;
     }
 
+    /** Translates every key of an array (for dialogs that take a String[]). */
+    public static String[] tAll(Context c, String[] enKeys) {
+        String[] out = new String[enKeys.length];
+        for (int i = 0; i < enKeys.length; i++) out[i] = t(c, enKeys[i]);
+        return out;
+    }
+
     private static String translateOther(String lang, String en) {
         Map<String, String> map = LANG_MAPS.get(lang);
         if (map != null) {
             String direct = map.get(en);
             if (direct != null) return direct;
+        }
+        if (LANG_HE.equals(lang)) {
+            String dyn = I18nHe.dynamic(en);
+            if (dyn != null) return dyn;
         }
         // Dynamic pattern translations
         if (en.endsWith("% used · Recent Apps") && map != null) {
@@ -1676,6 +1856,8 @@ public final class I18n {
                 return new SimpleDateFormat("M月d日 EEEE", loc).format(date);
             case LANG_KO:
                 return new SimpleDateFormat("M월 d일 EEEE", loc).format(date);
+            case LANG_HE:
+                return new SimpleDateFormat("EEEE, d \u05d1MMMM", loc).format(date);
             case LANG_DE:
                 return new SimpleDateFormat("EEEE, d. MMMM", loc).format(date);
             case LANG_SV:
@@ -1692,9 +1874,76 @@ public final class I18n {
         }
     }
 
+    /** True when the active language is written right to left and the UI should be mirrored. */
+    public static boolean isRtl(Context c) {
+        String lang = getLang(c);
+        return LANG_HE.equals(lang) || LANG_AR.equals(lang);
+    }
+
+    /**
+     * Wraps an activity's base context so its layout direction follows the in-app language
+     * (not the system locale). Dialogs created from the activity inherit it.
+     */
+    public static Context wrap(Context base) {
+        if (base == null) return null;
+        try {
+            android.content.res.Configuration conf =
+                    new android.content.res.Configuration(base.getResources().getConfiguration());
+            conf.setLayoutDirection(isRtl(base) ? locale(base) : Locale.US);
+            return base.createConfigurationContext(conf);
+        } catch (Throwable t) {
+            return base;
+        }
+    }
+
+    /** Applies the in-app reading direction to a view tree (used for overlays and windows). */
+    public static void applyDirection(Context c, android.view.View root) {
+        if (root == null) return;
+        boolean rtl = isRtl(c);
+        root.setLayoutDirection(rtl ? android.view.View.LAYOUT_DIRECTION_RTL : android.view.View.LAYOUT_DIRECTION_LTR);
+        root.setTextDirection(rtl ? android.view.View.TEXT_DIRECTION_ANY_RTL : android.view.View.TEXT_DIRECTION_FIRST_STRONG);
+        if (rtl) {
+            // Rows are built and rebuilt in code: keep start-aligned text on the right edge after every layout,
+            // so Latin-only lines (app names, percentages) line up with the Hebrew ones.
+            final android.view.View r = root;
+            root.getViewTreeObserver().addOnGlobalLayoutListener(() -> alignToStart(r));
+        }
+    }
+
+    private static void alignToStart(android.view.View v) {
+        if (v instanceof android.widget.TextView) {
+            android.widget.TextView t = (android.widget.TextView) v;
+            int h = t.getGravity() & android.view.Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK;
+            if (t.getTextAlignment() == android.view.View.TEXT_ALIGNMENT_GRAVITY
+                    && (h == android.view.Gravity.START || h == android.view.Gravity.LEFT)) {
+                // Gravity (not textAlignment) so TextView rebuilds its cached layout right away.
+                t.setGravity((t.getGravity() & ~android.view.Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK) | android.view.Gravity.RIGHT);
+            }
+        } else if (v instanceof android.view.ViewGroup) {
+            android.view.ViewGroup g = (android.view.ViewGroup) v;
+            for (int i = 0; i < g.getChildCount(); i++) alignToStart(g.getChildAt(i));
+        }
+    }
+
+    /** Keeps a view tree left-to-right (Home screen layout) while Hebrew text still reads right to left. */
+    public static void keepLtr(Context c, android.view.View root) {
+        if (root == null) return;
+        root.setLayoutDirection(android.view.View.LAYOUT_DIRECTION_LTR);
+        root.setTextDirection(isRtl(c) ? android.view.View.TEXT_DIRECTION_ANY_RTL : android.view.View.TEXT_DIRECTION_FIRST_STRONG);
+    }
+
     /** Translates default profile names ("Person 1", "Default", "Kids") while preserving custom names. */
     public static String profileName(Context c, String name) {
         if (name == null) return "";
+        if (LANG_HE.equals(getLang(c))) {
+            if (name.equals("Default") || name.equals("Varsay\u0131lan")) return "\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc";
+            if (name.startsWith("Person ")) return "\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc " + name.substring("Person ".length());
+            if (name.startsWith("Ki\u015fi ")) return "\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc " + name.substring("Ki\u015fi ".length());
+            if (name.startsWith("Profile ")) return "\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc " + name.substring("Profile ".length());
+            if (name.startsWith("Profil ")) return "\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc " + name.substring("Profil ".length());
+            if (name.equals("Kids") || name.equals("\u00c7ocuklar")) return "\u05d9\u05dc\u05d3\u05d9\u05dd";
+            return name;
+        }
         if (isTr(c)) {
             if (name.equals("Default")) return "Varsayılan";
             if (name.startsWith("Person ")) return "Kişi " + name.substring("Person ".length());

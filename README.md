@@ -1,4 +1,4 @@
-# tvOS Launcher PL · 2.1.5-pl30
+# tvOS Launcher PL · 2.2.0-pl
 
 ![tvOS Launcher PL: pełny ekran z dokiem i oknami moda na fioletowej scenie](zrzuty-github/gotowe/showcase.webp)
 
@@ -6,7 +6,19 @@
 
 ## Polski
 
-Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgenius1/tvOS-Launcher). Opis samego launchera i jego pozostałych funkcji znajdziesz w oryginalnym repozytorium; tutaj pokazujemy zmiany moda PL.
+Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgenius1/tvOS-Launcher), oparta na wersji 2.2.0. Opis samego launchera i jego pozostałych funkcji znajdziesz w oryginalnym repozytorium; tutaj pokazujemy zmiany moda PL.
+
+### Pobieranie
+
+**[Pobierz najnowszy APK](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest/download/tvOS-Launcher-PL.apk)** · Android TV / Google TV z Androidem 7.0 lub nowszym · [opis wydania i suma SHA-256](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest)
+
+### Nowe w 2.2.0-pl
+
+- Wszystkie zmiany oryginału 2.2.0 (dok w 1–3 rzędach, okno „Aplikacje” z wyszukiwarką, mały zegar, przenoszenie i wyłączanie kafelków przytrzymaniem OK, wejścia HDMI) — również po polsku.
+- Nowe widżety oryginału w stylu kafelków moda, z własnymi oknami: **Krykiet na żywo** (bieżące mecze, najpierw reprezentacje), **Wiadomości na żywo** (Google News po polsku) i **Top filmy i seriale** (ranking ze zwiastunami). Domyślnie są wyłączone; włączysz je w ustawieniach widżetów ekranu głównego. Kafelek otwiera okno od razu na pozycji, którą właśnie pokazuje.
+- Rząd widżetów dopasowuje się do doku w 1, 2 i 3 rzędach i nie nachodzi na niego.
+- Wygaszacz: do wyboru styl cyfr zegara.
+- Aktualizacje prosto z tego repozytorium, domyślnie automatyczne.
 
 ### Co zmieniono
 
@@ -21,31 +33,45 @@ Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgeniu
 | **Nocne tapety z internetu.** Supercary i auta po tuningu — m.in. Audi RS, Mercedes-AMG i Lamborghini — w nocy i neonach oraz futurystyczne miasta nocą; zdjęcia za dnia launcher pomija. | [<img src="zrzuty-github/gotowe/home.webp" width="300" alt="Ekran główny z nocną tapetą i trzema kafelkami">](zrzuty-github/gotowe/home.webp) |
 | **Zegar dopasowany do zdjęcia.** Dół szklanych cyfr chowa się za dachem auta lub budynkami, a wykrywacz aut TensorFlow Lite działający w telewizorze pomaga unikać ustawiania zegara na aucie. Cyfry zachowują szklany wygląd scen oryginału. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Szklany zegar na tle nocnego miasta">](zrzuty-github/gotowe/screensaver-1.webp) |
 | **Ulubione tapety.** Zapisane zdjęcia wracają domyślnie co piątą zmianę tapety; częstotliwość można zmienić. | [<img src="zrzuty-github/gotowe/wallpaper-settings.webp" width="300" alt="Ustawienie ulubionych co piątą tapetę">](zrzuty-github/gotowe/wallpaper-settings.webp) |
-| **Wygaszacz ekranu.** Korzysta z tych samych zdjęć i tego samego szklanego zegara co ekran główny. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Wygaszacz z futurystycznym miastem nocą">](zrzuty-github/gotowe/screensaver-1.webp) |
+| **Wygaszacz ekranu.** Korzysta z tych samych zdjęć i tego samego szklanego zegara co ekran główny; styl cyfr zegara można wybrać. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Wygaszacz z futurystycznym miastem nocą">](zrzuty-github/gotowe/screensaver-1.webp) |
 | **Kreator zachowuje debugowanie USB.** Zalecany tryb konfiguracji nie wyłącza debugowania USB. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Zalecany tryb w polskim kreatorze">](zrzuty-github/gotowe/setup-mode.webp) |
 
-### Instalacja
+### Instalacja i aktualizacje
 
-1. Pobierz APK z sekcji [Releases tego forka](https://github.com/premiumsmart/tvOS-Launcher-PL/releases) i przenieś na Android TV / Google TV pendrive'em lub przez Send files to TV.
+1. Pobierz APK (link wyżej) i przenieś na Android TV / Google TV pendrive'em lub przez Send files to TV.
 2. Otwórz plik w menedżerze plików; jeśli trzeba, zezwól temu menedżerowi na instalację z nieznanych źródeł.
 3. Przejdź polski kreator: profil, sceny i miasto do pogody. Wybierz konfigurację ręczną, jeśli chcesz samodzielnie nadawać uprawnienia; wyłączanie systemowych launcherów i CleanYourTV są opcjonalne.
 4. Jeśli system zapyta o domyślny ekran główny, wybierz tvOS Launcher; w przeciwnym razie uruchamiaj go z listy aplikacji.
 
-„Oglądaj dalej”: włącz debugowanie USB w opcjach programisty telewizora, następnie **Ustawienia launchera → Szybkie ustawienia → Uprawnienie „Oglądaj dalej” → Włącz** i potwierdź pytanie telewizora. Po nadaniu uprawnienia możesz wyłączyć debugowanie USB. Aktualizacja istniejącej instalacji wymaga tego samego klucza podpisu.
+**Aktualizacje:** launcher sam sprawdza wydania tego repozytorium i proponuje instalację nowej wersji (**Ustawienia → Aktualizacje**; automatyczne sprawdzanie jest domyślnie włączone). Ustawienia zostają. Wersja 2.1.5-pl30 sprawdzała jeszcze oryginał, więc z niej zainstaluj 2.2.0-pl raz ręcznie, na poprzednią wersję.
+
+**„Oglądaj dalej”:** włącz debugowanie USB w opcjach programisty telewizora, następnie **Ustawienia launchera → Szybkie ustawienia → Uprawnienie „Oglądaj dalej” → Włącz** i potwierdź pytanie telewizora. Po nadaniu uprawnienia możesz wyłączyć debugowanie USB.
 
 ### Dane i licencja
 
-Mecze: [LiveScore](https://www.livescore.com/), pomocniczo [TheSportsDB](https://www.thesportsdb.com/); popularne tytuły: [JustWatch Polska](https://www.justwatch.com/pl); pogoda: [Open-Meteo](https://open-meteo.com/); tapety: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) i [Bing](https://www.bing.com/).
+Mecze: [LiveScore](https://www.livescore.com/), pomocniczo [ESPN](https://www.espn.com/) i [TheSportsDB](https://www.thesportsdb.com/); krykiet: [ESPN](https://www.espncricinfo.com/); wiadomości: [Google News](https://news.google.com/); popularne tytuły: [JustWatch Polska](https://www.justwatch.com/pl); ranking „Top filmy i seriale”: Cinemeta ([Stremio](https://www.stremio.com/), dane IMDb); pogoda: [Open-Meteo](https://open-meteo.com/); tapety: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) i [Bing](https://www.bing.com/).
 
-Kod: [Apache-2.0](LICENSE); informacje o autorstwie i bibliotekach: [NOTICE](NOTICE). Dołączono TensorFlow Lite 2.14.0 i model SSD MobileNet v1 COCO od Google, na licencji Apache-2.0.
+Kod: [Apache-2.0](LICENSE); informacje o autorstwie i bibliotekach: [NOTICE](NOTICE). Dołączono TensorFlow Lite 2.14.0 i model SSD MobileNet v1 COCO od Google, na licencji Apache-2.0. Lista zmian: [RELEASE_NOTES.md](RELEASE_NOTES.md).
 
-Projekt nie jest powiązany z Apple, LiveScore, JustWatch, Open-Meteo, Wallhaven, Wikimedia ani Microsoft (Bing). Zdjęcia i dane należą do ich właścicieli, a aplikacja pobiera je z odpowiednich serwisów; licencja kodu nie obejmuje tych materiałów.
+Projekt nie jest powiązany z Apple, LiveScore, ESPN, JustWatch, Google, Stremio, IMDb, Open-Meteo, Wallhaven, Wikimedia ani Microsoft (Bing). Zdjęcia i dane należą do ich właścicieli, a aplikacja pobiera je z odpowiednich serwisów; licencja kodu nie obejmuje tych materiałów.
 
 ---
 
 ## English
 
-A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius1/tvOS-Launcher). See the original repository for the launcher itself and its other features; this page covers the PL mod changes.
+A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius1/tvOS-Launcher), based on version 2.2.0. See the original repository for the launcher itself and its other features; this page covers the PL mod changes.
+
+### Download
+
+**[Download the latest APK](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest/download/tvOS-Launcher-PL.apk)** · Android TV / Google TV running Android 7.0 or later · [release notes and SHA-256 checksum](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest)
+
+### New in 2.2.0-pl
+
+- All changes from the original 2.2.0 (1–3 dock rows, an “Apps” window with search, a small clock, moving and hiding tiles with a long OK press, HDMI inputs) — also in Polish.
+- The original’s new widgets restyled as mod tiles with their own windows: **Live cricket** (current matches, national teams first), **Live news** (Google News in Polish) and **Top movies and series** (a ranking with trailers). They are off by default; enable them in the home screen widget settings. A tile opens its window at the item it is currently showing.
+- The widget row adapts to a dock with 1, 2 or 3 rows and never overlaps it.
+- Screensaver: selectable clock digit style.
+- Updates straight from this repository, automatic by default.
 
 ### Changes
 
@@ -60,22 +86,24 @@ A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius
 | **Nighttime internet wallpapers.** Supercars and tuned cars — including Audi RS, Mercedes-AMG and Lamborghini — at night and in neon light, plus futuristic cities at night; the launcher skips daytime images. | [<img src="zrzuty-github/gotowe/home.webp" width="300" alt="Home screen with a nighttime wallpaper and three tiles">](zrzuty-github/gotowe/home.webp) |
 | **A clock that fits the image.** The bottom of the glass digits hides behind car roofs or buildings, while an on-device TensorFlow Lite car detector helps keep the clock off the car itself. The digits retain the original scenes’ glass appearance. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Glass clock with a nighttime city">](zrzuty-github/gotowe/screensaver-1.webp) |
 | **Favorite wallpapers.** Saved images return every fifth wallpaper change by default; the frequency is configurable. | [<img src="zrzuty-github/gotowe/wallpaper-settings.webp" width="300" alt="Favorites set to return every fifth wallpaper">](zrzuty-github/gotowe/wallpaper-settings.webp) |
-| **Screensaver.** It uses the same images and glass clock as the home screen. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Screensaver with a futuristic city at night">](zrzuty-github/gotowe/screensaver-1.webp) |
+| **Screensaver.** It uses the same images and glass clock as the home screen; the clock digit style is selectable. | [<img src="zrzuty-github/gotowe/screensaver-1.webp" width="300" alt="Screensaver with a futuristic city at night">](zrzuty-github/gotowe/screensaver-1.webp) |
 | **The wizard keeps USB debugging enabled.** The recommended setup mode no longer disables USB debugging. | [<img src="zrzuty-github/gotowe/setup-mode.webp" width="300" alt="Recommended mode in the Polish setup wizard">](zrzuty-github/gotowe/setup-mode.webp) |
 
-### Installation
+### Installation and updates
 
-1. Download the APK from [this fork’s Releases](https://github.com/premiumsmart/tvOS-Launcher-PL/releases) and transfer it to Android TV / Google TV using a USB drive or Send files to TV.
+1. Download the APK (link above) and transfer it to Android TV / Google TV using a USB drive or Send files to TV.
 2. Open it in a file manager; allow that file manager to install unknown apps if prompted.
 3. Complete the Polish wizard: profile, scenes and weather location. Choose manual setup if you prefer to grant permissions yourself; disabling system launchers and using CleanYourTV are optional.
 4. Select tvOS Launcher if Android asks for a default home app; otherwise launch it from the app list.
 
-Continue Watching: enable USB debugging in the TV’s developer options, then go to **Launcher settings → Quick settings → “Continue Watching” permission → Enable** and confirm the TV prompt. You may disable USB debugging afterwards. Updating an existing installation requires the same signing key.
+**Updates:** the launcher checks this repository’s releases and offers to install new versions (**Settings → Updates**; automatic checks are on by default). Your settings are kept. Version 2.1.5-pl30 still checked the original repository, so install 2.2.0-pl over it manually once.
+
+**Continue Watching:** enable USB debugging in the TV’s developer options, then go to **Launcher settings → Quick settings → “Continue Watching” permission → Enable** and confirm the TV prompt. You may disable USB debugging afterwards.
 
 ### Data and license
 
-Football: [LiveScore](https://www.livescore.com/) with supplementary [TheSportsDB](https://www.thesportsdb.com/) data; popular titles: [JustWatch Poland](https://www.justwatch.com/pl); weather: [Open-Meteo](https://open-meteo.com/); wallpapers: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) and [Bing](https://www.bing.com/).
+Football: [LiveScore](https://www.livescore.com/) with supplementary [ESPN](https://www.espn.com/) and [TheSportsDB](https://www.thesportsdb.com/) data; cricket: [ESPN](https://www.espncricinfo.com/); news: [Google News](https://news.google.com/); popular titles: [JustWatch Poland](https://www.justwatch.com/pl); “Top movies and series”: Cinemeta ([Stremio](https://www.stremio.com/), IMDb data); weather: [Open-Meteo](https://open-meteo.com/); wallpapers: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) and [Bing](https://www.bing.com/).
 
-Code: [Apache-2.0](LICENSE); credits and dependencies: [NOTICE](NOTICE). Includes TensorFlow Lite 2.14.0 and Google’s SSD MobileNet v1 COCO model under Apache-2.0.
+Code: [Apache-2.0](LICENSE); credits and dependencies: [NOTICE](NOTICE). Includes TensorFlow Lite 2.14.0 and Google’s SSD MobileNet v1 COCO model under Apache-2.0. Changelog: [RELEASE_NOTES.md](RELEASE_NOTES.md).
 
-This project is not affiliated with Apple, LiveScore, JustWatch, Open-Meteo, Wallhaven, Wikimedia or Microsoft (Bing). Images and data belong to their respective owners and are fetched from their services; the code license does not cover those materials.
+This project is not affiliated with Apple, LiveScore, ESPN, JustWatch, Google, Stremio, IMDb, Open-Meteo, Wallhaven, Wikimedia or Microsoft (Bing). Images and data belong to their respective owners and are fetched from their services; the code license does not cover those materials.

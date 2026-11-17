@@ -2,9 +2,19 @@ $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 
 if (-not $env:JAVA_HOME) {
-    $jdkCandidate = "C:\Users\asen4\AppData\Local\Programs\Microsoft\jdk-17.0.10.7-hotspot"
-    if (Test-Path $jdkCandidate) {
-        $env:JAVA_HOME = $jdkCandidate
+    $jdkCandidates = @(
+        "C:\Program Files\Java\jdk-17",
+        "C:\Program Files\Java\jdk-21",
+        "C:\Program Files\Eclipse Adoptium\jdk-17*",
+        "C:\Program Files\Microsoft\jdk-17*",
+        "C:\Users\asen4\AppData\Local\Programs\Microsoft\jdk-17.0.10.7-hotspot"
+    )
+    foreach ($cand in $jdkCandidates) {
+        $found = Get-Item $cand -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($found -and (Test-Path "$($found.FullName)\bin\javac.exe")) {
+            $env:JAVA_HOME = $found.FullName
+            break
+        }
     }
 }
 if ($env:JAVA_HOME) {
@@ -23,7 +33,7 @@ if ($LASTEXITCODE -ne 0) { throw "aapt2 compile failed" }
 
 & "$BT\aapt2.exe" link -o build\unsigned.apk -I "$JAR" --manifest AndroidManifest.xml `
     --java build\gen --min-sdk-version 24 --target-sdk-version 34 `
-    --version-code 15 --version-name "2.1.5" build\res.zip
+    --version-code 16 --version-name "2.2.0" build\res.zip
 if ($LASTEXITCODE -ne 0) { throw "aapt2 link failed" }
 
 $javaFiles = Get-ChildItem -Recurse -Path src, build\gen -Filter "*.java" | Select-Object -ExpandProperty FullName
@@ -45,7 +55,7 @@ try {
 
     # Package assets with POSIX forward slashes (Windows aapt2 -A writes backslashes which Android AssetManager cannot open)
     $assetsRoot = (Resolve-Path "assets").Path
-    $noCompressExts = @(".jpg", ".jpeg", ".png", ".webp", ".gif", ".mp3", ".wav", ".ogg", ".mp4", ".webm")
+    $noCompressExts = @(".mp3", ".wav", ".ogg", ".mp4", ".webm")
     Get-ChildItem -Recurse -File -Path $assetsRoot | ForEach-Object {
         $rel = $_.FullName.Substring($assetsRoot.Length + 1).Replace('\', '/')
         $entryName = "assets/$rel"

@@ -714,6 +714,15 @@ final class ModPlKafelki {
     }
 
     static View filmy(final MainActivity host) {
+        return kafelekFilmow(host, false);
+    }
+
+    /** Kafelek „Top filmy i seriale” (ranking IMDb z Cinemeta, widżet oryginału 2.2.0) w stylu „Najczęściej oglądane”. */
+    static View top(final MainActivity host) {
+        return kafelekFilmow(host, true);
+    }
+
+    private static View kafelekFilmow(final MainActivity host, final boolean top) {
         final FrameLayout card = podstawa(host);
         final Locale loc = I18n.locale(host);
         final float r = dp(host, 15);
@@ -802,10 +811,10 @@ final class ModPlKafelki {
         final Runnable pokaz = new Runnable() {
             @Override
             public void run() {
-                String nazwa = I18n.t(host, "dash_latest_releases").toUpperCase(loc);
+                String nazwa = I18n.t(host, top ? "dash_top_media" : "dash_latest_releases").toUpperCase(loc);
                 if (pozycje.isEmpty()) {
                     etykieta.setText(nazwa);
-                    tytul.setText(I18n.t(host, "releases_loading"));
+                    tytul.setText(I18n.t(host, top ? "Loading IMDb Top…" : "releases_loading"));
                     typRok.setText("");
                     ocena.setText("");
                     serwis.setVisibility(View.GONE);
@@ -837,10 +846,21 @@ final class ModPlKafelki {
             }
         };
 
-        List<Suggestions.Item> zPamieci = HomeDashboard.getCachedReleases(host);
+        List<Suggestions.Item> zPamieci = top ? przeplec(HomeDashboard.modPlTop()) : HomeDashboard.getCachedReleases(host);
         if (zPamieci != null) pozycje.addAll(zPamieci);
         pokaz.run();
-        HomeDashboard.fetchLatestReleases(host, false, new HomeDashboard.ReleasesCallback() {
+        if (top) HomeDashboard.fetchTopMedia(host, false, new Runnable() {
+            @Override
+            public void run() {
+                List<Suggestions.Item> swieze = przeplec(HomeDashboard.modPlTop());
+                if (!swieze.isEmpty()) {
+                    pozycje.clear();
+                    pozycje.addAll(swieze);
+                    pokaz.run();
+                }
+            }
+        });
+        else HomeDashboard.fetchLatestReleases(host, false, new HomeDashboard.ReleasesCallback() {
             @Override
             public void onResult(List<Suggestions.Item> swieze) {
                 if (swieze != null && !swieze.isEmpty()) {
@@ -862,7 +882,8 @@ final class ModPlKafelki {
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModPlOkna.pokazNajczesciej(host, pozycje);
+                if (top) ModPlOkna.pokazTop(host, pozycje, indeks[0]);
+                else ModPlOkna.pokazNajczesciej(host, pozycje, indeks[0]);
             }
         });
         return card;
@@ -1090,6 +1111,601 @@ final class ModPlKafelki {
             public void onClick(View v) {
                 if (nav != null) nav.onOpenWeather();
                 else host.showWeather();
+            }
+        });
+        return card;
+    }
+
+    // ------------------------------------------------------------------ widżety oryginału 2.2.0 w naszym stylu
+
+    /** Oryginał przy braku danych pokazuje zmyślone wyniki krykieta; u nas zamiast nich „brak meczów”. */
+    static final boolean ZMYSLONE_WYNIKI = false;
+
+    private static final long CO_ILE_KRYKIET = 8_000L;
+    private static final long CO_ILE_WIADOMOSC = 10_000L;
+    private static final int ILE_KRYKIET = 5;
+
+    /** Czas z ESPN („2026-11-17T03:30Z”, też z sekundami) w ms; 0, gdy się nie da odczytać. */
+    static long czasEspn(String s) {
+        if (s == null || s.isEmpty()) return 0L;
+        String[] wzory = {"yyyy-MM-dd'T'HH:mm'Z'", "yyyy-MM-dd'T'HH:mm:ss'Z'"};
+        for (String w : wzory) {
+            try {
+                SimpleDateFormat f = new SimpleDateFormat(w, Locale.US);
+                f.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+                return f.parse(s.trim()).getTime();
+            } catch (Exception ignored) {
+                // następny wzór
+            }
+        }
+        return 0L;
+    }
+
+    /** Data z kanału RSS („Tue, 17 Nov 2026 03:15:00 GMT”) w ms; 0, gdy się nie da odczytać. */
+    static long czasRss(String s) {
+        if (s == null || s.trim().isEmpty()) return 0L;
+        try {
+            return new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US).parse(s.trim()).getTime();
+        } catch (Exception e) {
+            return 0L;
+        }
+    }
+
+    /** „przed chwilą”, „12 min temu”, „3 godz. temu”, dalej dzień tygodnia. */
+    static String ileTemu(Context c, long ms) {
+        if (ms <= 0) return "";
+        long minut = (System.currentTimeMillis() - ms) / 60_000L;
+        if (minut < 1) return I18n.t(c, "just now");
+        if (minut < 60) return I18n.t(c, minut + " min ago");
+        if (minut < 24 * 60) return I18n.t(c, (minut / 60) + " h ago");
+        return dzien(c, ms);
+    }
+
+    /** Mod PL: z katalogu Cinemeta bierzemy poziome tło (kadr jak w „Najczęściej oglądane”), plakat, gatunki i zwiastun. */
+    static void uzupelnijTop(Suggestions.Item it, org.json.JSONObject m) {
+        if (it == null || m == null) return;
+        String tloKadru = m.optString("background", "");
+        if (!tloKadru.isEmpty()) it.backdrop = tloKadru;
+        it.logo = m.optString("poster", "");
+        org.json.JSONArray g = m.optJSONArray("genres");
+        if (g != null && g.length() > 0) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < Math.min(3, g.length()); i++) {
+                String nazwa = g.optString(i, "").trim();
+                if (nazwa.isEmpty()) continue;
+                if (sb.length() > 0) sb.append(" · ");
+                sb.append(nazwa);
+            }
+            it.genres = sb.toString();
+        }
+        org.json.JSONArray z = m.optJSONArray("trailers");
+        for (int i = 0; z != null && i < z.length(); i++) {
+            org.json.JSONObject t = z.optJSONObject(i);
+            String id = t == null ? "" : t.optString("source", "");
+            if (id.matches("[A-Za-z0-9_-]{11}")) {
+                it.trailer = id;
+                break;
+            }
+        }
+        if (it.year == null || it.year.isEmpty()) it.year = m.optString("year", "");
+    }
+
+    /** Seriale i filmy na zmianę (Cinemeta podaje najpierw same seriale, potem same filmy). */
+    static List<Suggestions.Item> przeplec(List<Suggestions.Item> lista) {
+        List<Suggestions.Item> seriale = new ArrayList<Suggestions.Item>(), filmyL = new ArrayList<Suggestions.Item>();
+        if (lista == null) return seriale;
+        for (Suggestions.Item it : lista) {
+            if ("series".equalsIgnoreCase(it.type) || "tv".equalsIgnoreCase(it.type)) seriale.add(it);
+            else filmyL.add(it);
+        }
+        List<Suggestions.Item> wynik = new ArrayList<Suggestions.Item>();
+        for (int i = 0; i < Math.max(seriale.size(), filmyL.size()); i++) {
+            if (i < filmyL.size()) wynik.add(filmyL.get(i));
+            if (i < seriale.size()) wynik.add(seriale.get(i));
+        }
+        return wynik;
+    }
+
+    // --- krykiet
+
+    /** Polskie nazwy reprezentacji w krykiecie (ESPN podaje angielskie). */
+    private static final String[][] KRAJE_KRYKIETA = {
+            {"Australia", "Australia"}, {"England", "Anglia"}, {"India", "Indie"}, {"Pakistan", "Pakistan"},
+            {"South Africa", "RPA"}, {"New Zealand", "Nowa Zelandia"}, {"Sri Lanka", "Sri Lanka"},
+            {"Bangladesh", "Bangladesz"}, {"West Indies", "Indie Zachodnie"}, {"Afghanistan", "Afganistan"},
+            {"Ireland", "Irlandia"}, {"Zimbabwe", "Zimbabwe"}, {"Netherlands", "Holandia"}, {"Scotland", "Szkocja"},
+            {"Nepal", "Nepal"}, {"United States of America", "USA"}, {"USA", "USA"}, {"Namibia", "Namibia"},
+            {"Oman", "Oman"}, {"United Arab Emirates", "ZEA"}, {"Canada", "Kanada"}, {"Kenya", "Kenia"},
+    };
+
+    /** Pozostałe reprezentacje (członkowie stowarzyszeni ICC): tylko polska nazwa, bez pierwszeństwa na liście. */
+    private static final String[][] KRAJE_POZOSTALE = {
+            {"Falkland Islands", "Falklandy"}, {"Costa Rica", "Kostaryka"}, {"Germany", "Niemcy"}, {"Italy", "Włochy"},
+            {"Denmark", "Dania"}, {"Norway", "Norwegia"}, {"Sweden", "Szwecja"}, {"Finland", "Finlandia"},
+            {"Spain", "Hiszpania"}, {"France", "Francja"}, {"Belgium", "Belgia"}, {"Czech Republic", "Czechy"},
+            {"Hungary", "Węgry"}, {"Romania", "Rumunia"}, {"Bulgaria", "Bułgaria"}, {"Greece", "Grecja"},
+            {"Portugal", "Portugalia"}, {"Switzerland", "Szwajcaria"}, {"Isle of Man", "Wyspa Man"}, {"Cyprus", "Cypr"},
+            {"Croatia", "Chorwacja"}, {"Slovenia", "Słowenia"}, {"Luxembourg", "Luksemburg"}, {"Poland", "Polska"},
+            {"Hong Kong", "Hongkong"}, {"Singapore", "Singapur"}, {"Malaysia", "Malezja"}, {"Thailand", "Tajlandia"},
+            {"Japan", "Japonia"}, {"China", "Chiny"}, {"South Korea", "Korea Południowa"}, {"Indonesia", "Indonezja"},
+            {"Philippines", "Filipiny"}, {"Papua New Guinea", "Papua-Nowa Gwinea"}, {"Fiji", "Fidżi"},
+            {"Saudi Arabia", "Arabia Saudyjska"}, {"Qatar", "Katar"}, {"Bahrain", "Bahrajn"}, {"Kuwait", "Kuwejt"},
+            {"Maldives", "Malediwy"}, {"Myanmar", "Mjanma"}, {"Turkey", "Turcja"}, {"Israel", "Izrael"},
+            {"Argentina", "Argentyna"}, {"Brazil", "Brazylia"}, {"Mexico", "Meksyk"}, {"Bermuda", "Bermudy"},
+            {"Cayman Islands", "Kajmany"}, {"Mozambique", "Mozambik"}, {"Cameroon", "Kamerun"},
+    };
+
+    /** Reprezentacja z listy wyżej (pełnoprawni członkowie ICC i najbliżsi im), także drużyna kobiet. */
+    private static boolean znanyKraj(String nazwa) {
+        String n = nazwa == null ? "" : nazwa.trim();
+        if (n.endsWith(" Women")) n = n.substring(0, n.length() - 6).trim();
+        for (String[] k : KRAJE_KRYKIETA) if (k[0].equalsIgnoreCase(n)) return true;
+        return false;
+    }
+
+    /**
+     * ESPN „scorepanel”: bieżące mecze wszystkich rozgrywek w blokach „scores” (w każdym liga i jej mecze).
+     * Oryginał czytał ligę 8676, której jedyny mecz jest z 1 lutego 2015, więc kafelek „na żywo” pokazywał
+     * mecz sprzed lat. Każdy mecz dostaje nazwę rozgrywek („modpl_liga”, „modpl_skrot”); stary format („events”)
+     * przechodzi bez zmian.
+     */
+    static org.json.JSONArray meczeZPanelu(org.json.JSONObject root) {
+        if (root == null) return null;
+        org.json.JSONArray bloki = root.optJSONArray("scores");
+        if (bloki == null) return root.optJSONArray("events");
+        org.json.JSONArray wynik = new org.json.JSONArray();
+        for (int b = 0; b < bloki.length(); b++) {
+            org.json.JSONObject blok = bloki.optJSONObject(b);
+            if (blok == null) continue;
+            org.json.JSONArray ligi = blok.optJSONArray("leagues");
+            org.json.JSONObject liga = ligi == null ? null : ligi.optJSONObject(0);
+            org.json.JSONArray mecze = blok.optJSONArray("events");
+            for (int i = 0; mecze != null && i < mecze.length(); i++) {
+                org.json.JSONObject e = mecze.optJSONObject(i);
+                if (e == null) continue;
+                if (liga != null) {
+                    try {
+                        e.put("modpl_liga", liga.optString("name", ""));
+                        e.put("modpl_skrot", liga.optString("abbreviation", ""));
+                    } catch (org.json.JSONException ignored) {
+                        // mecz zostaje bez nazwy rozgrywek
+                    }
+                }
+                wynik.put(e);
+            }
+        }
+        return wynik;
+    }
+
+    /** „Quaid-e-Azam Trophy Gold 2026/27” → „Quaid-e-Azam Trophy Gold”. */
+    static String bezSezonu(String s) {
+        return s == null ? "" : s.replaceAll("\\s+\\d{4}([/-]\\d{2,4})?$", "").trim();
+    }
+
+    private static final java.util.regex.Pattern DZIEN_MECZU = java.util.regex.Pattern.compile("(?i)\\bday\\s+(\\d+)");
+
+    /**
+     * Dane meczu ze scorepanel: opis („2nd Test”), rodzaj („Test”, „T20I”), rozgrywki, dzień meczu testowego
+     * i podsumowanie („Pakistan won toss & fielded”, „Eng Lions won by 88 runs”) zamiast samego „Live”/„Final”.
+     * Nad tablicą przy meczu reprezentacji stoi rodzaj meczu, a w lidze jej krótka nazwa.
+     */
+    static void opisKrykieta(HomeDashboard.CricketMatch cm, org.json.JSONObject ev) {
+        if (cm == null || ev == null) return;
+        org.json.JSONArray comps = ev.optJSONArray("competitions");
+        org.json.JSONObject comp = comps == null ? null : comps.optJSONObject(0);
+        if (comp == null) return;
+        cm.opis = comp.optString("description", "").trim();
+        org.json.JSONObject klasa = comp.optJSONObject("class");
+        if (klasa != null) {
+            cm.rodzaj = klasa.optString("generalClassCard", "").trim();
+            String m = klasa.optString("internationalClassId", "").trim();
+            cm.miedzynarodowy = !m.isEmpty() && !"0".equals(m);
+        }
+        cm.liga = ev.optString("modpl_liga", "").trim();
+        String skrot = ev.optString("modpl_skrot", "").trim();
+        String bezRoku = bezSezonu(cm.liga);
+        String seria;
+        if (cm.miedzynarodowy && !cm.rodzaj.isEmpty()) seria = cm.rodzaj;
+        else if (!skrot.isEmpty() && skrot.length() <= 22) seria = skrot;
+        else if (!bezRoku.isEmpty()) seria = bezRoku;   // ligi krajowe: nazwa rozgrywek mówi więcej niż „First-class”
+        else seria = cm.rodzaj;
+        if (!seria.isEmpty()) cm.series = seria;
+        org.json.JSONObject st = comp.optJSONObject("status");
+        if (st == null) return;
+        java.util.regex.Matcher d = DZIEN_MECZU.matcher(st.optString("session", ""));
+        if (d.find()) {
+            try {
+                cm.dzien = Integer.parseInt(d.group(1));
+            } catch (NumberFormatException ignored) {
+                cm.dzien = 0;
+            }
+        }
+        String podsumowanie = st.optString("summary", "").trim();
+        if (!podsumowanie.isEmpty() && !"pre".equalsIgnoreCase(cm.state)) cm.status = podsumowanie;
+    }
+
+    /** Opis meczu po polsku: „2nd Test” → „2. test”, „25th Match” → „25. mecz”, „Group B” → „Grupa B”. */
+    static String opisMeczu(Context c, String s) {
+        String t = s == null ? "" : s.trim();
+        if (t.isEmpty() || !I18n.isPl(c)) return t;
+        java.util.regex.Matcher g = java.util.regex.Pattern.compile("(?i)^group\\s+(\\S+)$").matcher(t);
+        if (g.matches()) return "Grupa " + g.group(1);
+        java.util.regex.Matcher m = java.util.regex.Pattern.compile("(?i)^(\\d+)(st|nd|rd|th)\\s+(.+)$").matcher(t);
+        String nr = "";
+        if (m.matches()) {
+            nr = m.group(1) + ". ";
+            t = m.group(3);
+        }
+        String r = t.toLowerCase(Locale.ROOT);
+        if (r.equals("match")) t = "mecz";
+        else if (r.equals("test")) t = "test";
+        else if (r.startsWith("unofficial ")) t = "nieoficjalny " + t.substring(11);
+        else if (r.equals("semi-final") || r.equals("semi final") || r.equals("semifinal")) t = "półfinał";
+        else if (r.equals("quarter-final") || r.equals("quarter final")) t = "ćwierćfinał";
+        else if (r.equals("final")) t = "finał";
+        else if (r.startsWith("qualifier")) t = "kwalifikacje" + t.substring(9);
+        else if (r.startsWith("only ")) t = "jedyny " + t.substring(5);
+        return nr + t;
+    }
+
+    /** Nagłówek okna: „2. test”, „25. mecz · WBBL” (bez powtórzenia, gdy opis zawiera już rodzaj meczu). */
+    static String naglowekKrykieta(Context c, HomeDashboard.CricketMatch m) {
+        String seria = m.series == null ? "" : I18n.t(c, m.series.trim());
+        String opis = opisMeczu(c, m.opis);
+        if (opis.isEmpty()) return seria.isEmpty() ? I18n.t(c, "dash_cricket") : seria;
+        if (seria.isEmpty() || opis.toLowerCase(Locale.ROOT).contains(seria.toLowerCase(Locale.ROOT))) return opis;
+        return opis + "  ·  " + seria;
+    }
+
+    /** Pełna nazwa drużyny (po polsku, gdy ją znamy), a bez niej skrót. */
+    static String nazwaKrykieta(Context c, String pelna, String skrot) {
+        String n = pelna == null || pelna.trim().isEmpty() ? (skrot == null ? "" : skrot) : pelna.trim();
+        if (!I18n.isPl(c)) return n;
+        String dopisek = "";
+        if (n.endsWith(" Women")) {
+            n = n.substring(0, n.length() - 6).trim();
+            dopisek = " (" + I18n.t(c, "women") + ")";
+        }
+        for (String[] k : KRAJE_KRYKIETA) if (k[0].equalsIgnoreCase(n)) return k[1] + dopisek;
+        for (String[] k : KRAJE_POZOSTALE) if (k[0].equalsIgnoreCase(n)) return k[1] + dopisek;
+        return n + dopisek;
+    }
+
+    /** „278/8 (39.1/50 ov, target 279)” → „278/8”. */
+    static String wynikGlowny(String s) {
+        if (s == null) return "";
+        int i = s.indexOf(" (");
+        return (i > 0 ? s.substring(0, i) : s).trim();
+    }
+
+    /** „278/8 (39.1/50 ov, target 279)” → „39.1/50 ov., cel 279”. */
+    static String wynikDodatek(String s) {
+        if (s == null) return "";
+        int i = s.indexOf(" (");
+        if (i < 0 || !s.endsWith(")")) return "";
+        String d = s.substring(i + 2, s.length() - 1).trim();
+        return d.replace(" ov,", " ov.,").replace(" ov", " ov.").replace("ov..", "ov.").replace("target", "cel");
+    }
+
+    private static boolean przedMeczem(HomeDashboard.CricketMatch m) {
+        return "pre".equalsIgnoreCase(m.state);
+    }
+
+    /** „South Africa trail by 113 runs” → „RPA trail by 113 runs”; szablon tłumaczenia przenosi nazwę bez zmian. */
+    private static String krajNaPoczatku(Context c, String s) {
+        if (!I18n.isPl(c)) return s;
+        for (String[][] lista : new String[][][]{KRAJE_KRYKIETA, KRAJE_POZOSTALE}) {
+            for (String[] k : lista) {
+                if (!k[0].equals(k[1]) && s.startsWith(k[0] + " ")) return k[1] + s.substring(k[0].length());
+            }
+        }
+        return s;
+    }
+
+    /** Status po polsku: „4. dzień · Afganistan: potrzeba jeszcze 275 runów”, „Pakistan wygrywa losowanie”, „Koniec”. */
+    static String statusKrykieta(Context c, HomeDashboard.CricketMatch m) {
+        String s = m.status == null ? "" : m.status.trim();
+        if (przedMeczem(m)) return terminKrykieta(c, m);
+        if (s.isEmpty()) return m.isLive ? I18n.t(c, "Live") : "";
+        String wynik = I18n.t(c, krajNaPoczatku(c, s));
+        if (m.isLive && m.dzien > 0) wynik = (I18n.isPl(c) ? m.dzien + ". dzień" : "Day " + m.dzien) + "  ·  " + wynik;
+        return wynik;
+    }
+
+    /** Krótko na liście: „Na żywo”, „Dziś 10:30”, „Koniec”. */
+    static String statusKrotki(Context c, HomeDashboard.CricketMatch m) {
+        if (m.isLive) return I18n.t(c, "Live");
+        if (przedMeczem(m)) return terminKrykieta(c, m);
+        return I18n.t(c, "Finished");
+    }
+
+    /** Termin meczu: „Dziś 10:30”, „Jutro 04:00”, „Pt. 21.11 09:30”; dla trwającego „Na żywo”. */
+    static String terminKrykieta(Context c, HomeDashboard.CricketMatch m) {
+        if (m.isLive) return I18n.t(c, "Live");
+        if (m.startMs <= 0) return "";
+        return dzien(c, m.startMs) + " " + new SimpleDateFormat("HH:mm", I18n.locale(c)).format(new Date(m.startMs));
+    }
+
+    /**
+     * Kolejność: mecze znanych reprezentacji, potem pozostałe międzynarodowe, na końcu ligi; w każdej grupie najpierw
+     * trwające, potem najbliższe nadchodzące, na końcu zakończone (najświeższe pierwsze). Zakończonych sprzed ponad
+     * tygodnia nie pokazujemy (tak wyglądał mecz z 2015 roku ze starego źródła oryginału).
+     */
+    static List<HomeDashboard.CricketMatch> meczeKrykieta(List<HomeDashboard.CricketMatch> wszystkie, int ile) {
+        List<HomeDashboard.CricketMatch> l = new ArrayList<HomeDashboard.CricketMatch>();
+        long granica = System.currentTimeMillis() - 7L * 24 * 3600_000L;
+        if (wszystkie != null) {
+            for (HomeDashboard.CricketMatch m : wszystkie) {
+                boolean dawny = !m.isLive && !przedMeczem(m) && m.startMs > 0 && m.startMs < granica;
+                if (!dawny) l.add(m);
+            }
+        }
+        Collections.sort(l, new Comparator<HomeDashboard.CricketMatch>() {
+            private int waga(HomeDashboard.CricketMatch m) {
+                if (m.miedzynarodowy && znanyKraj(m.name1) && znanyKraj(m.name2)) return 0;
+                return m.miedzynarodowy ? 1 : 2;
+            }
+
+            private int grupa(HomeDashboard.CricketMatch m) {
+                return m.isLive ? 0 : przedMeczem(m) ? 1 : 2;
+            }
+
+            @Override
+            public int compare(HomeDashboard.CricketMatch a, HomeDashboard.CricketMatch b) {
+                int wa = waga(a), wb = waga(b);
+                if (wa != wb) return wa - wb;
+                int ga = grupa(a), gb = grupa(b);
+                if (ga != gb) return ga - gb;
+                if (ga == 1) return Long.compare(a.startMs, b.startMs);
+                return Long.compare(b.startMs, a.startMs);
+            }
+        });
+        return l.size() > ile ? new ArrayList<HomeDashboard.CricketMatch>(l.subList(0, ile)) : l;
+    }
+
+    /** Zielona pigułka „NA ŻYWO” jak na kafelku meczów. */
+    private static LinearLayout pigulkaZywo(MainActivity host, TextView napis) {
+        LinearLayout p = rzad(host, false);
+        p.setGravity(Gravity.CENTER_VERTICAL);
+        p.setPadding(dp(host, 5.5f), 0, dp(host, 5.5f), 0);
+        p.setBackground(tlo(0xB8166534, dp(host, 6.5f), Math.max(1, dp(host, 0.5f)), 0xB34ADE80));
+        p.addView(kropka(host, 0xFF4ADE80, 4));
+        napis.setLetterSpacing(0.04f);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.leftMargin = dp(host, 3.5f);
+        p.addView(napis, lp);
+        return p;
+    }
+
+    /** Krykiet: tablica dwóch drużyn (herb, nazwa, wynik), pod spodem stan meczu; kilka meczów zmienia się samo. */
+    static View krykiet(final MainActivity host) {
+        final FrameLayout card = podstawa(host);
+        final Locale loc = I18n.locale(host);
+        LinearLayout col = rzad(host, true);
+        col.setPadding(dp(host, 12), dp(host, 8), dp(host, 12), dp(host, 7));
+
+        LinearLayout head = rzad(host, false);
+        head.setGravity(Gravity.CENTER_VERTICAL);
+        head.addView(kropka(host, BIALY, 5));
+        final TextView etyk = etykieta(host);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+        lp.leftMargin = dp(host, 5);
+        lp.rightMargin = dp(host, 6);
+        head.addView(etyk, lp);
+        final TextView prawy = jednaLinia(tekst(host, "", 8.5f, "medium", JASNY));
+        head.addView(prawy);
+        final TextView zywoTv = jednaLinia(ModPlOkna.tekst(host, "", 7.5f, "semibold", 0xFFDCFCE7));
+        final LinearLayout pigulka = pigulkaZywo(host, zywoTv);
+        pigulka.setVisibility(View.GONE);
+        head.addView(pigulka, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(host, 13)));
+        col.addView(head, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(host, 13)));
+
+        final LinearLayout tablica = rzad(host, true);
+        final ImageView[] herb = new ImageView[2];
+        final TextView[] nazwa = new TextView[2], wynik = new TextView[2];
+        for (int i = 0; i < 2; i++) {
+            LinearLayout r = rzad(host, false);
+            r.setGravity(Gravity.CENTER_VERTICAL);
+            herb[i] = new ImageView(host);
+            herb[i].setScaleType(ImageView.ScaleType.FIT_CENTER);
+            r.addView(herb[i], new LinearLayout.LayoutParams(dp(host, 19), dp(host, 19)));
+            nazwa[i] = jednaLinia(tekst(host, "", 11f, "semibold", BIALY));
+            LinearLayout.LayoutParams nl = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+            nl.leftMargin = dp(host, 7);
+            r.addView(nazwa[i], nl);
+            wynik[i] = jednaLinia(tekst(host, "", 14f, "display", BIALY));
+            LinearLayout.LayoutParams wl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            wl.leftMargin = dp(host, 6);
+            r.addView(wynik[i], wl);
+            tablica.addView(r, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
+        }
+        LinearLayout.LayoutParams tlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f);
+        tlp.topMargin = dp(host, 3);
+        col.addView(tablica, tlp);
+
+        final TextView brak = tekst(host, "", 11f, "semibold", BIALY);
+        brak.setGravity(Gravity.CENTER);
+        brak.setVisibility(View.GONE);
+        col.addView(brak, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
+
+        final TextView stopka = jednaLinia(tekst(host, "", 8.5f, "medium", PRZYGASZONY));
+        LinearLayout.LayoutParams stlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(host, 11));
+        stlp.topMargin = dp(host, 3);
+        col.addView(stopka, stlp);
+        card.addView(col, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+        final int[] indeks = {0};
+        final int[] ile = {0};
+        final boolean[] wczytane = {false};
+        final Runnable pokaz = new Runnable() {
+            @Override
+            public void run() {
+                List<HomeDashboard.CricketMatch> l = meczeKrykieta(HomeDashboard.modPlKrykiet(), ILE_KRYKIET);
+                ile[0] = l.size();
+                if (l.isEmpty()) {
+                    etyk.setText(I18n.t(host, "dash_cricket").toUpperCase(loc));
+                    prawy.setText("");
+                    pigulka.setVisibility(View.GONE);
+                    tablica.setVisibility(View.GONE);
+                    stopka.setVisibility(View.GONE);
+                    brak.setVisibility(View.VISIBLE);
+                    brak.setText(I18n.t(host, wczytane[0] ? "No cricket matches right now" : "Loading cricket scores…"));
+                    return;
+                }
+                if (indeks[0] >= l.size() || indeks[0] < 0) indeks[0] = 0;
+                HomeDashboard.CricketMatch m = l.get(indeks[0]);
+                brak.setVisibility(View.GONE);
+                tablica.setVisibility(View.VISIBLE);
+                stopka.setVisibility(View.VISIBLE);
+                String seria = m.series == null || m.series.isEmpty() ? "" : I18n.t(host, m.series.trim());
+                etyk.setText((I18n.t(host, "dash_cricket") + (seria.isEmpty() ? "" : " · " + seria)).toUpperCase(loc));
+                if (m.isLive) {
+                    prawy.setVisibility(View.GONE);
+                    pigulka.setVisibility(View.VISIBLE);
+                    zywoTv.setText(I18n.t(host, "Live").toUpperCase(loc));
+                } else {
+                    pigulka.setVisibility(View.GONE);
+                    prawy.setVisibility(View.VISIBLE);
+                    prawy.setText(l.size() > 1 ? (indeks[0] + 1) + "/" + l.size() : "");
+                }
+                String[] nazwy = {nazwaKrykieta(host, m.name1, m.team1), nazwaKrykieta(host, m.name2, m.team2)};
+                String[] wyniki = {wynikGlowny(m.score1), wynikGlowny(m.score2)};
+                String[] herby = {m.logo1, m.logo2};
+                for (int i = 0; i < 2; i++) {
+                    nazwa[i].setText(nazwy[i]);
+                    wynik[i].setText(przedMeczem(m) ? "" : wyniki[i]);
+                    wstaw(host, herb[i], herby[i], dp(host, 24), false, new Zaslepka(host, nazwy[i]));
+                }
+                String st = statusKrykieta(host, m);
+                if (st.isEmpty()) st = wynikDodatek(m.score2);
+                stopka.setText(st);
+                stopka.setTextColor(m.isLive ? ZIELONY : PRZYGASZONY);
+            }
+        };
+        pokaz.run();
+        final Runnable pobierz = new Runnable() {
+            @Override
+            public void run() {
+                HomeDashboard.fetchCricketMatches(host, false, new Runnable() {
+                    @Override
+                    public void run() {
+                        wczytane[0] = true;
+                        pokaz.run();
+                    }
+                });
+            }
+        };
+        pobierz.run();
+        final int[] krok = {0};
+        cyklicznie(card, CO_ILE_KRYKIET, new Runnable() {
+            @Override
+            public void run() {
+                if (ile[0] > 1) {
+                    indeks[0]++;
+                    tablica.setAlpha(0.25f);
+                    tablica.animate().alpha(1f).setDuration(220).start();
+                    pokaz.run();
+                }
+                if (++krok[0] % 15 == 0) pobierz.run();   // co 2 minuty świeże wyniki (pamięć oryginału też trzyma 2 min)
+            }
+        });
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ModPlOkna.pokazKrykiet(host, pokaz, indeks[0]);
+            }
+        });
+        return card;
+    }
+
+    // --- wiadomości
+
+    /** Wiadomości (Google News w języku interfejsu): duży nagłówek, źródło i czas; nagłówki zmieniają się same. */
+    static View wiadomosci(final MainActivity host) {
+        final FrameLayout card = podstawa(host);
+        final Locale loc = I18n.locale(host);
+        LinearLayout col = rzad(host, true);
+        col.setPadding(dp(host, 12), dp(host, 8), dp(host, 12), dp(host, 7));
+
+        LinearLayout head = rzad(host, false);
+        head.setGravity(Gravity.CENTER_VERTICAL);
+        head.addView(kropka(host, BIALY, 5));
+        final TextView etyk = etykieta(host);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+        lp.leftMargin = dp(host, 5);
+        lp.rightMargin = dp(host, 6);
+        head.addView(etyk, lp);
+        final TextView zrodlo = jednaLinia(tekst(host, "", 8.5f, "medium", JASNY));
+        head.addView(zrodlo);
+        col.addView(head, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(host, 13)));
+
+        final TextView tytul = tekst(host, "", 12.5f, "display", BIALY);
+        tytul.setMaxLines(3);
+        tytul.setEllipsize(TextUtils.TruncateAt.END);
+        tytul.setLineSpacing(0f, 1.06f);
+        LinearLayout.LayoutParams ttlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f);
+        ttlp.topMargin = dp(host, 4);
+        col.addView(tytul, ttlp);
+
+        LinearLayout stopka = rzad(host, false);
+        stopka.setGravity(Gravity.CENTER_VERTICAL);
+        final TextView czas = jednaLinia(tekst(host, "", 8.5f, "medium", PRZYGASZONY));
+        stopka.addView(czas, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+        final TextView numer = jednaLinia(tekst(host, "", 8.5f, "medium", PRZYGASZONY));
+        stopka.addView(numer);
+        LinearLayout.LayoutParams stlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(host, 11));
+        stlp.topMargin = dp(host, 3);
+        col.addView(stopka, stlp);
+        card.addView(col, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+        final int[] indeks = {0};
+        final int[] ile = {0};
+        final Runnable pokaz = new Runnable() {
+            @Override
+            public void run() {
+                List<HomeDashboard.NewsHeadline> l = HomeDashboard.modPlWiadomosci();
+                ile[0] = l.size();
+                etyk.setText(I18n.t(host, "dash_news").toUpperCase(loc));
+                if (l.isEmpty()) {
+                    zrodlo.setText("");
+                    tytul.setText(I18n.t(host, "Loading top headlines…"));
+                    czas.setText("");
+                    numer.setText("");
+                    return;
+                }
+                if (indeks[0] >= l.size() || indeks[0] < 0) indeks[0] = 0;
+                HomeDashboard.NewsHeadline n = l.get(indeks[0]);
+                zrodlo.setText(n.source);
+                tytul.setText(n.title);
+                czas.setText(ileTemu(host, czasRss(n.pubDate)));
+                numer.setText((indeks[0] + 1) + "/" + l.size());
+            }
+        };
+        pokaz.run();
+        final Runnable pobierz = new Runnable() {
+            @Override
+            public void run() {
+                HomeDashboard.fetchLiveNews(host, false, pokaz);
+            }
+        };
+        pobierz.run();
+        final int[] krok = {0};
+        cyklicznie(card, CO_ILE_WIADOMOSC, new Runnable() {
+            @Override
+            public void run() {
+                if (ile[0] > 1) {
+                    indeks[0]++;
+                    tytul.setAlpha(0.2f);
+                    tytul.animate().alpha(1f).setDuration(260).start();
+                    pokaz.run();
+                }
+                if (++krok[0] % 90 == 0) pobierz.run();   // co 15 minut świeże nagłówki (tyle trzyma pamięć oryginału)
+            }
+        });
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ModPlOkna.pokazWiadomosci(host, pokaz, indeks[0]);
             }
         });
         return card;

@@ -26,6 +26,8 @@ goal overlays, local ADB permission setup, nighttime internet wallpapers,
 wallpaper favorites, a matching screensaver, and adaptive glass clock placement
 with on-device vehicle detection. The recommended setup mode keeps USB debugging
 enabled. Changes are applied by pl/naloz.py and the classes in pl/java/.
+Version 2.2.0-pl is based on tvOS Launcher 2.2.0; it restyles the cricket, news
+and top media widgets as mod tiles and points the built-in updater to this fork.
 
 Additional bundled components:
 
@@ -48,7 +50,8 @@ The Apache-2.0 license text is provided in LICENSE. The upstream credits above
 are retained; these additional notices do not replace them.
 
 This project is not affiliated with, sponsored by, or endorsed by Apple,
-LiveScore, JustWatch, Open-Meteo, Wallhaven, Wikimedia, or Microsoft (Bing).
+LiveScore, ESPN, JustWatch, Google, Stremio, IMDb, Open-Meteo, Wallhaven,
+Wikimedia, or Microsoft (Bing).
 Product names, logos, photographs, artwork and service data remain the property
 of their respective owners. The application fetches internet images and data
 from the corresponding services. Optional user-supplied scene images retain

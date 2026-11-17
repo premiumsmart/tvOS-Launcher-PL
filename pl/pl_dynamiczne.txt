@@ -5,8 +5,8 @@
 # --- aktualizacje ---
 E|You are up to date (v{1})
 P|Masz najnowszą wersję (v{1})
-E|A new version of tvOS Launcher is available on GitHub.\nCurrent version: v{1} → New version: v{2}\n\n{3}
-P|Na GitHubie jest nowa wersja tvOS Launchera.\nBieżąca wersja: v{1} → nowa wersja: v{2}\n\n{3}
+E|A new version of tvOS Launcher is available on GitHub.\nCurrent version: v{1}  →  New version: v{2}\n\n{3}
+P|Na GitHubie jest nowa wersja tvOS Launchera.\nBieżąca wersja: v{1}  →  nowa wersja: v{2}\n\n{3}
 E|Changelog — v{1}
 P|Lista zmian — v{1}
 E|Downloading update v{1}…
@@ -219,3 +219,105 @@ E|{1}% used  ·  Clean
 P|{1}% zajęte  ·  Wyczyść
 E|{1} min left
 P|{1} min zostało
+
+# --- tvOS Launcher 2.2.0 ---
+E|Persistent ADB Mode (Keep port {1} open)
+P|Tryb stałego ADB (port {1} zostaje otwarty)
+E|Connected & Paired (Port {1} Open)
+P|Połączono i sparowano (port {1} otwarty)
+E|Port {1} Open · Ready to Pair
+P|Port {1} otwarty · gotowy do parowania
+E|The downloaded update (v{1}) is signed with a different key than your installed app.\n\nAndroid requires existing installs to be uninstalled before switching signatures. To install, please backup your settings in Settings -> Backup & Restore, then reinstall.
+P|Pobrana aktualizacja (v{1}) jest podpisana innym kluczem niż zainstalowana aplikacja.\n\nAndroid pozwala zmienić podpis tylko po odinstalowaniu. Żeby ją zainstalować, zrób kopię ustawień (Ustawienia -> Kopia zapasowa i przywracanie), a potem zainstaluj od nowa.
+E|1 model kept ({1}) · Tap to download all
+P|Zostawiono 1 model ({1}) · Naciśnij, aby pobrać wszystkie
+E|📋 Browse / Search All {1} TV Models
+P|📋 Przeglądaj i szukaj we wszystkich modelach TV ({1})
+E|All {1} TV Models
+P|Wszystkie modele TV ({1})
+E|Could not download CleanYourTV from GitHub.\n\n{1}
+P|Nie udało się pobrać CleanYourTV z GitHuba.\n\n{1}
+E|Deleting unnecessary model files… ({1} / {2})
+P|Usuwam niepotrzebne pliki modeli… ({1} / {2})
+E|Downloaded ({1} TV models ready)
+P|Pobrano (gotowe modele TV: {1})
+E|Downloading to Download folder… ({1})
+P|Pobieram do folderu Download… ({1})
+E|Unzipping TV models in Download folder… ({1} files)
+P|Rozpakowuję modele TV w folderze Download… (plików: {1})
+E|Scanning installed system packages over ADB and comparing across {1} TV models…
+P|Sprawdzam przez ADB zainstalowane pakiety systemowe i porównuję z modelami TV ({1})…
+E|Selected TV model:\n{1}\n\nWould you like to delete the other unnecessary CleanYourTV model files to clean up storage space?
+P|Wybrany model telewizora:\n{1}\n\nUsunąć pozostałe, niepotrzebne pliki modeli CleanYourTV, żeby zwolnić miejsce?
+E|⚠️ Selected TV files missing ({1}) — Download CleanYourTV again
+P|⚠️ Brak plików wybranego telewizora ({1}) — pobierz CleanYourTV ponownie
+E|{1} active / {2} found ›
+P|aktywne: {1} / znalezione: {2} ›
+
+# --- widżety 2.2.0 w stylu moda ---
+E|{1} min ago
+P|{1} min temu
+E|{1} h ago
+P|{1} godz. temu
+E|{1} won by an innings and {2} runs
+P|{1}: zwycięstwo rundą i {2} runami
+E|{1} won by {2} runs
+P|{1}: zwycięstwo różnicą {2} runów
+E|{1} won by {2} run
+P|{1}: zwycięstwo różnicą {2} runu
+E|{1} won by {2} wickets
+P|{1}: zwycięstwo różnicą {2} wicketów
+E|{1} won by {2} wicket
+P|{1}: zwycięstwo różnicą {2} wicketu
+E|{1} won by {2} wkts
+P|{1}: zwycięstwo różnicą {2} wicketów
+E|{1} won by {2} wkt
+P|{1}: zwycięstwo różnicą {2} wicketu
+E|{1} won the toss and elected to {2}
+P|{1} wygrywa losowanie, wybiera: {2}
+E|{1} need {2} runs
+P|{1}: potrzeba jeszcze {2} runów
+E|{1} lead by {2} runs
+P|{1} prowadzi o {2} runów
+E|{1} trail by {2} runs
+P|{1} traci {2} runów
+E|Stumps - Day {1}
+P|Koniec {1}. dnia gry
+E|Day {1} - Stumps
+P|Koniec {1}. dnia gry
+E|{1} require {2} runs
+P|{1}: potrzeba jeszcze {2} runów
+E|{1} require {2} run
+P|{1}: potrzeba jeszcze {2} runu
+E|{1} need {2} run
+P|{1}: potrzeba jeszcze {2} runu
+E|{1} lead by {2} run
+P|{1} prowadzi o {2} run
+E|{1} trail by {2} run
+P|{1} traci {2} run
+E|{1} won toss & fielded
+P|{1} wygrywa losowanie i wybiera grę w polu
+E|{1} won toss & bowled
+P|{1} wygrywa losowanie i wybiera grę w polu
+E|{1} won toss & batted
+P|{1} wygrywa losowanie i wybiera odbijanie
+E|{1} won toss
+P|{1} wygrywa losowanie
+E|{1} won by {2} runs (DLS method)
+P|{1}: zwycięstwo różnicą {2} runów (metoda DLS)
+E|{1} won by {2} wickets (DLS method)
+P|{1}: zwycięstwo różnicą {2} wicketów (metoda DLS)
+E|{1} won by {2} wickets (with {3} balls remaining)
+P|{1}: zwycięstwo różnicą {2} wicketów ({3} piłek przed końcem)
+
+# --- odchudzanie: ekrany główne producentów TV (lista launcherów systemowych, 2.2.0) ---
+E|{1} OEM TV Home screen
+P|{1}: ekran główny TV producenta
+E|{1} OEM TV Home launcher
+P|{1}: launcher TV producenta
+E|{1} OEM TV Home menu
+P|{1}: menu główne TV producenta
+E|{1} OEM Home launcher
+P|{1}: launcher producenta
+E|{1} OEM Home screen
+P|{1}: ekran główny producenta

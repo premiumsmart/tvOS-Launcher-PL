@@ -364,3 +364,500 @@ E|No wallpaper fitting the clock was found, the current one stays
 P|Nie znalazłem tapety pasującej pod zegar, zostaje obecna
 E|Audi RS7 at night
 P|Audi RS7 nocą
+
+# --- tvOS Launcher 2.2.0 ---
+E| minute
+P| minuta
+E|3 days
+P|3 dni
+E|Add a person\u2026
+P|Dodaj osobę…
+E|Add images, videos or webpages from a phone or computer on the same Wi-Fi.
+P|Dodaj zdjęcia, filmy albo strony z telefonu lub komputera w tej samej sieci Wi-Fi.
+E|Always on
+P|Zawsze włączone
+E|Applications
+P|Aplikacje
+E|Apps using Nuvio
+P|Aplikacje korzystające z Nuvio
+E|Change name of input
+P|Zmień nazwę wejścia
+E|Clean Up Space?
+P|Zwolnić miejsce?
+E|CleanYourTV downloaded to Download folder.
+P|CleanYourTV pobrano do folderu Download.
+E|Cleaning Up Files…
+P|Usuwam pliki…
+E|Continue Watching isn't available on this TV (Android limits it on low-memory TVs).
+P|„Oglądaj dalej” nie działa na tym telewizorze (Android wyłącza je na telewizorach z małą pamięcią).
+E|Custom label
+P|Własna nazwa
+E|DASHBOARD WIDGETS
+P|WIDŻETY PULPITU
+E|Default playlist cannot be deleted
+P|Domyślnej playlisty nie można usunąć
+E|Disable
+P|Wyłącz
+E|Dock rows
+P|Rzędy doku
+E|Download
+P|Pobrane
+E|Download All TV Models Again?
+P|Pobrać ponownie wszystkie modele telewizorów?
+E|Download CleanYourTV
+P|Pobierz CleanYourTV
+E|Download CleanYourTV Now
+P|Pobierz teraz CleanYourTV
+E|Download CleanYourTV Required
+P|Trzeba pobrać CleanYourTV
+E|Download CleanYourTV first
+P|Najpierw pobierz CleanYourTV
+E|Download Failed
+P|Pobieranie nie powiodło się
+E|Downloading CleanYourTV…
+P|Pobieram CleanYourTV…
+E|Downloading to Download folder…
+P|Pobieram do folderu Download…
+E|Emoji
+P|Emoji
+E|Endpoint not found
+P|Nie znaleziono adresu
+E|Enter any club or national team…
+P|Wpisz dowolny klub albo reprezentację…
+E|Filter: All Matches
+P|Filtr: wszystkie mecze
+E|Filter: ★ Favorites
+P|Filtr: ★ ulubione
+E|Get
+P|Pobierz
+E|Hide input
+P|Ukryj wejście
+E|Hide inputs or change name of HDMI & TV inputs ›
+P|Ukryj wejścia albo zmień nazwy wejść HDMI i TV ›
+E|Input
+P|Wejście
+E|Link Nuvio forks (like Nuvio Native Legacy) that sign in to the same Nuvio account. Their dock tile then shows Nuvio's Continue Watching, and Search opens titles in them.
+P|Połącz odmiany Nuvio (np. Nuvio Native Legacy) zalogowane na to samo konto Nuvio. Ich kafelek w doku pokaże wtedy „Oglądaj dalej” z Nuvio, a wyszukiwanie otworzy w nich tytuły.
+E|Live Cricket Scores
+P|Krykiet na żywo
+E|Live News
+P|Wiadomości na żywo
+E|Live News Headlines
+P|Najnowsze wiadomości
+E|Loading IMDb Top…
+P|Wczytuję ranking IMDb…
+E|Loading TV models…
+P|Wczytuję modele telewizorów…
+E|Loading cricket scores…
+P|Wczytuję wyniki krykieta…
+E|Loading top headlines…
+P|Wczytuję najważniejsze wiadomości…
+E|Media file is missing for slide
+P|Brakuje pliku dla slajdu
+E|Media item not found
+P|Nie znaleziono elementu
+E|No enabled slides in the active playlist
+P|W aktywnej playliście nie ma włączonych slajdów
+E|No upcoming or live matches found for your favorite teams.
+P|Brak nadchodzących i trwających meczów ulubionych drużyn.
+E|No, Keep All
+P|Nie, zostaw wszystkie
+E|Not downloaded · Tap to download ›
+P|Nie pobrano · Naciśnij, aby pobrać ›
+E|Nothing to present yet
+P|Na razie nie ma nic do pokazania
+E|Official app
+P|Oficjalna aplikacja
+E|Only your currently selected TV model is kept in the Download folder.\n\nWould you like to download all CleanYourTV models again to choose a different TV model?
+P|W folderze Download zostały tylko pliki wybranego modelu telewizora.\n\nPobrać ponownie wszystkie modele CleanYourTV, żeby wybrać inny model?
+E|PAIRING CODE
+P|KOD PAROWANIA
+E|Pair with the TV PIN first
+P|Najpierw sparuj kodem PIN z telewizora
+E|Paused
+P|Wstrzymano
+E|Pictures
+P|Obrazy
+E|Playing
+P|Odtwarzanie
+E|Playlist name is required
+P|Podaj nazwę playlisty
+E|Playlist name must be 80 characters or less
+P|Nazwa playlisty może mieć najwyżej 80 znaków
+E|Please download CleanYourTV first. It will download the latest release to your Download folder and extract the TV profiles.
+P|Najpierw pobierz CleanYourTV. Najnowsza wersja trafi do folderu Download, a profile telewizorów zostaną rozpakowane.
+E|Preparing Download folder…
+P|Przygotowuję folder Download…
+E|Preparing Uninstall…
+P|Przygotowuję odinstalowanie…
+E|Preparing to clean up unnecessary files…
+P|Przygotowuję usuwanie niepotrzebnych plików…
+E|Presentation isn\u2019t on screen
+P|Prezentacji nie ma na ekranie
+E|Presentation isn\u2019t on screen. Start it from the TV or turn on \u201cStart on boot\u201d.
+P|Prezentacji nie ma na ekranie. Uruchom ją z telewizora albo włącz „Uruchamiaj przy starcie”.
+E|Press Back again to exit
+P|Naciśnij Wstecz jeszcze raz, aby wyjść
+E|Re-download CleanYourTV
+P|Pobierz CleanYourTV ponownie
+E|Refresh Scores
+P|Odśwież wyniki
+E|Remove from Continue Watching
+P|Usuń z „Oglądaj dalej”
+E|Reset to default
+P|Przywróć domyślne
+E|Restore Apps & Launchers First
+P|Najpierw przywróć aplikacje i launchery
+E|Restore debloated apps & disabled launchers, revoke permissions, and uninstall ›
+P|Przywróć wyłączone aplikacje i launchery, cofnij uprawnienia i odinstaluj ›
+E|Retry
+P|Spróbuj ponownie
+E|Revoking all permissions and opening Android uninstall screen…
+P|Cofam wszystkie uprawnienia i otwieram ekran odinstalowania Androida…
+E|Scan the code or open this address on a phone or computer on the same Wi-Fi.
+P|Zeskanuj kod albo otwórz ten adres na telefonie lub komputerze w tej samej sieci Wi-Fi.
+E|Scroll for more ›
+P|Przewiń, aby zobaczyć więcej ›
+E|Settings (#602 · Scan 641)
+P|Ustawienia (#602 · Scan 641)
+E|Shows and movies you play will appear here.
+P|Tu pojawią się seriale i filmy, które oglądasz.
+E|Skip Restore & Continue
+P|Pomiń przywracanie i kontynuuj
+E|Skipping this slide
+P|Pomijam ten slajd
+E|Small clock
+P|Mały zegar
+E|Sources / Input (#602 · Scan 757)
+P|Źródła / Wejście (#602 · Scan 757)
+E|Suggested
+P|Polecane
+E|Suggestions
+P|Propozycje
+E|That PIN doesn\u2019t match the one on the TV.
+P|Ten PIN nie zgadza się z kodem na telewizorze.
+E|Tip: Press and hold OK on any widget on the Home screen to open its menu to move (reorder) or disable it.
+P|Wskazówka: przytrzymaj OK na widżecie na ekranie głównym, a otworzy się menu: przenieś (zmień kolejność) albo wyłącz.
+E|To see what you watch here, allow it in Settings \u2192 Permissions.
+P|Żeby widzieć tu, co oglądasz, zezwól na to w Ustawienia → Uprawnienia.
+E|Top Movies & Series
+P|Top filmy i seriale
+E|Top Movies & Web Series
+P|Top filmy i seriale
+E|UNINSTALL
+P|ODINSTALOWANIE
+E|USB / Storage
+P|USB / pamięć
+E|Unexpected server error
+P|Nieoczekiwany błąd serwera
+E|Uninstall tvOS Launcher
+P|Odinstaluj tvOS Launcher
+E|Unsupported playback command
+P|Nieobsługiwane polecenie odtwarzania
+E|Update Signature Mismatch
+P|Inny podpis aktualizacji
+E|Update signature mismatch: cannot update in-place.
+P|Aktualizacja ma inny podpis, nie da się jej zainstalować na tej wersji.
+E|Upload form field named file is required
+P|Formularz wysyłania wymaga pola „file”
+E|Use arrows to move \u00b7 OK when done
+P|Strzałki przesuwają · OK kończy
+E|Video failed: %1$s\n%2$s
+P|Błąd wideo: %1$s\n%2$s
+E|Video failed: %1$s\nMedia error %2$d (%3$d)
+P|Błąd wideo: %1$s\nBłąd odtwarzania %2$d (%3$d)
+E|Web Series
+P|Serial
+E|Webpage failed to load: %1$s
+P|Nie udało się wczytać strony: %1$s
+E|Webpage slide is missing a URL
+P|Slajd ze stroną nie ma adresu
+E|Yes, Delete Unnecessary Files
+P|Tak, usuń niepotrzebne pliki
+E|Your selected TV model's files in the Download folder were deleted.\n\nWould you like to download CleanYourTV again to continue?
+P|Pliki wybranego modelu telewizora w folderze Download zostały usunięte.\n\nPobrać CleanYourTV ponownie, żeby kontynuować?
+E|dash_cricket
+P|Krykiet na żywo
+E|dash_news
+P|Wiadomości na żywo
+E|dash_top_media
+P|Top filmy i seriale
+E|seconds
+P|s
+E|⚠️ CleanYourTV Files Missing
+P|⚠️ Brak plików CleanYourTV
+E|Before uninstalling tvOS Launcher:\n\n1. Reload / re-enable any debloated apps and disabled system launchers so your TV has a working stock home screen.\n2. Automatically revoke all tvOS Launcher special permissions (Accessibility, Keep Alive, Default Home role) so Android can uninstall cleanly.\n3. Open the Android app uninstall screen for tvOS Launcher.\n\nHow would you like to proceed?
+P|Przed odinstalowaniem tvOS Launchera:\n\n1. Włącz z powrotem wyłączone aplikacje i systemowe launchery, żeby telewizor miał działający ekran główny.\n2. Launcher sam cofnie swoje specjalne uprawnienia (ułatwienia dostępu, Keep Alive, rola ekranu głównego), żeby Android mógł go czysto odinstalować.\n3. Otworzy się ekran odinstalowania tvOS Launchera.\n\nJak chcesz kontynuować?
+E|row
+P|rząd
+E|rows
+P|rzędy
+E|Image slide is missing media
+P|Slajd ze zdjęciem nie ma pliku
+E|Video slide is missing media
+P|Slajd z filmem nie ma pliku
+
+# --- widżety 2.2.0 w stylu moda (krykiet, wiadomości, Top filmy) ---
+E|No cricket matches right now
+P|Brak meczów krykieta
+E|ESPN has no cricket matches for today. Refresh later.
+P|ESPN nie ma teraz meczów krykieta. Odśwież później.
+E|▲ ▼ matches  ·  ▶ buttons
+P|▲ ▼ mecze  ·  ▶ przyciski
+E|▲ ▼ headlines  ·  ▶ buttons
+P|▲ ▼ nagłówki  ·  ▶ przyciski
+E|Read in browser
+P|Czytaj w przeglądarce
+E|No browser to open the article
+P|Brak przeglądarki do otwarcia artykułu
+E|just now
+P|przed chwilą
+E|women
+P|kobiety
+E|Finished
+P|Koniec
+E|Final
+P|Koniec
+E|Match drawn
+P|Remis
+E|Match tied
+P|Remis
+E|No result
+P|Bez rozstrzygnięcia
+E|Match abandoned
+P|Mecz odwołany
+E|Stumps
+P|Koniec dnia gry
+E|Lunch
+P|Przerwa na lunch
+E|Tea
+P|Przerwa na herbatę
+E|Innings break
+P|Przerwa między zmianami
+E|Rain delay
+P|Przerwa z powodu deszczu
+E|Delayed
+P|Opóźniony
+E|Scheduled
+P|Zaplanowany
+E|Women's Test
+P|Test kobiet
+E|Women's ODI
+P|ODI kobiet
+E|Women's T20I
+P|T20I kobiet
+E|Women's T20
+P|T20 kobiet
+E|Adventure
+P|Przygodowy
+E|Fantasy
+P|Fantasy
+E|Horror
+P|Horror
+E|Mystery
+P|Zagadka
+E|Sci-Fi
+P|Sci-fi
+E|Science Fiction
+P|Sci-fi
+E|Thriller
+P|Thriller
+E|Western
+P|Western
+E|Biography
+P|Biograficzny
+E|Musical
+P|Musical
+E|Sport
+P|Sportowy
+E|Reality-TV
+P|Reality show
+E|Talk-Show
+P|Talk-show
+E|Game-Show
+P|Teleturniej
+E|Short
+P|Krótkometrażowy
+E|Film-Noir
+P|Film noir
+E|Same as Home screen
+P|Jak na ekranie głównym
+
+# --- braki 2.2.0: napisy podawane w kodzie wprost po angielsku (porównanie ze słownikiem hebrajskim oryginału, 17.11.2026) ---
+# Panel sterowania: elementy do pokazania / ukrycia (ControlPanelOverlay.ALL_CP_ITEMS)
+E|Memory / Recent Apps
+P|Pamięć / ostatnie aplikacje
+E|Audio Output
+P|Wyjście dźwięku
+E|Ambient Mode / Lock Screen
+P|Tryb Ambient / ekran blokady
+E|Power Off / Screen Off
+P|Wyłączanie / wygaszanie ekranu
+E|TV Inputs Shortcut
+P|Skrót do wejść TV
+E|Button Mapper Shortcut
+P|Skrót do mapowania przycisków
+E|Settings Shortcut
+P|Skrót do ustawień
+E|Search / Assistant Shortcut
+P|Skrót do wyszukiwania / Asystenta
+E|Weather Panel (Current & Tomorrow)
+P|Panel pogody (teraz i jutro)
+# te same napisy, które oryginał tłumaczy pod identyfikatorem, a czasem podaje wprost
+E|Control Panel background
+P|Tło Panelu sterowania
+E|Blurry (Current content blur)
+P|Rozmyte (rozmycie bieżącej treści)
+E|Transparent
+P|Przezroczyste
+E|Caffeine (Prevent Sleep & Ambient Mode)
+P|Kofeina (blokada usypiania i trybu Ambient)
+E|Caffeine denies Android's idle mode and prevents Android TV's automatic Ambient Mode from turning on, keeping your TV awake and preventing it from going to sleep.
+P|Kofeina blokuje tryb bezczynności Androida i automatyczne włączanie trybu Ambient, dzięki czemu telewizor nie zasypia.
+E|Next Wallpaper
+P|Następna tapeta
+E|TV Inputs Panel (Overlay)
+P|Panel wejść TV (nakładka)
+E|Football Matches
+P|Mecze piłkarskie
+E|Favorite Teams
+P|Ulubione drużyny
+E|Loading matches…
+P|Wczytuję mecze…
+E|No matches scheduled right now
+P|Brak zaplanowanych meczów
+E|Prayer Times
+P|Godziny modlitw
+E|Calculation Method
+P|Metoda obliczania
+E|remaining
+P|pozostało
+E|Tomorrow
+P|Jutro
+E|Yesterday
+P|Wczoraj
+E|Just now
+P|Przed chwilą
+E|Fajr
+P|Fadżr
+E|Dhuhr
+P|Zuhr
+E|Isha
+P|Isza
+E|Sunrise
+P|Wschód słońca
+# awatary i kolory osób (Profiles.EMOJI_NAMES, COLOR_NAMES)
+E|Grin
+P|Uśmiech
+E|Cool
+P|Luzak
+E|Cowboy
+P|Kowboj
+E|Party
+P|Impreza
+E|Fox
+P|Lis
+E|Tiger
+P|Tygrys
+E|Lion
+P|Lew
+E|Frog
+P|Żaba
+E|Monkey
+P|Małpka
+E|Unicorn
+P|Jednorożec
+E|Dog
+P|Pies
+E|Cat
+P|Kot
+E|Bear
+P|Miś
+E|Bunny
+P|Króliczek
+E|Ghost
+P|Duszek
+E|Alien
+P|Kosmita
+E|Pumpkin
+P|Dynia
+E|Sky
+P|Błękitny
+E|Mint
+P|Miętowy
+E|Lemon
+P|Cytrynowy
+E|Lavender
+P|Lawendowy
+E|Peach
+P|Brzoskwiniowy
+E|Silver
+P|Srebrny
+# tapety i sceny ekranu blokady
+E|Tessellated Pavement
+P|Mozaikowe wybrzeże
+E|Custom Lock Image
+P|Własny obraz ekranu blokady
+E|Folder Shuffle
+P|Losowo z folderu
+# wyszukiwarka: gdzie obejrzeć (Search.java)
+E|Buy
+P|Kup
+E|Rent
+P|Wypożycz
+E|Free
+P|Za darmo
+E|Free with ads
+P|Za darmo z reklamami
+E|Subscription
+P|Abonament
+E|Add-ons
+P|Dodatki
+# ikona sieci (opis dla czytnika ekranu)
+E|Online
+P|Połączono z internetem
+E|No internet
+P|Brak internetu
+E|Offline
+P|Brak połączenia z siecią
+# Podtrzymywanie (Keep Alive)
+E|Keep Alive monitors the Accessibility Service and automatically restores it if your TV turns it off.\n\n✓ Because WRITE_SECURE_SETTINGS is granted on this TV, Keep Alive repairs Accessibility directly in-process without needing Network ADB (port 5555) to stay open.
+P|Podtrzymywanie pilnuje usługi ułatwień dostępu i automatycznie ją przywraca, gdy telewizor ją wyłączy.\n\n✓ Ten telewizor ma uprawnienie WRITE_SECURE_SETTINGS, więc Podtrzymywanie naprawia ułatwienia dostępu bezpośrednio w aplikacji, bez otwartego sieciowego ADB (port 5555).
+E|⚠️ Security Warning:\n\nKeep Alive monitors and restores permissions if your TV turns them off in the background.\n\nWithout WRITE_SECURE_SETTINGS, Keep Alive requires Network Debugging (ADB on port 5555) to stay enabled on your home network. For better security, run Pair / Repair ADB in Secure Mode first so WRITE_SECURE_SETTINGS is granted and port 5555 can be closed.\n\nEnable Keep Alive anyway?
+P|⚠️ Ostrzeżenie dotyczące bezpieczeństwa:\n\nPodtrzymywanie pilnuje uprawnień i przywraca je, gdy telewizor wyłączy je w tle.\n\nBez WRITE_SECURE_SETTINGS Podtrzymywanie wymaga włączonego debugowania sieciowego (ADB na porcie 5555) w sieci domowej. Dla większego bezpieczeństwa najpierw użyj „Sparuj / napraw ADB” w trybie bezpiecznym, żeby nadać WRITE_SECURE_SETTINGS i móc zamknąć port 5555.\n\nWłączyć Podtrzymywanie mimo to?
+# CleanYourTV (odchudzanie): tylko teksty, nic tu się nie uruchamia
+E|No disabled app list has been saved by CleanYourTV yet.\n\nWhen you run Start Debloat, every disabled package is recorded here so you can inspect or re-enable individual apps or restore all of them.
+P|CleanYourTV nie zapisał jeszcze listy wyłączonych aplikacji.\n\nPodczas odchudzania każdy wyłączony pakiet trafia tutaj, żeby można go było sprawdzić, włączyć z powrotem pojedynczo albo przywrócić wszystkie naraz.
+E|No saved disabled-app backup was found, and no TV model is selected.\n\nPlease select your TV model first so Restore knows which packages to re-enable.
+P|Nie znaleziono zapisanej kopii wyłączonych aplikacji i nie wybrano modelu telewizora.\n\nNajpierw wybierz model telewizora, żeby przywracanie wiedziało, które pakiety włączyć z powrotem.
+E|On Google TV sets, Wi-Fi networks saved during initial setup belong to com.google.android.tungsten.setupwraith. Disabling setupwraith so the stock Google TV launcher stays dead will delete a Wi-Fi network owned by setupwraith.\n\nBefore disabling setupwraith:\n1. Open Wi-Fi Settings → select your Wi-Fi network → Forget network.\n2. Re-connect to your Wi-Fi network (it will now belong to com.android.tv.settings).\n3. Return here and tap \"I Forgot & Re-added Wi-Fi — Continue\".
+P|W telewizorach z Google TV sieci Wi-Fi zapisane podczas pierwszej konfiguracji należą do com.google.android.tungsten.setupwraith. Wyłączenie setupwraith (żeby standardowy launcher Google TV się nie uruchamiał) usunie sieć Wi-Fi należącą do setupwraith.\n\nZanim wyłączysz setupwraith:\n1. Otwórz ustawienia Wi-Fi → wybierz swoją sieć → Zapomnij sieć.\n2. Połącz się z nią ponownie (będzie wtedy należeć do com.android.tv.settings).\n3. Wróć tutaj i wybierz „Sieć Wi-Fi dodana ponownie (dalej)”.
+E|WARNING: Manual Debloat lists ALL system apps installed on your TV.\n\n• Only disable packages if you know exactly what you are doing.\n• Disabling core Android system services, TV input/tuner services, or Settings packages can break HDMI inputs, Wi-Fi, remote control, or cause a bootloop.\n\nProceed at your own risk?
+P|UWAGA: ręczne odchudzanie pokazuje WSZYSTKIE aplikacje systemowe zainstalowane na telewizorze.\n\n• Wyłączaj pakiety tylko wtedy, gdy dokładnie wiesz, co robisz.\n• Wyłączenie podstawowych usług Androida, usług wejść i tunera TV albo pakietów ustawień może zepsuć wejścia HDMI, Wi-Fi i pilota albo zapętlić uruchamianie systemu.\n\nKontynuować na własne ryzyko?
+E|Amazon Fire OS Home button interceptor
+P|Amazon Fire OS: przechwytywanie przycisku Home
+E|Google TV launcher watchdog (disable together with LauncherX)
+P|Strażnik launchera Google TV (wyłącz razem z LauncherX)
+E|Stock Android TV Home screen
+P|Standardowy ekran główny Android TV
+E|Stock Android TV Leanback launcher
+P|Standardowy launcher Android TV (Leanback)
+E|Stock Google TV Home screen & banner ads
+P|Standardowy ekran główny Google TV i reklamy na banerach
+# tryb prezentacji: sprawdzanie slajdów
+E|Slide %1$d duration must be between 1 second and 24 hours
+P|Slajd %1$d: czas wyświetlania musi wynosić od 1 sekundy do 24 godzin
+E|Slide %1$d has a duplicate id
+P|Slajd %1$d ma powtórzony identyfikator
+E|Slide %1$d order must not be negative
+P|Slajd %1$d: kolejność nie może być ujemna
+E|Slide %1$d requires a media item
+P|Slajd %1$d wymaga pliku multimediów
+E|Slide %1$d webpage scroll speed must be between 5 and 1000 pixels per second
+P|Slajd %1$d: szybkość przewijania strony musi wynosić od 5 do 1000 pikseli na sekundę
+E|Slide %1$d webpage URL must start with http:// or https://
+P|Slajd %1$d: adres strony musi zaczynać się od http:// lub https://
+E|Slide %1$d webpage wait time must be between 0 and 300 seconds
+P|Slajd %1$d: czas oczekiwania na stronę musi wynosić od 0 do 300 sekund
+E|Slide type is required
+P|Wymagany jest typ slajdu

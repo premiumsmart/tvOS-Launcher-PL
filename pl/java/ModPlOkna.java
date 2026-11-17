@@ -326,23 +326,86 @@ final class ModPlOkna {
         return s;
     }
 
+    private static final java.util.regex.Pattern MD_NAGLOWEK = java.util.regex.Pattern.compile("(?m)^(#{1,6})[ \\t]*(.*)$");
+
+    /**
+     * Lista zmian w oknie aktualizacji: opis wydania z GitHuba jest w Markdownie, a TextView pokazuje surowy tekst.
+     * Nagłówki tracą „#” (od drugiego poziomu wielkimi literami), „[tekst](adres)” zostaje samym tekstem,
+     * znika pogrubienie i kod, a wypunktowania „- ” dostają kropkę „• ”.
+     */
+    static String bezMarkdown(String s) {
+        if (s == null) return "";
+        String t = s.replace("\r\n", "\n");
+        java.util.regex.Matcher m = MD_NAGLOWEK.matcher(t);
+        StringBuffer sb = new StringBuffer();
+        while (m.find()) {
+            String naglowek = m.group(2).trim();
+            if (m.group(1).length() > 1) naglowek = naglowek.toUpperCase(Locale.ROOT);
+            m.appendReplacement(sb, java.util.regex.Matcher.quoteReplacement(naglowek));
+        }
+        m.appendTail(sb);
+        t = sb.toString();
+        t = t.replaceAll("\\[([^\\]\\n]+)\\]\\((?:https?://)[^)\\s]+\\)", "$1");
+        t = t.replace("**", "").replace("`", "");
+        t = t.replaceAll("(?m)^([ \\t]*)[-*][ \\t]+", "$1• ");
+        t = t.replaceAll("\\n{3,}", "\n\n");
+        return t.trim();
+    }
+
     /** Zwraca true, gdy okno zostało pokazane (wtedy stary kod się nie wykonuje). */
     static boolean pokazNajczesciej(final MainActivity host, final List<Suggestions.Item> wszystkie) {
+        return pokazNajczesciej(host, wszystkie, 0);
+    }
+
+    /** Jak wyżej, z zaznaczonym tytułem, który właśnie pokazywał kafelek ({@code start} to jego numer na liście). */
+    static boolean pokazNajczesciej(final MainActivity host, final List<Suggestions.Item> wszystkie, int start) {
+        String kraje = TextUtils.join(", ", HomeDashboard.getEffectiveReleasesCountries(host));
+        return pokazFilmy(host, wszystkie, "JUSTWATCH · " + kraje, I18n.t(host, "dash_latest_releases"),
+                0xFFA855F7, FIOLET, FIOLET_RAMKA, FIOLET_JASNY, start);
+    }
+
+    /** Akcent „Top filmy i seriale” (bursztyn jak IMDb i kafelek oryginału). */
+    private static final int BURSZTYN = 0xFFD97706, BURSZTYN_RAMKA = 0xFFFCD34D, BURSZTYN_JASNY = 0xFFFDE68A;
+
+    /** Okno „Top filmy i seriale” (ranking IMDb z katalogu Cinemeta) w tym samym układzie co „Najczęściej oglądane”. */
+    static boolean pokazTop(final MainActivity host, final List<Suggestions.Item> wszystkie) {
+        return pokazTop(host, wszystkie, 0);
+    }
+
+    static boolean pokazTop(final MainActivity host, final List<Suggestions.Item> wszystkie, int start) {
+        return pokazFilmy(host, wszystkie, "IMDB · CINEMETA", I18n.t(host, "dash_top_media"),
+                0xFFF59E0B, BURSZTYN, BURSZTYN_RAMKA, BURSZTYN_JASNY, start);
+    }
+
+    /** Gatunki po polsku („Drama · Thriller” → „Dramat, Thriller”). */
+    private static String gatunki(Context c, String s) {
+        if (s == null || s.isEmpty()) return "";
+        StringBuilder sb = new StringBuilder();
+        for (String g : s.split(" · ")) {
+            if (g.trim().isEmpty()) continue;
+            if (sb.length() > 0) sb.append(", ");
+            sb.append(I18n.t(c, g.trim()));
+        }
+        return sb.toString();
+    }
+
+    private static boolean pokazFilmy(final MainActivity host, final List<Suggestions.Item> wszystkie, String etykieta,
+                                      String tytulOkna, int kolorPanelu, final int AKCENT, final int RAMKA, int jasny,
+                                      int start) {
         if (wszystkie == null || wszystkie.isEmpty()) return false;
         final List<Suggestions.Item> lista = new ArrayList<Suggestions.Item>(wszystkie.subList(0, Math.min(20, wszystkie.size())));
         final Context c = host;
 
         FrameLayout korzen = new FrameLayout(c);
         final Dialog d = okno(host, korzen);
-        LinearLayout p = panel(host, korzen, 0xFFA855F7);
+        LinearLayout p = panel(host, korzen, kolorPanelu);
 
         // lewa kolumna: nagłówek i lista
         LinearLayout lewa = new LinearLayout(c);
         lewa.setOrientation(LinearLayout.VERTICAL);
         lewa.setClipChildren(false);
         p.addView(lewa, new LinearLayout.LayoutParams(dp(c, 300), ViewGroup.LayoutParams.MATCH_PARENT));
-        String kraje = TextUtils.join(", ", HomeDashboard.getEffectiveReleasesCountries(c));
-        lewa.addView(naglowek(c, "JUSTWATCH · " + kraje, I18n.t(c, "dash_latest_releases"), 0xFFA855F7, FIOLET_JASNY));
+        lewa.addView(naglowek(c, etykieta, tytulOkna, kolorPanelu, jasny));
 
         ScrollView sv = new ScrollView(c);
         sv.setVerticalScrollBarEnabled(false);
@@ -418,9 +481,9 @@ final class ModPlOkna {
         przyciski.setOrientation(LinearLayout.HORIZONTAL);
         przyciski.setGravity(Gravity.CENTER_VERTICAL);
         przyciski.setClipChildren(false);
-        final TextView bZwiastun = przycisk(c, "▶  " + I18n.t(c, "Trailer"), FIOLET);
+        final TextView bZwiastun = przycisk(c, "▶  " + I18n.t(c, "Trailer"), AKCENT);
         przyciski.addView(bZwiastun, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(c, 31)));
-        final TextView bSerwis = przycisk(c, "", FIOLET);
+        final TextView bSerwis = przycisk(c, "", AKCENT);
         LinearLayout.LayoutParams bslp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(c, 31));
         bslp.leftMargin = dp(c, 8);
         przyciski.addView(bSerwis, bslp);
@@ -433,7 +496,7 @@ final class ModPlOkna {
         przlp.leftMargin = dp(c, 3);
         prawa.addView(przyciski, przlp);
 
-        final int[] wybrany = {0};
+        final int[] wybrany = {Math.max(0, Math.min(start, lista.size() - 1))};
         final List<View> wiersze = new ArrayList<View>();
 
         final Runnable pokazPodglad = new Runnable() {
@@ -446,7 +509,7 @@ final class ModPlOkna {
                 ocena.setVisibility(it.rating > 0 ? View.VISIBLE : View.GONE);
                 StringBuilder m = new StringBuilder(typ(c, it));
                 if (it.year != null && !it.year.isEmpty()) m.append("  ·  ").append(it.year);
-                if (it.genres != null && !it.genres.isEmpty()) m.append("  ·  ").append(it.genres.replace(" · ", ", "));
+                if (it.genres != null && !it.genres.isEmpty()) m.append("  ·  ").append(gatunki(c, it.genres));
                 metaTekst.setText(m.toString());
                 opis.setText(it.overview == null ? "" : it.overview);
                 String serwis = it.prov == null ? "" : it.prov;
@@ -516,7 +579,7 @@ final class ModPlOkna {
             w.setPadding(dp(c, 3), dp(c, 3), dp(c, 8), dp(c, 3));
             w.setFocusable(true);
             w.setClickable(true);
-            ustawWiersz(c, w, 0, FIOLET, FIOLET_RAMKA);
+            ustawWiersz(c, w, 0, AKCENT, RAMKA);
 
             final ImageView miniatura = new ImageView(c);
             miniatura.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -537,7 +600,8 @@ final class ModPlOkna {
             t1.setEllipsize(TextUtils.TruncateAt.END);
             teksty.addView(t1);
             String serwis = krotkiSerwis(it.prov);
-            TextView t2 = tekst(c, typ(c, it) + (serwis.isEmpty() ? "" : " · " + serwis), 8, "medium", 0x94FFFFFF);
+            String rok = it.year != null && !it.year.isEmpty() ? " · " + it.year : "";
+            TextView t2 = tekst(c, typ(c, it) + (serwis.isEmpty() ? rok : " · " + serwis), 8, "medium", 0x94FFFFFF);
             t2.setSingleLine(true);
             t2.setEllipsize(TextUtils.TruncateAt.END);
             LinearLayout.LayoutParams t2lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -559,10 +623,10 @@ final class ModPlOkna {
                     if (jest && wybrany[0] != idx) {
                         int stary = wybrany[0];
                         wybrany[0] = idx;
-                        if (stary >= 0 && stary < wiersze.size()) ustawWiersz(c, wiersze.get(stary), 0, FIOLET, FIOLET_RAMKA);
+                        if (stary >= 0 && stary < wiersze.size()) ustawWiersz(c, wiersze.get(stary), 0, AKCENT, RAMKA);
                         pokazPodglad.run();
                     }
-                    ustawWiersz(c, v, jest ? 1 : (wybrany[0] == idx ? 2 : 0), FIOLET, FIOLET_RAMKA);
+                    ustawWiersz(c, v, jest ? 1 : (wybrany[0] == idx ? 2 : 0), AKCENT, RAMKA);
                 }
             });
             w.setOnClickListener(new View.OnClickListener() {
@@ -592,7 +656,7 @@ final class ModPlOkna {
 
         pokazPodglad.run();
         d.show();
-        wiersze.get(0).requestFocus();
+        wiersze.get(wybrany[0]).requestFocus();   // ScrollView sam przewinie do tytułu z kafelka
         return true;
     }
 
@@ -1358,6 +1422,395 @@ final class ModPlOkna {
         d.show();
         if (!wiersze.isEmpty()) wiersze.get(0).requestFocus();
         else bLiga.requestFocus();
+        return true;
+    }
+
+    // ------------------------------------------------------------------ krykiet i wiadomości (widżety oryginału 2.2.0)
+
+    /** Krykiet: zieleń, wiadomości: czerwień (jak kafelki oryginału), w tym samym szkle co pozostałe okna. */
+    private static final int ZIELEN = 0xFF16A34A, ZIELEN_RAMKA = 0xFF86EFAC, ZIELEN_JASNY = 0xFFBBF7D0;
+    private static final int CZERWIEN = 0xFFDC2626, CZERWIEN_RAMKA = 0xFFFCA5A5, CZERWIEN_JASNY = 0xFFFECACA;
+
+    /** Szkielet okna „lista z podglądem”: zwraca {kolumna listy, prawa kolumna}. */
+    private static LinearLayout[] listaIPodglad(MainActivity host, FrameLayout korzen, int kolorPanelu, String etykieta,
+                                                String tytul, int jasny, float szerListyDp) {
+        Context c = host;
+        LinearLayout p = panel(host, korzen, kolorPanelu);
+        LinearLayout lewa = new LinearLayout(c);
+        lewa.setOrientation(LinearLayout.VERTICAL);
+        lewa.setClipChildren(false);
+        p.addView(lewa, new LinearLayout.LayoutParams(dp(c, szerListyDp), ViewGroup.LayoutParams.MATCH_PARENT));
+        lewa.addView(naglowek(c, etykieta, tytul, kolorPanelu, jasny));
+        ScrollView sv = new ScrollView(c);
+        sv.setVerticalScrollBarEnabled(false);
+        sv.setClipToPadding(false);
+        zaokraglij(sv, 0f);
+        sv.setPadding(dp(c, 4), dp(c, 6), dp(c, 6), dp(c, 6));
+        LinearLayout kolumna = new LinearLayout(c);
+        kolumna.setOrientation(LinearLayout.VERTICAL);
+        sv.addView(kolumna);
+        LinearLayout.LayoutParams svlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f);
+        svlp.topMargin = dp(c, 6);
+        lewa.addView(sv, svlp);
+        LinearLayout prawa = new LinearLayout(c);
+        prawa.setOrientation(LinearLayout.VERTICAL);
+        prawa.setClipChildren(false);
+        LinearLayout.LayoutParams prlp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f);
+        prlp.leftMargin = dp(c, 20);
+        p.addView(prawa, prlp);
+        return new LinearLayout[]{kolumna, prawa};
+    }
+
+    /** Wiersz listy: górna drobna linia (źródło, termin) i dolna wyraźna (tytuł, drużyny). */
+    private static LinearLayout wierszDwulinijkowy(Context c, String gora, int kolorGory, String dol, int maxDol,
+                                                   int akcent, int ramka) {
+        LinearLayout w = new LinearLayout(c);
+        w.setOrientation(LinearLayout.VERTICAL);
+        w.setGravity(Gravity.CENTER_VERTICAL);
+        w.setPadding(dp(c, 12), dp(c, 7), dp(c, 12), dp(c, 7));
+        w.setFocusable(true);
+        w.setClickable(true);
+        ustawWiersz(c, w, 0, akcent, ramka);
+        TextView t1 = tekst(c, gora, 8, "semibold", kolorGory);
+        t1.setSingleLine(true);
+        t1.setEllipsize(TextUtils.TruncateAt.END);
+        w.addView(t1);
+        TextView t2 = tekst(c, dol, 10.5f, "semibold", Color.WHITE);
+        t2.setMaxLines(maxDol);
+        t2.setEllipsize(TextUtils.TruncateAt.END);
+        t2.setLineSpacing(0f, 1.12f);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.topMargin = dp(c, 3);
+        w.addView(t2, lp);
+        return w;
+    }
+
+    /** Lista + przyciski: zaznaczanie wierszy, ▶ do przycisków, ◀ z pierwszego przycisku z powrotem do listy. */
+    private static void sterowanie(final Context c, final List<View> wiersze, final int[] wybrany, final Runnable podglad,
+                                   final List<TextView> przyciski, final int akcent, final int ramka) {
+        for (int i = 0; i < wiersze.size(); i++) {
+            final int idx = i;
+            View w = wiersze.get(i);
+            w.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean jest) {
+                    if (jest && wybrany[0] != idx) {
+                        int stary = wybrany[0];
+                        wybrany[0] = idx;
+                        if (stary >= 0 && stary < wiersze.size()) ustawWiersz(c, wiersze.get(stary), 0, akcent, ramka);
+                        podglad.run();
+                    }
+                    ustawWiersz(c, v, jest ? 1 : (wybrany[0] == idx ? 2 : 0), akcent, ramka);
+                }
+            });
+            w.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int code, KeyEvent e) {
+                    if (e.getAction() != KeyEvent.ACTION_DOWN) return false;
+                    if (code == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                        for (TextView b : przyciski) {
+                            if (b.getVisibility() == View.VISIBLE && b.isFocusable()) {
+                                b.requestFocus();
+                                break;
+                            }
+                        }
+                        return true;
+                    }
+                    if (code == KeyEvent.KEYCODE_DPAD_LEFT) return true;
+                    if (code == KeyEvent.KEYCODE_DPAD_UP && idx == 0) return true;
+                    return code == KeyEvent.KEYCODE_DPAD_DOWN && idx == wiersze.size() - 1;
+                }
+            });
+        }
+        for (int i = 0; i < przyciski.size(); i++) {
+            final boolean pierwszy = i == 0;
+            przyciski.get(i).setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int code, KeyEvent e) {
+                    if (e.getAction() != KeyEvent.ACTION_DOWN) return false;
+                    if (code == KeyEvent.KEYCODE_DPAD_LEFT && pierwszy && !wiersze.isEmpty()) {
+                        wiersze.get(Math.max(0, Math.min(wybrany[0], wiersze.size() - 1))).requestFocus();
+                        return true;
+                    }
+                    return code == KeyEvent.KEYCODE_DPAD_UP || code == KeyEvent.KEYCODE_DPAD_DOWN;
+                }
+            });
+        }
+    }
+
+    /** Ciemna karta podglądu po prawej stronie okna. */
+    private static LinearLayout kartaPodgladu(Context c, int akcent) {
+        LinearLayout karta = new LinearLayout(c);
+        karta.setOrientation(LinearLayout.VERTICAL);
+        karta.setPadding(dp(c, 22), dp(c, 18), dp(c, 22), dp(c, 18));
+        GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.TL_BR,
+                new int[]{(akcent & 0x00FFFFFF) | 0x33000000, 0xB308080C, 0xCC08080C});
+        g.setCornerRadius(dp(c, 13));
+        g.setStroke(Math.max(1, dp(c, 0.75f)), 0x29FFFFFF);
+        karta.setBackground(g);
+        return karta;
+    }
+
+    private static void zaladujHerb(final Context c, final ImageView v, final String url, String nazwa) {
+        v.setImageDrawable(null);
+        v.setTag(url);
+        if (url == null || url.isEmpty()) return;
+        wczytaj(c, url, dp(c, 48), new Ladowanie() {
+            @Override
+            public void ok(Bitmap b) {
+                if (url.equals(v.getTag())) v.setImageBitmap(b);
+            }
+        });
+    }
+
+    /** Okno krykieta: lista meczów po lewej, tablica wyników wybranego meczu po prawej. */
+    static boolean pokazKrykiet(final MainActivity host, final Runnable poZmianie) {
+        return pokazKrykiet(host, poZmianie, 0);
+    }
+
+    /** {@code start}: numer meczu, który właśnie pokazywał kafelek (ta sama kolejność co na liście okna). */
+    static boolean pokazKrykiet(final MainActivity host, final Runnable poZmianie, int start) {
+        final Context c = host;
+        final List<HomeDashboard.CricketMatch> lista = ModPlKafelki.meczeKrykieta(HomeDashboard.modPlKrykiet(), 20);
+        FrameLayout korzen = new FrameLayout(c);
+        final Dialog d = okno(host, korzen);
+        LinearLayout[] uklad = listaIPodglad(host, korzen, 0xFF4ADE80, "ESPN · CRICKET", I18n.t(c, "dash_cricket"),
+                ZIELEN_JASNY, 300);
+        LinearLayout kolumna = uklad[0], prawa = uklad[1];
+
+        LinearLayout karta = kartaPodgladu(c, ZIELEN);
+        final TextView seria = tekst(c, "", 9.5f, "semibold", ZIELEN_JASNY);
+        seria.setLetterSpacing(0.1f);
+        seria.setSingleLine(true);
+        seria.setEllipsize(TextUtils.TruncateAt.END);
+        karta.addView(seria);
+        final ImageView[] herb = new ImageView[2];
+        final TextView[] nazwa = new TextView[2], wynik = new TextView[2];
+        for (int i = 0; i < 2; i++) {
+            LinearLayout r = new LinearLayout(c);
+            r.setOrientation(LinearLayout.HORIZONTAL);
+            r.setGravity(Gravity.CENTER_VERTICAL);
+            herb[i] = new ImageView(c);
+            herb[i].setScaleType(ImageView.ScaleType.FIT_CENTER);
+            r.addView(herb[i], new LinearLayout.LayoutParams(dp(c, 40), dp(c, 40)));
+            nazwa[i] = tekst(c, "", 21, "display", Color.WHITE);
+            nazwa[i].setSingleLine(true);
+            nazwa[i].setEllipsize(TextUtils.TruncateAt.END);
+            LinearLayout.LayoutParams nl = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+            nl.leftMargin = dp(c, 14);
+            r.addView(nazwa[i], nl);
+            wynik[i] = tekst(c, "", 28, "display", Color.WHITE);
+            wynik[i].setSingleLine(true);
+            LinearLayout.LayoutParams wl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            wl.leftMargin = dp(c, 12);
+            r.addView(wynik[i], wl);
+            LinearLayout.LayoutParams rl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            rl.topMargin = dp(c, i == 0 ? 22 : 16);
+            karta.addView(r, rl);
+        }
+        final TextView szczegoly = tekst(c, "", 11, "regular", 0xD1FFFFFF);
+        szczegoly.setLineSpacing(0f, 1.3f);
+        szczegoly.setMaxLines(4);
+        LinearLayout.LayoutParams szl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        szl.topMargin = dp(c, 20);
+        karta.addView(szczegoly, szl);
+        final TextView pusto = tekst(c, I18n.t(c, "No cricket matches right now"), 14, "semibold", Color.WHITE);
+        pusto.setVisibility(View.GONE);
+        karta.addView(pusto);
+        prawa.addView(karta, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(c, 314)));
+
+        LinearLayout pasek = new LinearLayout(c);
+        pasek.setOrientation(LinearLayout.HORIZONTAL);
+        pasek.setGravity(Gravity.CENTER_VERTICAL);
+        pasek.setClipChildren(false);
+        final TextView bOdswiez = przycisk(c, "↻  " + I18n.t(c, "Refresh Scores"), ZIELEN);
+        pasek.addView(bOdswiez, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(c, 31)));
+        pasek.addView(new View(c), new LinearLayout.LayoutParams(0, 1, 1f));
+        pasek.addView(tekst(c, I18n.t(c, "▲ ▼ matches  ·  ▶ buttons"), 9, "medium", 0x80FFFFFF));
+        LinearLayout.LayoutParams pl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        pl.topMargin = dp(c, 13);
+        pl.leftMargin = dp(c, 3);
+        prawa.addView(pasek, pl);
+
+        final int[] wybrany = {Math.max(0, Math.min(start, lista.size() - 1))};
+        final List<View> wiersze = new ArrayList<View>();
+        final Runnable podglad = new Runnable() {
+            @Override
+            public void run() {
+                if (lista.isEmpty()) {
+                    seria.setText(I18n.t(c, "dash_cricket").toUpperCase(I18n.locale(c)));
+                    pusto.setVisibility(View.VISIBLE);
+                    szczegoly.setText(I18n.t(c, "ESPN has no cricket matches for today. Refresh later."));
+                    for (int i = 0; i < 2; i++) ((View) nazwa[i].getParent()).setVisibility(View.GONE);
+                    return;
+                }
+                HomeDashboard.CricketMatch m = lista.get(Math.min(wybrany[0], lista.size() - 1));
+                String nad = ModPlKafelki.naglowekKrykieta(c, m);
+                String kiedy = ModPlKafelki.terminKrykieta(c, m);
+                seria.setText((nad + (kiedy.isEmpty() ? "" : "  ·  " + kiedy)).toUpperCase(I18n.locale(c)));
+                String[] nazwy = {ModPlKafelki.nazwaKrykieta(c, m.name1, m.team1), ModPlKafelki.nazwaKrykieta(c, m.name2, m.team2)};
+                String[] wyniki = {ModPlKafelki.wynikGlowny(m.score1), ModPlKafelki.wynikGlowny(m.score2)};
+                String[] herby = {m.logo1, m.logo2};
+                for (int i = 0; i < 2; i++) {
+                    nazwa[i].setText(nazwy[i]);
+                    wynik[i].setText(wyniki[i]);
+                    zaladujHerb(c, herb[i], herby[i], nazwy[i]);
+                }
+                StringBuilder sb = new StringBuilder(ModPlKafelki.statusKrykieta(c, m));
+                String dod = ModPlKafelki.wynikDodatek(m.score2);
+                if (dod.isEmpty()) dod = ModPlKafelki.wynikDodatek(m.score1);
+                if (!dod.isEmpty()) sb.append(sb.length() > 0 ? "\n" : "").append(dod);
+                String liga = ModPlKafelki.bezSezonu(m.liga);
+                if (!liga.isEmpty() && !liga.equalsIgnoreCase(m.series)) sb.append(sb.length() > 0 ? "\n" : "").append(liga);
+                szczegoly.setText(sb.toString());
+            }
+        };
+        for (int i = 0; i < lista.size(); i++) {
+            HomeDashboard.CricketMatch m = lista.get(i);
+            String gora = (m.series == null || m.series.isEmpty() ? "" : I18n.t(c, m.series.trim()) + " · ")
+                    + ModPlKafelki.statusKrotki(c, m);
+            String dol = ModPlKafelki.nazwaKrykieta(c, m.name1, m.team1) + " – " + ModPlKafelki.nazwaKrykieta(c, m.name2, m.team2);
+            LinearLayout w = wierszDwulinijkowy(c, gora, m.isLive ? 0xFF86EFAC : 0x94FFFFFF, dol, 1, ZIELEN, ZIELEN_RAMKA);
+            LinearLayout.LayoutParams wlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            if (i > 0) wlp.topMargin = dp(c, 4);
+            kolumna.addView(w, wlp);
+            wiersze.add(w);
+        }
+        List<TextView> przyciski = new ArrayList<TextView>();
+        przyciski.add(bOdswiez);
+        sterowanie(c, wiersze, wybrany, podglad, przyciski, ZIELEN, ZIELEN_RAMKA);
+        bOdswiez.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bOdswiez.setText(I18n.t(c, "Loading cricket scores…"));
+                HomeDashboard.fetchCricketMatches(c, true, new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!d.isShowing()) return;
+                        d.dismiss();
+                        pokazKrykiet(host, poZmianie);
+                        if (poZmianie != null) poZmianie.run();
+                    }
+                });
+            }
+        });
+        podglad.run();
+        d.show();
+        if (!wiersze.isEmpty()) wiersze.get(wybrany[0]).requestFocus();
+        else bOdswiez.requestFocus();
+        return true;
+    }
+
+    /** Okno wiadomości: nagłówki po lewej, wybrany duży po prawej, przycisk do przeglądarki. */
+    static boolean pokazWiadomosci(final MainActivity host, final Runnable poZmianie) {
+        return pokazWiadomosci(host, poZmianie, 0);
+    }
+
+    /** {@code start}: numer nagłówka, który właśnie pokazywał kafelek. */
+    static boolean pokazWiadomosci(final MainActivity host, final Runnable poZmianie, int start) {
+        final Context c = host;
+        final List<HomeDashboard.NewsHeadline> lista = HomeDashboard.modPlWiadomosci();
+        FrameLayout korzen = new FrameLayout(c);
+        final Dialog d = okno(host, korzen);
+        String kraj = I18n.isPl(c) ? "PL" : I18n.getLang(c).toUpperCase(Locale.ROOT);
+        LinearLayout[] uklad = listaIPodglad(host, korzen, 0xFFF87171, "GOOGLE NEWS · " + kraj, I18n.t(c, "dash_news"),
+                CZERWIEN_JASNY, 330);
+        LinearLayout kolumna = uklad[0], prawa = uklad[1];
+
+        LinearLayout karta = kartaPodgladu(c, CZERWIEN);
+        final TextView zrodlo = tekst(c, "", 9.5f, "semibold", CZERWIEN_JASNY);
+        zrodlo.setLetterSpacing(0.1f);
+        zrodlo.setSingleLine(true);
+        zrodlo.setEllipsize(TextUtils.TruncateAt.END);
+        karta.addView(zrodlo);
+        final TextView tytul = tekst(c, "", 24, "display", Color.WHITE);
+        tytul.setLineSpacing(0f, 1.15f);
+        tytul.setMaxLines(7);
+        tytul.setEllipsize(TextUtils.TruncateAt.END);
+        LinearLayout.LayoutParams tl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        tl.topMargin = dp(c, 14);
+        karta.addView(tytul, tl);
+        if (lista.isEmpty()) tytul.setText(I18n.t(c, "Loading top headlines…"));
+        prawa.addView(karta, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(c, 314)));
+
+        LinearLayout pasek = new LinearLayout(c);
+        pasek.setOrientation(LinearLayout.HORIZONTAL);
+        pasek.setGravity(Gravity.CENTER_VERTICAL);
+        pasek.setClipChildren(false);
+        final TextView bCzytaj = przycisk(c, "↗  " + I18n.t(c, "Read in browser"), CZERWIEN);
+        pasek.addView(bCzytaj, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(c, 31)));
+        final TextView bOdswiez = przycisk(c, "↻  " + I18n.t(c, "Refresh"), CZERWIEN);
+        LinearLayout.LayoutParams bol = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(c, 31));
+        bol.leftMargin = dp(c, 8);
+        pasek.addView(bOdswiez, bol);
+        pasek.addView(new View(c), new LinearLayout.LayoutParams(0, 1, 1f));
+        pasek.addView(tekst(c, I18n.t(c, "▲ ▼ headlines  ·  ▶ buttons"), 9, "medium", 0x80FFFFFF));
+        LinearLayout.LayoutParams pl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        pl.topMargin = dp(c, 13);
+        pl.leftMargin = dp(c, 3);
+        prawa.addView(pasek, pl);
+
+        final int[] wybrany = {Math.max(0, Math.min(start, lista.size() - 1))};
+        final List<View> wiersze = new ArrayList<View>();
+        final Runnable podglad = new Runnable() {
+            @Override
+            public void run() {
+                if (lista.isEmpty()) {
+                    bCzytaj.setVisibility(View.GONE);
+                    return;
+                }
+                HomeDashboard.NewsHeadline n = lista.get(Math.min(wybrany[0], lista.size() - 1));
+                String kiedy = ModPlKafelki.ileTemu(c, ModPlKafelki.czasRss(n.pubDate));
+                zrodlo.setText((n.source + (kiedy.isEmpty() ? "" : "  ·  " + kiedy)).toUpperCase(I18n.locale(c)));
+                tytul.setText(n.title);
+                boolean link = n.link != null && n.link.startsWith("http");
+                bCzytaj.setVisibility(link ? View.VISIBLE : View.GONE);
+            }
+        };
+        for (int i = 0; i < lista.size(); i++) {
+            HomeDashboard.NewsHeadline n = lista.get(i);
+            String kiedy = ModPlKafelki.ileTemu(c, ModPlKafelki.czasRss(n.pubDate));
+            LinearLayout w = wierszDwulinijkowy(c, n.source + (kiedy.isEmpty() ? "" : " · " + kiedy), 0xB3FECACA,
+                    n.title, 2, CZERWIEN, CZERWIEN_RAMKA);
+            LinearLayout.LayoutParams wlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            if (i > 0) wlp.topMargin = dp(c, 4);
+            kolumna.addView(w, wlp);
+            wiersze.add(w);
+        }
+        List<TextView> przyciski = new ArrayList<TextView>();
+        przyciski.add(bCzytaj);
+        przyciski.add(bOdswiez);
+        sterowanie(c, wiersze, wybrany, podglad, przyciski, CZERWIEN, CZERWIEN_RAMKA);
+        bCzytaj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (lista.isEmpty()) return;
+                String link = lista.get(Math.min(wybrany[0], lista.size() - 1)).link;
+                if (link == null || !link.startsWith("http")
+                        || !Suggestions.start(c, new Intent(Intent.ACTION_VIEW, Uri.parse(link)))) {
+                    Toast.makeText(c, I18n.t(c, "No browser to open the article"), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        bOdswiez.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bOdswiez.setText(I18n.t(c, "Loading top headlines…"));
+                HomeDashboard.fetchLiveNews(c, true, new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!d.isShowing()) return;
+                        d.dismiss();
+                        pokazWiadomosci(host, poZmianie);
+                        if (poZmianie != null) poZmianie.run();
+                    }
+                });
+            }
+        });
+        podglad.run();
+        d.show();
+        if (!wiersze.isEmpty()) wiersze.get(wybrany[0]).requestFocus();
+        else bOdswiez.requestFocus();
         return true;
     }
 }
