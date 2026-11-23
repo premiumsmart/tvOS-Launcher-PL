@@ -108,7 +108,7 @@
 0108|Automatycznie zmieniane tapety 1080p/4K z wybranych subredditów
 0109|Automatycznie włączaj ekran blokady przy bezczynności
 0110|Automatycznie
-0111|Automatycznie (zgodnie z językiem interfejsu)
+0111|Jak język launchera
 0112|Automatycznie (z internetu)
 0113|Konfiguracja automatyczna
 0114|Automatyczne uruchamianie po starcie wyłączone.

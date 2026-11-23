@@ -26,8 +26,8 @@ SDK="${ANDROID_HOME:-$HOME/AppData/Local/Android/Sdk}"
 BT="$SDK/build-tools/34.0.0"
 BT_D8="$SDK/build-tools/35.0.0"
 JAR="$SDK/platforms/android-34/android.jar"
-WERSJA_KOD="${VERSION_CODE:-46}"
-WERSJA_NAZWA="${VERSION_NAME:-2.2.0-pl}"
+WERSJA_KOD="${VERSION_CODE:-47}"
+WERSJA_NAZWA="${VERSION_NAME:-2.2.5-pl}"
 
 for f in "$BT/aapt2.exe" "$BT/zipalign.exe" "$BT_D8/lib/d8.jar" "$JAR"; do
     [ -e "$f" ] || { echo "Brak: $f" >&2; exit 1; }

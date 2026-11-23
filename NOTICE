@@ -26,8 +26,10 @@ goal overlays, local ADB permission setup, nighttime internet wallpapers,
 wallpaper favorites, a matching screensaver, and adaptive glass clock placement
 with on-device vehicle detection. The recommended setup mode keeps USB debugging
 enabled. Changes are applied by pl/naloz.py and the classes in pl/java/.
-Version 2.2.0-pl is based on tvOS Launcher 2.2.0; it restyles the cricket, news
-and top media widgets as mod tiles and points the built-in updater to this fork.
+Version 2.2.5-pl is based on tvOS Launcher 2.2.5; it restyles the news and top
+media widgets as mod tiles, removes the cricket widget and points the built-in
+updater to this fork. The original's own Polish strings (since 2.2.5) are kept
+as a base under the mod's Polish dictionary.
 
 Additional bundled components:
 

@@ -47,6 +47,13 @@ import java.util.WeakHashMap;
 final class ModPlTapety {
     private ModPlTapety() { }
 
+    /**
+     * Sceny i rysowany kadr ekranu głównego w pełnych kolorach (ARGB_8888), jak do wersji 2.2.0. Oryginał 2.2.5
+     * przeszedł na RGB_565 (połowa pamięci), co na gładkim nocnym niebie i w szkle cyfr grozi widocznymi pasami.
+     * false = tak jak w oryginale (do porównania na telewizorze).
+     */
+    static final boolean PELNE_KOLORY = true;
+
     private static final String TAG = "ModPlTapety";
     /**
      * Zmiana tapety szuka do skutku: najwyżej tylu kandydatów i tyle czasu, potem zostaje obecna tapeta.
@@ -141,11 +148,62 @@ final class ModPlTapety {
         return wpis(bg, w, h, null);
     }
 
+    /**
+     * Od 2.2.5 launcher zwalnia tapetę przy każdym wyjściu do aplikacji (onTrimMemory) i po powrocie wczytuje ją
+     * od nowa jako nowy obiekt Bitmap. Sama mapa WPISY liczyłaby wtedy analizę (linia nieba, wykrywacz aut) przy
+     * każdym powrocie na ekran główny, i to w wątku rysowania. Ostatnie wyniki trzymamy więc także pod odciskiem
+     * treści zdjęcia.
+     */
+    private static final java.util.LinkedHashMap<Long, Wpis> PO_TRESCI =
+            new java.util.LinkedHashMap<Long, Wpis>(8, 0.75f, true) {
+                @Override
+                protected boolean removeEldestEntry(java.util.Map.Entry<Long, Wpis> najstarszy) {
+                    return size() > 6;
+                }
+            };
+
+    /** Odcisk treści: wymiary i 64 piksele z siatki 8×8 (to samo zdjęcie wczytane ponownie daje ten sam odcisk). */
+    private static long odcisk(Bitmap bg) {
+        int w = bg.getWidth(), h = bg.getHeight();
+        long x = 1125899906842597L;
+        x = x * 31 + w;
+        x = x * 31 + h;
+        for (int j = 1; j <= 8; j++) {
+            for (int i = 1; i <= 8; i++) x = x * 31 + bg.getPixel(w * i / 9, h * j / 9);
+        }
+        return x;
+    }
+
     /** Jak wyżej; gotowa (AW*AH, 0/1) to wycięty ręcznie pierwszy plan zdjęcia dołączonego do aplikacji. */
     private static Wpis wpis(Bitmap bg, int w, int h, byte[] gotowa) {
         synchronized (WPISY) {
             Wpis jest = WPISY.get(bg);
             if (jest != null) return jest;
+        }
+        final long odc = odcisk(bg);
+        Wpis znany;
+        synchronized (PO_TRESCI) {
+            znany = PO_TRESCI.get(odc);
+        }
+        if (znany != null) {
+            // to samo zdjęcie wczytane ponownie: wyniki analizy bez liczenia; maska i cieniowanie należą do bitmapy
+            Wpis kopia = new Wpis();
+            kopia.baza = znany.baza;
+            kopia.klucz = znany.klucz;
+            kopia.analiza = znany.analiza;
+            kopia.goraStala = znany.goraStala;
+            kopia.pojazdy = znany.pojazdy;
+            kopia.wykryte = znany.wykryte;
+            synchronized (WPISY) {
+                Wpis jest = WPISY.get(bg);
+                if (jest != null) return jest;
+                WPISY.put(bg, kopia);
+            }
+            synchronized (PO_TRESCI) {
+                PO_TRESCI.put(odc, kopia);   // najnowszy wpis: późniejsze przeliczenia (inny układ zegara) trafią do pamięci
+            }
+            ModPlDziennik.i(TAG, "to samo zdjęcie wczytane ponownie: analiza z pamięci");
+            return kopia;
         }
         Float modGora = null;
         if (gotowa == null) {
@@ -171,6 +229,9 @@ final class ModPlTapety {
             Wpis jest = WPISY.get(bg);
             if (jest != null) return jest;
             WPISY.put(bg, nowy);
+        }
+        synchronized (PO_TRESCI) {
+            PO_TRESCI.put(odc, nowy);
         }
         return nowy;
     }

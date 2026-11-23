@@ -138,6 +138,7 @@ final class ModPlOkna {
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         d.setContentView(korzen, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        HomeDashboard.modPlOkno(d);   // od 2.2.5 klawisz HOME zamyka okna widżetów; nasze zgłaszają się tak samo
         return d;
     }
 
@@ -1425,10 +1426,9 @@ final class ModPlOkna {
         return true;
     }
 
-    // ------------------------------------------------------------------ krykiet i wiadomości (widżety oryginału 2.2.0)
+    // ------------------------------------------------------------------ wiadomości (widżet oryginału 2.2.0)
 
-    /** Krykiet: zieleń, wiadomości: czerwień (jak kafelki oryginału), w tym samym szkle co pozostałe okna. */
-    private static final int ZIELEN = 0xFF16A34A, ZIELEN_RAMKA = 0xFF86EFAC, ZIELEN_JASNY = 0xFFBBF7D0;
+    /** Wiadomości: czerwień (jak kafelek oryginału), w tym samym szkle co pozostałe okna. */
     private static final int CZERWIEN = 0xFFDC2626, CZERWIEN_RAMKA = 0xFFFCA5A5, CZERWIEN_JASNY = 0xFFFECACA;
 
     /** Szkielet okna „lista z podglądem”: zwraca {kolumna listy, prawa kolumna}. */
@@ -1561,144 +1561,6 @@ final class ModPlOkna {
                 if (url.equals(v.getTag())) v.setImageBitmap(b);
             }
         });
-    }
-
-    /** Okno krykieta: lista meczów po lewej, tablica wyników wybranego meczu po prawej. */
-    static boolean pokazKrykiet(final MainActivity host, final Runnable poZmianie) {
-        return pokazKrykiet(host, poZmianie, 0);
-    }
-
-    /** {@code start}: numer meczu, który właśnie pokazywał kafelek (ta sama kolejność co na liście okna). */
-    static boolean pokazKrykiet(final MainActivity host, final Runnable poZmianie, int start) {
-        final Context c = host;
-        final List<HomeDashboard.CricketMatch> lista = ModPlKafelki.meczeKrykieta(HomeDashboard.modPlKrykiet(), 20);
-        FrameLayout korzen = new FrameLayout(c);
-        final Dialog d = okno(host, korzen);
-        LinearLayout[] uklad = listaIPodglad(host, korzen, 0xFF4ADE80, "ESPN · CRICKET", I18n.t(c, "dash_cricket"),
-                ZIELEN_JASNY, 300);
-        LinearLayout kolumna = uklad[0], prawa = uklad[1];
-
-        LinearLayout karta = kartaPodgladu(c, ZIELEN);
-        final TextView seria = tekst(c, "", 9.5f, "semibold", ZIELEN_JASNY);
-        seria.setLetterSpacing(0.1f);
-        seria.setSingleLine(true);
-        seria.setEllipsize(TextUtils.TruncateAt.END);
-        karta.addView(seria);
-        final ImageView[] herb = new ImageView[2];
-        final TextView[] nazwa = new TextView[2], wynik = new TextView[2];
-        for (int i = 0; i < 2; i++) {
-            LinearLayout r = new LinearLayout(c);
-            r.setOrientation(LinearLayout.HORIZONTAL);
-            r.setGravity(Gravity.CENTER_VERTICAL);
-            herb[i] = new ImageView(c);
-            herb[i].setScaleType(ImageView.ScaleType.FIT_CENTER);
-            r.addView(herb[i], new LinearLayout.LayoutParams(dp(c, 40), dp(c, 40)));
-            nazwa[i] = tekst(c, "", 21, "display", Color.WHITE);
-            nazwa[i].setSingleLine(true);
-            nazwa[i].setEllipsize(TextUtils.TruncateAt.END);
-            LinearLayout.LayoutParams nl = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
-            nl.leftMargin = dp(c, 14);
-            r.addView(nazwa[i], nl);
-            wynik[i] = tekst(c, "", 28, "display", Color.WHITE);
-            wynik[i].setSingleLine(true);
-            LinearLayout.LayoutParams wl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            wl.leftMargin = dp(c, 12);
-            r.addView(wynik[i], wl);
-            LinearLayout.LayoutParams rl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            rl.topMargin = dp(c, i == 0 ? 22 : 16);
-            karta.addView(r, rl);
-        }
-        final TextView szczegoly = tekst(c, "", 11, "regular", 0xD1FFFFFF);
-        szczegoly.setLineSpacing(0f, 1.3f);
-        szczegoly.setMaxLines(4);
-        LinearLayout.LayoutParams szl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        szl.topMargin = dp(c, 20);
-        karta.addView(szczegoly, szl);
-        final TextView pusto = tekst(c, I18n.t(c, "No cricket matches right now"), 14, "semibold", Color.WHITE);
-        pusto.setVisibility(View.GONE);
-        karta.addView(pusto);
-        prawa.addView(karta, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(c, 314)));
-
-        LinearLayout pasek = new LinearLayout(c);
-        pasek.setOrientation(LinearLayout.HORIZONTAL);
-        pasek.setGravity(Gravity.CENTER_VERTICAL);
-        pasek.setClipChildren(false);
-        final TextView bOdswiez = przycisk(c, "↻  " + I18n.t(c, "Refresh Scores"), ZIELEN);
-        pasek.addView(bOdswiez, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(c, 31)));
-        pasek.addView(new View(c), new LinearLayout.LayoutParams(0, 1, 1f));
-        pasek.addView(tekst(c, I18n.t(c, "▲ ▼ matches  ·  ▶ buttons"), 9, "medium", 0x80FFFFFF));
-        LinearLayout.LayoutParams pl = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        pl.topMargin = dp(c, 13);
-        pl.leftMargin = dp(c, 3);
-        prawa.addView(pasek, pl);
-
-        final int[] wybrany = {Math.max(0, Math.min(start, lista.size() - 1))};
-        final List<View> wiersze = new ArrayList<View>();
-        final Runnable podglad = new Runnable() {
-            @Override
-            public void run() {
-                if (lista.isEmpty()) {
-                    seria.setText(I18n.t(c, "dash_cricket").toUpperCase(I18n.locale(c)));
-                    pusto.setVisibility(View.VISIBLE);
-                    szczegoly.setText(I18n.t(c, "ESPN has no cricket matches for today. Refresh later."));
-                    for (int i = 0; i < 2; i++) ((View) nazwa[i].getParent()).setVisibility(View.GONE);
-                    return;
-                }
-                HomeDashboard.CricketMatch m = lista.get(Math.min(wybrany[0], lista.size() - 1));
-                String nad = ModPlKafelki.naglowekKrykieta(c, m);
-                String kiedy = ModPlKafelki.terminKrykieta(c, m);
-                seria.setText((nad + (kiedy.isEmpty() ? "" : "  ·  " + kiedy)).toUpperCase(I18n.locale(c)));
-                String[] nazwy = {ModPlKafelki.nazwaKrykieta(c, m.name1, m.team1), ModPlKafelki.nazwaKrykieta(c, m.name2, m.team2)};
-                String[] wyniki = {ModPlKafelki.wynikGlowny(m.score1), ModPlKafelki.wynikGlowny(m.score2)};
-                String[] herby = {m.logo1, m.logo2};
-                for (int i = 0; i < 2; i++) {
-                    nazwa[i].setText(nazwy[i]);
-                    wynik[i].setText(wyniki[i]);
-                    zaladujHerb(c, herb[i], herby[i], nazwy[i]);
-                }
-                StringBuilder sb = new StringBuilder(ModPlKafelki.statusKrykieta(c, m));
-                String dod = ModPlKafelki.wynikDodatek(m.score2);
-                if (dod.isEmpty()) dod = ModPlKafelki.wynikDodatek(m.score1);
-                if (!dod.isEmpty()) sb.append(sb.length() > 0 ? "\n" : "").append(dod);
-                String liga = ModPlKafelki.bezSezonu(m.liga);
-                if (!liga.isEmpty() && !liga.equalsIgnoreCase(m.series)) sb.append(sb.length() > 0 ? "\n" : "").append(liga);
-                szczegoly.setText(sb.toString());
-            }
-        };
-        for (int i = 0; i < lista.size(); i++) {
-            HomeDashboard.CricketMatch m = lista.get(i);
-            String gora = (m.series == null || m.series.isEmpty() ? "" : I18n.t(c, m.series.trim()) + " · ")
-                    + ModPlKafelki.statusKrotki(c, m);
-            String dol = ModPlKafelki.nazwaKrykieta(c, m.name1, m.team1) + " – " + ModPlKafelki.nazwaKrykieta(c, m.name2, m.team2);
-            LinearLayout w = wierszDwulinijkowy(c, gora, m.isLive ? 0xFF86EFAC : 0x94FFFFFF, dol, 1, ZIELEN, ZIELEN_RAMKA);
-            LinearLayout.LayoutParams wlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            if (i > 0) wlp.topMargin = dp(c, 4);
-            kolumna.addView(w, wlp);
-            wiersze.add(w);
-        }
-        List<TextView> przyciski = new ArrayList<TextView>();
-        przyciski.add(bOdswiez);
-        sterowanie(c, wiersze, wybrany, podglad, przyciski, ZIELEN, ZIELEN_RAMKA);
-        bOdswiez.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bOdswiez.setText(I18n.t(c, "Loading cricket scores…"));
-                HomeDashboard.fetchCricketMatches(c, true, new Runnable() {
-                    @Override
-                    public void run() {
-                        if (!d.isShowing()) return;
-                        d.dismiss();
-                        pokazKrykiet(host, poZmianie);
-                        if (poZmianie != null) poZmianie.run();
-                    }
-                });
-            }
-        });
-        podglad.run();
-        d.show();
-        if (!wiersze.isEmpty()) wiersze.get(wybrany[0]).requestFocus();
-        else bOdswiez.requestFocus();
-        return true;
     }
 
     /** Okno wiadomości: nagłówki po lewej, wybrany duży po prawej, przycisk do przeglądarki. */

@@ -1,4 +1,4 @@
-# tvOS Launcher PL · 2.2.0-pl
+# tvOS Launcher PL · 2.2.5-pl
 
 ![tvOS Launcher PL: pełny ekran z dokiem i oknami moda na fioletowej scenie](zrzuty-github/gotowe/showcase.webp)
 
@@ -6,19 +6,20 @@
 
 ## Polski
 
-Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgenius1/tvOS-Launcher), oparta na wersji 2.2.0. Opis samego launchera i jego pozostałych funkcji znajdziesz w oryginalnym repozytorium; tutaj pokazujemy zmiany moda PL.
+Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgenius1/tvOS-Launcher), oparta na wersji 2.2.5. Opis samego launchera i jego pozostałych funkcji znajdziesz w oryginalnym repozytorium; tutaj pokazujemy zmiany moda PL.
 
 ### Pobieranie
 
 **[Pobierz najnowszy APK](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest/download/tvOS-Launcher-PL.apk)** · Android TV / Google TV z Androidem 7.0 lub nowszym · [opis wydania i suma SHA-256](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest)
 
-### Nowe w 2.2.0-pl
+### Nowe w 2.2.5-pl
 
-- Wszystkie zmiany oryginału 2.2.0 (dok w 1–3 rzędach, okno „Aplikacje” z wyszukiwarką, mały zegar, przenoszenie i wyłączanie kafelków przytrzymaniem OK, wejścia HDMI) — również po polsku.
-- Nowe widżety oryginału w stylu kafelków moda, z własnymi oknami: **Krykiet na żywo** (bieżące mecze, najpierw reprezentacje), **Wiadomości na żywo** (Google News po polsku) i **Top filmy i seriale** (ranking ze zwiastunami). Domyślnie są wyłączone; włączysz je w ustawieniach widżetów ekranu głównego. Kafelek otwiera okno od razu na pozycji, którą właśnie pokazuje.
-- Rząd widżetów dopasowuje się do doku w 1, 2 i 3 rzędach i nie nachodzi na niego.
-- Wygaszacz: do wyboru styl cyfr zegara.
-- Aktualizacje prosto z tego repozytorium, domyślnie automatyczne.
+- Zmiany oryginału 2.2.5, także po polsku: **nowa wyszukiwarka** (szuka też w zainstalowanych aplikacjach, filmy i seriale z serwisów, które masz; przycisk lupy na ekranie głównym), **płynniejszy ekran główny** (powrót z aplikacji nie buduje kafelków od nowa), **„Oglądaj dalej”** z większej liczby aplikacji, **wybór kraju wiadomości** (domyślnie Polska) i **menu zasilania Androida** w Panelu sterowania.
+- Klawisz Home zamyka też okna kafelków moda.
+- Tapety i szklany zegar w pełnej jakości kolorów.
+- Kafelek krykieta usunięty; dodatkowe kafelki to **Wiadomości na żywo** i **Top filmy i seriale** (domyślnie wyłączone, z własnymi oknami).
+
+Wcześniej, w 2.2.0-pl: dok w 1–3 rzędach z dopasowanym rzędem kafelków, okno „Aplikacje”, mały zegar, przenoszenie i wyłączanie kafelków przytrzymaniem OK, styl cyfr zegara w wygaszaczu, aktualizacje prosto z tego repozytorium.
 
 ### Co zmieniono
 
@@ -44,13 +45,13 @@ Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgeniu
 3. Przejdź polski kreator: profil, sceny i miasto do pogody. Wybierz konfigurację ręczną, jeśli chcesz samodzielnie nadawać uprawnienia; wyłączanie systemowych launcherów i CleanYourTV są opcjonalne.
 4. Jeśli system zapyta o domyślny ekran główny, wybierz tvOS Launcher; w przeciwnym razie uruchamiaj go z listy aplikacji.
 
-**Aktualizacje:** launcher sam sprawdza wydania tego repozytorium i proponuje instalację nowej wersji (**Ustawienia → Aktualizacje**; automatyczne sprawdzanie jest domyślnie włączone). Ustawienia zostają. Wersja 2.1.5-pl30 sprawdzała jeszcze oryginał, więc z niej zainstaluj 2.2.0-pl raz ręcznie, na poprzednią wersję.
+**Aktualizacje:** launcher sam sprawdza wydania tego repozytorium i proponuje instalację nowej wersji (**Ustawienia → Aktualizacje**; automatyczne sprawdzanie jest domyślnie włączone). Ustawienia zostają. Wersja 2.1.5-pl30 sprawdzała jeszcze oryginał, więc z niej zainstaluj nową wersję raz ręcznie, na poprzednią.
 
 **„Oglądaj dalej”:** włącz debugowanie USB w opcjach programisty telewizora, następnie **Ustawienia launchera → Szybkie ustawienia → Uprawnienie „Oglądaj dalej” → Włącz** i potwierdź pytanie telewizora. Po nadaniu uprawnienia możesz wyłączyć debugowanie USB.
 
 ### Dane i licencja
 
-Mecze: [LiveScore](https://www.livescore.com/), pomocniczo [ESPN](https://www.espn.com/) i [TheSportsDB](https://www.thesportsdb.com/); krykiet: [ESPN](https://www.espncricinfo.com/); wiadomości: [Google News](https://news.google.com/); popularne tytuły: [JustWatch Polska](https://www.justwatch.com/pl); ranking „Top filmy i seriale”: Cinemeta ([Stremio](https://www.stremio.com/), dane IMDb); pogoda: [Open-Meteo](https://open-meteo.com/); tapety: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) i [Bing](https://www.bing.com/).
+Mecze: [LiveScore](https://www.livescore.com/), pomocniczo [ESPN](https://www.espn.com/) i [TheSportsDB](https://www.thesportsdb.com/); wiadomości: [Google News](https://news.google.com/); popularne tytuły: [JustWatch Polska](https://www.justwatch.com/pl); ranking „Top filmy i seriale”: Cinemeta ([Stremio](https://www.stremio.com/), dane IMDb); pogoda: [Open-Meteo](https://open-meteo.com/); tapety: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) i [Bing](https://www.bing.com/).
 
 Kod: [Apache-2.0](LICENSE); informacje o autorstwie i bibliotekach: [NOTICE](NOTICE). Dołączono TensorFlow Lite 2.14.0 i model SSD MobileNet v1 COCO od Google, na licencji Apache-2.0. Lista zmian: [RELEASE_NOTES.md](RELEASE_NOTES.md).
 
@@ -60,19 +61,20 @@ Projekt nie jest powiązany z Apple, LiveScore, ESPN, JustWatch, Google, Stremio
 
 ## English
 
-A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius1/tvOS-Launcher), based on version 2.2.0. See the original repository for the launcher itself and its other features; this page covers the PL mod changes.
+A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius1/tvOS-Launcher), based on version 2.2.5. See the original repository for the launcher itself and its other features; this page covers the PL mod changes.
 
 ### Download
 
 **[Download the latest APK](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest/download/tvOS-Launcher-PL.apk)** · Android TV / Google TV running Android 7.0 or later · [release notes and SHA-256 checksum](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest)
 
-### New in 2.2.0-pl
+### New in 2.2.5-pl
 
-- All changes from the original 2.2.0 (1–3 dock rows, an “Apps” window with search, a small clock, moving and hiding tiles with a long OK press, HDMI inputs) — also in Polish.
-- The original’s new widgets restyled as mod tiles with their own windows: **Live cricket** (current matches, national teams first), **Live news** (Google News in Polish) and **Top movies and series** (a ranking with trailers). They are off by default; enable them in the home screen widget settings. A tile opens its window at the item it is currently showing.
-- The widget row adapts to a dock with 1, 2 or 3 rows and never overlaps it.
-- Screensaver: selectable clock digit style.
-- Updates straight from this repository, automatic by default.
+- Changes from the original 2.2.5, also in Polish: a **new search** (also searches inside installed apps; movies and series from the services you have; a search button on the home screen), a **smoother home screen** (returning from an app no longer rebuilds the tiles), **Continue Watching** from more apps, a **news country** setting (Poland by default) and the **Android power menu** in the Control Panel.
+- The Home key also closes the mod’s tile windows.
+- Wallpapers and the glass clock keep full colour quality.
+- The cricket tile has been removed; the extra tiles are **Live news** and **Top movies and series** (off by default, with their own windows).
+
+Earlier, in 2.2.0-pl: 1–3 dock rows with a matching tile row, the “Apps” window, a small clock, moving and hiding tiles with a long OK press, a selectable screensaver clock style, updates straight from this repository.
 
 ### Changes
 
@@ -98,13 +100,13 @@ A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius
 3. Complete the Polish wizard: profile, scenes and weather location. Choose manual setup if you prefer to grant permissions yourself; disabling system launchers and using CleanYourTV are optional.
 4. Select tvOS Launcher if Android asks for a default home app; otherwise launch it from the app list.
 
-**Updates:** the launcher checks this repository’s releases and offers to install new versions (**Settings → Updates**; automatic checks are on by default). Your settings are kept. Version 2.1.5-pl30 still checked the original repository, so install 2.2.0-pl over it manually once.
+**Updates:** the launcher checks this repository’s releases and offers to install new versions (**Settings → Updates**; automatic checks are on by default). Your settings are kept. Version 2.1.5-pl30 still checked the original repository, so install the new version over it manually once.
 
 **Continue Watching:** enable USB debugging in the TV’s developer options, then go to **Launcher settings → Quick settings → “Continue Watching” permission → Enable** and confirm the TV prompt. You may disable USB debugging afterwards.
 
 ### Data and license
 
-Football: [LiveScore](https://www.livescore.com/) with supplementary [ESPN](https://www.espn.com/) and [TheSportsDB](https://www.thesportsdb.com/) data; cricket: [ESPN](https://www.espncricinfo.com/); news: [Google News](https://news.google.com/); popular titles: [JustWatch Poland](https://www.justwatch.com/pl); “Top movies and series”: Cinemeta ([Stremio](https://www.stremio.com/), IMDb data); weather: [Open-Meteo](https://open-meteo.com/); wallpapers: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) and [Bing](https://www.bing.com/).
+Football: [LiveScore](https://www.livescore.com/) with supplementary [ESPN](https://www.espn.com/) and [TheSportsDB](https://www.thesportsdb.com/) data; news: [Google News](https://news.google.com/); popular titles: [JustWatch Poland](https://www.justwatch.com/pl); “Top movies and series”: Cinemeta ([Stremio](https://www.stremio.com/), IMDb data); weather: [Open-Meteo](https://open-meteo.com/); wallpapers: [Wallhaven](https://wallhaven.cc/), [Wikimedia Commons](https://commons.wikimedia.org/) and [Bing](https://www.bing.com/).
 
 Code: [Apache-2.0](LICENSE); credits and dependencies: [NOTICE](NOTICE). Includes TensorFlow Lite 2.14.0 and Google’s SSD MobileNet v1 COCO model under Apache-2.0. Changelog: [RELEASE_NOTES.md](RELEASE_NOTES.md).
 

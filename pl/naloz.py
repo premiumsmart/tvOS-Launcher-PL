@@ -26,33 +26,24 @@ def zmiana(plik, opis, stary, nowy, ile=1):
 
 # ---------------------------------------------------------------- I18n.java: język polski
 
-zmiana("I18n.java", "stała LANG_PL",
-       '    public static final String LANG_KO = "ko";\n',
-       '    public static final String LANG_KO = "ko";\n'
-       '    public static final String LANG_PL = "pl";\n')
+# Od 2.2.5 oryginał ma własny język polski (LANG_PL, initPolish z ok. 500 wpisami, locale pl-PL). Zostawiamy go
+# jako podkład i nakładamy na wierzch nasz pełny słownik (I18nPl): nasze tłumaczenia wygrywają, a napisy, których
+# nie mamy, biorą się z oryginału zamiast zostać po angielsku.
+zmiana("I18n.java", "Polski na liście języków: bez wpisu oryginału w środku listy",
+       '        {LANG_PL, "Polski", "Użyj tvOS Launcher w języku polskim"},\n',
+       '')
 
 zmiana("I18n.java", "Polski na liście języków",
        '        {LANG_EN, "English", "Use tvOS Launcher in English"},\n',
        '        {LANG_EN, "English", "Use tvOS Launcher in English"},\n'
        '        {LANG_PL, "Polski", "Używaj tvOS Launchera po polsku"},\n')
 
-zmiana("I18n.java", "pl w obsługiwanych językach",
-       '            LANG_IT, LANG_RU, LANG_PT, LANG_AR, LANG_JA, LANG_ZH, LANG_KO, LANG_HE\n    ));',
-       '            LANG_IT, LANG_RU, LANG_PT, LANG_AR, LANG_JA, LANG_ZH, LANG_KO, LANG_HE, LANG_PL\n    ));')
-
-# od 2.2.0 słowniki kończy hebrajski (I18nHe.init); polski dokładamy zaraz po nim
+# słowniki kończy hebrajski (I18nHe.init), polski oryginału (initPolish) jest już wtedy wczytany
 zmiana("I18n.java", "wczytanie polskiej mapy",
        '        I18nHe.init(LANG_MAPS.get(LANG_HE));\n',
        '        I18nHe.init(LANG_MAPS.get(LANG_HE));\n'
        '\n'
-       '        Map<String, String> plMap = new HashMap<String, String>();\n'
-       '        I18nPl.fill(plMap);\n'
-       '        LANG_MAPS.put(LANG_PL, plMap);\n')
-
-zmiana("I18n.java", "locale pl-PL",
-       '            case LANG_KO: return Locale.forLanguageTag("ko-KR");\n',
-       '            case LANG_KO: return Locale.forLanguageTag("ko-KR");\n'
-       '            case LANG_PL: return Locale.forLanguageTag("pl-PL");\n')
+       '        I18nPl.fill(LANG_MAPS.get(LANG_PL));   // Mod PL: nasz słownik na wierzch polskiego z oryginału\n')
 
 zmiana("I18n.java", "isPl, langCode, cached",
        '    public static boolean isTr(Context c) {\n'
@@ -87,6 +78,14 @@ zmiana("I18n.java", "napisy sklejane w locie po polsku",
        '        }\n'
        '        // Dynamic pattern translations\n')
 
+# oryginał od 2.2.5 ma polski we wspólnej gałęzi „EEEE d MMMM” (mała litera, bez przecinka); u nas osobna gałąź
+zmiana("I18n.java", "polski format daty: bez gałęzi oryginału",
+       '            case LANG_PT:\n'
+       '            case LANG_PL:\n'
+       '            case LANG_RU:\n',
+       '            case LANG_PT:\n'
+       '            case LANG_RU:\n')
+
 zmiana("I18n.java", "polski format daty",
        '            case LANG_DE:\n'
        '                return new SimpleDateFormat("EEEE, d. MMMM", loc).format(date);\n',
@@ -114,10 +113,7 @@ zmiana("HomeDashboard.java", "Polska na liście krajów",
        '        {"PL", "Polska (Poland)", "pl"},\n'
        '        {"TR", "Türkiye (Turkey)", "tr"},\n')
 
-zmiana("HomeDashboard.java", "kraj PL dla języka polskiego",
-       '        if ("tr".equals(lang)) return "TR";\n',
-       '        if ("pl".equals(lang)) return "PL";\n'
-       '        if ("tr".equals(lang)) return "TR";\n')
+# (kraj PL dla języka polskiego ma od 2.2.5 sam oryginał: defaultCountryForUiLang)
 
 zmiana("HomeDashboard.java", "widżet godzin modlitw domyślnie wyłączony",
        '        return prefs(c).getBoolean(KEY_W_PRAYER, true);\n',
@@ -193,17 +189,17 @@ zmiana("HomeDashboard.java", "ligi: Ekstraklasa, puchary i reprezentacje, bez tu
 # Zapas ESPN dla „Najlepszych lig” (gdy LiveScore nie odpowiada): bez całego świata ("all") i lig
 # tureckich, azerskiej i saudyjskiej z listy oryginału.
 zmiana("HomeDashboard.java", "Najlepsze ligi: puchary UEFA i reprezentacje zamiast ligi tureckiej",
-       '                        String[] codes = {\n'
-       '                            "all",\n'
-       '                            "uefa.champions", "uefa.europa", "uefa.europa.conf", "uefa.nations",\n'
-       '                            "fifa.world", "eng.1", "eng.fa", "esp.1", "esp.copa_del_rey",\n'
-       '                            "tur.1", "tur.cup", "ita.1", "ger.1", "fra.1",\n'
-       '                            "aze.1", "ned.1", "por.1", "ksa.1"\n'
-       '                        };\n',
-       '                        String[] codes = {\n'
-       '                            "uefa.champions", "uefa.europa", "uefa.europa.conf", "uefa.nations",\n'
-       '                            "fifa.world", "eng.1", "esp.1", "ita.1", "ger.1", "fra.1"\n'
-       '                        };\n')
+       '                    String[] codes = {\n'
+       '                        "all",\n'
+       '                        "uefa.champions", "uefa.europa", "uefa.europa.conf", "uefa.nations",\n'
+       '                        "fifa.world", "eng.1", "eng.fa", "esp.1", "esp.copa_del_rey",\n'
+       '                        "tur.1", "tur.cup", "ita.1", "ger.1", "fra.1",\n'
+       '                        "aze.1", "ned.1", "por.1", "ksa.1"\n'
+       '                    };\n',
+       '                    String[] codes = {\n'
+       '                        "uefa.champions", "uefa.europa", "uefa.europa.conf", "uefa.nations",\n'
+       '                        "fifa.world", "eng.1", "esp.1", "ita.1", "ger.1", "fra.1"\n'
+       '                    };\n')
 
 zmiana("HomeDashboard.java", "domyślne ulubione drużyny pod polskiego kibica",
        '            def.add("Qarabağ");\n'
@@ -609,14 +605,14 @@ zmiana("Suggestions.java", "Najczęściej oglądane: zapamiętanie zwiastuna",
        '                            JSONArray offers = n.optJSONArray("offers");\n')
 
 zmiana("HomeDashboard.java", "Ekstraklasa: pobieranie (osobno i w Najlepszych ligach)",
-       '                    if ("all".equals(league)) {\n',
-       '                    List<MatchItem> zLiveScore = ModPlMecze.pobierz(c, league);\n'
-       '                    if (zLiveScore != null) {\n'
-       '                        all.addAll(zLiveScore);\n'
-       '                    } else if (ModPlEkstraklasa.KOD.equals(league)) {\n'
-       '                        all.addAll(ModPlEkstraklasa.pobierz(c));\n'
-       '                    } else if ("all".equals(league)) {\n'
-       '                        all.addAll(ModPlEkstraklasa.pobierz(c));\n')
+       '                if ("all".equals(league)) {\n',
+       '                List<MatchItem> zLiveScore = ModPlMecze.pobierz(c, league);\n'
+       '                if (zLiveScore != null) {\n'
+       '                    all.addAll(zLiveScore);\n'
+       '                } else if (ModPlEkstraklasa.KOD.equals(league)) {\n'
+       '                    all.addAll(ModPlEkstraklasa.pobierz(c));\n'
+       '                } else if ("all".equals(league)) {\n'
+       '                    all.addAll(ModPlEkstraklasa.pobierz(c));\n')
 
 zmiana("HomeDashboard.java", "Ekstraklasa: pamięć podręczna przy wybranej Ekstraklasie",
        '        if (!sMemMatches.isEmpty()) return new ArrayList<MatchItem>(sMemMatches);\n',
@@ -705,10 +701,10 @@ zmiana("HomeDashboard.java", "kafelek: odświeżanie na żywo",
        '                showFootballDialog(host, bindMatches, false);\n')
 
 zmiana("HomeDashboard.java", "pusta lista z LiveScore zastępuje starą",
-       '                if (!all.isEmpty()) {\n'
-       '                    sMemMatches = all;\n',
-       '                if (!all.isEmpty() || ModPlMecze.dziala) {\n'
-       '                    sMemMatches = all;\n')
+       '            if (!all.isEmpty()) {\n'
+       '                sMemMatches = all;\n',
+       '            if (!all.isEmpty() || ModPlMecze.dziala) {\n'
+       '                sMemMatches = all;\n')
 
 zmiana("HomeDashboard.java", "kafelek: brak meczów zamiast wiecznego ładowania",
        '                    empty.setText(I18n.t(host, "football_loading"));\n',
@@ -1306,95 +1302,59 @@ zmiana('CustomMedia.java', 'tapety z internetu: dołączona ulubiona z pamięci 
        '                Bitmap disk = decodeBitmapFromFile(f, Math.max(1280, reqW), Math.max(720, reqH));\n',
        '                Bitmap disk = decodeBitmapFromFile(f, Math.max(1280, reqW), Math.max(720, reqH));\n                ModPlTapety.oznacz(c, scope, disk);   // Mod PL: dołączona ulubiona (np. RS7) zachowuje ręczne ustawienie\n')
 
-# ---------------------------------------------------------------- wiadomości po polsku (2.2.0, 17.11.2026)
-# Widżet wiadomości oryginału bierze Google News według języka interfejsu; polskiego nie było (szły nagłówki z USA).
-zmiana("HomeDashboard.java", "wiadomości: polskie nagłówki z Google News",
-       '                    } else if ("ru".equals(lang)) {\n'
-       '                        rssUrl = "https://news.google.com/rss?hl=ru&gl=RU&ceid=RU:ru";\n',
-       '                    } else if ("pl".equals(lang)) {\n'
-       '                        rssUrl = "https://news.google.com/rss?hl=pl&gl=PL&ceid=PL:pl";\n'
-       '                    } else if ("ru".equals(lang)) {\n'
-       '                        rssUrl = "https://news.google.com/rss?hl=ru&gl=RU&ceid=RU:ru";\n')
-
 # ---------------------------------------------------------------- nowe widżety oryginału 2.2.0 w naszym stylu (17.11.2026)
 # Użytkownik: „te widgety co doszły nowe to musisz je zrobić tak jak są mecze i najczęściej oglądane”.
-# Kafelki: ModPlKafelki.krykiet / wiadomosci / top, okna: ModPlOkna.pokazKrykiet / pokazWiadomosci / pokazTop.
+# Kafelki: ModPlKafelki.wiadomosci / top, okna: ModPlOkna.pokazWiadomosci / pokazTop.
+# Od 2.2.5 wiadomości mają w oryginale wybór kraju (domyślnie według języka: polski -> Polska), więc własna łatka
+# z polskimi nagłówkami Google News nie jest już potrzebna.
 
-zmiana("HomeDashboard.java", "krykiet: herby, pełne nazwy, termin i stan meczu; dostęp do listy",
-       '        public boolean isLive = false;\n'
-       '    }\n'
-       '\n'
-       '    private static List<CricketMatch> sMemCricket = new ArrayList<CricketMatch>();\n',
-       '        public boolean isLive = false;\n'
-       '        /** Mod PL: herby i pełne nazwy z ESPN, początek meczu i stan („pre”, „in”, „post”). */\n'
-       '        public String logo1 = "", logo2 = "", name1 = "", name2 = "", state = "";\n'
-       '        public long startMs = 0L;\n'
-       '        /** Mod PL: opis („2nd Test”), rodzaj („Test”, „T20I”), pełna nazwa rozgrywek, dzień meczu testowego. */\n'
-       '        public String opis = "", rodzaj = "", liga = "";\n'
-       '        public boolean miedzynarodowy = false;\n'
-       '        public int dzien = 0;\n'
-       '    }\n'
-       '\n'
-       '    private static List<CricketMatch> sMemCricket = new ArrayList<CricketMatch>();\n'
-       '\n'
-       '    /** Mod PL: kopia ostatnio pobranych meczów krykieta (kafelek i okno moda). */\n'
-       '    static List<CricketMatch> modPlKrykiet() {\n'
-       '        return new ArrayList<CricketMatch>(sMemCricket);\n'
-       '    }\n')
+# ---------------------------------------------------------------- bez widżetu krykieta (2.2.5, 23.11.2026)
+# Decyzja użytkownika z 23.11.2026: z dodatkowych kafelków zostają Wiadomości i Top filmy i seriale, krykiet
+# wylatuje tak jak wcześniej godziny modlitw. Kafelek nigdy się nie buduje, a bez wpisu w DEFAULT_WIDGET_IDS znika
+# z ustawień, z rzędu na ekranie i z menu przytrzymania OK. Kod krykieta oryginału zostaje nieużywany.
+zmiana("HomeDashboard.java", "widżet krykieta usunięty",
+       '        return prefs(c).getBoolean(KEY_W_CRICKET, false);\n',
+       '        return false;\n')
 
-# Oryginał pyta ligę 8676 („Carlton Mid ODI Tri-Series”), w której jedyny mecz jest z 1 lutego 2015, więc kafelek
-# „na żywo” pokazywał go jako bieżący (sprawdzone 17.11.2026). „scorepanel” ESPN daje bieżące mecze wszystkich rozgrywek.
-zmiana("HomeDashboard.java", "krykiet: bieżące mecze ze scorepanel ESPN zamiast ligi z 2015 roku",
-       '                        "https://site.api.espn.com/apis/site/v2/sports/cricket/8676/scoreboard",\n'
-       '                        "https://site.api.espn.com/apis/site/v2/sports/cricket/8048/scoreboard",\n'
-       '                        "https://site.api.espn.com/apis/site/v2/sports/cricket/all/scoreboard"\n',
-       '                        "https://site.api.espn.com/apis/site/v2/sports/cricket/scorepanel",\n'
-       '                        "https://site.web.api.espn.com/apis/site/v2/sports/cricket/scorepanel"\n')
+zmiana("HomeDashboard.java", "ustawienia: bez przełącznika krykieta",
+       '        WIDGET_CRICKET, WIDGET_NEWS, WIDGET_TOP_MEDIA\n',
+       '        WIDGET_NEWS, WIDGET_TOP_MEDIA\n')
 
-zmiana("HomeDashboard.java", "krykiet: mecze z bloków scorepanel",
-       '                            JSONArray events = root.optJSONArray("events");\n',
-       '                            JSONArray events = ModPlKafelki.meczeZPanelu(root);   // Mod PL: bloki „scores”\n')
+# Od 2.2.5 zmiana miasta pogody od razu pobiera też godziny modlitw (api.aladhan.com) dla tego miejsca.
+# Modlitw u nas nie ma, więc tego zapytania nie wysyłamy.
+zmiana("Weather.java", "bez pobierania godzin modlitw przy zmianie miasta pogody",
+       '        if (HomeDashboard.isPrayerLocationAuto(c)) {\n',
+       '        if (HomeDashboard.isWidgetPrayerEnabled(c) && HomeDashboard.isPrayerLocationAuto(c)) {\n')
 
-zmiana("HomeDashboard.java", "krykiet: opis, rodzaj, rozgrywki i podsumowanie meczu",
-       '                                out.add(cm);\n',
-       '                                ModPlKafelki.opisKrykieta(cm, ev);   // Mod PL\n'
-       '                                out.add(cm);\n')
+# Od 2.2.5 oryginał wczytuje zdjęcia scen i rysuje kadr ekranu głównego w RGB_565 zamiast ARGB_8888 (mniej pamięci).
+# U nas zostają pełne kolory jak w 2.2.0 (ModPlTapety.PELNE_KOLORY): nocne niebo i szkło cyfr bez pasów.
+zmiana("Scenes.java", "sceny w pełnych kolorach: zdjęcia",
+       '            opts.inPreferredConfig = isOpaqueJpeg ? Bitmap.Config.RGB_565 : Bitmap.Config.ARGB_8888;\n',
+       '            opts.inPreferredConfig = (isOpaqueJpeg && !ModPlTapety.PELNE_KOLORY)\n'
+       '                    ? Bitmap.Config.RGB_565 : Bitmap.Config.ARGB_8888;\n')
+
+zmiana("Scenes.java", "sceny w pełnych kolorach: rysowany kadr",
+       '            return classicClockOnlyMode ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;\n',
+       '            return (classicClockOnlyMode || ModPlTapety.PELNE_KOLORY) ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;\n')
+
+# Od 2.2.5 własna scena może mieć ręcznie wgraną warstwę pierwszego planu (PNG), za którą chowa się zegar.
+# Decyzja użytkownika z 23.11.2026: tej funkcji nie pokazujemy (ModPlKafelki.WARSTWA_PNG).
+zmiana("SettingsActivity.java", "własna scena: bez wiersza warstwy pierwszego planu PNG",
+       '                if (isScene) {\n'
+       '                    final boolean hasFg = CustomMedia.hasCustomSceneForeground(this, slot);\n',
+       '                if (isScene && ModPlKafelki.WARSTWA_PNG) {\n'
+       '                    final boolean hasFg = CustomMedia.hasCustomSceneForeground(this, slot);\n')
+
+# Od 2.2.5 w ustawieniach widżetów jest wybór miasta dla godzin modlitw; bez modlitw wiersz jest zbędny.
+zmiana("SettingsActivity.java", "ustawienia: bez wyboru miasta godzin modlitw",
+       '        row("🕌  " + tr("Prayer times location", "Namaz vakti konumu") + "…",\n'
+       '                () -> HomeDashboard.getPrayerLocationSummary(this),\n'
+       '                () -> openSubMenu("prayer_location"));\n',
+       '')
 
 zmiana("AppUpdater.java", "lista zmian bez znaczników Markdownu (opis wydania z GitHuba)",
        '        bodyTv.setText(bodyText);\n',
        '        bodyTv.setText(ModPlOkna.bezMarkdown(bodyText));   // Mod PL\n')
-
-zmiana("HomeDashboard.java", "krykiet: początek meczu z ESPN",
-       '                                CricketMatch cm = new CricketMatch();\n',
-       '                                CricketMatch cm = new CricketMatch();\n'
-       '                                cm.startMs = ModPlKafelki.czasEspn(ev.optString("date", ""));\n')
-
-zmiana("HomeDashboard.java", "krykiet: herb i nazwa gospodarzy",
-       '                                    cm.score1 = c0.optString("score", "");\n',
-       '                                    cm.score1 = c0.optString("score", "");\n'
-       '                                    if (t0 != null) {\n'
-       '                                        cm.logo1 = t0.optString("logo", "");\n'
-       '                                        cm.name1 = t0.optString("displayName", "");\n'
-       '                                    }\n')
-
-zmiana("HomeDashboard.java", "krykiet: herb i nazwa gości",
-       '                                    cm.score2 = c1.optString("score", "");\n',
-       '                                    cm.score2 = c1.optString("score", "");\n'
-       '                                    if (t1 != null) {\n'
-       '                                        cm.logo2 = t1.optString("logo", "");\n'
-       '                                        cm.name2 = t1.optString("displayName", "");\n'
-       '                                    }\n')
-
-zmiana("HomeDashboard.java", "krykiet: stan meczu",
-       '                                        cm.isLive = "in".equalsIgnoreCase(tp.optString("state", ""));\n',
-       '                                        cm.isLive = "in".equalsIgnoreCase(tp.optString("state", ""));\n'
-       '                                        cm.state = tp.optString("state", "");\n')
-
-zmiana("HomeDashboard.java", "krykiet: bez zmyślonych wyników, gdy ESPN nic nie zwróci",
-       '                if (out.isEmpty()) {\n'
-       '                    // Fallback international fixtures if no live endpoint events returned\n',
-       '                if (ModPlKafelki.ZMYSLONE_WYNIKI && out.isEmpty()) {\n'
-       '                    // Fallback international fixtures if no live endpoint events returned\n')
 
 zmiana("HomeDashboard.java", "wiadomości: odnośnik do artykułu",
        '        public String pubDate = "";\n'
@@ -1405,10 +1365,10 @@ zmiana("HomeDashboard.java", "wiadomości: odnośnik do artykułu",
        '    }\n')
 
 zmiana("HomeDashboard.java", "wiadomości: data i odnośnik z kanału RSS",
-       '                            nh.source = source != null && !source.isEmpty() ? decodeXmlEntities(source) : "LIVE";\n',
-       '                            nh.source = source != null && !source.isEmpty() ? decodeXmlEntities(source) : "LIVE";\n'
-       '                            nh.pubDate = extractXmlTag(block, "pubDate");\n'
-       '                            nh.link = decodeXmlEntities(extractXmlTag(block, "link"));\n')
+       '                        nh.source = source != null && !source.isEmpty() ? decodeXmlEntities(source) : "LIVE";\n',
+       '                        nh.source = source != null && !source.isEmpty() ? decodeXmlEntities(source) : "LIVE";\n'
+       '                        nh.pubDate = extractXmlTag(block, "pubDate");\n'
+       '                        nh.link = decodeXmlEntities(extractXmlTag(block, "link"));\n')
 
 zmiana("HomeDashboard.java", "wiadomości: dostęp do listy",
        '    private static List<NewsHeadline> sMemNews = new ArrayList<NewsHeadline>();\n',
@@ -1429,14 +1389,32 @@ zmiana("HomeDashboard.java", "Top filmy i seriale: dostęp do listy",
        '    }\n')
 
 zmiana("HomeDashboard.java", "Top filmy i seriale: poziome tło, plakat, gatunki i zwiastun",
-       '                                it.backdrop = m.optString("poster", m.optString("background", ""));\n',
-       '                                it.backdrop = m.optString("poster", m.optString("background", ""));\n'
-       '                                ModPlKafelki.uzupelnijTop(it, m);   // Mod PL: kadr poziomy, plakat, gatunki, zwiastun\n')
+       '                            it.backdrop = m.optString("poster", m.optString("background", ""));\n',
+       '                            it.backdrop = m.optString("poster", m.optString("background", ""));\n'
+       '                            ModPlKafelki.uzupelnijTop(it, m);   // Mod PL: kadr poziomy, plakat, gatunki, zwiastun\n')
 
-zmiana("HomeDashboard.java", "nowy kafelek krykieta",
-       '    private static View createCricketWidgetCard(final MainActivity host) {\n',
-       '    private static View createCricketWidgetCard(final MainActivity host) {\n'
-       '        if (ModPlKafelki.NOWE) return ModPlKafelki.krykiet(host);\n')
+# Od 2.2.5 powrót na ekran główny nie buduje kafelków od nowa: oryginał woła zarejestrowane dla kafelka odświeżanie
+# (sCardRefreshers, refreshCardsInPlace). Kafelki moda zgłaszają tu własne (ModPlKafelki: mecze, filmy, Top,
+# pogoda, wiadomości), inaczej po powrocie z aplikacji pokazywałyby dane sprzed wyjścia.
+zmiana("HomeDashboard.java", "odświeżanie w miejscu także dla kafelków moda",
+       '    public static void refreshCardsInPlace(List<View> cards) {\n',
+       '    /** Mod PL: kafelek moda zgłasza własne odświeżanie w miejscu. */\n'
+       '    static void modPlOdswiezanie(View card, Runnable r) {\n'
+       '        if (card != null && r != null) sCardRefreshers.put(card, r);\n'
+       '    }\n'
+       '\n'
+       '    public static void refreshCardsInPlace(List<View> cards) {\n')
+
+# Od 2.2.5 klawisz HOME zamyka otwarte okno widżetu (dismissActiveDialog). Okna moda (ModPlOkna.okno) zgłaszają
+# się jako aktywne tą samą drogą.
+zmiana("HomeDashboard.java", "klawisz HOME zamyka też okna moda",
+       '    private static Dialog sActiveDialog;\n',
+       '    private static Dialog sActiveDialog;\n'
+       '\n'
+       '    /** Mod PL: okno moda zgłasza się jako aktywne (zamykane klawiszem HOME jak okna oryginału). */\n'
+       '    static void modPlOkno(Dialog d) {\n'
+       '        sActiveDialog = d;\n'
+       '    }\n')
 
 zmiana("HomeDashboard.java", "nowy kafelek wiadomości",
        '    private static View createNewsWidgetCard(final MainActivity host) {\n',
@@ -1447,11 +1425,6 @@ zmiana("HomeDashboard.java", "nowy kafelek Top filmy i seriale",
        '    private static View createTopMediaWidgetCard(final MainActivity host) {\n',
        '    private static View createTopMediaWidgetCard(final MainActivity host) {\n'
        '        if (ModPlKafelki.NOWE) return ModPlKafelki.top(host);\n')
-
-zmiana("HomeDashboard.java", "okno krykieta w naszym stylu",
-       '    private static void showCricketDialog(final MainActivity host, final Runnable onUpdated) {\n',
-       '    private static void showCricketDialog(final MainActivity host, final Runnable onUpdated) {\n'
-       '        if (ModPlOkna.pokazKrykiet(host, onUpdated)) return;\n')
 
 zmiana("HomeDashboard.java", "okno wiadomości w naszym stylu",
        '    private static void showNewsDialog(final MainActivity host, final Runnable onCycle) {\n',
@@ -1469,11 +1442,16 @@ zmiana("HomeDashboard.java", "okno Top filmy i seriale w naszym stylu",
 # nachodzą na ten dok”). Przesuwamy je o tyle, o ile prawdziwy dok jest wyższy od założonego; odstęp nad dokiem
 # zostaje taki jak w oryginale.
 
+# Od 2.2.5 oryginał sam liczy górę doku z rzędów, skali i dymka z nazwą, ale nadal bez naszych podpisów pod ikonami;
+# gdy dok jest już zmierzony, bierzemy jego prawdziwą wysokość.
 zmiana("SceneHome.java", "widżety i półka zawsze nad dokiem (prawdziwa wysokość doku)",
-       '        return Math.max(dp(190), dp(SHELF_TOP_DP) - extraRowsH);\n',
-       '        int zalozonyDok = dp(74) + extraRowsH;\n'
-       '        int nadwyzkaDoku = (dockBox != null && dockBox.getHeight() > 0) ? dockBox.getHeight() - zalozonyDok : 0;\n'
-       '        return Math.max(dp(96), dp(SHELF_TOP_DP) - extraRowsH - nadwyzkaDoku);\n')
+       '        int dockPadAbove = dp(4);\n'
+       '        return Math.max(dp(190), Math.min(dp(SHELF_TOP_DP), dockTop - dockPadAbove - cardAreaH));\n',
+       '        int dockPadAbove = dp(4);\n'
+       '        if (dockBox != null && dockBox.getHeight() > 0) {   // Mod PL: prawdziwa wysokość doku\n'
+       '            dockTop = Math.min(dockTop, host.screenH - dp(14) - dockBox.getHeight() - tooltipH);\n'
+       '        }\n'
+       '        return Math.max(dp(96), Math.min(dp(SHELF_TOP_DP), dockTop - dockPadAbove - cardAreaH));\n')
 
 zmiana("SceneHome.java", "widżety i półka: przeliczenie po zmianie wysokości doku",
        '        dockBox = new LinearLayout(host);\n',

@@ -861,3 +861,95 @@ E|Slide %1$d webpage wait time must be between 0 and 300 seconds
 P|Slajd %1$d: czas oczekiwania na stronę musi wynosić od 0 do 300 sekund
 E|Slide type is required
 P|Wymagany jest typ slajdu
+# ---------------------------------------------------------------- tvOS Launcher 2.2.5 (23.11.2026)
+# wyszukiwarka i przycisk wyszukiwania na ekranie głównym
+E|Home screen search shortcut
+P|Przycisk wyszukiwania na ekranie głównym
+E|Top-right search shortcut
+P|Przycisk wyszukiwania w prawym górnym rogu
+E|Search in Apps
+P|Szukaj w aplikacjach
+E|In-App Results
+P|Wyniki z aplikacji
+# kraj wiadomości
+E|Live News country
+P|Kraj wiadomości
+E|COUNTRY
+P|KRAJ
+E|Press OK to select this country
+P|Naciśnij OK, aby wybrać ten kraj
+E|By default, Live News automatically syncs with your selected launcher language. Selecting a country above overrides it for the News widget.
+P|Domyślnie wiadomości są w języku launchera. Wybranie kraju powyżej zmienia to dla widżetu wiadomości.
+E|Next: 
+P|Następna: 
+# menu zasilania w panelu sterowania
+E|Power Menu
+P|Menu zasilania
+E|Android Power Menu
+P|Menu zasilania Androida
+E|Android Power Menu (Shutdown / Reboot / Standby)
+P|Menu zasilania Androida (wyłącz / uruchom ponownie / uśpij)
+E|Show native Android shutdown, reboot, and standby menu
+P|Pokazuje systemowe menu Androida: wyłączenie, ponowne uruchomienie i uśpienie
+E|Default (Screen Off)
+P|Domyślnie (wygaś ekran)
+E|Turn off screen / put TV to sleep
+P|Wygasza ekran / usypia telewizor
+E|Enable Accessibility Service in Settings to open the Android Power Menu
+P|Włącz usługę ułatwień dostępu w ustawieniach, aby otwierać menu zasilania Androida
+# ostatnie aplikacje
+E|Persistent ADB Mode Required
+P|Wymagany tryb stałego ADB
+E|Recent Apps Manager cannot clear apps while Secure ADB Mode is active.\n\nEnable Persistent ADB Mode in Settings › Advanced › ADB operating mode to use the Recent Apps feature.
+P|Menedżer ostatnich aplikacji nie może zamykać aplikacji w bezpiecznym trybie ADB.\n\nWłącz tryb stałego ADB w: Ustawienia › Zaawansowane › Tryb pracy ADB, aby korzystać z ostatnich aplikacji.
+E|Open Settings
+P|Otwórz ustawienia
+# pogoda w kreatorze (u nas bez godzin modlitw)
+E|A small weather display on Home with a 5-day forecast (also syncs Prayer Times location).
+P|Mały podgląd pogody na ekranie głównym z prognozą na 5 dni.
+# warstwa pierwszego planu własnej sceny (u nas schowana: ModPlKafelki.WARSTWA_PNG)
+E|Depth Effect Foreground (PNG) #
+P|Pierwszy plan z efektem głębi (PNG) nr 
+E|Set (PNG cutout) ›
+P|Ustawiony (wycięty PNG) ›
+E|None — Choose PNG ›
+P|Brak — wybierz PNG ›
+E|Select Transparent PNG Foreground
+P|Wybierz przezroczysty PNG pierwszego planu
+E|Remove foreground cutout
+P|Usuń wycięty pierwszy plan
+E|Depth effect foreground removed.
+P|Usunięto pierwszy plan z efektem głębi.
+E|Depth effect foreground updated.
+P|Zaktualizowano pierwszy plan z efektem głębi.
+# miasto godzin modlitw (widżetu u nas nie ma; na wypadek, gdyby napis gdzieś się pokazał)
+E|Prayer Times Location
+P|Miejsce dla godzin modlitw
+E|Prayer times location
+P|Miejsce dla godzin modlitw
+E|LOCATION MODE
+P|TRYB MIEJSCA
+E|POPULAR CITIES
+P|POPULARNE MIASTA
+E|Sync with Weather
+P|Jak pogoda
+E|Sync with Weather location
+P|Takie samo jak w pogodzie
+E|Automatically follows your Weather location
+P|Samo podąża za miastem z pogody
+E|Search City or Country
+P|Szukaj miasta lub kraju
+E|Search city or country…
+P|Szukaj miasta lub kraju…
+E|Search city or country (e.g. Istanbul, London)…
+P|Szukaj miasta lub kraju (np. Warszawa, Londyn)…
+E|City or country, e.g. Istanbul, London
+P|Miasto lub kraj, np. Warszawa, Londyn
+E|Press OK to select this city
+P|Naciśnij OK, aby wybrać to miasto
+E|No matching city or country found.
+P|Nie znaleziono pasującego miasta ani kraju.
+E|Search failed. Check internet connection.
+P|Wyszukiwanie nie powiodło się. Sprawdź połączenie z internetem.
+E|By default, Prayer Times syncs with the Weather location chosen during setup or in Weather settings. Search or pick any city above to set a separate location for Prayer Times.
+P|Domyślnie godziny modlitw biorą miasto z pogody, wybrane w kreatorze albo w ustawieniach pogody. Wyszukaj albo wybierz miasto powyżej, aby ustawić dla nich osobne miejsce.
