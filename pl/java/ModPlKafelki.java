@@ -1199,6 +1199,22 @@ final class ModPlKafelki {
             }
         }
         if (it.year == null || it.year.isEmpty()) it.year = m.optString("year", "");
+        it.czas = minuty(m.optString("runtime", ""));
+    }
+
+    /** Czas trwania z katalogu Cinemeta („49 min”, „2h 28min”, „1 h 52 min”) w minutach; 0, gdy go nie ma. */
+    static int minuty(String s) {
+        if (s == null) return 0;
+        java.util.regex.Matcher g = java.util.regex.Pattern.compile("(\\d+)\\s*h").matcher(s);
+        java.util.regex.Matcher m = java.util.regex.Pattern.compile("(\\d+)\\s*m").matcher(s);
+        int razem = 0;
+        try {
+            if (g.find()) razem += 60 * Integer.parseInt(g.group(1));
+            if (m.find()) razem += Integer.parseInt(m.group(1));
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return razem > 0 && razem < 24 * 60 ? razem : 0;
     }
 
     /** Seriale i filmy na zmianę (Cinemeta podaje najpierw same seriale, potem same filmy). */

@@ -212,7 +212,7 @@ P|Włącz ponownie wszystkie pakiety z {1}
 
 # --- wzorce obsługiwane dotąd w kodzie tylko dla innych języków ---
 E|{1}% used · Recent Apps
-P|{1}% zajęte · Ostatnie aplikacje
+P|{1}% zajęte
 E|{1}% used · Clean
 P|{1}% zajęte · Wyczyść
 E|{1}% used  ·  Clean

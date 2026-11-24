@@ -59,10 +59,10 @@
 0599|OK — przełącz lub edytuj
 0600|AKCJE JEDNYM NACIŚNIĘCIEM
 0601|OPCJE
-0602|Wyłączone
+0602|Wył.
 0603|Wyłączone — naciśnij, aby włączyć przechwytywanie przycisku Home
-0604|Włączone
-0605|Włączone
+0604|Wł.
+0605|Dostępne w: 
 0606|Włączone (domyślnie)
 0607|Jeśli w Google TV wyłączysz setupwraith, upewnij się, że sieć Wi-Fi została ponownie dodana w ustawieniach Wi-Fi.
 0608|Na telewizorach TCL i Philips z Androidem 11/12 oprogramowanie producenta często ukrywa systemowy wybór ekranu głównego i wymusza fabryczny launcher po naciśnięciu Home. Wyłączenie fabrycznego launchera (opcja 2) albo włączenie naprawy przycisku Home (opcja 3) gwarantuje, że Home zawsze otworzy tvOS Launcher.
@@ -119,9 +119,9 @@
 0659|Popularne filmy i seriale w Twoich serwisach streamingowych
 0660|Port 5555 otwarty · gotowy do parowania
 0661|Port 5555 otwarty (naciśnij, aby sparować)
-0662|Wyłącz
-0663|Uprawnienie do wyłączania i wyłącznika czasowego
-0664|Wyłącz (wygaś ekran)
+0662|Wyłącz zasilanie
+0663|Uprawnienie do wyłączania zasilania i usypiania
+0664|Wyłącz zasilanie (czarny ekran)
 0665|Metoda obliczania godzin modlitw
 0666|Metoda obliczania godzin modlitw
 0667|Przygotowuję CleanYourTV…
@@ -192,7 +192,7 @@
 0732|Zamień tapetę nr
 0733|Wymagane, aby mapowane przyciski działały w każdej aplikacji
 0734|Resetuj
-0735|Przywróć domyślne akcje Panelu sterowania
+0735|Przywróć domyślne akcje centrum sterowania
 0736|Resetuj układ
 0737|Resetuj kolejność aplikacji i pokaż wszystkie ukryte
 0738|Przywróć ustawienia domyślne
@@ -236,7 +236,7 @@
 0776|Zeskanuj telefonem i zatwierdź.
 0777|Skanuję aplikacje systemowe telewizora…
 0778|Skanuję zainstalowane pakiety systemowe przez ADB i porównuję z 341 modelami TV…
-0779|Wygaś ekran
+0779|Czarny ekran
 0780|Wygaszacz ekranu
 0781|Wygaszacz ekranu
 0782|Szukaj

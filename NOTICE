@@ -30,6 +30,11 @@ Version 2.2.5-pl is based on tvOS Launcher 2.2.5; it restyles the news and top
 media widgets as mod tiles, removes the cricket widget and points the built-in
 updater to this fork. The original's own Polish strings (since 2.2.5) are kept
 as a base under the mod's Polish dictionary.
+Version 2.2.5-pl2 restyles the widget windows, dock icon focus, Control Center
+and settings lists in a tvOS 27 style, adds a "Portraits"-style screensaver
+clock and an optional glass volume indicator. The indicator is chosen in the
+setup wizard or in a one-time question after updating; on Android TV set-top
+boxes it detaches the system volume bar through the launcher's local ADB shell.
 
 Additional bundled components:
 

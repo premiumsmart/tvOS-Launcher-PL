@@ -278,18 +278,18 @@ E|Done. The screen saver starts by itself when the TV is idle.
 P|Gotowe. Wygaszacz włączy się sam, gdy telewizor będzie bezczynny.
 E|Cyberpunk cities
 P|Miasta cyberpunk
-E|Mode: Secure Auto Setup (Recommended)
-P|Tryb: bezpieczna konfiguracja automatyczna (zalecany)
+E|Mode: Secure Auto Setup
+P|Tryb: bezpieczna konfiguracja automatyczna
 E|Grants WRITE_SECURE_SETTINGS once to self-repair Accessibility; USB debugging stays on
 P|Jednorazowo nadaje WRITE_SECURE_SETTINGS do samonaprawy ułatwień dostępu; debugowanie USB zostaje włączone
 E|1. Open TV Settings → System → About and click Build 7 times to unlock Developer Options.\n2. Open Settings → System → Developer Options and enable USB Debugging / Network Debugging.\n3. Return here and select Grant Permissions Now (USB debugging stays on).
 P|1. Otwórz Ustawienia TV → System → Informacje i kliknij 7 razy w „Kompilacja”, aby odblokować Opcje programisty.\n2. Otwórz Ustawienia → System → Opcje programisty i włącz debugowanie USB / sieciowe.\n3. Wróć tutaj i wybierz „Nadaj uprawnienia teraz” (debugowanie USB zostaje włączone).
 E|Grants WRITE_SECURE_SETTINGS; USB debugging stays on
 P|Nadaje WRITE_SECURE_SETTINGS; debugowanie USB zostaje włączone
-E|Secure Mode — WRITE_SECURE_SETTINGS, ADB stays on (Recommended)
-P|Tryb bezpieczny — WRITE_SECURE_SETTINGS, ADB zostaje włączone (zalecany)
-E|Secure Mode — Grant WRITE_SECURE_SETTINGS, ADB stays on (Recommended)
-P|Tryb bezpieczny — nadaj WRITE_SECURE_SETTINGS, ADB zostaje włączone (zalecany)
+E|Secure Mode — WRITE_SECURE_SETTINGS, ADB stays on (limited)
+P|Tryb bezpieczny — WRITE_SECURE_SETTINGS, ADB zostaje włączone (ograniczony)
+E|Secure Mode — Grant WRITE_SECURE_SETTINGS, ADB stays on (limited)
+P|Tryb bezpieczny — nadaj WRITE_SECURE_SETTINGS, ADB zostaje włączone (ograniczony)
 E|Secure Mode selected — ADB grants WRITE_SECURE_SETTINGS once; USB debugging stays on.
 P|Wybrano tryb bezpieczny — ADB jednorazowo nada WRITE_SECURE_SETTINGS; debugowanie USB zostaje włączone.
 E|Wallpapers from the internet
@@ -692,7 +692,7 @@ P|Wyjście dźwięku
 E|Ambient Mode / Lock Screen
 P|Tryb Ambient / ekran blokady
 E|Power Off / Screen Off
-P|Wyłączanie / wygaszanie ekranu
+P|Wyłączanie / czarny ekran
 E|TV Inputs Shortcut
 P|Skrót do wejść TV
 E|Button Mapper Shortcut
@@ -705,7 +705,7 @@ E|Weather Panel (Current & Tomorrow)
 P|Panel pogody (teraz i jutro)
 # te same napisy, które oryginał tłumaczy pod identyfikatorem, a czasem podaje wprost
 E|Control Panel background
-P|Tło Panelu sterowania
+P|Tło centrum sterowania
 E|Blurry (Current content blur)
 P|Rozmyte (rozmycie bieżącej treści)
 E|Transparent
@@ -892,9 +892,9 @@ P|Menu zasilania Androida (wyłącz / uruchom ponownie / uśpij)
 E|Show native Android shutdown, reboot, and standby menu
 P|Pokazuje systemowe menu Androida: wyłączenie, ponowne uruchomienie i uśpienie
 E|Default (Screen Off)
-P|Domyślnie (wygaś ekran)
+P|Domyślnie (czarny ekran)
 E|Turn off screen / put TV to sleep
-P|Wygasza ekran / usypia telewizor
+P|Czarny ekran i pauza odtwarzania; telewizor się nie wyłącza, dowolny klawisz wraca
 E|Enable Accessibility Service in Settings to open the Android Power Menu
 P|Włącz usługę ułatwień dostępu w ustawieniach, aby otwierać menu zasilania Androida
 # ostatnie aplikacje
@@ -953,3 +953,107 @@ E|Search failed. Check internet connection.
 P|Wyszukiwanie nie powiodło się. Sprawdź połączenie z internetem.
 E|By default, Prayer Times syncs with the Weather location chosen during setup or in Weather settings. Search or pick any city above to set a separate location for Prayer Times.
 P|Domyślnie godziny modlitw biorą miasto z pogody, wybrane w kreatorze albo w ustawieniach pogody. Wyszukaj albo wybierz miasto powyżej, aby ustawić dla nich osobne miejsce.
+# --- okna widżetów w stylu tvOS 27 (24.11.2026)
+E|No. %d in Poland
+P|Nr %d w Polsce
+E|No. %d
+P|Nr %d
+E|No. %d among TV shows
+P|Nr %d wśród seriali
+E|No. %d among films
+P|Nr %d wśród filmów
+E|TV shows
+P|Seriale
+E|Films
+P|Filmy
+E|%d h %d min
+P|%d godz. %d min
+E|%d h
+P|%d godz.
+# --- zaznaczenie ikon doku w stylu tvOS 27 (24.11.2026)
+E|Dock icon highlight
+P|Zaznaczenie ikon doku
+E|Ring
+P|Obwódka
+E|tvOS style
+P|Styl tvOS
+# --- własny wskaźnik głośności (24.11.2026)
+E|Volume indicator
+P|Wskaźnik głośności
+E|System bar
+P|Pasek systemowy
+E|Glass pill
+P|Szklana pigułka
+E|The glass volume indicator needs the launcher's accessibility service.
+P|Szklany wskaźnik głośności wymaga włączonej usługi dostępności launchera.
+E|Volume keys are now handled by the launcher. If volume stops working, switch this back to the system bar.
+P|Klawisze głośności obsługuje teraz launcher. Gdyby głośność przestała działać, wróć do paska systemowego.
+E|Couldn't turn off the system volume bar. On a TV this needs ADB debugging to be on and allowed for the launcher.
+P|Nie udało się wyłączyć systemowego paska głośności. Na telewizorze wymaga to włączonego debugowania ADB i zgody dla launchera.
+E|Android 9 and older don't allow replacing the system volume bar.
+P|Android 9 i starsze nie pozwalają zastąpić systemowego paska głośności.
+E|On a TV the volume indicator stays with the system or the TV maker.
+P|Na telewizorze zostaje wskaźnik głośności systemu albo producenta.
+E|The system volume bar is back until the audio output changes (e.g. hearing protection for headphones).
+P|Do zmiany wyjścia dźwięku działa pasek głośności systemu (np. ochrona słuchu przy słuchawkach).
+# --- wybór wskaźnika głośności: krok kreatora i pytanie po aktualizacji (25.11.2026)
+E|What should appear when you change the volume with the remote? You can change it later in Settings → Look and scenes → Dock.
+P|Co ma się pokazać, gdy zmieniasz głośność pilotem? Zmienisz to później w Ustawieniach → Wygląd i sceny → Dok.
+E|The glass pill needs the persistent ADB mode.
+P|Szklana pigułka wymaga trybu stałego ADB.
+E|In the tvOS style, at the right edge of the screen
+P|W stylu tvOS, przy prawej krawędzi ekranu
+E|Android's own volume bar
+P|Zwykły pasek głośności Androida
+E|NEW IN THIS VERSION
+P|NOWE W TEJ WERSJI
+E|Glass volume indicator
+P|Szklany wskaźnik głośności
+E|When you change the volume with the remote, a glass pill in the tvOS style appears at the right edge of the screen instead of Android's volume bar.
+P|Gdy zmieniasz głośność pilotem, zamiast paska głośności Androida przy prawej krawędzi ekranu pokaże się szklana pigułka w stylu tvOS.
+E|You can change it anytime in Settings → Look and scenes → Dock.
+P|Zmienisz to w każdej chwili w Ustawieniach → Wygląd i sceny → Dok.
+E|Turn on the glass pill
+P|Włącz szklaną pigułkę
+E|Keep the system bar
+P|Zostaw pasek systemowy
+# --- tryb stałego ADB zalecany (24.11.2026)
+E|Mode: Persistent ADB Setup (Recommended)
+P|Tryb: stałe ADB (zalecany)
+E|Recent apps, updates and the volume indicator work
+P|Działają ostatnie aplikacje, aktualizacje i wskaźnik głośności
+E|No recent apps or updates via ADB
+P|Bez ostatnich aplikacji i aktualizacji przez ADB
+E|Persistent ADB Mode — Keep Network ADB Open (Recommended)
+P|Tryb stałego ADB — sieciowe ADB zostaje otwarte (zalecany)
+E|Persistent ADB Mode selected — ADB stays on for recent apps, updates and ADB tools.
+P|Wybrano tryb stałego ADB — ADB zostaje włączone dla ostatnich aplikacji, aktualizacji i narzędzi ADB.
+# --- krawędź jasnych ikon (24.11.2026)
+E|Edge of bright icons
+P|Krawędź jasnych ikon
+E|Like tvOS
+P|Jak w tvOS
+E|Subtle dark
+P|Delikatna ciemna
+E|Distinct dark
+P|Wyraźna ciemna
+E|1. Open TV Settings → System → About and click Build 7 times to unlock Developer Options.\n2. Open Settings → System → Developer Options and enable USB Debugging / Network Debugging.\n3. Return here and select Grant Permissions Now (ADB stays on).
+P|1. Otwórz Ustawienia TV → System → Informacje i kliknij 7 razy w „Kompilacja”, aby odblokować Opcje programisty.\n2. Otwórz Ustawienia → System → Opcje programisty i włącz debugowanie USB / sieciowe.\n3. Wróć tutaj i wybierz „Nadaj uprawnienia teraz” (ADB zostaje włączone).
+
+# Słowa Apple z tvOS 27: centrum sterowania (napis tylko z polskiego oryginału)
+E|Button Mapper & Control Panel (Accessibility)
+P|Mapowanie przycisków i centrum sterowania (ułatwienia dostępu)
+
+# Centrum sterowania: układ jak w tvOS 27 (ModPlCentrum)
+E|LAYOUT
+P|UKŁAD
+E|Control Center layout
+P|Układ centrum sterowania
+E|Original grid
+P|Siatka (oryginał)
+E|tvOS 27, larger
+P|tvOS 27, większy
+
+# Wygaszacz: duży zegar w stylu „Portrety” z tvOS 27 (ModPlWygaszacz.STYL_PORTRETY)
+E|Large, Portraits style
+P|Duży, w stylu „Portrety”

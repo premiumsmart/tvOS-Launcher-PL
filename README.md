@@ -1,4 +1,4 @@
-# tvOS Launcher PL · 2.2.5-pl
+# tvOS Launcher PL · 2.2.5-pl2
 
 ![tvOS Launcher PL: pełny ekran z dokiem i oknami moda na fioletowej scenie](zrzuty-github/gotowe/showcase.webp)
 
@@ -12,12 +12,17 @@ Polska wersja [tvOS Launcher autorstwa techgenius1](https://github.com/techgeniu
 
 **[Pobierz najnowszy APK](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest/download/tvOS-Launcher-PL.apk)** · Android TV / Google TV z Androidem 7.0 lub nowszym · [opis wydania i suma SHA-256](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest)
 
-### Nowe w 2.2.5-pl
+### Nowe w 2.2.5-pl2
 
-- Zmiany oryginału 2.2.5, także po polsku: **nowa wyszukiwarka** (szuka też w zainstalowanych aplikacjach, filmy i seriale z serwisów, które masz; przycisk lupy na ekranie głównym), **płynniejszy ekran główny** (powrót z aplikacji nie buduje kafelków od nowa), **„Oglądaj dalej”** z większej liczby aplikacji, **wybór kraju wiadomości** (domyślnie Polska) i **menu zasilania Androida** w Panelu sterowania.
-- Klawisz Home zamyka też okna kafelków moda.
-- Tapety i szklany zegar w pełnej jakości kolorów.
-- Kafelek krykieta usunięty; dodatkowe kafelki to **Wiadomości na żywo** i **Top filmy i seriale** (domyślnie wyłączone, z własnymi oknami).
+- **Okna widżetów w stylu tvOS 27**: „Najczęściej oglądane” i „Top filmy i seriale” z dużym kadrem na cały ekran i półką plakatów, mecze w kolorach drużyn, wiadomości w kolorze tapety, pogoda na przezroczystym szkle.
+- **Zaznaczenie ikon w doku w stylu tvOS 27** (powiększenie, cień, jasna krawędź szkła, połysk za ruchem pilota) i opcja **Krawędź jasnych ikon**.
+- **Centrum sterowania w układzie tvOS 27** (duży kafel zasilania, kapsuły, okrągłe przyciski, przezroczyste tło); dawny układ zostaje do wyboru w ustawieniach.
+- **Szklany wskaźnik głośności** do wyboru w kreatorze albo w jednorazowym pytaniu po aktualizacji: pigułka w stylu tvOS przy prawej krawędzi zamiast paska Androida (przystawki z Androidem 10 lub nowszym, tryb stałego ADB).
+- Listy ustawień i kreatora z białą pigułką zaznaczenia, słowa jak w tvOS (Centrum sterowania, Usypianie, Wyłącz zasilanie, Wł./Wył., „Czarny ekran”); kreator zaleca tryb stałego ADB.
+- Nowy styl zegara wygaszacza **„Duży, w stylu »Portrety«”** z rozmiarem dobieranym do zdjęcia i lepsze wykrywanie aut (zegar nie staje na aucie widzianym z bliska).
+- Poprawka błędu oryginału: kafelek zmienia się od razu po włączeniu albo wyłączeniu widżetu.
+
+Wcześniej, w 2.2.5-pl: zmiany oryginału 2.2.5 po polsku (nowa wyszukiwarka, płynniejszy ekran główny, „Oglądaj dalej” z większej liczby aplikacji, wybór kraju wiadomości, menu zasilania Androida), klawisz Home zamyka okna kafelków moda, kafelki **Wiadomości na żywo** i **Top filmy i seriale** zamiast krykieta.
 
 Wcześniej, w 2.2.0-pl: dok w 1–3 rzędach z dopasowanym rzędem kafelków, okno „Aplikacje”, mały zegar, przenoszenie i wyłączanie kafelków przytrzymaniem OK, styl cyfr zegara w wygaszaczu, aktualizacje prosto z tego repozytorium.
 
@@ -67,12 +72,17 @@ A Polish version of [tvOS Launcher by techgenius1](https://github.com/techgenius
 
 **[Download the latest APK](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest/download/tvOS-Launcher-PL.apk)** · Android TV / Google TV running Android 7.0 or later · [release notes and SHA-256 checksum](https://github.com/premiumsmart/tvOS-Launcher-PL/releases/latest)
 
-### New in 2.2.5-pl
+### New in 2.2.5-pl2
 
-- Changes from the original 2.2.5, also in Polish: a **new search** (also searches inside installed apps; movies and series from the services you have; a search button on the home screen), a **smoother home screen** (returning from an app no longer rebuilds the tiles), **Continue Watching** from more apps, a **news country** setting (Poland by default) and the **Android power menu** in the Control Panel.
-- The Home key also closes the mod’s tile windows.
-- Wallpapers and the glass clock keep full colour quality.
-- The cricket tile has been removed; the extra tiles are **Live news** and **Top movies and series** (off by default, with their own windows).
+- **Widget windows in a tvOS 27 style**: “Most Watched” and “Top movies and series” with a full-screen backdrop and a poster shelf, football in the teams’ colours, news tinted by the wallpaper, weather on clear glass.
+- **tvOS 27-style dock icon focus** (scale, shadow, bright glass edge, a sheen that follows the remote) and an **Edge of bright icons** option.
+- **Control Center in a tvOS 27 layout** (large power tile, capsules, round buttons, clear background); the old grid remains available in settings.
+- **Glass volume indicator**, chosen in the setup wizard or in a one-time question after updating: a tvOS-style pill at the right edge instead of Android’s volume bar (set-top boxes with Android 10 or later in persistent ADB mode).
+- Settings and wizard lists with a white focus pill, tvOS wording in Polish, and the wizard now recommends persistent ADB mode.
+- A new screensaver clock style, **“Large, Portraits style”**, sized to each photo, and better car detection (the clock no longer lands on cars seen up close).
+- A fix for a bug in the original: tiles change right after a widget is turned on or off.
+
+Earlier, in 2.2.5-pl: the original 2.2.5 changes in Polish (new search, smoother home screen, Continue Watching from more apps, news country setting, Android power menu), the Home key closes the mod’s tile windows, **Live news** and **Top movies and series** tiles instead of cricket.
 
 Earlier, in 2.2.0-pl: 1–3 dock rows with a matching tile row, the “Apps” window, a small clock, moving and hiding tiles with a long OK press, a selectable screensaver clock style, updates straight from this repository.
 

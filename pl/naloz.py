@@ -560,17 +560,23 @@ zmiana("Suggestions.java", "pole z nazwą serwisu",
        '        String prov = "";\n'
        '        /** Mod PL: identyfikator zwiastuna na YouTube z JustWatch (gdy go podaje). */\n'
        '        String trailer = "";\n'
+       '        /** Mod PL: czas trwania w minutach (film albo odcinek) i oznaczenie wieku ze źródła, np. 16 albo PG-13. */\n'
+       '        int czas;\n'
+       '        String wiek = "";\n'
        '        /** Continue Watching entries')
 
 zmiana("Suggestions.java", "zapis nazwy serwisu",
        '.put("link", link).put("pub", published)',
-       '.put("link", link).put("prov", prov == null ? "" : prov).put("trailer", trailer == null ? "" : trailer).put("pub", published)')
+       '.put("link", link).put("prov", prov == null ? "" : prov).put("trailer", trailer == null ? "" : trailer)'
+       '.put("czas", czas).put("wiek", wiek == null ? "" : wiek).put("pub", published)')
 
 zmiana("Suggestions.java", "odczyt nazwy serwisu",
        '            i.link = o.optString("link");\n',
        '            i.link = o.optString("link");\n'
        '            i.prov = o.optString("prov", "");\n'
-       '            i.trailer = o.optString("trailer", "");\n')
+       '            i.trailer = o.optString("trailer", "");\n'
+       '            i.czas = o.optInt("czas", 0);\n'
+       '            i.wiek = o.optString("wiek", "");\n')
 
 zmiana("Suggestions.java", "JustWatch: nazwa serwisu w zapytaniu",
        'standardWebURL package { technicalName }',
@@ -584,16 +590,18 @@ zmiana("Suggestions.java", "Najczęściej oglądane: zapamiętanie serwisu",
 
 zmiana("HomeDashboard.java", "nowa pamięć podręczna (z nazwą serwisu)",
        'return I18n.getLang(c) + ":" + TextUtils.join(",", getEffectiveReleasesCountries(c));',
-       'return "s3:" + I18n.getLang(c) + ":" + TextUtils.join(",", getEffectiveReleasesCountries(c));')
+       'return "s4:" + I18n.getLang(c) + ":" + TextUtils.join(",", getEffectiveReleasesCountries(c));')
 
-zmiana("Suggestions.java", "JustWatch: zwiastuny w zapytaniu",
+zmiana("Suggestions.java", "JustWatch: zwiastuny, czas trwania i oznaczenie wieku w zapytaniu",
        'scoring { imdbScore } }"',
-       'scoring { imdbScore } clips { externalId provider } }"')
+       'scoring { imdbScore } runtime ageCertification clips { externalId provider } }"')
 
-zmiana("Suggestions.java", "Najczęściej oglądane: zapamiętanie zwiastuna",
+zmiana("Suggestions.java", "Najczęściej oglądane: zapamiętanie zwiastuna, czasu trwania i wieku",
        '                            it.genres = jwGenres(ct.optJSONArray("genres"));\n'
        '                            JSONArray offers = n.optJSONArray("offers");\n',
        '                            it.genres = jwGenres(ct.optJSONArray("genres"));\n'
+       '                            it.czas = ct.optInt("runtime", 0);\n'
+       '                            it.wiek = ct.isNull("ageCertification") ? "" : ct.optString("ageCertification", "").trim();\n'
        '                            JSONArray klipy = ct.optJSONArray("clips");\n'
        '                            for (int q = 0; klipy != null && q < klipy.length(); q++) {\n'
        '                                JSONObject kl = klipy.optJSONObject(q);\n'
@@ -1016,17 +1024,51 @@ zmiana("CleanYourTv.java", "odchudzanie: lista pakietów startuje bez zaznaczeń
 # ---------------------------------------------------------------- ADB zostaje włączone, tapety z tematów wygaszacza (2026-11-11)
 # Prośby użytkownika: „nie ma wyłączać adb” oraz „te tapety też mogą być tak jak z wygaszacza … cyberpunk samochody sportowe”.
 
-zmiana('SetupActivity.java', 'kreator: tryb zalecany bez zamykania ADB (nazwa)',
+zmiana('SetupActivity.java', 'kreator: tryb bezpieczny bez zamykania ADB (nazwa)',
        '            option(l, tr("Mode: Secure Auto Setup & Close ADB (Recommended)", "Mod: Güvenli Otomatik Kurulum ve ADB\'yi Kapat (Önerilen)"),\n',
-       '            option(l, tr("Mode: Secure Auto Setup (Recommended)", "Mod: Güvenli Otomatik Kurulum (Önerilen)"),\n')
+       '            option(l, tr("Mode: Secure Auto Setup", "Mod: Güvenli Otomatik Kurulum"),\n')
 
 zmiana('SetupActivity.java', 'kreator: tryb zalecany bez zamykania ADB (opis)',
        '                    tr("Grants WRITE_SECURE_SETTINGS once to self-repair Accessibility, then closes port 5555", "Erişilebilirliği korumak için bir kez WRITE_SECURE_SETTINGS verir, ardından port 5555\'i kapatır"),\n',
-       '                    tr("Grants WRITE_SECURE_SETTINGS once to self-repair Accessibility; USB debugging stays on", "Erişilebilirliği korumak için bir kez WRITE_SECURE_SETTINGS verir; USB hata ayıklama açık kalır"),\n')
+       '                    tr("No recent apps or updates via ADB", "Erişilebilirliği korumak için bir kez WRITE_SECURE_SETTINGS verir; USB hata ayıklama açık kalır"),\n')
+
+# Prośba użytkownika 24.11.2026: „adb ma być włączony … zalecane daj z włączonym adb”. W trybie bezpiecznym nie
+# działają ostatnie aplikacje, zamykanie aplikacji ani aktualizacje przez ADB, więc zalecany jest tryb stałego ADB:
+# idzie na pierwsze miejsce kreatora (dostaje zaznaczenie), a tryb bezpieczny na drugie.
+zmiana('SetupActivity.java', 'kreator: tryb stałego ADB pierwszy i zalecany',
+       '            option(l, tr("Mode: Secure Auto Setup", "Mod: Güvenli Otomatik Kurulum"),\n'
+       '                    tr("No recent apps or updates via ADB", "Erişilebilirliği korumak için bir kez WRITE_SECURE_SETTINGS verir; USB hata ayıklama açık kalır"),\n'
+       '                    false,\n'
+       '                    () -> {\n'
+       '                        LocalAdb.setAdbMode(this, LocalAdb.ADB_MODE_SECURE_CLOSE);\n'
+       '                        proceedToEasyAdbOrDirections();\n'
+       '                    });\n'
+       '            option(l, tr("Mode: Persistent ADB Setup (Keep ADB Open)", "Mod: Kalıcı ADB Kurulumu (ADB\'yi Açık Tut)"),\n'
+       '                    tr("Keeps network ADB enabled for CleanYourTV debloating (Note: leaves port 5555 open on LAN)", "CleanYourTV debloat özellikleri için ağ ADB\'sini açık tutar (Not: yerel ağda port 5555 açık kalır)"),\n'
+       '                    false,\n'
+       '                    () -> {\n'
+       '                        LocalAdb.setAdbMode(this, LocalAdb.ADB_MODE_PERSISTENT);\n'
+       '                        proceedToEasyAdbOrDirections();\n'
+       '                    });\n',
+       '            option(l, tr("Mode: Persistent ADB Setup (Recommended)", "Mod: Kalıcı ADB Kurulumu (Önerilen)"),\n'
+       '                    tr("Recent apps, updates and the volume indicator work", "CleanYourTV debloat özellikleri için ağ ADB\'sini açık tutar (Not: yerel ağda port 5555 açık kalır)"),\n'
+       '                    false,\n'
+       '                    () -> {\n'
+       '                        LocalAdb.setAdbMode(this, LocalAdb.ADB_MODE_PERSISTENT);\n'
+       '                        proceedToEasyAdbOrDirections();\n'
+       '                    });\n'
+       '            option(l, tr("Mode: Secure Auto Setup", "Mod: Güvenli Otomatik Kurulum"),\n'
+       '                    tr("No recent apps or updates via ADB", "Erişilebilirliği korumak için bir kez WRITE_SECURE_SETTINGS verir; USB hata ayıklama açık kalır"),\n'
+       '                    false,\n'
+       '                    () -> {\n'
+       '                        LocalAdb.setAdbMode(this, LocalAdb.ADB_MODE_SECURE_CLOSE);\n'
+       '                        proceedToEasyAdbOrDirections();\n'
+       '                    });\n')
+
 
 zmiana('SetupActivity.java', 'kreator: podpowiedź bez zamykania ADB',
        '                    + (secureClose ? " (ADB port 5555 will be closed automatically right after setup)." : " (ADB will remain enabled for CleanYourTV)."),\n',
-       '                    + (secureClose ? " (USB debugging stays on)." : " (ADB will remain enabled for CleanYourTV)."),\n')
+       '                    + (secureClose ? " (USB debugging stays on)." : " (ADB stays on)."),\n')
 
 zmiana('SetupActivity.java', 'kreator: podpowiedź bez zamykania ADB (tr)',
        '                    + (secureClose ? " (Kurulumdan hemen sonra ADB port 5555 otomatik olarak kapatılacaktır)." : " (CleanYourTV için ADB açık kalacaktır).")));\n',
@@ -1057,7 +1099,7 @@ zmiana('LocalAdb.java', 'automatyczna konfiguracja: wynik bez „ADB zamknięte�
 
 zmiana('LocalAdb.java', 'nazwa trybu bezpiecznego bez zamykania ADB',
        '                "Secure Mode — WRITE_SECURE_SETTINGS & Close ADB (Recommended)",\n',
-       '                "Secure Mode — WRITE_SECURE_SETTINGS, ADB stays on (Recommended)",\n')
+       '                "Secure Mode — WRITE_SECURE_SETTINGS, ADB stays on (limited)",\n')
 
 zmiana('LocalAdb.java', 'nazwa trybu bezpiecznego bez zamykania ADB (tr)',
        '                "Güvenli Mod — WRITE_SECURE_SETTINGS ve ADB Kapat (Önerilen)");\n',
@@ -1065,7 +1107,15 @@ zmiana('LocalAdb.java', 'nazwa trybu bezpiecznego bez zamykania ADB (tr)',
 
 zmiana('SettingsActivity.java', 'ustawienia: tryb bezpieczny bez zamykania ADB',
        '                    + tr("Secure Mode — Grant WRITE_SECURE_SETTINGS & Close ADB (Recommended)",\n',
-       '                    + tr("Secure Mode — Grant WRITE_SECURE_SETTINGS, ADB stays on (Recommended)",\n')
+       '                    + tr("Secure Mode — Grant WRITE_SECURE_SETTINGS, ADB stays on (limited)",\n')
+
+zmiana('SettingsActivity.java', 'ustawienia: tryb stałego ADB zalecany',
+       '                    + tr("Persistent ADB Mode — Keep Network ADB Open (Optional)",\n',
+       '                    + tr("Persistent ADB Mode — Keep Network ADB Open (Recommended)",\n')
+
+zmiana('SettingsActivity.java', 'ustawienia: komunikat trybu stałego ADB',
+       '                        showStatusMsg(tr("Persistent ADB Mode selected — Port 5555 stays open for CleanYourTV & ADB tools.",\n',
+       '                        showStatusMsg(tr("Persistent ADB Mode selected — ADB stays on for recent apps, updates and ADB tools.",\n')
 
 zmiana('SettingsActivity.java', 'ustawienia: tryb bezpieczny bez zamykania ADB (tr)',
        '                         "Güvenli Mod — WRITE_SECURE_SETTINGS Ver ve ADB\'yi Kapat (Önerilen)"),\n',
@@ -1461,8 +1511,516 @@ zmiana("SceneHome.java", "widżety i półka: przeliczenie po zmianie wysokości
        '            if (b - t != ob - ot) v.post(this::updateShelfAndDashboardTopMargin);\n'
        '        });\n')
 
-PLIKI_MODA = ["ModPlOkna.java", "ModPlEkstraklasa.java", "ModPlMecze.java", "ModPlAdb.java", "ModPlKafelki.java", "ModPlGole.java",
-              "ModPlWygaszacz.java", "ModPlTapety.java", "ModPlDetektor.java", "ModPlDziennik.java"]
+# ---------------------------------------------------------------- SceneHome.java: kafelki po zmianie zestawu widżetów
+
+# Od 2.2.5 kafelki odświeżają się w miejscu, więc widżet włączony albo wyłączony w ustawieniach nie pojawiał się
+# (ani nie znikał) na ekranie głównym aż do restartu launchera. Gdy zestaw się zmienił, rząd budujemy od nowa.
+zmiana("SceneHome.java", "kafelki po zmianie zestawu widżetów: pole",
+       '    final List<View> dashboardCards = new ArrayList<>();\n',
+       '    final List<View> dashboardCards = new ArrayList<>();\n'
+       '    /** Mod PL: zestaw widżetów, z którego zbudowano rząd kafelków. */\n'
+       '    private String modPlZestawWidzetow = "";\n')
+zmiana("SceneHome.java", "kafelki po zmianie zestawu widżetów: zapis zestawu",
+       '        dashboardBox.removeAllViews();\n        dashboardCards.clear();\n        View row = HomeDashboard.buildDashboardView(',
+       '        dashboardBox.removeAllViews();\n        dashboardCards.clear();\n'
+       '        modPlZestawWidzetow = android.text.TextUtils.join(",", HomeDashboard.getEnabledWidgetOrder(host));\n'
+       '        View row = HomeDashboard.buildDashboardView(')
+zmiana("SceneHome.java", "kafelki po zmianie zestawu widżetów: porównanie",
+       '        if (dashboardBox != null && dashboardBox.getChildCount() > 0 && !dashboardCards.isEmpty()) {\n'
+       '            HomeDashboard.refreshCardsInPlace(dashboardCards);\n',
+       '        if (dashboardBox != null && dashboardBox.getChildCount() > 0 && !dashboardCards.isEmpty()) {\n'
+       '            if (!android.text.TextUtils.join(",", HomeDashboard.getEnabledWidgetOrder(host)).equals(modPlZestawWidzetow)) {\n'
+       '                populateDashboard(true);   // Mod PL: zmienił się zestaw widżetów\n'
+       '                return;\n'
+       '            }\n'
+       '            HomeDashboard.refreshCardsInPlace(dashboardCards);\n')
+
+# ---------------------------------------------------------------- panel pogody w stylu tvOS 27 (kanwa 24.11.2026)
+# Panel zostaje widokiem WeatherView oryginału (otwieranie, fokus i zamykanie bez zmian), ale ma wymiary z kanwy
+# (620×960 px przy 1080p zamiast 760×912) i rysuje go ModPlOknaTv.rysujPogode: nagłówek i dwie szklane karty.
+zmiana("WeatherView.java", "panel pogody: wymiary z kanwy",
+       'FULL_W = 380, FULL_H = 456;',
+       'FULL_W = 310, FULL_H = 480;')
+
+zmiana("WeatherView.java", "panel pogody: rysowanie w układzie z kanwy",
+       '        if (full) drawFull(c);\n',
+       '        if (full) ModPlOknaTv.rysujPogode(this, c, data);   // Mod PL: układ z kanwy zamiast drawFull\n')
+
+zmiana("MainActivity.java", "panel pogody: zaokrąglenie 48 px i marginesy 60 / 80 px",
+       '        LiquidGlass glass = new LiquidGlass(dp(26), 0x33000000, glassSource, screenW, screenH, unit).adaptive();\n'
+       '        glass.lens = dp(7);\n'
+       '        panel.setBackground(glass);\n'
+       '        panel.setFocusable(true);\n'
+       '        panel.setData(d);\n'
+       '        FrameLayout.LayoutParams plp = new FrameLayout.LayoutParams(dp(WeatherView.FULL_W), dp(WeatherView.FULL_H),\n'
+       '                Gravity.TOP | (rightSide ? Gravity.END : Gravity.START));\n'
+       '        plp.topMargin = dp(24);\n'
+       '        if (rightSide) plp.rightMargin = dockOuter;\n'
+       '        else plp.leftMargin = dockOuter;\n',
+       '        LiquidGlass glass = new LiquidGlass(dp(24), 0x33000000, glassSource, screenW, screenH, unit).adaptive();\n'
+       '        glass.lens = dp(7);\n'
+       '        panel.setBackground(glass);\n'
+       '        panel.setFocusable(true);\n'
+       '        panel.setData(d);\n'
+       '        FrameLayout.LayoutParams plp = new FrameLayout.LayoutParams(dp(WeatherView.FULL_W), dp(WeatherView.FULL_H),\n'
+       '                Gravity.TOP | (rightSide ? Gravity.END : Gravity.START));\n'
+       '        plp.topMargin = dp(30);\n'
+       '        if (rightSide) plp.rightMargin = dp(40);\n'
+       '        else plp.leftMargin = dp(40);\n')
+
+# ---------------------------------------------------------------- zaznaczenie ikon doku w stylu tvOS 27 (24.11.2026)
+# Kod: pl/java/ModPlFokus.java. Tryb w ustawieniach doku: obwódka oryginału, styl tvOS (cień i połysk, bez obwódki,
+# domyślny) albo styl tvOS z cienką obwódką. Ikona czyta tryb przy każdym zaznaczeniu, więc dok nie wymaga przebudowy.
+zmiana("Scenes.java", "zaznaczenie ikon doku: zapis trybu",
+       '    public static void setDockNamesAlways(Context c, boolean on) {\n'
+       '        prefs(c).edit().putBoolean("dock_names_always", on).apply();\n'
+       '    }\n',
+       '    public static void setDockNamesAlways(Context c, boolean on) {\n'
+       '        prefs(c).edit().putBoolean("dock_names_always", on).apply();\n'
+       '    }\n'
+       '\n'
+       '    /** Mod PL: zaznaczenie ikon doku: 0 obwódka oryginału, 1 styl tvOS, 2 styl tvOS z cienką obwódką. */\n'
+       '    public static int getModPlDockFocus(Context c) {\n'
+       '        return Math.max(0, Math.min(2, prefs(c).getInt("mod_pl_fokus_doku", 1)));\n'
+       '    }\n'
+       '\n'
+       '    public static void setModPlDockFocus(Context c, int tryb) {\n'
+       '        prefs(c).edit().putInt("mod_pl_fokus_doku", tryb).apply();\n'
+       '    }\n')
+
+zmiana("SettingsActivity.java", "zaznaczenie ikon doku: wiersz w ustawieniach",
+       '                    Scenes.setDockNamesAlways(this, !Scenes.isDockNamesAlways(this));\n'
+       '                    refreshAll();\n'
+       '                });\n',
+       '                    Scenes.setDockNamesAlways(this, !Scenes.isDockNamesAlways(this));\n'
+       '                    refreshAll();\n'
+       '                });\n'
+       '        row(tr("Dock icon highlight", "Dock simge vurgusu"),\n'
+       '                () -> I18n.t(this, ModPlFokus.nazwa(this)),\n'
+       '                () -> {\n'
+       '                    ModPlFokus.nastepny(this);\n'
+       '                    refreshAll();\n'
+       '                });\n')
+
+zmiana("SceneHome.java", "zaznaczenie ikon doku: połysk i cień zamiast obwódki",
+       '            v.setForeground(has ? focusRing : null);\n'
+       '            if (index >= 0 && index < dockNames.size()) {\n',
+       '            v.setForeground(ModPlFokus.zaznaczenie(v, has, focusRing, rad));   // Mod PL: styl tvOS albo obwódka\n'
+       '            if (index >= 0 && index < dockNames.size()) {\n')
+
+# W tvOS taca doku się nie wybrzusza: jest na tyle wysoka, że powiększona ikona mieści się w niej z równym odstępem
+# (pomiar zrzutów tvOS 26/27). W stylu tvOS dok dostaje więc większe odstępy od krawędzi (ModPlFokus.odstepDoku).
+zmiana("SceneHome.java", "zaznaczenie ikon doku: odstępy tacy mieszczące powiększoną ikonę",
+       '        int padH = Math.max(dp(8), Math.round(dp(13) * scale));\n'
+       '        int padV = Math.max(dp(6), Math.round(dp(10) * scale));\n'
+       '        dockBox.setPadding(padH, padV, padH, padV);\n',
+       '        int padH = ModPlFokus.odstepDoku(host, Math.max(dp(8), Math.round(dp(13) * scale)), tileSize);\n'
+       '        int padV = ModPlFokus.odstepDoku(host, Math.max(dp(6), Math.round(dp(10) * scale)), tileSize);\n'
+       '        dockBox.setPadding(padH, padV, padH, padV);\n')
+
+# To samo zaznaczenie w oknie „Inne aplikacje” (oryginał: obwódka i powiększenie 1,11).
+zmiana("SceneHome.java", "zaznaczenie ikon w oknie Inne aplikacje: przygotowanie",
+       '            final Drawable focusRing = createIconFocusRingDrawable(iconRad, dp(2.2f), sq != null && hasWhiteCorners(sq));\n',
+       '            final Drawable focusRing = createIconFocusRingDrawable(iconRad, dp(2.2f), sq != null && hasWhiteCorners(sq));\n'
+       '            if (android.os.Build.VERSION.SDK_INT >= 26) iconBox.setDefaultFocusHighlightEnabled(false);   // Mod PL\n'
+       '            ModPlFokus.przygotuj(this, iconBox, app, iconRad, sq != null && hasWhiteCorners(sq));   // Mod PL: cień i dane do głębi ikony\n')
+
+zmiana("SceneHome.java", "zaznaczenie ikon w oknie Inne aplikacje: styl tvOS",
+       '                iconBox.setForeground(has ? focusRing : null);\n'
+       '                lbl.setTextColor(has ? 0xFFFFFFFF : 0xD9F4F4F6);\n'
+       '                iconBox.animate().scaleX(has ? 1.11f : 1f).scaleY(has ? 1.11f : 1f)\n',
+       '                iconBox.setForeground(ModPlFokus.zaznaczenie(iconBox, has, focusRing, iconRad));   // Mod PL\n'
+       '                lbl.setTextColor(has ? 0xFFFFFFFF : 0xD9F4F4F6);\n'
+       '                lbl.animate().translationY(has ? ModPlFokus.podpisNizej(host, iconBox) : 0f).setDuration(170).start();\n'
+       '                iconBox.animate().scaleX(has ? ModPlFokus.skalaSiatki(host) : 1f).scaleY(has ? ModPlFokus.skalaSiatki(host) : 1f)\n')
+
+# Zaznaczona ikona rośnie od środka, więc jej dół nachodziłby na stały podpis: podpis zjeżdża o tyle w dół.
+zmiana("SceneHome.java", "zaznaczenie ikon doku: podpis zaznaczonej aplikacji niżej",
+       '                dockNames.get(index).setTextColor(has ? 0xFFFFFFFF : 0xD9F5F5F7);\n',
+       '                dockNames.get(index).setTextColor(has ? 0xFFFFFFFF : 0xD9F5F5F7);\n'
+       '                dockNames.get(index).animate().translationY(has ? ModPlFokus.podpisNizej(host, v) : 0f)\n'
+       '                        .setDuration(170).start();\n')
+
+zmiana("SceneHome.java", "zaznaczenie ikon doku: przygotowanie przy budowie ikony",
+       '        Drawable focusRing = createIconFocusRingDrawable(rad, dp(2.2f), whiteCorners);\n',
+       '        Drawable focusRing = createIconFocusRingDrawable(rad, dp(2.2f), whiteCorners);\n'
+       '        ModPlFokus.przygotuj(this, tile, a, rad, whiteCorners);   // Mod PL: cień styku i dane do głębi ikony\n')
+
+# Poza telewizorami system kładzie na zaznaczonym widoku własny jasny prostokąt, i to zanim zadziała nasłuch
+# zaznaczenia, więc wyłączamy go już przy budowaniu ikony (na telewizorach system go nie rysuje).
+zmiana("SceneHome.java", "zaznaczenie ikon doku: bez systemowego podświetlenia",
+       '        tile.setLongClickable(true);\n'
+       '        tile.setPivotX(size / 2f);\n',
+       '        tile.setLongClickable(true);\n'
+       '        if (android.os.Build.VERSION.SDK_INT >= 26) tile.setDefaultFocusHighlightEnabled(false);   // Mod PL\n'
+       '        tile.setPivotX(size / 2f);\n')
+
+zmiana("SceneHome.java", "zaznaczenie ikon doku: powiększenie zależne od trybu",
+       '                v.animate().scaleX(1.13f).scaleY(1.13f)\n',
+       '                v.animate().scaleX(ModPlFokus.skala(host)).scaleY(ModPlFokus.skala(host))\n')
+
+# ---------------------------------------------------------------- własny wskaźnik głośności (wariant B, 24.11.2026)
+# Kod: pl/java/ModPlGlosnosc.java. Opcję („Wskaźnik głośności” w ustawieniach doku) wybiera użytkownik w kreatorze
+# albo w jednorazowym pytaniu po aktualizacji (25.11.2026); do czasu wyboru zostaje pasek systemowy. Gdy jest
+# włączona, PowerService zmienia głośność bez FLAG_SHOW_UI (system nie pokazuje białego paska) i nie oddaje systemowi
+# klawiszy głośności, bo ten zmieniłby ją drugi raz i pokazał swój pasek.
+zmiana("Scenes.java", "wskaźnik głośności: zapis opcji",
+       '    public static void setModPlDockFocus(Context c, int tryb) {\n'
+       '        prefs(c).edit().putInt("mod_pl_fokus_doku", tryb).apply();\n'
+       '    }\n',
+       '    public static void setModPlDockFocus(Context c, int tryb) {\n'
+       '        prefs(c).edit().putInt("mod_pl_fokus_doku", tryb).apply();\n'
+       '    }\n'
+       '\n'
+       '    /** Mod PL: własny wskaźnik głośności zamiast paska systemowego. Do wyboru użytkownika pasek systemowy. */\n'
+       '    public static boolean isModPlVolumeIndicator(Context c) {\n'
+       '        return prefs(c).getBoolean("mod_pl_wskaznik_glosnosci", false);\n'
+       '    }\n'
+       '\n'
+       '    /** Mod PL: czy użytkownik wybrał już wskaźnik (kreator, pytanie po aktualizacji albo ustawienia). */\n'
+       '    public static boolean isModPlVolumeIndicatorChosen(Context c) {\n'
+       '        return prefs(c).contains("mod_pl_wskaznik_glosnosci");\n'
+       '    }\n'
+       '\n'
+       '    public static void setModPlVolumeIndicator(Context c, boolean on) {\n'
+       '        prefs(c).edit().putBoolean("mod_pl_wskaznik_glosnosci", on).apply();\n'
+       '    }\n'
+       '\n'
+       '    /** Mod PL: krawędź zaznaczonej jasnej ikony: 0 jak w tvOS, 1 delikatna ciemna, 2 wyraźna ciemna. */\n'
+       '    public static int getModPlBrightEdge(Context c) {\n'
+       '        return prefs(c).getInt("mod_pl_krawedz_jasnych", 0);\n'
+       '    }\n'
+       '\n'
+       '    public static void setModPlBrightEdge(Context c, int rodzaj) {\n'
+       '        prefs(c).edit().putInt("mod_pl_krawedz_jasnych", rodzaj).apply();\n'
+       '    }\n')
+
+zmiana("SettingsActivity.java", "wskaźnik głośności: wiersz w ustawieniach",
+       '                    ModPlFokus.nastepny(this);\n'
+       '                    refreshAll();\n'
+       '                });\n',
+       '                    ModPlFokus.nastepny(this);\n'
+       '                    refreshAll();\n'
+       '                });\n'
+       '        row(tr("Edge of bright icons", "Açık simge kenarı"),\n'
+       '                () -> I18n.t(this, ModPlFokus.nazwaKrawedzi(this)),\n'
+       '                () -> {\n'
+       '                    ModPlFokus.nastepnaKrawedz(this);\n'
+       '                    refreshAll();\n'
+       '                });\n'
+       '        row(tr("Volume indicator", "Ses göstergesi"),\n'
+       '                () -> I18n.t(this, Scenes.isModPlVolumeIndicator(this) ? "Glass pill" : "System bar"),\n'
+       '                () -> {\n'
+       '                    Scenes.setModPlVolumeIndicator(this, !Scenes.isModPlVolumeIndicator(this));\n'
+       '                    if (Scenes.isModPlVolumeIndicator(this)) ModPlGlosnosc.przyklad(this);\n'
+       '                    else ModPlGlosnosc.przywrocPasek(this);\n'
+       '                    refreshAll();\n'
+       '                });\n')
+
+# Wybór wskaźnika (prośba użytkownika 25.11.2026: „zrób tak że mogą wybrać i przy pierwszej instalacji i przy
+# aktualizacji”): krok kreatora przed „Gotowe” (tylko tam, gdzie pigułka może działać; numery kroków 5–7, do których
+# odwołuje się kreator, się nie zmieniają) i jednorazowe pytanie przy powrocie na ekran główny.
+zmiana("SetupActivity.java", "wskaźnik głośności: krok kreatora przed „Gotowe”",
+       '        steps.add(this::buttonMapperSetup);\n'
+       '        steps.add(this::finish_);\n',
+       '        steps.add(this::buttonMapperSetup);\n'
+       '        if (ModPlGlosnosc.mozliwyNaUrzadzeniu(this)) steps.add(this::modPlGlosnosc);   // Mod PL: wybór wskaźnika głośności\n'
+       '        steps.add(this::finish_);\n')
+
+zmiana("SetupActivity.java", "wskaźnik głośności: strona kroku kreatora",
+       '    void finish_() {\n',
+       '    /** Mod PL: krok „Wskaźnik głośności” (szklana pigułka albo pasek systemowy); treść w ModPlGlosnosc. */\n'
+       '    void modPlGlosnosc() {\n'
+       '        ModPlGlosnosc.krokKreatora(this);\n'
+       '    }\n'
+       '\n'
+       '    void finish_() {\n')
+
+zmiana("MainActivity.java", "wskaźnik głośności: pytanie po aktualizacji przy powrocie na ekran główny",
+       '        ModPlWygaszacz.wlaczJesliMozna(this);\n',
+       '        ModPlWygaszacz.wlaczJesliMozna(this);\n'
+       '        ModPlGlosnosc.zapytajPoAktualizacji(this);\n')
+
+zmiana("MainActivity.java", "wskaźnik głośności: hak ADB do zrzutów pytania (--es panel glosnosc)",
+       '            else if (panel.equals("search")) showSearch(intent.getStringExtra("q"));\n',
+       '            else if (panel.equals("search")) showSearch(intent.getStringExtra("q"));\n'
+       '            else if (panel.equals("glosnosc")) ModPlOknaTv.pytanieGlosnosci(this);   // Mod PL: pytanie o wskaźnik\n')
+
+# Obserwator zdarzeń AudioService oryginału widzi każdy klawisz głośności obsłużony przez system, także na krańcach
+# skali, gdzie poziom się nie zmienia i nie przychodzi rozgłoszenie zmiany: wtedy też pokazujemy pigułkę.
+zmiana("PowerService.java", "wskaźnik głośności: krańce skali także przy obserwatorze getevent (stałe ADB)",
+       '                    (dir, down, isRepeat) -> {\n',
+       '                    (dir, down, isRepeat) -> {\n'
+       '                        if (down && !isRepeat) ModPlGlosnosc.poKlawiszuSystemu(dir);   // Mod PL\n')
+
+zmiana("PowerService.java", "wskaźnik głośności: pigułka także na krańcach skali",
+       '                    } else if (!lastWmLine.equals(prevLastWmLine)) {\n',
+       '                    } else if (!lastWmLine.equals(prevLastWmLine)) {\n'
+       '                        ModPlGlosnosc.poKlawiszuSystemu(lastWmLine.contains("dir:ADJUST_RAISE") ? 1\n'
+       '                                : lastWmLine.contains("dir:ADJUST_LOWER") ? -1 : 0);   // Mod PL: pigułka także przy zerze i maksimum\n')
+
+# Bez usługi dostępności nikt nie pokaże pigułki: przy jej zatrzymaniu pasek głośności wraca do systemu.
+zmiana("PowerService.java", "wskaźnik głośności: pasek systemu wraca przy zatrzymaniu usługi",
+       '        stopAudioDumpVolumeWatcher();\n'
+       '        if (instance == this) instance = null;\n'
+       '        return super.onUnbind(intent);\n',
+       '        stopAudioDumpVolumeWatcher();\n'
+       '        if (instance == this) instance = null;\n'
+       '        ModPlGlosnosc.poZatrzymaniuUslugi(this);   // Mod PL\n'
+       '        return super.onUnbind(intent);\n')
+
+# Na Androidzie TV klawisze głośności nie docierają do usługi dostępności, więc przy starcie usługi odłączamy pasek
+# systemu przez ADB launchera i słuchamy rozgłoszeń zmiany głośności (zob. ModPlGlosnosc.start).
+zmiana("PowerService.java", "wskaźnik głośności: start razem z usługą",
+       '        instance = this;\n'
+       '        serviceConnectedElapsedMs = SystemClock.elapsedRealtime();\n',
+       '        instance = this;\n'
+       '        serviceConnectedElapsedMs = SystemClock.elapsedRealtime();\n'
+       '        ModPlGlosnosc.start(this);   // Mod PL: własny wskaźnik głośności\n')
+
+zmiana("PowerService.java", "wskaźnik głośności: zmiana bez paska systemowego",
+       'AudioManager.FLAG_SHOW_UI);',
+       'ModPlGlosnosc.flaga(this));', ile=3)
+
+zmiana("PowerService.java", "wskaźnik głośności: pokazanie po każdym kroku",
+       '            } catch (Throwable ignored) {\n'
+       '            }\n'
+       '        }\n'
+       '    }\n'
+       '\n'
+       '    private final Runnable volRepeatRunnable = new Runnable() {\n',
+       '            } catch (Throwable ignored) {\n'
+       '            }\n'
+       '        }\n'
+       '        ModPlGlosnosc.poKroku(this, dir);   // Mod PL: własny wskaźnik głośności\n'
+       '    }\n'
+       '\n'
+       '    private final Runnable volRepeatRunnable = new Runnable() {\n')
+
+# Poprawka przytrzymania oryginału zostawia pierwszy krok systemowi („return false”), a sama robi tylko powtórzenia.
+# Z własnym wskaźnikiem klawisz nie trafia do systemu, więc pierwszy krok robimy tutaj. Gdy poprawka jest wyłączona,
+# kroki i powtarzanie przy przytrzymaniu robi ModPlGlosnosc.klawisz (usługa nie dostaje powtórzeń klawisza).
+zmiana("PowerService.java", "wskaźnik głośności: klawisze głośności i wyciszenia",
+       '                onVolumeKeyState(dir, false, false);\n'
+       '            }\n'
+       '            return false;\n'
+       '        }\n'
+       '        if (ButtonMapper.handleKeyEvent(this, event)) {\n',
+       '                onVolumeKeyState(dir, false, false);\n'
+       '            }\n'
+       '            if (ModPlGlosnosc.przyKlawiszu(this)) {   // Mod PL: system nie dostaje klawisza, pierwszy krok robimy sami\n'
+       '                if (action == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) stepVolume(dir);\n'
+       '                return true;\n'
+       '            }\n'
+       '            return false;\n'
+       '        }\n'
+       '        if ((code == KeyEvent.KEYCODE_VOLUME_UP || code == KeyEvent.KEYCODE_VOLUME_DOWN\n'
+       '                || code == KeyEvent.KEYCODE_VOLUME_MUTE)\n'
+       '                && ModPlGlosnosc.przyKlawiszu(this) && !ButtonMapper.isKeyCustomMapped(this, code)) {\n'
+       '            // Mod PL: własny wskaźnik głośności, gdy poprawka przytrzymania jest wyłączona, oraz klawisz wyciszenia\n'
+       '            ModPlGlosnosc.klawisz(this, event, LocalAdb.volWatchConnected && ButtonMapper.isVolumeHoldFixEnabled(this));\n'
+       '            return true;\n'
+       '        }\n'
+       '        if (ButtonMapper.handleKeyEvent(this, event)) {\n')
+
+# ---------------------------------------------------------------- listy jak w tvOS 27 (ModPlListy)
+# Wybór użytkownika z 24.11.2026 (kanwa „Zaznaczenie w listach”, wariant A): wiersze ustawień i kreatora jako
+# pigułki (pełne zaokrąglenie), zaznaczony biały jak dotąd, niezaznaczone z krawędzią szkła, zaznaczony wiersz
+# ustawień lekko rośnie. Wszystkie wiersze ustawień budują tło tak samo, stąd jedna zmiana na 13 miejsc.
+zmiana("SettingsActivity.java", "listy tvOS 27: wiersze ustawień jako pigułki",
+       '        GradientDrawable bg = new GradientDrawable();\n'
+       '        bg.setCornerRadius(u(13));\n',
+       '        GradientDrawable bg = ModPlListy.wiersz(this);   // Mod PL: pigułka jak w tvOS 27\n', ile=13)
+
+zmiana("SettingsActivity.java", "listy tvOS 27: boczne menu jako pigułki",
+       '            GradientDrawable pillBg = new GradientDrawable();\n'
+       '            pillBg.setCornerRadius(u(12));\n',
+       '            GradientDrawable pillBg = ModPlListy.pigulka(this);   // Mod PL: pigułka jak w tvOS 27\n')
+
+zmiana("SettingsActivity.java", "listy tvOS 27: okrągłe tło ikon bocznego menu",
+       '            GradientDrawable iconBg = new GradientDrawable();\n'
+       '            iconBg.setCornerRadius(iconRad);\n',
+       '            GradientDrawable iconBg = ModPlListy.pigulka(this);   // Mod PL: koło (pigułka z kwadratu)\n')
+
+zmiana("SettingsActivity.java", "listy tvOS 27: podpowiedź klawiszy jako pigułka",
+       '        GradientDrawable hintBg = new GradientDrawable();\n'
+       '        hintBg.setCornerRadius(u(12));\n',
+       '        GradientDrawable hintBg = ModPlListy.pigulka(this);   // Mod PL: pigułka jak w tvOS 27\n')
+
+zmiana("SetupActivity.java", "listy tvOS 27: wiersze kreatora jako pigułki",
+       '        GradientDrawable bg = new GradientDrawable();\n'
+       '        bg.setCornerRadius(u(12));\n'
+       '        bg.setColor(0x26FFFFFF);\n',
+       '        GradientDrawable bg = ModPlListy.pigulka(this);   // Mod PL: pigułka jak w tvOS 27\n'
+       '        bg.setColor(0x26FFFFFF);\n')
+
+# ---------------------------------------------------------------- centrum sterowania jak w tvOS 27 (ModPlCentrum)
+# Układ do wyboru w ustawieniach (Centrum sterowania → Układ): siatka oryginału, tvOS 27 w wymiarach Apple,
+# tvOS 27 w większych wymiarach oryginału. Opis układu i pomiary: pl/java/ModPlCentrum.java.
+zmiana("Scenes.java", "centrum sterowania: ustawienie układu",
+       '    public static void setModPlBrightEdge(Context c, int rodzaj) {\n'
+       '        prefs(c).edit().putInt("mod_pl_krawedz_jasnych", rodzaj).apply();\n'
+       '    }\n',
+       '    public static void setModPlBrightEdge(Context c, int rodzaj) {\n'
+       '        prefs(c).edit().putInt("mod_pl_krawedz_jasnych", rodzaj).apply();\n'
+       '    }\n'
+       '\n'
+       '    /** Mod PL: układ centrum sterowania: 0 siatka oryginału, 1 tvOS 27, 2 tvOS 27 większy (domyślny, wybór użytkownika 24.11.2026). */\n'
+       '    public static int getModPlCcLayout(Context c) {\n'
+       '        return prefs(c).getInt("mod_pl_uklad_centrum", 2);\n'
+       '    }\n'
+       '\n'
+       '    public static void setModPlCcLayout(Context c, int uklad) {\n'
+       '        prefs(c).edit().putInt("mod_pl_uklad_centrum", uklad).apply();\n'
+       '    }\n')
+
+zmiana("SettingsActivity.java", "centrum sterowania: wiersz układu w ustawieniach",
+       '    void pageControlPanel() {\n'
+       '        section(tr("BACKGROUND MODE", "ARKA PLAN MODU"));\n',
+       '    void pageControlPanel() {\n'
+       '        section(tr("LAYOUT", "DÜZEN"));   // Mod PL\n'
+       '        row(tr("Control Center layout", "Denetim Merkezi düzeni"),\n'
+       '                () -> I18n.t(this, ModPlCentrum.nazwa(this)),\n'
+       '                () -> {\n'
+       '                    ModPlCentrum.nastepny(this);\n'
+       '                    refreshAll();\n'
+       '                });\n'
+       '        section(tr("BACKGROUND MODE", "ARKA PLAN MODU"));\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: wymiary kapsuł jak w tvOS",
+       '        int col = dp(unit, 141);\n'
+       '        int gap = dp(unit, 11);\n'
+       '        int cap = dp(unit, 56);\n'
+       '        int small = (2 * col + gap - 3 * gap) / 4;\n',
+       '        int col = ModPlCentrum.wymiar(c, unit, 141f, 102.5f);   // Mod PL: w układzie tvOS 27 wymiary Apple\n'
+       '        int gap = ModPlCentrum.wymiar(c, unit, 11f, 8.5f);\n'
+       '        int cap = ModPlCentrum.wymiar(c, unit, 56f, 47f);\n'
+       '        int small = (2 * col + gap - 3 * gap) / 4;\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: duży kafel zasilania i kolejność kapsuł jak w tvOS",
+       '        for (int i = 0; i < capsules.size(); i++) {\n'
+       '            CapsuleSpec cs = capsules.get(i);\n'
+       '            int colIdx = i % 2;\n'
+       '            int rowIdx = i / 2;\n'
+       '            int x = pad + colIdx * (col + gap);\n'
+       '            int y = pad + rowIdx * (cap + gap);\n'
+       '            View tile = makeTile(c, panel, x, y, col, cap, unit, screenW, screenH, glassSource,\n'
+       '                    cs.glyph, cs.title, cs.status, cs.click);\n'
+       '            if (cs.isMemory) {\n'
+       '                attachMemoryBar(c, tile, unit);\n'
+       '            }\n'
+       '            outCells.add(tile);\n'
+       '        }\n'
+       '\n'
+       '        int capsuleRows = (capsules.size() + 1) / 2;\n',
+       '        // Mod PL: układ tvOS 27 (duży kafel zasilania po lewej, kapsuły w kolejności Apple)\n'
+       '        boolean modTv = ModPlCentrum.uklad(c) != ModPlCentrum.ORYGINAL;\n'
+       '        int modZasilanie = -1;\n'
+       '        if (modTv) {\n'
+       '            java.util.Collections.sort(capsules,\n'
+       '                    (a, b) -> ModPlCentrum.kolejnosc(a.glyph) - ModPlCentrum.kolejnosc(b.glyph));\n'
+       '            for (int i = 0; i < capsules.size(); i++) {\n'
+       '                if ("power".equals(capsules.get(i).glyph)) modZasilanie = i;\n'
+       '            }\n'
+       '        }\n'
+       '        int modInne = capsules.size() - (modZasilanie >= 0 ? 1 : 0);\n'
+       '        int modNr = 0;\n'
+       '        for (int i = 0; i < capsules.size(); i++) {\n'
+       '            CapsuleSpec cs = capsules.get(i);\n'
+       '            int colIdx = i % 2;\n'
+       '            int rowIdx = i / 2;\n'
+       '            int x = pad + colIdx * (col + gap);\n'
+       '            int y = pad + rowIdx * (cap + gap);\n'
+       '            int tw = col, th = cap;\n'
+       '            if (modTv) {\n'
+       '                int[] m = ModPlCentrum.miejsce(i == modZasilanie, modZasilanie >= 0, modNr, modInne, col, cap, gap);\n'
+       '                if (i != modZasilanie) modNr++;\n'
+       '                x = pad + m[0];\n'
+       '                y = pad + m[1];\n'
+       '                tw = m[2];\n'
+       '                th = m[3];\n'
+       '            }\n'
+       '            View tile = makeTile(c, panel, x, y, tw, th, unit, screenW, screenH, glassSource,\n'
+       '                    cs.glyph, cs.title, cs.status, cs.click);\n'
+       '            if (cs.isMemory) {\n'
+       '                attachMemoryBar(c, tile, unit);\n'
+       '            }\n'
+       '            outCells.add(tile);\n'
+       '        }\n'
+       '\n'
+       '        int capsuleRows = modTv ? ModPlCentrum.rzedy(modZasilanie >= 0, modInne) : (capsules.size() + 1) / 2;\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: zaokrąglenia kafli jak w tvOS",
+       '        float radius = iconOnly ? dp(unit, 16) : h / 2f;\n',
+       '        float radius = ModPlCentrum.promien(c, iconOnly ? dp(unit, 16) : h / 2f, w, h, iconOnly);   // Mod PL\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: rozmiar ikon jak w tvOS",
+       '        int gs = iconOnly ? dp(unit, 26) : dp(unit, 25);\n',
+       '        int gs = ModPlCentrum.ikona(c, iconOnly ? dp(unit, 26) : dp(unit, 25), w, h, unit, iconOnly);   // Mod PL\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: białe ikony zasilania i wygaszacza w układzie tvOS",
+       '        int baseIconColor = ("wifi".equals(glyph) || "bluetooth".equals(glyph)) ? 0xFF0A84FF\n'
+       '                : "ambient".equals(glyph) ? 0xFFFFD60A\n'
+       '                : "power".equals(glyph) ? 0xFFFF453A\n'
+       '                : Color.WHITE;\n',
+       '        int baseIconColor = ModPlCentrum.kolorIkony(c, glyph,\n'
+       '                ("wifi".equals(glyph) || "bluetooth".equals(glyph)) ? 0xFF0A84FF\n'
+       '                : "ambient".equals(glyph) ? 0xFFFFD60A\n'
+       '                : "power".equals(glyph) ? 0xFFFF453A\n'
+       '                : Color.WHITE, Color.WHITE);   // Mod PL\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: ciemne ikony zasilania i wygaszacza w zaznaczeniu",
+       '        final int focusIconColor = ("wifi".equals(glyph) || "bluetooth".equals(glyph)) ? 0xFF0A84FF\n'
+       '                : "ambient".equals(glyph) ? 0xFFD97706\n'
+       '                : "power".equals(glyph) ? 0xFFD7372A\n'
+       '                : 0xFF111114;\n',
+       '        final int focusIconColor = ModPlCentrum.kolorIkony(c, glyph,\n'
+       '                ("wifi".equals(glyph) || "bluetooth".equals(glyph)) ? 0xFF0A84FF\n'
+       '                : "ambient".equals(glyph) ? 0xFFD97706\n'
+       '                : "power".equals(glyph) ? 0xFFD7372A\n'
+       '                : 0xFF111114, 0xFF111114);   // Mod PL\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: nazwy w dwóch liniach i duży kafel zasilania",
+       '        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(w, h);\n'
+       '        lp.leftMargin = x;\n'
+       '        lp.topMargin = y;\n'
+       '        panel.addView(t, lp);\n'
+       '        return t;\n',
+       '        ModPlCentrum.dopasuj(c, t, gi, titleRef[0], subRef, w, h, unit, gs);   // Mod PL\n'
+       '        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(w, h);\n'
+       '        lp.leftMargin = x;\n'
+       '        lp.topMargin = y;\n'
+       '        panel.addView(t, lp);\n'
+       '        return t;\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: róg kafla pogody jak dużego kafla",
+       '        float radius = dp(unit, 18);\n',
+       '        float radius = ModPlCentrum.promienPogody(c, dp(unit, 18), unit, h);   // Mod PL\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: pasek pamięci w węższej kapsule",
+       '        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp(unit, 78), dp(unit, 4));\n',
+       '        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ModPlCentrum.pasekPamieci(c, unit, 78f), dp(unit, 4));   // Mod PL\n')
+
+zmiana("ControlPanelOverlay.java", "centrum sterowania: wyższy panel mieści się na ekranie także nad aplikacjami",
+       '        plp.topMargin = dp(unit, 58);\n'
+       '        plp.rightMargin = dp(unit, 24);\n',
+       '        plp.topMargin = ModPlCentrum.gora(dp(unit, 58), plp.height, screenH, unit);   // Mod PL\n'
+       '        plp.rightMargin = dp(unit, 24);\n')
+
+# W tvOS centrum sterowania leży na widocznej treści, bez rozmywania ekranu: domyślne tło to „Przezroczyste”
+# (wybór użytkownika 24.11.2026 razem z układem A); kto przełączył tło sam, zachowuje swoje ustawienie.
+zmiana("ControlPanelOverlay.java", "centrum sterowania: domyślnie tło przezroczyste jak w tvOS",
+       '        String m = cpPrefs(c).getString("cp_bg_mode", BG_MODE_BLURRY);\n',
+       '        String m = cpPrefs(c).getString("cp_bg_mode", BG_MODE_TRANSPARENT);   // Mod PL\n')
+
+zmiana("MainActivity.java", "centrum sterowania: wyższy panel mieści się na ekranie głównym",
+       '        plp.topMargin = dp(58);\n'
+       '        plp.rightMargin = dockOuter;\n',
+       '        plp.topMargin = ModPlCentrum.gora(dp(58), plp.height, screenH, unit);   // Mod PL\n'
+       '        plp.rightMargin = dockOuter;\n')
+
+PLIKI_MODA = ["ModPlOkna.java", "ModPlOknaTv.java", "ModPlFokus.java", "ModPlGlosnosc.java", "ModPlPowloka.java", "ModPlEkstraklasa.java", "ModPlMecze.java", "ModPlAdb.java", "ModPlKafelki.java", "ModPlGole.java",
+              "ModPlWygaszacz.java", "ModPlTapety.java", "ModPlDetektor.java", "ModPlDziennik.java", "ModPlListy.java", "ModPlCentrum.java"]
 # DZIENNIK=0 (instalka dla innych): dziennik moda wyłączony już przy kompilacji, zob. pl/java/ModPlDziennik.java
 DZIENNIK_WLACZONY = "static final boolean WLACZONY = true;"
 DZIENNIK_WYLACZONY = "static final boolean WLACZONY = false;"

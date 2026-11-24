@@ -69,8 +69,8 @@
 0339|Pobieram najnowszy plik APK z GitHuba…
 0340|Mżawka
 0341|Dynamiczne
-0342|Każda marka telewizorów używa innych nazw pakietów i aktywności dla Wi-Fi, Bluetooth, dźwięku, wejść i trybu Ambient. Możesz też wybrać ekran blokady jako tryb Ambient (dla telewizorów bez wbudowanego trybu Ambient) oraz włączać i wyłączać poszczególne elementy Panelu sterowania.
-0343|Każda marka telewizorów używa innych nazw pakietów i aktywności dla Wi-Fi, Bluetooth, dźwięku i wejść. Wybierz aplikację, a potem dokładną aktywność uruchamianą z Panelu sterowania (i z aplikacji Wejścia w doku).
+0342|Każda marka telewizorów używa innych nazw pakietów i aktywności dla Wi-Fi, Bluetooth, dźwięku, wejść i trybu Ambient. Możesz też wybrać ekran blokady jako tryb Ambient (dla telewizorów bez wbudowanego trybu Ambient) oraz włączać i wyłączać poszczególne elementy centrum sterowania.
+0343|Każda marka telewizorów używa innych nazw pakietów i aktywności dla Wi-Fi, Bluetooth, dźwięku i wejść. Wybierz aplikację, a potem dokładną aktywność uruchamianą z centrum sterowania (i z aplikacji Wejścia w doku).
 0344|Każda osoba ma własne przypięte aplikacje i listę „Oglądaj dalej”.
 0345|Każda osoba ma własny rząd „Oglądaj dalej” i własną kolejność aplikacji.
 0346|Czas jednej sceny
@@ -89,7 +89,7 @@
 0359|Włącz wszystkie ›
 0360|Włącz w ułatwieniach dostępu, aby mapowane przyciski działały we wszystkich aplikacjach
 0361|Włącz w ułatwieniach dostępu…
-0362|Włącz tvOS Launcher w ustawieniach ułatwień dostępu Androida TV, aby mapowane przyciski pilota i nakładka Panelu sterowania działały w każdej aplikacji.
+0362|Włącz tvOS Launcher w ustawieniach ułatwień dostępu Androida TV, aby mapowane przyciski pilota i nakładka centrum sterowania działały w każdej aplikacji.
 0363|Włącz przez ADB
 0364|Włączone w losowaniu
 0365|Włączam debugowanie ADB i przełączam na tryb stałego ADB…
@@ -190,7 +190,7 @@
 0460|Indygo
 0461|Przycisk Info
 0462|Wejścia
-0463|Wejścia (Panel sterowania i dok)
+0463|Wejścia (centrum sterowania i dok)
 0464|Zainstaluj
 0465|Instaluję aktualizację…
 0466|Jego układ i lista „Oglądaj dalej” zostaną usunięte.
@@ -242,7 +242,7 @@
 0512|Konfiguracja ręczna
 0513|Ręczne odchudzanie (wszystkie aplikacje systemowe)
 0514|Ręczne odchudzanie (wszystkie aplikacje systemowe)…
-0515|Przypisz do dowolnego przycisku pilota akcje dla pojedynczego (1x), podwójnego (2x) i potrójnego (3x) naciśnięcia — otwarcie Panelu sterowania, przełącznika ostatnich aplikacji albo dowolnej aplikacji.
+0515|Przypisz do dowolnego przycisku pilota akcje dla pojedynczego (1x), podwójnego (2x) i potrójnego (3x) naciśnięcia — otwarcie centrum sterowania, przełącznika ostatnich aplikacji albo dowolnej aplikacji.
 0516|Pasujące miejsca
 0517|Pamięć
 0518|Przycisk Menu

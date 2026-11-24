@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -240,8 +242,19 @@ public class ModPlWygaszacz extends DreamService {
     // --- styl cyfr zegara (prośba użytkownika 17.11.2026: „na wygaszaczu jest do wyboru czcionka zegara jak na ekranie?”)
 
     private static final String K_STYL = "wyg_styl_zegara";
-    /** Kolejność przełączania: jak na ekranie głównym, potem trzy style ekranu głównego. */
-    private static final String[] STYLE = {"", Scenes.CLOCK_STYLE_DUO, Scenes.CLOCK_STYLE_ROUNDED, Scenes.CLOCK_STYLE_TALL};
+    /**
+     * Styl tylko wygaszacza (wybór użytkownika z kanwy 24.11.2026, wariant C): duży zegar w stylu wygaszacza
+     * „Portrety” z tvOS 27. Cyfra ma ok. 294×443 px przy 1080p (zmierzone na podglądzie z systemu Apple: „9:41”
+     * zajmuje 52% szerokości i 41% wysokości ekranu), więc cztery cyfry zajmują ok. 2/3 szerokości. Wysokie
+     * zaokrąglone cyfry z jasnego matowego szkła, miękki cień zamiast twardego, a pierwszy plan zdjęcia może
+     * zasłonić do 30% cyfr (zwykły zegar: 22%). Postać stojąca przed środkiem zegara, jak w tvOS, wymagałaby
+     * modelu głębi; tu zegar chowa się za linią terenu i dachem auta, tak jak w pozostałych stylach.
+     */
+    static final String STYL_PORTRETY = "mod_portrety";
+    private static final float PORTRETY_SZER = 294f / 1080f, PORTRETY_WYS = 443f / 1080f;
+    /** Kolejność przełączania: jak na ekranie głównym, potem trzy style ekranu głównego i duży „Portrety”. */
+    private static final String[] STYLE = {"", Scenes.CLOCK_STYLE_DUO, Scenes.CLOCK_STYLE_ROUNDED, Scenes.CLOCK_STYLE_TALL,
+            STYL_PORTRETY};
 
     /**
      * Wybór zapisany w ustawieniach wygaszacza ("" = jak na ekranie głównym). Zapis innego typu (np. liczba po
@@ -275,6 +288,7 @@ public class ModPlWygaszacz extends DreamService {
     }
 
     private static String nazwaStylu(Context c, String st) {
+        if (STYL_PORTRETY.equals(st)) return I18n.s(c, "Large, Portraits style", "Büyük, Portreler tarzı");
         if (Scenes.CLOCK_STYLE_ROUNDED.equals(st)) return I18n.s(c, "iPhone Rounded", "iPhone Yuvarlak");
         if (Scenes.CLOCK_STYLE_TALL.equals(st)) return I18n.s(c, "Tall Glass", "Uzun Cam");
         return I18n.s(c, "iPhone Duo", "iPhone Duo");
@@ -284,6 +298,58 @@ public class ModPlWygaszacz extends DreamService {
         String s = wybranyStyl(c);
         if (s.isEmpty()) return I18n.t(c, "Same as Home screen") + " (" + nazwaStylu(c, Scenes.getClockStyle(c)) + ")";
         return nazwaStylu(c, s);
+    }
+
+    static boolean stylPortrety(Context c) {
+        return STYL_PORTRETY.equals(stylZegara(c));
+    }
+
+    private static float[] wymiaryPortretow;
+
+    /**
+     * Styl „Portrety”: {rozmiar bazowy czcionki jako ułamek wysokości ekranu, rozciągnięcie w pionie}. Liczone raz
+     * z wymiarów cyfry „0” czcionki zaokrąglonej, tak żeby cyfra miała PORTRETY_SZER × PORTRETY_WYS ekranu.
+     */
+    private static synchronized float[] portrety(Context c) {
+        if (wymiaryPortretow == null) {
+            Paint wzor = new Paint(Paint.ANTI_ALIAS_FLAG);
+            wzor.setTypeface(Ui.font(c, "clock_rounded"));
+            wzor.setLetterSpacing(-0.012f);
+            wzor.setTextSize(1000f);
+            Rect b = new Rect();
+            wzor.getTextBounds("0", 0, 1, b);
+            float szer = Math.max(0.2f, wzor.measureText("0") / 1000f), wys = Math.max(0.2f, b.height() / 1000f);
+            wymiaryPortretow = new float[]{PORTRETY_SZER / szer, (PORTRETY_WYS / PORTRETY_SZER) * szer / wys};
+        }
+        return wymiaryPortretow;
+    }
+
+    /**
+     * Szkło cyfr w stylu „Portrety”: rozmyte zdjęcie przez przepis Liquid Glass z tvOS 27 (jasność ściśnięta do 63%
+     * i podniesiona o 0,235, kolory zostają) i rozjaśnione mleczną bielą. Sam przepis Apple dawał na podglądzie
+     * szarawe cyfry słabo widoczne na tle o podobnej jasności, a na zrzutach Apple cyfry są jasne, prawie mleczne.
+     */
+    static Bitmap szkloPortretow(Bitmap zdjecie) {
+        Bitmap kadr = ModPlTapety.kadr480(zdjecie);
+        Bitmap rozmyta = Ui.blur(kadr, 480, 270, 6, 3);
+        if (rozmyta == null) rozmyta = kadr;
+        else kadr.recycle();
+        Bitmap wynik = Bitmap.createBitmap(480, 270, Bitmap.Config.ARGB_8888);
+        float biel = 0.34f, a = 1f - biel, k = 0.371f;
+        float lr = 0.2126f * k, lg = 0.7152f * k, lb = 0.0722f * k;
+        float przes = 0.235f * 255f * a + 255f * biel;
+        ColorMatrix cm = new ColorMatrix();
+        cm.setSaturation(1.3f);
+        cm.postConcat(new ColorMatrix(new float[]{
+                a * (1f - lr), -a * lg, -a * lb, 0, przes,
+                -a * lr, a * (1f - lg), -a * lb, 0, przes,
+                -a * lr, -a * lg, a * (1f - lb), 0, przes,
+                0, 0, 0, 1f, 0}));
+        Paint p = new Paint(Paint.FILTER_BITMAP_FLAG);
+        p.setColorFilter(new ColorMatrixColorFilter(cm));
+        new Canvas(wynik).drawBitmap(rozmyta, 0, 0, p);
+        rozmyta.recycle();
+        return wynik;
     }
 
     /** Ostatnio policzone rozmiary, żeby nie mierzyć czcionek w każdej klatce. */
@@ -298,6 +364,16 @@ public class ModPlWygaszacz extends DreamService {
      */
     static void ustawCyfry(Context c, Paint p, float rozmiarBazowy) {
         String st = stylZegara(c);
+        if (STYL_PORTRETY.equals(st)) {
+            // wysokie cyfry: większa czcionka ściśnięta w poziomie, więc szerokość zostaje, a wysokość rośnie
+            float sy = portrety(c)[1];
+            p.setTypeface(Ui.font(c, "clock_rounded"));
+            if (Build.VERSION.SDK_INT >= 26) p.setFontVariationSettings(null);
+            p.setLetterSpacing(-0.012f);
+            p.setTextScaleX(1f / sy);
+            p.setTextSize(rozmiarBazowy * sy);
+            return;
+        }
         boolean duo = Scenes.CLOCK_STYLE_DUO.equals(st), wysokie = Scenes.CLOCK_STYLE_TALL.equals(st);
         p.setTypeface(Ui.font(c, duo ? "clock_duo" : wysokie ? "clock" : "clock_rounded"));
         if (Build.VERSION.SDK_INT >= 26) p.setFontVariationSettings(duo ? "'wght' 345, 'wdth' 75" : null);
@@ -426,6 +502,10 @@ public class ModPlWygaszacz extends DreamService {
     private Widok widok;
     private Uklad uklad;
     private Uklad ukladKrawedzi;         // ten sam zegar z ostrożniejszymi limitami dla drugiej reguły
+    private boolean portretowy;          // styl zegara „Portrety”: inne szkło i rysowanie cyfr
+    /** Styl „Portrety”: układy od największego zegara do najmniejszego (i ich ostrożniejsze odpowiedniki). */
+    private Uklad[] ukladyPortretow, krawedziePortretow;
+    private static final float[] SKALE_PORTRETOW = {1f, 0.8f, 0.62f};
     private int zdjW, zdjH;
     private volatile boolean dziala;
     private Thread watek;
@@ -444,10 +524,22 @@ public class ModPlWygaszacz extends DreamService {
         getWindowManager().getDefaultDisplay().getRealMetrics(dm);
         int w = Math.max(dm.widthPixels, dm.heightPixels), h = Math.min(dm.widthPixels, dm.heightPixels);
         uklad = new Uklad(this, w, h);
+        portretowy = stylPortrety(this);
         // druga reguła (krawędź pod zegarem) jest mniej pewna niż linia nieba, więc chowa ostrożniej
         ukladKrawedzi = new Uklad(this, w, h);
         ukladKrawedzi.maksCyfry = 0.28f;
         ukladKrawedzi.maksRazem = 0.14f;
+        ukladyPortretow = krawedziePortretow = null;
+        if (portretowy) {
+            ukladyPortretow = new Uklad[SKALE_PORTRETOW.length];
+            krawedziePortretow = new Uklad[SKALE_PORTRETOW.length];
+            for (int i = 0; i < SKALE_PORTRETOW.length; i++) {
+                ukladyPortretow[i] = new Uklad(this, w, h, SKALE_PORTRETOW[i]);
+                krawedziePortretow[i] = new Uklad(this, w, h, SKALE_PORTRETOW[i]);
+                krawedziePortretow[i].maksCyfry = 0.28f;
+                krawedziePortretow[i].maksRazem = 0.14f;
+            }
+        }
         zdjW = Math.min(w, 1920);
         zdjH = Math.round(zdjW * (h / (float) w));
         widok = new Widok(this);
@@ -1013,6 +1105,7 @@ public class ModPlWygaszacz extends DreamService {
 
     private static final class Slajd {
         Bitmap zdjecie, maska, szklo;
+        Uklad uklad;             // układ cyfr dobrany do tego zdjęcia (styl „Portrety” ma kilka rozmiarów)
         float gora;              // górny brzeg cyfr jako ułamek wysokości ekranu
         boolean ciemne;          // jasne tło za zegarem: cyfry ciemne
         String podpis;           // co jest na zdjęciu (pokazywane przez kilka sekund)
@@ -1033,6 +1126,7 @@ public class ModPlWygaszacz extends DreamService {
         final float tMin, tMax, tDomyslne;     // dozwolony górny brzeg cyfr jako ułamek wysokości ekranu
         float maksCyfry = 0.34f, maksDwukropka = 0.22f;   // najwyżej tyle jednej cyfry i dwukropka może zniknąć
         float maksRazem = 0f;                  // najwyżej tyle wszystkich cyfr naraz; 0 = domyślnie (22%, płaska linia 14%)
+        float limitWlasny = 0f;                // > 0: własny limit zamiast 22% (płaska linia: 60% tej wartości)
         float dosc = 1f, karaZaDol = 0f;       // ocena położenia: schowane liczy się do „dosc”, zejście zegara w dół kosztuje
         float czystaGora = 1f;                 // najwyżej tyle górnych 60% cyfry może zasłaniać pierwszy plan (1 = bez wymogu)
         float minRazem = 0.03f;                // co najmniej tyle wszystkich cyfr ma zniknąć, żeby efekt było widać
@@ -1042,9 +1136,15 @@ public class ModPlWygaszacz extends DreamService {
         final float dx0, dx1;
 
         Uklad(Context c, int w, int h) {
+            this(c, w, h, 1f);
+        }
+
+        /** {@code skala}: tylko w stylu „Portrety”, rozmiar cyfr względem największego (1 = 41% wysokości ekranu). */
+        Uklad(Context c, int w, int h, float skala) {
             this.w = w;
             this.h = h;
-            rozmiar = h * 330f / 1080f;
+            boolean portrety = stylPortrety(c);
+            rozmiar = portrety ? h * portrety(c)[0] * skala : h * 330f / 1080f;
             Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
             ustawCyfry(c, p, rozmiar);   // czcionka według stylu zegara wygaszacza
             Rect b = new Rect();
@@ -1062,10 +1162,29 @@ public class ModPlWygaszacz extends DreamService {
             x1[2] = dx1 + sz - m;
             x0[3] = dx1 + sz + m;
             x1[3] = dx1 + 2 * sz - m;
-            podniesienie = rozmiar * 0.121f;      // dwukropek rysujemy wyżej, żeby dolna kropka nie ginęła
-            tMin = T_MIN;
-            tMax = T_MAX;
-            tDomyslne = T_DOMYSLNE;
+            if (portrety) {
+                // Największe cyfry mają 41% wysokości ekranu: zegar stoi w górnej i środkowej części (góra cyfr od
+                // 130 px, dół najniżej na 66% ekranu, jak przy zwykłym zegarze), data mieści się nad nim, a pierwszy
+                // plan może zasłonić więcej. Niżej zegar wchodził na postać i auto (test na emulatorze 24.11.2026).
+                podniesienie = rozmiar * 0.121f * portrety(c)[1];
+                tMin = 130f / 1080f;
+                tMax = Math.max(tMin + 0.03f, 0.655f - wysCyfr / h);
+                tDomyslne = Math.min(tMax, 170f / 1080f);
+                if (skala >= 0.95f) {
+                    maksCyfry = 0.46f;
+                    maksDwukropka = 0.40f;
+                    limitWlasny = 0.30f;
+                } else if (skala >= 0.75f) {
+                    maksCyfry = 0.40f;
+                    maksDwukropka = 0.30f;
+                    limitWlasny = 0.26f;
+                }
+            } else {
+                podniesienie = rozmiar * 0.121f;      // dwukropek rysujemy wyżej, żeby dolna kropka nie ginęła
+                tMin = T_MIN;
+                tMax = T_MAX;
+                tDomyslne = T_DOMYSLNE;
+            }
         }
 
         /** Układ dla zegara ekranu głównego: znane są tylko skrajne x cyfr, ich wysokość i zakres położenia. */
@@ -1098,24 +1217,37 @@ public class ModPlWygaszacz extends DreamService {
         // Wykrywacz aut jak na ekranie głównym (12.11.2026: w wygaszaczu zegar stanął na środku Ferrari, dół „4” za
         // oponą). Zegar ma stać nad autem i chować się tylko za dachem; sceny z wyciętym pierwszym planem pomijamy.
         List<ModPlDetektor.Pojazd> pojazdy = gotowaMaska == null ? ModPlDetektor.pojazdy(this, ekranowe) : null;
-        float[] g = {uklad.x0[0] / uklad.w, uklad.x1[3] / uklad.w, uklad.wysCyfr / uklad.h, uklad.tDomyslne};
-        ModPlDetektor.Pojazd auto = ModPlTapety.autoPodZegarem(pojazdy, g);
-        Analiza a = umiesc(bz, uklad);
-        if (a.efekt && ModPlTapety.naAucie(pojazdy, g, a.gora)) {
-            String opis = a.opis + ", zegar leżałby na aucie";
-            a = bezEfektu(bz, uklad);
-            a.opis = opis;
-        }
-        if (!a.efekt && gotowaMaska == null) {
-            // linia nieba nie wystarczyła (np. za cyframi stoją drzewa): krawędź tuż pod zegarem, np. dach auta;
-            // gdy pod zegarem stoi auto, szukamy jej tylko przy dachu, nie niżej przy szybach, kołach i masce
-            Analiza druga = podZegarem(ekranowe, ukladKrawedzi != null ? ukladKrawedzi : uklad, bz.jasnosc,
-                    auto != null ? auto.gora + ModPlTapety.ZAPAS_DACHU : 0f);
-            if (druga != null && ModPlTapety.naAucie(pojazdy, g, druga.gora)) {
-                a.opis += " | krawędź pod zegarem: zegar leżałby na aucie";
-            } else if (druga != null) {
-                a = druga;
+        // Styl „Portrety”: rozmiar zegara dobierany do zdjęcia, jak układ zapisany dla każdego zdjęcia w tvOS.
+        // Najpierw największy; gdy zegar się za nic nie chowa albo leżałby na aucie, kolejny mniejszy.
+        int ile = ukladyPortretow != null ? ukladyPortretow.length : 1;
+        Uklad wybrany = uklad;
+        Analiza a = null;
+        ModPlDetektor.Pojazd auto = null;
+        for (int nr = 0; nr < ile; nr++) {
+            Uklad u = ukladyPortretow != null ? ukladyPortretow[nr] : uklad;
+            Uklad uk = ukladyPortretow != null ? krawedziePortretow[nr] : (ukladKrawedzi != null ? ukladKrawedzi : uklad);
+            float[] g = {u.x0[0] / u.w, u.x1[3] / u.w, u.wysCyfr / u.h, u.tDomyslne};
+            auto = ModPlTapety.autoPodZegarem(pojazdy, g);
+            a = umiesc(bz, u);
+            if (a.efekt && ModPlTapety.naAucie(pojazdy, g, a.gora)) {
+                String opis = a.opis + ", zegar leżałby na aucie";
+                a = bezEfektu(bz, u);
+                a.opis = opis;
             }
+            if (!a.efekt && gotowaMaska == null) {
+                // linia nieba nie wystarczyła (np. za cyframi stoją drzewa): krawędź tuż pod zegarem, np. dach auta;
+                // gdy pod zegarem stoi auto, szukamy jej tylko przy dachu, nie niżej przy szybach, kołach i masce
+                Analiza druga = podZegarem(ekranowe, uk, bz.jasnosc,
+                        auto != null ? auto.gora + ModPlTapety.ZAPAS_DACHU : 0f);
+                if (druga != null && ModPlTapety.naAucie(pojazdy, g, druga.gora)) {
+                    a.opis += " | krawędź pod zegarem: zegar leżałby na aucie";
+                } else if (druga != null) {
+                    a = druga;
+                }
+            }
+            wybrany = u;
+            if (ile > 1) a.opis += String.format(Locale.US, ", rozmiar zegara %d/%d (cyfry %.0f%% ekranu)", nr + 1, ile, u.wysCyfr / u.h * 100f);
+            if (a.efekt) break;
         }
         if (auto != null) a.opis += String.format(Locale.US, ", dach auta %.0f%%", auto.gora * 100f);
         ModPlDziennik.i(TAG, skad + ": " + (a.efekt ? "chowa" : "bez efektu") + ", góra cyfr " + Math.round(a.gora * 1080)
@@ -1123,11 +1255,12 @@ public class ModPlWygaszacz extends DreamService {
         if (!a.efekt && tylkoChowane(this)) return null;
         Slajd s = new Slajd();
         s.zdjecie = ekranowe;
+        s.uklad = wybrany;
         s.gora = a.gora;
         s.ciemne = a.ciemne;
         s.podpis = podpis;
         // szkło cyfr jak w scenach autora, tak samo jak na tapetach ekranu głównego (użytkownik 12.11.2026)
-        s.szklo = ModPlTapety.szkloSceny(ekranowe, a.ciemne);
+        s.szklo = portretowy ? szkloPortretow(ekranowe) : ModPlTapety.szkloSceny(ekranowe, a.ciemne);
         if (a.efekt && a.maska != null) {
             s.maska = Bitmap.createBitmap(AW, AH, Bitmap.Config.ALPHA_8);
             s.maska.copyPixelsFromBuffer(ByteBuffer.wrap(a.maska));
@@ -1569,6 +1702,7 @@ public class ModPlWygaszacz extends DreamService {
             c = bz.c;
         }
         float limit = bz.plaska ? 0.14f : 0.22f;
+        if (u.limitWlasny > 0f) limit = bz.plaska ? u.limitWlasny * 0.6f : u.limitWlasny;
         if (u.maksRazem > 0f) limit = Math.min(limit, u.maksRazem);
         float[] zegar = dobierz(c, u, limit);
         boolean schowany = zegar != null && (bz.gotowa || zegar[1] >= u.minRazem);
@@ -1807,11 +1941,50 @@ public class ModPlWygaszacz extends DreamService {
             String czas = new SimpleDateFormat(Scenes.isClock24h(ctx) ? "HH:mm" : "h:mm", Locale.US).format(new Date());
             int dw = czas.indexOf(':');
             String godz = dw > 0 ? czas.substring(0, dw) : czas, min = dw > 0 ? czas.substring(dw + 1) : "";
+            Uklad uklad = s.uklad != null ? s.uklad : ModPlWygaszacz.this.uklad;
             ustawCyfry(ctx, cyfry, uklad.rozmiar * (h / uklad.h));
             float sg = cyfry.measureText(godz), sd = cyfry.measureText(":"), sm = cyfry.measureText(min);
             float x = (w - (sg + sd + sm)) / 2f;
             float gora = s.gora * h, podstawa = gora + uklad.wysCyfr * (h / uklad.h), pod = uklad.podniesienie * (h / uklad.h);
-            rysujZegarAutora(c, s, godz, min, x, sg, sd, gora, podstawa, pod, w, h);
+            if (portretowy) rysujZegarPortretow(c, s, godz, min, x, sg, sd, gora, podstawa, pod, w, h);
+            else rysujZegarAutora(c, s, godz, min, x, sg, sd, gora, podstawa, pod, w, h);
+        }
+
+        /**
+         * Cyfry stylu „Portrety”: jasne matowe szkło (szkloPortretow) z miękkim cieniem dookoła zamiast twardego
+         * odbicia i cienka krawędź szkła, jaśniejsza u góry (obrysy Apple: biel 50% i 20%).
+         */
+        private void rysujZegarPortretow(Canvas c, Slajd s, String godz, String min, float x, float sg, float sd,
+                                         float gora, float podstawa, float pod, float w, float h) {
+            float u = h / 540f;
+            if (s.obwodkaAutora == null) {
+                s.obwodkaAutora = new LinearGradient(0, gora, 0, podstawa, 0x80FFFFFF, 0x33FFFFFF, Shader.TileMode.CLAMP);
+            }
+            cyfry.setStyle(Paint.Style.FILL);
+            cyfry.setColor(0xFFFFFFFF);
+            if (s.szklo != null && !s.szklo.isRecycled()) {
+                if (s.cieniowanieSzkla == null) {
+                    s.cieniowanieSzkla = new BitmapShader(s.szklo, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+                    Matrix m = new Matrix();
+                    m.setScale(w / s.szklo.getWidth(), h / s.szklo.getHeight());
+                    s.cieniowanieSzkla.setLocalMatrix(m);
+                }
+                cyfry.setShader(s.cieniowanieSzkla);
+            } else {
+                cyfry.setShader(null);
+                cyfry.setAlpha(190);
+            }
+            cyfry.setShadowLayer(15f * u, 0f, 5f * u, 0x47000000);
+            tekst(c, godz, min, x, sg, sd, podstawa, pod);
+            cyfry.clearShadowLayer();
+            cyfry.setAlpha(255);
+            cyfry.setStyle(Paint.Style.STROKE);
+            cyfry.setStrokeWidth(Math.max(1.5f, 1.25f * u));
+            cyfry.setShader(s.obwodkaAutora);
+            cyfry.setColor(0xFFFFFFFF);
+            tekst(c, godz, min, x, sg, sd, podstawa, pod);
+            cyfry.setShader(null);
+            cyfry.setStyle(Paint.Style.FILL);
         }
 
         /**

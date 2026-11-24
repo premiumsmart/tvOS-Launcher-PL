@@ -40,8 +40,8 @@
 0850|Przejdź do następnej tapety z Reddita
 0851|Uśpij
 0852|Uśpienie / czuwanie (223)
-0853|Wyłącznik czasowy
-0854|Wyłącznik czasowy
+0853|Usypianie
+0854|Usypianie
 0855|Deszcz ze śniegiem
 0856|Mniejszy, bardziej zwarty dok
 0857|Śnieg
@@ -90,7 +90,7 @@
 0900|Temperatura
 0901|Przycisk Home na pilocie będzie otwierał tvOS Launcher.
 0902|Przycisk Home otwiera tvOS Launcher
-0903|Ten telewizor nie ma wbudowanego ekranu ustawień ułatwień dostępu. Usługę mapowania przycisków i Panelu sterowania możesz włączyć automatycznie przez lokalne ADB.
+0903|Ten telewizor nie ma wbudowanego ekranu ustawień ułatwień dostępu. Usługę mapowania przycisków i centrum sterowania możesz włączyć automatycznie przez lokalne ADB.
 0904|Ustawienia tego telewizora nie mają przełącznika dla tego uprawnienia. Osoba, która konfigurowała telewizor, może włączyć je raz z komputera w tej samej sieci:\n\n
 0905|Przywraca domyślne ustawienia wyglądu, scen, zegara i języka.
 0906|Wyłączy to podtrzymywanie oraz usunie usługę ułatwień dostępu, dostęp do powiadomień, rolę domyślnego ekranu głównego i uprawnienia launchera (lokalnie i przez ADB).
@@ -202,7 +202,7 @@
 1012|Kofeina (blokada usypiania i trybu Ambient)
 1013|wyczyść
 1014|Rozmyte (rozmycie bieżącej treści)
-1015|Tło Panelu sterowania
+1015|Tło centrum sterowania
 1016|Przezroczyste
 1017|Mecze piłkarskie
 1018|Najczęściej oglądane
@@ -235,7 +235,7 @@
 1045|Kraje dla „Najczęściej oglądane”
 1046|Wczytuję tytuły…
 1047|Ustawienia
-1048|Wyłącznik czasowy
+1048|Usypianie
 1049|spacja
 1050|Jutro
 1051|Jutro

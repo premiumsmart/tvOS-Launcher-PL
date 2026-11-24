@@ -13,7 +13,7 @@
 0013| sparowano
 0014| sekund
 0015|% zajęte  ·  Wyczyść
-0016|% zajęte · Ostatnie aplikacje
+0016|% zajęte
 0017|+ Dodaj przycisk do mapowania…
 0018|+ Dodaj osobę
 0019|+ Dodaj przycisk do mapowania
@@ -100,7 +100,7 @@
 0100|Aplikacje i ustawienia
 0101|Pytaj, kto ogląda, po wybudzeniu
 0102|Przypisz akcje do 1, 2 i 3 naciśnięć
-0103|Przypisz akcje do pojedynczego (1x), podwójnego (2x) i potrójnego (3x) naciśnięcia każdego przycisku pilota — np. otwarcie Panelu sterowania, przełącznika ostatnich aplikacji albo dowolnej zainstalowanej aplikacji.
+0103|Przypisz akcje do pojedynczego (1x), podwójnego (2x) i potrójnego (3x) naciśnięcia każdego przycisku pilota — np. otwarcie centrum sterowania, przełącznika ostatnich aplikacji albo dowolnej zainstalowanej aplikacji.
 0104|Dźwięk
 0105|Ścieżka dźwiękowa (222)
 0106|Auto
@@ -139,8 +139,8 @@
 0139|Bluetooth
 0140|Zakładka / Ulubione
 0141|Mapowanie przycisków
-0142|Mapowanie przycisków i Panel sterowania
-0143|Mapowanie przycisków i Panel sterowania (ułatwienia dostępu)
+0142|Mapowanie przycisków i centrum sterowania
+0143|Mapowanie przycisków i centrum sterowania (ułatwienia dostępu)
 0144|Usługa ułatwień dostępu mapowania przycisków
 0145|Usługa mapowania przycisków
 0146|Mapowanie przycisków
@@ -149,7 +149,7 @@
 0149|KLASYCZNY ZEGAR I POGODA
 0150|TAPETY KLASYCZNE
 0151|CLEANYOURTV (BETA)
-0152|ELEMENTY PANELU STEROWANIA (POKAŻ / UKRYJ)
+0152|ELEMENTY CENTRUM STEROWANIA (POKAŻ / UKRYJ)
 0153|KRAJE (WYBIERZ JEDEN LUB KILKA)
 0154|WŁASNE I LOSOWANIE Z FOLDERU
 0155|WŁASNA TAPETA
@@ -252,9 +252,9 @@
 0252|„Oglądaj dalej” w doku
 0253|Oglądaj dalej
 0254|Centrum sterowania
-0255|Panel sterowania
-0256|Panel sterowania (nakładka)
-0257|Przywrócono domyślne akcje i elementy Panelu sterowania.
+0255|Centrum sterowania
+0256|Centrum sterowania (nakładka)
+0257|Przywrócono domyślne akcje i elementy centrum sterowania.
 0258|Nie udało się sprawdzić aktualizacji.
 0259|Nie udało się połączyć z ADB — włącz debugowanie USB/sieciowe albo użyj kroku 3 / 4.
 0260|Nie udało się połączyć z lokalnym ADB na porcie 5555.
