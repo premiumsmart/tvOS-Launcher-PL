@@ -43,6 +43,6 @@
 | `gotowe/goal-badge.webp` | Wycinek przykładowej plakietki gola |
 | `gotowe/screensaver-1.webp` | Wygaszacz: futurystyczne miasto nocą (telewizor) |
 
-Nowe kadry pochodzą z emulatora Android TV z profilem testowym i testową lokalizacją, dlatego w doku widać aplikacje telefonu. Kadry oznaczone „telewizor” powstały wcześniej; zamaskowano w nich dane profilu, miejscowość i wybrane podpisy aplikacji. Ekran główny na planszach pochodzi z tego wcześniejszego zrzutu z telewizora. W oknie aktualizacji usunięto systemowe podświetlenie emulatora za przyciskiem „Zainstaluj” (na telewizorach go nie ma).
+Nowe kadry pochodzą z emulatora Android TV z profilem testowym i testową lokalizacją, dlatego w doku widać aplikacje telefonu. Kadry oznaczone „telewizor” powstały wcześniej; zamaskowano w nich dane profilu, miejscowość i wybrane podpisy aplikacji. Ekran główny na planszach pochodzi z tego wcześniejszego zrzutu z telewizora. W oknie aktualizacji usunięto systemowe podświetlenie emulatora za przyciskiem „Zainstaluj” (na telewizorach go nie ma). W kadrach pogody, Centrum sterowania i wskaźnika głośności usunięto z kafelka „Wiadomości na żywo” tytuły prawdziwych wiadomości; etykieta kafelka została.
 
 Interfejs na zrzutach pochodzi z aplikacji. Dekoracyjne tło plansz wygenerowano przy użyciu AI; zrzuty złożono lokalnie. Zdjęcia, grafiki filmowe i herby należą do ich właścicieli.
